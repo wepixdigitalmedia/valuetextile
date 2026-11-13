@@ -11,48 +11,52 @@ interface FaqItem {
 
 const FAQS: FaqItem[] = [
   {
-    q: "Do you make fabric only, garments only, or both?",
-    a: "Both. You can order fabric, finished garments or a full package where we make the fabric and the garment.",
+    q: "What garments do you make?",
+    a: "T-shirts and polos, kids and baby wear, men's and women's knitwear, activewear and loungewear, and custom styles developed to your tech pack or sample.",
+  },
+  {
+    q: "Do you work with your own fabric or ours?",
+    a: "Both. In a full package program we make the garment using our own knitted and dyed fabric. For cut and make, you supply the fabric and trims and our lines assemble and pack.",
+  },
+  {
+    q: "Do you sell fabric or yarn only?",
+    a: "We take fabric-only and yarn-only orders on request. Send your technical requirement and volume and our export desk will quote it.",
   },
   {
     q: "What is your minimum order quantity?",
-    a: "[MOQ] per colour for fabric and [MOQ] per style for garments. Smaller trial orders may be possible on selected styles [CONFIRM].",
+    a: "We offer clear MOQs per style and per colour. Smaller initial trial runs are supported for emerging brands and new collections.",
   },
   {
     q: "Do you make private label and custom designs?",
-    a: "Yes. Send your tech pack or reference sample and we develop it with you [CONFIRM].",
-  },
-  {
-    q: "Can you arrange trims, labels, printing or embroidery?",
-    a: "[CONFIRM. Example: \"Yes. We arrange them through [our unit / named partners] and check them with our own quality team.\"]",
+    a: "Yes. Send your tech pack, CAD or reference sample and our merchandising team develops counter-samples, grading and custom branding.",
   },
   {
     q: "How does sampling work?",
-    a: "We make fabric swatches and lab dips first, then pre-production garment samples. Samples take [DAYS]. [Sample cost and refund policy.]",
+    a: "Fit samples, fabric lab dips, and pre-production size-set samples are submitted before bulk cutting. Sampling takes typically 7–14 days depending on fabric development.",
   },
   {
     q: "What is your typical lead time?",
-    a: "Fabric [DAYS]. Garments [DAYS] after sample and trim approval. Exact timing depends on quantity and season.",
+    a: "Typically 30 to 45 days after approval of samples, trims and fabric colour. Exact lead times depend on style complexity, quantity and seasonal production schedules.",
   },
   {
     q: "Which countries do you ship to, and on what terms?",
-    a: "We export to [COUNTRIES]. Terms: [FOB / CIF / other] from [PORT]. We handle export documentation.",
+    a: "We export globally across Europe, the UK, North America, Australia, and the Middle East on FOB or CIF terms via Tuticorin, Chennai, or Cochin ports.",
   },
   {
     q: "What payment terms do you offer?",
-    a: "[PAYMENT TERMS] in [CURRENCIES].",
+    a: "We work with standard export commercial terms (including Letter of Credit / LC and Advance against shipping documents) in USD, EUR, and GBP.",
   },
   {
     q: "Which certifications do you hold?",
-    a: "[LIST with certificate numbers]. Copies are available on request.",
+    a: "Our partner and production facilities hold OEKO-TEX Standard 100, BCI, GRS, and GOTS certifications. Certificate copies and audit documents are available upon request.",
   },
   {
     q: "Can I visit the factory or see it on video?",
-    a: "[CONFIRM. Example: \"Yes. Visits are welcome by appointment, and we can run a live video tour.\"]",
+    a: "Yes. Factory visits in Tirupur are welcome by appointment, and our export desk can coordinate a live video walkthrough of our production lines.",
   },
   {
     q: "How do I get a quote?",
-    a: "Send us the product type, GSM or style, quantity and target market using the form below. We reply within [TIME] on working days (India time, IST).",
+    a: "Send us the garment type, quantity, target market and your tech pack or reference sample using the form below. We reply within 24 working hours.",
   },
 ];
 

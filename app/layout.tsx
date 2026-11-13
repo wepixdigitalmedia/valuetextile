@@ -1,3 +1,4 @@
+import React, { Suspense } from "react";
 import type { Metadata, Viewport } from "next";
 import { Inter_Tight, Figtree, Noto_Sans_Tamil } from "next/font/google";
 import "./globals.css";
@@ -157,7 +158,13 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-[#FAF8F5] text-[#1F1F1F] font-body selection:bg-[#C8741F]/20 selection:text-[#1F1F1F]">
         <SmoothScroll />
         <UtilityBar />
-        <SiteHeader />
+        <Suspense
+          fallback={
+            <div className="h-[76px] sm:h-[84px] md:h-[92px] lg:h-[98px] bg-white border-b border-[#E6E2DB]" />
+          }
+        >
+          <SiteHeader />
+        </Suspense>
         <main className="flex-1 w-full flex flex-col">{children}</main>
         <SiteFooter />
         <EnquiryTab />

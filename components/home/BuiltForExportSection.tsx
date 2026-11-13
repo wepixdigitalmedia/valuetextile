@@ -6,39 +6,39 @@ import { Container } from "../ui/Container";
 const TILES = [
   {
     number: "01",
-    title: "Private label & custom programs",
-    copy: "Your label, your specification, our production. We work from your tech pack or develop one with you. Custom neck labels, care tags, and polybag packaging.",
+    title: "Private label & custom design",
+    copy: "Your label, your specification, our production. We work from your tech pack or develop one with you. Custom neck labels, care tags, and polybag packing.",
     badge: "Tech packs & trims",
   },
   {
     number: "02",
     title: "Minimum order quantity",
-    copy: "Knitted fabric: [MOQ, CONFIRM] per colour. Garments: [MOQ, CONFIRM] per style. Flexible initial trial orders for emerging brands [CONFIRM].",
-    badge: "Fabric & Garment MOQs",
+    copy: "Clear MOQs per style and per colour, with scalable volume tiers and flexible trial orders for emerging brands and new collections.",
+    badge: "Scalable volumes",
   },
   {
     number: "03",
-    title: "Sampling & development",
-    copy: "Lab dips formulated on SPI Autolab and spectrophotometer. Fabric swatches and pre-production garment samples before bulk cutting. Sample time: [DAYS, CONFIRM].",
-    badge: "SPI Autolab matching",
+    title: "Sampling & fit approval",
+    copy: "Fit sample, pre-production sample and size-set sample before bulk cutting. Colour lab dips formulated with spectrophotometer precision.",
+    badge: "Fit & pre-production",
   },
   {
     number: "04",
     title: "Confirmed production lead times",
-    copy: "Fabric: Solid shades 30 days (from lab dip approval), Melange 35 days, Yarn-dyed and all-over print 45 days. Garments: [DAYS, CONFIRM] after sample and trim approval.",
-    badge: "30–45 days fabric",
+    copy: "Predictable production schedules after approval of samples, trims and fabric colour. Planned repeat orders and seasonal collection runs.",
+    badge: "Planned delivery dates",
   },
   {
     number: "05",
-    title: "Shipping & export ports",
-    copy: "Terms: FOB / CIF to buyer choice. Ocean shipping via Tuticorin and Chennai ports, air shipments via Coimbatore and Bangalore international airports.",
-    badge: "Tuticorin & Chennai",
+    title: "Quality & inspection",
+    copy: "Our own in-house fabric tests and 4-point inspection, followed by in-line and final garment inspection. Third-party buyer audits welcomed.",
+    badge: "4-point & garment QC",
   },
   {
     number: "06",
-    title: "Payment & commercial terms",
-    copy: "Commercial terms: [TERMS, e.g. LC / Advance against documents, CONFIRM]. Invoicing in USD, EUR, or GBP with complete export documentation.",
-    badge: "USD / EUR / GBP",
+    title: "Shipping & export documents",
+    copy: "FOB or CIF terms via Tuticorin, Chennai, or Cochin ports. Complete export documentation, packing lists, and certificates of origin prepared.",
+    badge: "Tuticorin & Chennai",
   },
 ];
 
@@ -51,10 +51,10 @@ export function BuiltForExportSection() {
             / BUILT FOR EXPORT
           </p>
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-[46px] font-extrabold text-[#1F1F1F] leading-tight mt-2">
-            What overseas buyers ask us first.
+            What overseas garment buyers ask us first.
           </h2>
           <p className="font-body text-base sm:text-lg text-[#554F47] leading-relaxed mt-4">
-            Straight answers on order size, samples, lead times and shipping, so you can plan before you write to us.
+            Straight answers on order size, samples, timing and shipping, so you can plan before you write to us.
           </p>
         </div>
 

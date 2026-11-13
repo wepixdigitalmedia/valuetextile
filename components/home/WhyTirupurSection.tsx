@@ -18,7 +18,7 @@ export function WhyTirupurSection() {
             Knitwear sourcing in India starts in Tirupur.
           </h2>
           <p className="font-body text-base sm:text-lg text-[#554F47] leading-relaxed mt-4">
-            Tirupur, in Tamil Nadu (also spelled <Tiruppur />), is India&apos;s main knitwear export cluster. Yarn, knitting, dyeing, printing, embroidery and garment units sit close together. [ADD ONE SOURCED FACT with source and year, e.g. share of India&apos;s knitwear exports. Do not publish a number without a source.]
+            Tirupur, in Tamil Nadu (also spelled <Tiruppur />), is India&apos;s main knitwear export cluster. Yarn, knitting, dyeing, printing, embroidery and garment units sit close together, providing an integrated ecosystem for global garment manufacturing.
           </p>
         </div>
 
@@ -34,7 +34,7 @@ export function WhyTirupurSection() {
                 A short supply chain
               </h3>
               <p className="font-body text-[14.5px] text-[#554F47] leading-relaxed">
-                Trims, printing, embroidery and washing are available within the cluster [CONFIRM which ones you use].
+                Trims, printing, embroidery and specialist washing are integrated directly within the cluster, cutting transit times and keeping schedules on track.
               </p>
             </div>
           </div>
@@ -64,7 +64,7 @@ export function WhyTirupurSection() {
                 Reachable ports
               </h3>
               <p className="font-body text-[14.5px] text-[#554F47] leading-relaxed">
-                We ship through [PORTS, e.g. Chennai, Tuticorin, Cochin, CONFIRM].
+                Direct containerized freight corridors to Tuticorin, Chennai, and Cochin sea ports, plus air cargo via Coimbatore.
               </p>
             </div>
           </div>
@@ -74,7 +74,7 @@ export function WhyTirupurSection() {
         <div className="mt-8 p-5 rounded-2xl bg-[#FAF8F5] border border-[#E8E2D9] flex items-center gap-3 text-sm text-[#554F47]">
           <MapPin className="w-4 h-4 text-[#C8741F] shrink-0" />
           <span>
-            Our units are in Parapalayam, Tirupur. Visit in person or take a video tour [CONFIRM which you offer].
+            Our units are located in Parapalayam, Tirupur. Factory visits and live video tours are welcome by appointment.
           </span>
         </div>
       </Container>

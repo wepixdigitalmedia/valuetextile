@@ -13,51 +13,51 @@ interface ProcessStage {
 const PROCESS_STAGES: ProcessStage[] = [
   {
     number: "01",
-    title: "Yarn Quality",
-    description: "Cotton and engineered fibres procured nationally, tested across 10 yarn parameters (count, lea strength, CSP, twist) before knitting.",
-    highlight: "10 yarn parameters",
+    title: "Tech pack & quote",
+    description: "You send your design, tech pack or reference sample, and our export desk quotes with detailed fabric and production specs.",
+    highlight: "Design & quote",
   },
   {
     number: "02",
-    title: "Circular Knitting",
-    description: "Mayer & Cie circular knitting machines (single jersey auto striper, rib, interlock, mini jacquard) operating 2 shifts daily.",
-    highlight: "Mayer & Cie · 18–28 GG",
+    title: "Sampling",
+    description: "Fit sample, fabric lab dips, and pre-production samples delivered for your approval before bulk cutting begins.",
+    highlight: "Pre-production approval",
   },
   {
     number: "03",
-    title: "Dyeing & Finishing",
-    description: "Brazzoli & Dilmenler soft-flow HTHP dyeing with ORGATEX centralized control, TubeTex compacting, and peach finishing.",
-    highlight: "Soft-flow HTHP & compacting",
+    title: "Our own fabric",
+    description: "Knitted and dyed in our units, tested in our in-house lab, and inspected under the standard 4-point system.",
+    highlight: "In-house knitting & lab",
   },
   {
     number: "04",
-    title: "In-House Lab",
-    description: "Spectrophotometer colour lab and physical testing across 11 parameters: GSM, shrinkage, spirality, and wash/rub fastness.",
-    highlight: "11 fabric test parameters",
+    title: "Precision cutting",
+    description: "Fabric is relaxed and precision-cut to approved patterns, grading, and complete size sets.",
+    highlight: "Pattern & size sets",
   },
   {
     number: "05",
-    title: "Fabric Inspection",
-    description: "Every lot inspected under the standard 4-point system (10-point on request), tracked with colour-coded roll tagging.",
-    highlight: "4-point inspection system",
+    title: "Stitching",
+    description: "Made on our dedicated garment lines in Tirupur with in-line supervisors and continuous production checks.",
+    highlight: "In-line production checks",
   },
   {
     number: "06",
-    title: "Cut & Stitch",
-    description: "Garments cut, sewn, and assembled in our own dedicated garment units in Tirupur with in-line production supervisors.",
-    highlight: "In-house garment lines",
+    title: "Finishing & QC",
+    description: "Thread trimming, pressing, needle detection, labelling, and 100% final garment inspection.",
+    highlight: "Final garment inspection",
   },
   {
     number: "07",
-    title: "Garment QC",
-    description: "Final measurement checks, needle detection, and packaging to buyer carton and labelling instructions.",
-    highlight: "Needle detection & final QC",
+    title: "Custom packing",
+    description: "Packed strictly to your labelling, barcode, folding, polybag, and carton export instructions.",
+    highlight: "Custom packing specs",
   },
   {
     number: "08",
-    title: "Export Despatch",
-    description: "Packed to export specs and despatched via Tuticorin, Chennai, or Cochin ports on planned delivery dates.",
-    highlight: "Planned port despatch",
+    title: "Export shipping",
+    description: "Export documentation prepared and goods despatched via Tuticorin, Chennai, or Cochin ports on the agreed date.",
+    highlight: "On-schedule shipping",
   },
 ];
 
@@ -71,7 +71,7 @@ export function ProcessSection() {
             / OUR PROCESS
           </p>
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-[46px] font-extrabold text-[#1F1F1F] leading-tight mt-2">
-            Every stage, under our own roof.
+            From your tech pack to your port.
           </h2>
           <p className="font-body text-base sm:text-lg text-[#554F47] leading-relaxed mt-4">
             From yarn testing to carton sealing, each step is managed in-house so quality standards and delivery dates stay with one team.
@@ -107,7 +107,7 @@ export function ProcessSection() {
 
         {/* Caption */}
         <p className="mt-8 text-center text-sm font-medium text-[#78716C] max-w-2xl mx-auto">
-          Each stage is managed by our own team, so every roll and garment is traceable from yarn lot to export carton.
+          Every stage is managed by our own team, so a delay or a defect can be traced to its source.
         </p>
       </Container>
     </section>

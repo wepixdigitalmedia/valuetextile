@@ -13,125 +13,83 @@ export interface RangeItem {
 
 export const rangeItems: RangeItem[] = [
   {
-    id: "cotton-single-jersey",
-    type: "Fabric",
-    name: "Cotton Single Jersey Knit Fabric",
-    specLine: "Single Jersey • 100% Combed Cotton • Custom GSM & Width",
-    tags: ["Swatch", "Custom Dye", "Buyer Spec"],
-    moq: "Confirm with us",
-    detail: "100% Cotton [confirm exact composition]",
-    mainImage: "/images/products/cotton-single-jersey.webp",
-    galleryImages: [
-      "/images/products/cotton-single-jersey.webp",
-      "/images/fabrics/swatch-zoom.webp",
-      "/images/fabrics/swatch-fold.webp"
-    ],
-    description: "Cotton Single Jersey Knit Fabric is a versatile knitted fabric for everyday apparel. Share your required GSM, colour, width and quantity for custom development."
-  },
-  {
-    id: "cotton-modal-blend",
-    type: "Fabric",
-    name: "Cotton Modal Blend Knit Fabric",
-    specLine: "Cotton & Modal Blend • Soft Hand Feel • Lightweight Apparel",
-    tags: ["Soft Hand", "Custom Blend", "Sample"],
-    moq: "Confirm with us",
-    detail: "Cotton and modal [confirm exact ratio]",
-    mainImage: "/images/products/cotton-modal-blend.webp",
-    galleryImages: [
-      "/images/products/cotton-modal-blend.webp",
-      "/images/fabrics/swatch-zoom.webp",
-      "/images/fabrics/swatch-fold.webp"
-    ],
-    description: "Combines premium cotton and modal fibres in a soft-hand knit developed for lightweight apparel. Blend ratio, GSM, colour and finish tailored to buyer specifications."
-  },
-  {
-    id: "yarn-dyed-knit",
-    type: "Fabric",
-    name: "Yarn-Dyed Knit Fabric",
-    specLine: "Engineered Stripes & Pattern • Multi-colour Feeders • Yarn-Dyed",
-    tags: ["Yarn-Dyed", "Stripes", "Custom Pattern"],
-    moq: "Confirm with us",
-    detail: "Yarn-dyed knitted fabric for engineered stripes & patterns",
-    mainImage: "/images/products/yarn-dyed-knit.webp",
-    galleryImages: [
-      "/images/products/yarn-dyed-knit.webp",
-      "/images/fabrics/yarn-dyed-melange.webp",
-      "/images/fabrics/swatch-fold.webp"
-    ],
-    description: "Uses coloured yarns to create engineered stripe or pattern effects. Colour combinations, construction, GSM and order quantity confirmed to match collection requirements."
-  },
-  {
-    id: "neppy-blend-knit",
-    type: "Fabric",
-    name: "Neppy Blend Knit Fabric",
-    specLine: "Visible Fibre Flecks • Textured Knitted Fabric • Natural Tone",
-    tags: ["Textured", "Neppy Flecks", "Custom Color"],
-    moq: "Confirm with us",
-    detail: "Textured blend knit with organic fleck appearance",
-    mainImage: "/images/products/neppy-blend-knit.webp",
-    galleryImages: [
-      "/images/products/neppy-blend-knit.webp",
-      "/images/fabrics/swatch-zoom.webp"
-    ],
-    description: "Features visible organic fibre flecks that add depth and character to the fabric surface. Fibre blend, colour, GSM and construction confirmed for your garment program."
-  },
-  {
-    id: "cotton-yarn-cone",
-    type: "Yarn",
-    name: "Cotton Yarn Cone",
-    specLine: "Supplied on Cone • Knitwear & Weaving • Premium Grade",
-    tags: ["Yarn Cone", "Knitwear", "Specification Check"],
-    moq: "Confirm with us",
-    detail: "Cotton [confirm grade and exact specification]",
-    mainImage: "/images/products/cotton-yarn-cone.webp",
-    galleryImages: [
-      "/images/products/cotton-yarn-cone.webp",
-      "/images/products/polyester-yarn-cone.webp"
-    ],
-    description: "High-grade cotton yarn supplied on cone for knitwear and fabric production. Yarn count, grade, colour and quantity confirmed against order specifications."
-  },
-  {
-    id: "kids-color-block-sweatshirt",
+    id: "t-shirts-and-polos",
     type: "Garment",
-    name: "Colour-Block Kids’ Sweatshirt",
-    specLine: "Crewneck & Long Sleeve • Cotton Fleece • Three-Tone Blocking",
-    tags: ["Sample", "Private Label", "Kids Wear"],
+    name: "T-Shirts and Polos",
+    specLine: "Crew & V-Neck • 100% Cotton & Blends • XS–3XL • Custom Colours",
+    tags: ["Private Label", "Custom Design", "Sample First"],
     moq: "Confirm with us",
-    detail: "Cotton fleece or cotton-blend fleece [confirm exact composition]",
-    mainImage: "/images/products/kids-color-block-sweatshirt.webp",
-    galleryImages: [
-      "/images/products/kids-color-block-sweatshirt.webp",
-      "/images/garments/kids-wear.jpg"
-    ],
-    description: "Three-tone children’s sweatshirt with warm ivory upper panel, muted periwinkle middle panel, and deep navy lower panel with ribbed cuffs and hem."
-  },
-  {
-    id: "olive-black-tshirt",
-    type: "Garment",
-    name: "Olive & Black Colour-Block T-Shirt",
-    specLine: "Crewneck & Short Sleeve • Fine Knit Texture • Casual Apparel",
-    tags: ["Private Label", "Custom Cut", "Export Quality"],
-    moq: "Confirm with us",
-    detail: "Cotton knit or cotton-blend knit [confirm exact composition]",
+    detail: "Crew neck, V-neck, polo and long-sleeve styles in cotton and blends. Plain, printed and yarn-dyed looks.",
     mainImage: "/images/products/olive-black-tshirt.webp",
     galleryImages: [
       "/images/products/olive-black-tshirt.webp",
+      "/images/garments/polos.jpg",
       "/images/garments/tshirts.jpg"
     ],
-    description: "Short-sleeve knit T-shirt with olive upper/lower body and bold black chest and sleeve panels. Tailored for private label knitwear programs."
+    description: "Crew neck, V-neck, polo and long-sleeve styles made with our own knitted fabric in 100% combed cotton and blends. Engineered for international brands with private labelling, fit sampling, and in-house reactive dyeing."
   },
   {
-    id: "white-blue-pinstriped-shirt",
+    id: "kids-and-baby-wear",
     type: "Garment",
-    name: "White Blue Pinstriped Shirt",
-    specLine: "Open Spread Collar • Button Placket & Sleeve Tabs • Woven Fabric",
-    tags: ["Woven", "Pinstripe", "Full Package"],
+    name: "Kids and Baby Wear",
+    specLine: "Rompers, Tees & Sweatshirts • Soft Bio-Washed Knits • 0M–14Y • Safe Dyes",
+    tags: ["Soft Knits", "Safety Compliant", "Sample First"],
     moq: "Confirm with us",
-    detail: "Cotton or cotton-blend woven fabric [confirm exact composition]",
+    detail: "Soft knits for infants and children, made to buyer safety and labelling requirements.",
+    mainImage: "/images/products/kids-color-block-sweatshirt.webp",
+    galleryImages: [
+      "/images/products/kids-color-block-sweatshirt.webp",
+      "/images/garments/kids-wear.jpg",
+      "/images/products/iridescent-party-dress.webp"
+    ],
+    description: "Soft knits for infants and children, produced in our own unit with strict safety protocols, needle detection, and certified skin-friendly dyes. Custom sizing and trims to buyer requirements."
+  },
+  {
+    id: "mens-womens-knitwear",
+    type: "Garment",
+    name: "Men's and Women's Knitwear",
+    specLine: "Casual Tops & Layering • Cotton, Modal & Blends • S–XXL • Yarn-Dyed",
+    tags: ["Private Label", "Custom Fit", "Sample First"],
+    moq: "Confirm with us",
+    detail: "Casual tops, dresses, bottoms and layering pieces in knit fabrics.",
+    mainImage: "/images/products/olive-vneck-sleeveless-top.webp",
+    galleryImages: [
+      "/images/products/olive-vneck-sleeveless-top.webp",
+      "/images/products/white-blue-pinstriped-shirt.webp",
+      "/images/products/powder-blue-dotted-top.webp"
+    ],
+    description: "Contemporary casual tops, sleeveless jerseys, dresses and layering essentials cut and stitched from in-house knitted fabrics. Tailored to international brand size charts."
+  },
+  {
+    id: "activewear-and-loungewear",
+    type: "Garment",
+    name: "Activewear and Loungewear",
+    specLine: "Hoodies, Joggers & Gym Wear • Stretch & French Terry • S–3XL • Performance",
+    tags: ["Performance Knits", "Stretch Blends", "Sample First"],
+    moq: "Confirm with us",
+    detail: "Sports, gym and home wear in stretch and performance knits.",
+    mainImage: "/images/products/powder-blue-dotted-top.webp",
+    galleryImages: [
+      "/images/products/powder-blue-dotted-top.webp",
+      "/images/products/kids-color-block-sweatshirt.webp",
+      "/images/products/olive-black-tshirt.webp"
+    ],
+    description: "Sports, gym and comfortable home wear developed in flexible stretch knits, french terry, and performance cotton blends with moisture-wicking and soft-touch finishing."
+  },
+  {
+    id: "made-to-your-requirements",
+    type: "Garment",
+    name: "Made to Your Requirements",
+    specLine: "Custom Tech Packs • Specialized Blends • All Sizes • Export Scalable",
+    tags: ["Full Package", "Cut & Make", "Custom Brief"],
+    moq: "Confirm with us",
+    detail: "Another style or category? Send your tech pack or reference sample. We quote and sample it at export quality.",
     mainImage: "/images/products/white-blue-pinstriped-shirt.webp",
     galleryImages: [
-      "/images/products/white-blue-pinstriped-shirt.webp"
+      "/images/products/white-blue-pinstriped-shirt.webp",
+      "/images/products/olive-black-tshirt.webp",
+      "/images/products/kids-color-block-sweatshirt.webp"
     ],
-    description: "Clean long-sleeve shirt with pale-blue vertical pinstripes, open spread collar, front button placket, and sleeve tab details with a relaxed fit."
+    description: "Have a unique style, custom tech pack, or physical reference garment? Our export desk quotes, develops custom fabric swatches, and produces fit samples for your approval before bulk production."
   }
 ];

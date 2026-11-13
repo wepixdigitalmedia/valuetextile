@@ -12,29 +12,29 @@ export function DirectManufacturerSection() {
       direct: "Our own units in Tirupur",
     },
     {
-      criterion: "Range",
-      agent: "Depends on which factory is free",
-      direct: "Fabrics and garments from one source",
+      criterion: "Fabric",
+      agent: "Bought from whoever is available",
+      direct: "Our own knitting, dyeing and lab testing",
     },
     {
       criterion: "Quality control",
       agent: "Checks split across multiple factories",
-      direct: "One in-house lab and 4-point inspection",
+      direct: "One team, one standard, 4-point fabric inspection plus garment checks",
     },
     {
       criterion: "Traceability",
-      agent: "Depends on each sub-contractor",
-      direct: "Yarn to finished garment in one place",
+      agent: "Depends on each factory",
+      direct: "Fabric to garment in one place",
     },
     {
       criterion: "Lead time",
-      agent: "Depends on third-party factory availability [CONFIRM]",
-      direct: "Planned and scheduled in-house [CONFIRM]",
+      agent: "Depends on factory availability",
+      direct: "Planned and scheduled in-house",
     },
     {
       criterion: "Price",
-      agent: "Agent margin added [CONFIRM]",
-      direct: "Factory-direct pricing [CONFIRM]",
+      agent: "Agent margin added",
+      direct: "Factory-direct pricing",
     },
   ];
 

@@ -2,26 +2,51 @@
 
 import React, { useState } from "react";
 import { Container } from "../ui/Container";
-import { Send, CheckCircle2, Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Send, CheckCircle2, Phone, Mail, MapPin, Clock, Loader2 } from "lucide-react";
+import { submitEnquiry } from "@/lib/firebase";
 
 export function QuoteRequestSection() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     fullName: "",
     company: "",
     country: "",
     email: "",
-    lookingFor: "Fabric and garments (full package)",
-    productOrStyle: "",
+    lookingFor: "Garments, full package (our fabric)",
+    garmentType: "T-shirts and polos",
     phone: "",
     quantity: "",
     targetDelivery: "",
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    setErrorMsg(null);
+    try {
+      await submitEnquiry({
+        source: "homepage-quote",
+        fullName: formData.fullName,
+        company: formData.company,
+        country: formData.country,
+        email: formData.email,
+        lookingFor: formData.lookingFor,
+        garmentType: formData.garmentType,
+        phone: formData.phone,
+        quantity: formData.quantity,
+        targetDelivery: formData.targetDelivery,
+        message: formData.message,
+      });
+      setSubmitted(true);
+    } catch (err) {
+      console.error("Error submitting quote to Firestore:", err);
+      setErrorMsg("Unable to submit right now. Please try again or email export@valuetextiles.in directly.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -38,7 +63,7 @@ export function QuoteRequestSection() {
                 Request a quote.
               </h2>
               <p className="font-body text-base sm:text-lg text-[#554F47] leading-relaxed">
-                Tell us what you are looking for. Our export team replies within [TIME] on working days (India time, IST).
+                Tell us what you are looking for. Our export team replies within 24 hours on working days (India time, IST).
               </p>
             </div>
 
@@ -58,11 +83,11 @@ export function QuoteRequestSection() {
                 </div>
                 <div className="flex items-center gap-3">
                   <Mail className="w-4 h-4 text-[#C8741F] shrink-0" />
-                  <span>[EXPORT EMAIL]</span>
+                  <span>key@valuetextiles.net · eswarasamy@valuetextiles.net</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Clock className="w-4 h-4 text-[#C8741F] shrink-0" />
-                  <span>Hours: [DAYS AND HOURS, IST]</span>
+                  <span>Mon – Sat: 9:00 AM – 6:30 PM (IST)</span>
                 </div>
               </div>
             </div>
@@ -79,7 +104,7 @@ export function QuoteRequestSection() {
                   Thank you.
                 </h3>
                 <p className="font-body text-base text-[#554F47] max-w-md">
-                  We have received your enquiry and will reply within [TIME].
+                  We have received your enquiry and will reply within 24 working hours.
                 </p>
               </div>
             ) : (
@@ -153,27 +178,50 @@ export function QuoteRequestSection() {
                   </div>
                 </div>
 
-                {/* Field 5: What are you looking for (Required) */}
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-[#1F1F1F] mb-1.5">
-                    What are you looking for *
-                  </label>
-                  <select
-                    required
-                    value={formData.lookingFor}
-                    onChange={(e) => setFormData({ ...formData, lookingFor: e.target.value })}
-                    className="w-full bg-[#FAF8F5] border border-[#E8E2D9] rounded-xl px-4 py-2.5 text-sm text-[#1F1F1F] focus:outline-hidden focus:ring-2 focus:ring-[#C8741F]"
-                  >
-                    <option value="Fabric">Fabric supply</option>
-                    <option value="Garments">Garment manufacturing</option>
-                    <option value="Fabric and garments (full package)">
-                      Fabric and garments (full package)
-                    </option>
-                    <option value="Sourcing support [CONFIRM]">
-                      Sourcing support [CONFIRM]
-                    </option>
-                    <option value="Other">Other</option>
-                  </select>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {/* Field 5: What are you looking for (Required) */}
+                  <div>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-[#1F1F1F] mb-1.5">
+                      What are you looking for *
+                    </label>
+                    <select
+                      required
+                      value={formData.lookingFor}
+                      onChange={(e) => setFormData({ ...formData, lookingFor: e.target.value })}
+                      className="w-full bg-[#FAF8F5] border border-[#E8E2D9] rounded-xl px-4 py-2.5 text-sm text-[#1F1F1F] focus:outline-hidden focus:ring-2 focus:ring-[#C8741F]"
+                    >
+                      <option value="Garments, full package (our fabric)">
+                        Garments, full package (our fabric)
+                      </option>
+                      <option value="Garments, cut and make (your fabric)">
+                        Garments, cut and make (your fabric)
+                      </option>
+                      <option value="Fabric or yarn only (on request)">
+                        Fabric or yarn only (on request)
+                      </option>
+                      <option value="Other custom requirement">
+                        Other custom requirement
+                      </option>
+                    </select>
+                  </div>
+
+                  {/* Garment Type (Optional) */}
+                  <div>
+                    <label className="block text-xs font-medium text-[#78716C] mb-1.5">
+                      Garment category (optional)
+                    </label>
+                    <select
+                      value={formData.garmentType}
+                      onChange={(e) => setFormData({ ...formData, garmentType: e.target.value })}
+                      className="w-full bg-[#FAF8F5] border border-[#E8E2D9] rounded-xl px-4 py-2.5 text-sm text-[#1F1F1F] focus:outline-hidden focus:ring-2 focus:ring-[#C8741F]"
+                    >
+                      <option value="T-shirts and polos">T-shirts and polos</option>
+                      <option value="Kids and baby wear">Kids and baby wear</option>
+                      <option value="Men's and women's knitwear">Men's and women's knitwear</option>
+                      <option value="Activewear and loungewear">Activewear and loungewear</option>
+                      <option value="Made to your requirements">Made to your requirements</option>
+                    </select>
+                  </div>
                 </div>
 
                 {/* Optional Details */}
@@ -186,7 +234,7 @@ export function QuoteRequestSection() {
                       type="text"
                       value={formData.quantity}
                       onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
-                      placeholder="e.g. 5,000 pieces or 500 kg"
+                      placeholder="e.g. 5,000 pieces per style"
                       className="w-full bg-[#FAF8F5] border border-[#E8E2D9] rounded-xl px-4 py-2.5 text-sm text-[#1F1F1F] focus:outline-hidden focus:ring-2 focus:ring-[#C8741F]"
                     />
                   </div>
@@ -207,23 +255,37 @@ export function QuoteRequestSection() {
 
                 <div>
                   <label className="block text-xs font-medium text-[#78716C] mb-1.5">
-                    Message / Specifications (optional)
+                    Message / Tech pack details (optional)
                   </label>
                   <textarea
                     rows={3}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Fabric composition, GSM, colours, tech pack or reference links..."
+                    placeholder="Style details, fabric preferences, tech pack or reference links..."
                     className="w-full bg-[#FAF8F5] border border-[#E8E2D9] rounded-xl px-4 py-2.5 text-sm text-[#1F1F1F] focus:outline-hidden focus:ring-2 focus:ring-[#C8741F]"
                   />
                 </div>
 
+                {errorMsg && (
+                  <p className="text-xs text-red-600 font-medium">{errorMsg}</p>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full h-[52px] rounded-full bg-[#1F1F1F] text-white hover:bg-black font-semibold text-sm transition-all shadow-xs flex items-center justify-center gap-2 cursor-pointer"
+                  disabled={submitting}
+                  className="w-full h-[52px] rounded-full bg-[#1F1F1F] text-white hover:bg-black disabled:opacity-60 font-semibold text-sm transition-all shadow-xs flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  <span>Submit Enquiry</span>
-                  <Send className="w-4 h-4" />
+                  {submitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <span>Submitting...</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>Submit Enquiry</span>
+                      <Send className="w-4 h-4" />
+                    </>
+                  )}
                 </button>
               </form>
             )}

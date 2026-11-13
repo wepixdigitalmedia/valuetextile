@@ -60,10 +60,10 @@ export function RangeCarouselSection() {
             {/* Top row for mobile: Eyebrow on left, Counter + arrows on right */}
             <div className="flex items-center justify-between lg:block">
               <p className="font-heading text-sm md:text-base font-bold leading-tight uppercase tracking-wider text-[#1F1F1F]">
-                / OUR RANGE
+                / OUR GARMENTS
               </p>
 
-              {/* Mobile Counter and Navigation (< 01/06 >) */}
+              {/* Mobile Counter and Navigation (< 01/05 >) */}
               <div className="lg:hidden flex items-center gap-1 text-[#1F1F1F]">
                 <button
                   type="button"
@@ -92,10 +92,10 @@ export function RangeCarouselSection() {
             {/* Desktop Explore Range Button */}
             <div className="hidden lg:block mt-8">
               <Link
-                href="/products"
+                href="/products?cat=Garments"
                 className="group h-[52px] pl-[25px] pr-[6px] rounded-full inline-flex items-center justify-between gap-3 bg-[#1F1F1F] text-white hover:bg-neutral-800 transition-all font-medium text-[16px] shadow-xs"
               >
-                <span>Explore our range</span>
+                <span>Explore our garments</span>
                 <span className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#1F1F1F] group-hover:scale-105 transition-transform">
                   <ArrowRight className="w-4 h-4" />
                 </span>
@@ -110,13 +110,13 @@ export function RangeCarouselSection() {
               <Sparkle className="w-8 h-8 sm:w-10 sm:h-10 xl:w-12 xl:h-12 fill-[#C8741F]" />
             </div>
 
-            {/* Heading & Subtitle strictly from homepage-content.md Section B */}
+            {/* Heading & Subtitle strictly from garments-first-homepage.md Section 3 */}
             <div className="flex flex-col gap-2 sm:gap-3 flex-1">
               <h2 className="font-heading text-[28px] sm:text-[38px] lg:text-[46px] xl:text-[52px] font-extrabold text-[#1F1F1F] leading-[1.12] tracking-[-0.035em]">
-                What international brands order from Tirupur.
+                Garments we make for international brands.
               </h2>
               <p className="font-body text-[14px] sm:text-base lg:text-[17px] text-[#6B655D] leading-relaxed max-w-3xl">
-                Fabrics and garments we make in our own units, with the specs you need to compare them.
+                Five categories, made in our own units to your design, tech pack or reference sample.
               </p>
             </div>
           </div>

@@ -16,28 +16,28 @@ interface CapabilitySlide {
 
 const CAPABILITY_SLIDES: CapabilitySlide[] = [
   {
-    id: "dyeing-printing",
-    pillLabel: "Dyeing And Printing",
-    image: "/images/slider/dyeing-and-printing.webp",
-    alt: "In-house soft flow dyeing and precision print development",
-  },
-  {
-    id: "knitting-yarn",
-    pillLabel: "Knitting & Fabric Sourcing",
-    image: "/images/slider/fabric-sourcing.webp",
-    alt: "Knitting division with multi-feeder circular knit machinery",
+    id: "finished-garments",
+    pillLabel: "Finished Export Garments",
+    image: "/images/garments/polos.jpg",
+    alt: "Finished knitted polo shirts folded and inspected for international export",
   },
   {
     id: "cut-and-sew",
     pillLabel: "Cut & Sew Garmenting",
     image: "/images/slider/cut-and-sew.webp",
-    alt: "Garment manufacturing unit with precision cut, sew, and finishing lines",
+    alt: "Garment manufacturing unit with precision industrial overlock stitching lines",
+  },
+  {
+    id: "knitting-dyeing",
+    pillLabel: "In-House Knitting & Dyeing",
+    image: "/images/hero-fabrics.jpeg",
+    alt: "Dyed knitted cotton and blended fabrics produced in our own Tirupur & Perundurai units",
   },
   {
     id: "lab-testing",
     pillLabel: "In-House Lab & 4-Point QC",
     image: "/images/slider/lab-qc.webp",
-    alt: "In-house fabric testing laboratory checking shrinkage, GSM, and colorfastness",
+    alt: "In-house quality control and final garment inspection table",
   },
 ];
 
@@ -96,10 +96,10 @@ export function FullChainSection() {
             {/* Impact Statement: Line 1 Charcoal + Line 2 Warm Ochre Accent */}
             <h2 className="font-heading font-black text-[28px] sm:text-[36px] md:text-[42px] lg:text-[46px] xl:text-[50px] leading-[1.08] tracking-[-0.035em]">
               <span className="text-[#1F1F1F]">
-                A garment is only as good as the unit that makes the fabric and the stitching.{" "}
+                A garment is only as good as the fabric and the stitching.{" "}
               </span>
               <span className="text-[#C8741F]">
-                We do both ourselves, so quality, cost and delivery date stay with one team.
+                We control both, so quality, cost and delivery date stay with one team.
               </span>
             </h2>
 
@@ -143,7 +143,7 @@ export function FullChainSection() {
 
                 {/* Narrative text matching the rhythm of the reference */}
                 <p className="text-[13.5px] sm:text-[14px] text-[#55504A] leading-[1.45]">
-                  At Value Textiles in <Tiruppur />, you talk to technical knitwear experts. Every recommendation is based on production data, in-house lab testing, and your design specs—not sales targets.
+                  At Value Textiles in <Tiruppur />, you talk to the people who run production. Every recommendation is based on what we can make, test and ship from our own units.
                 </p>
               </div>
 
@@ -153,7 +153,7 @@ export function FullChainSection() {
                   href="/contact"
                   className="group inline-flex items-center justify-between gap-3 h-[50px] pl-6 pr-2 rounded-full bg-[#1F1F1F] hover:bg-black text-white text-[14px] font-semibold transition-all shadow-xs"
                 >
-                  <span>Book a factory visit [CONFIRM]</span>
+                  <span>Book a factory visit</span>
                   <span className="w-8 h-8 rounded-full bg-white text-[#1F1F1F] flex items-center justify-center shrink-0 transition-transform duration-200 group-hover:translate-x-0.5">
                     <ArrowRight className="w-4 h-4" strokeWidth={2.4} />
                   </span>
@@ -196,14 +196,12 @@ export function FullChainSection() {
               <div className="relative z-10">
                 <div className="w-fit px-4 py-1.5 rounded-full bg-[#FAF4EA] border border-[#ECDDC3] text-[12.5px] sm:text-[13px] text-[#8C531B] font-semibold flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#C8741F]" />
-                  <span>
-                    <span className="font-tamil">திருப்பூர்</span> (Tiruppur)&apos;s first: Complete end-to-end integration
-                  </span>
+                  <span>From yarn to garment, in one place</span>
                 </div>
 
-                {/* Big Bold Warm Ochre Title (exact typography from reference) */}
+                {/* Big Bold Warm Ochre Title */}
                 <h3 className="text-[30px] sm:text-[38px] lg:text-[40px] xl:text-[46px] text-[#C8741F] leading-[1.1] tracking-[-0.035em] font-heading font-black pt-5 sm:pt-6">
-                  Full Stack Fabric &amp; Garment Sourcing
+                  Garments Made With Our Own Fabric
                 </h3>
               </div>
 
@@ -219,7 +217,7 @@ export function FullChainSection() {
                   />
                 </div>
                 <p className="text-[14px] sm:text-[15.5px] lg:text-[15.5px] leading-[1.55] text-[#4A4742] max-w-[440px]">
-                  From weaving and knitting to sampling, production, print development, in-house dyeing, lab testing and garmenting—every step handled under one roof, nothing left to chance.
+                  The fabric is knitted, dyed and tested in our own units, then cut and stitched into your garment. One team, one standard, one delivery date.
                 </p>
               </div>
             </div>
@@ -260,11 +258,10 @@ export function FullChainSection() {
                           type="button"
                           onClick={(e) => goToSlide(idx, e)}
                           aria-label={`Go to slide ${idx + 1}`}
-                          className={`rounded-full transition-all duration-300 cursor-pointer ${
-                            currentSlide === idx
+                          className={`rounded-full transition-all duration-300 cursor-pointer ${currentSlide === idx
                               ? "w-8 sm:w-10 h-2 bg-[#C8741F]"
                               : "size-2 bg-[#C8741F]/30 hover:bg-[#C8741F]/60"
-                          }`}
+                            }`}
                         />
                       ))}
                     </div>

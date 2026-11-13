@@ -14,7 +14,7 @@ export function HeroSection() {
         {/* Eyebrow Label with Tamil Script for Tiruppur */}
         <div className="mb-2">
           <span className="text-[11px] sm:text-[12px] font-heading font-bold uppercase tracking-[0.16em] text-[#C8741F]">
-            KNITWEAR MANUFACTURER & EXPORTER · <Tiruppur />, INDIA
+            GARMENT MANUFACTURER & EXPORTER · <Tiruppur />, INDIA
           </span>
         </div>
 
@@ -36,21 +36,26 @@ export function HeroSection() {
               {hero.descriptionSuffix}
             </p>
 
-            {/* Quick facts line from International Sourcing Specification */}
+            {/* Quick facts line from Garments-First Specification */}
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[12.5px] sm:text-[13px] text-[#5F5B55] pt-2">
               <span className="inline-flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C8741F]" />
-                Private label & custom programs
+                Private label
               </span>
               <span className="text-[#D9D3CA]">•</span>
               <span className="inline-flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C8741F]" />
-                Low minimum orders
+                Samples before bulk
               </span>
               <span className="text-[#D9D3CA]">•</span>
               <span className="inline-flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C8741F]" />
-                Sampling before bulk
+                Export quality
+              </span>
+              <span className="text-[#D9D3CA]">•</span>
+              <span className="inline-flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C8741F]" />
+                Scalable volumes
               </span>
             </div>
           </div>
@@ -82,14 +87,13 @@ export function HeroSection() {
               </p>
             </div>
 
-            {/* Stat: Inter Tight weight 800 with orange +, caption in ochre */}
-            <div className="pt-1">
-              <div className="font-heading text-[52px] sm:text-[62px] lg:text-[68px] xl:text-[76px] font-extrabold leading-none text-[#1F1F1F] tracking-[-0.035em]">
-                {hero.statNumber.replace("+", "")}
-                <span className="text-[#C8741F]">+</span>
+            {/* Non-numeric Factory-Direct Proof Callout */}
+            <div className="pt-1 border-t border-[#E6E2DB]/70">
+              <div className="font-heading text-[22px] sm:text-[26px] lg:text-[28px] font-extrabold leading-tight text-[#1F1F1F] tracking-[-0.02em] pt-3">
+                Factory-Direct<span className="text-[#C8741F]">.</span>
               </div>
-              <p className="font-body text-[14px] sm:text-[15px] text-[#C8741F] font-semibold mt-1.5 leading-snug">
-                {hero.statCaption}
+              <p className="font-body text-[13.5px] sm:text-[14.5px] text-[#C8741F] font-semibold mt-1 leading-snug">
+                Knitting, dyeing &amp; stitching in our own units.
               </p>
             </div>
           </div>

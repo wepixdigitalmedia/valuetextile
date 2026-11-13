@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
-import { X } from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
+import { X, CheckCircle2 } from "lucide-react";
 import { Button } from "../ui/Button";
+import { submitEnquiry } from "@/lib/firebase";
 
 interface EnquiryDrawerProps {
   isOpen: boolean;
@@ -12,6 +13,16 @@ interface EnquiryDrawerProps {
 export function EnquiryDrawer({ isOpen, onClose }: EnquiryDrawerProps) {
   const panelRef = useRef<HTMLDivElement>(null);
   const firstInputRef = useRef<HTMLInputElement>(null);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [formData, setFormData] = useState({
+    fullName: "",
+    company: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
 
   // Close on Escape & trap focus
   useEffect(() => {
@@ -34,6 +45,29 @@ export function EnquiryDrawer({ isOpen, onClose }: EnquiryDrawerProps) {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [isOpen, onClose]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitting(true);
+    setErrorMsg(null);
+    try {
+      await submitEnquiry({
+        source: "enquiry-drawer",
+        fullName: formData.fullName,
+        company: formData.company,
+        email: formData.email,
+        phone: formData.phone,
+        message: formData.message,
+      });
+      setSubmitted(true);
+      setFormData({ fullName: "", company: "", email: "", phone: "", message: "" });
+    } catch (err) {
+      console.error("Error submitting enquiry drawer to Firestore:", err);
+      setErrorMsg("Unable to submit right now. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   if (!isOpen) return null;
 
@@ -75,104 +109,128 @@ export function EnquiryDrawer({ isOpen, onClose }: EnquiryDrawerProps) {
             </button>
           </div>
 
-          {/* Form */}
-          <form
-            className="mt-6 space-y-4"
-            onSubmit={(e) => {
-              e.preventDefault();
-              alert("TODO: Connect enquiry submission backend API.");
-              onClose();
-            }}
-          >
-            <div>
-              <label
-                htmlFor="drawerName"
-                className="block text-[13px] font-medium text-[#1F1F1F] mb-1"
+          {submitted ? (
+            <div className="mt-10 py-10 px-4 text-center space-y-4 bg-white rounded-xl border border-[#E6E2DB]">
+              <div className="w-12 h-12 rounded-full bg-[#E5F2E9] flex items-center justify-center text-[#265239] mx-auto">
+                <CheckCircle2 className="w-7 h-7" />
+              </div>
+              <h3 className="font-heading text-xl font-bold text-[#1F1F1F]">
+                Enquiry Received
+              </h3>
+              <p className="text-sm text-[#5F5B55] leading-relaxed">
+                Thank you. Our export desk will reply within 24 working hours.
+              </p>
+              <button
+                type="button"
+                onClick={() => setSubmitted(false)}
+                className="text-xs font-semibold text-[#C8741F] underline underline-offset-4 cursor-pointer"
               >
-                Full Name *
-              </label>
-              <input
-                ref={firstInputRef}
-                id="drawerName"
-                type="text"
-                required
-                placeholder="Jane Doe"
-                className="w-full bg-white border border-[#E6E2DB] px-3.5 py-2.5 text-[14px] text-[#1F1F1F] rounded-[4px] focus:outline-hidden focus:border-[#C8741F]"
-              />
+                Send another enquiry
+              </button>
             </div>
+          ) : (
+            /* Form */
+            <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
+              <div>
+                <label
+                  htmlFor="drawerName"
+                  className="block text-[13px] font-medium text-[#1F1F1F] mb-1"
+                >
+                  Full Name *
+                </label>
+                <input
+                  ref={firstInputRef}
+                  id="drawerName"
+                  type="text"
+                  required
+                  value={formData.fullName}
+                  onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                  placeholder="Jane Doe"
+                  className="w-full bg-white border border-[#E6E2DB] px-3.5 py-2.5 text-[14px] text-[#1F1F1F] rounded-[4px] focus:outline-hidden focus:border-[#C8741F]"
+                />
+              </div>
 
-            <div>
-              <label
-                htmlFor="drawerCompany"
-                className="block text-[13px] font-medium text-[#1F1F1F] mb-1"
-              >
-                Company / Brand *
-              </label>
-              <input
-                id="drawerCompany"
-                type="text"
-                required
-                placeholder="Acme Clothing Co."
-                className="w-full bg-white border border-[#E6E2DB] px-3.5 py-2.5 text-[14px] text-[#1F1F1F] rounded-[4px] focus:outline-hidden focus:border-[#C8741F]"
-              />
-            </div>
+              <div>
+                <label
+                  htmlFor="drawerCompany"
+                  className="block text-[13px] font-medium text-[#1F1F1F] mb-1"
+                >
+                  Company / Brand *
+                </label>
+                <input
+                  id="drawerCompany"
+                  type="text"
+                  required
+                  value={formData.company}
+                  onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                  placeholder="Acme Clothing Co."
+                  className="w-full bg-white border border-[#E6E2DB] px-3.5 py-2.5 text-[14px] text-[#1F1F1F] rounded-[4px] focus:outline-hidden focus:border-[#C8741F]"
+                />
+              </div>
 
-            <div>
-              <label
-                htmlFor="drawerEmail"
-                className="block text-[13px] font-medium text-[#1F1F1F] mb-1"
-              >
-                Work Email *
-              </label>
-              <input
-                id="drawerEmail"
-                type="email"
-                required
-                placeholder="jane@acme.com"
-                className="w-full bg-white border border-[#E6E2DB] px-3.5 py-2.5 text-[14px] text-[#1F1F1F] rounded-[4px] focus:outline-hidden focus:border-[#C8741F]"
-              />
-            </div>
+              <div>
+                <label
+                  htmlFor="drawerEmail"
+                  className="block text-[13px] font-medium text-[#1F1F1F] mb-1"
+                >
+                  Work Email *
+                </label>
+                <input
+                  id="drawerEmail"
+                  type="email"
+                  required
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  placeholder="jane@acme.com"
+                  className="w-full bg-white border border-[#E6E2DB] px-3.5 py-2.5 text-[14px] text-[#1F1F1F] rounded-[4px] focus:outline-hidden focus:border-[#C8741F]"
+                />
+              </div>
 
-            <div>
-              <label
-                htmlFor="drawerWhatsapp"
-                className="block text-[13px] font-medium text-[#1F1F1F] mb-1"
-              >
-                WhatsApp Number
-              </label>
-              <input
-                id="drawerWhatsapp"
-                type="tel"
-                placeholder="+1 555 123 4567"
-                className="w-full bg-white border border-[#E6E2DB] px-3.5 py-2.5 text-[14px] text-[#1F1F1F] rounded-[4px] focus:outline-hidden focus:border-[#C8741F]"
-              />
-            </div>
+              <div>
+                <label
+                  htmlFor="drawerWhatsapp"
+                  className="block text-[13px] font-medium text-[#1F1F1F] mb-1"
+                >
+                  WhatsApp Number
+                </label>
+                <input
+                  id="drawerWhatsapp"
+                  type="tel"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  placeholder="+1 555 123 4567"
+                  className="w-full bg-white border border-[#E6E2DB] px-3.5 py-2.5 text-[14px] text-[#1F1F1F] rounded-[4px] focus:outline-hidden focus:border-[#C8741F]"
+                />
+              </div>
 
-            <div>
-              <label
-                htmlFor="drawerMessage"
-                className="block text-[13px] font-medium text-[#1F1F1F] mb-1"
-              >
-                Message & Fabric Specs
-              </label>
-              <textarea
-                id="drawerMessage"
-                rows={3}
-                placeholder="Specify fabric type, GSM, target quantities..."
-                className="w-full bg-white border border-[#E6E2DB] px-3.5 py-2.5 text-[14px] text-[#1F1F1F] rounded-[4px] focus:outline-hidden focus:border-[#C8741F]"
-              />
-            </div>
+              <div>
+                <label
+                  htmlFor="drawerMessage"
+                  className="block text-[13px] font-medium text-[#1F1F1F] mb-1"
+                >
+                  Message &amp; Specs
+                </label>
+                <textarea
+                  id="drawerMessage"
+                  rows={3}
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  placeholder="Specify garment style, fabric type, GSM, target quantities..."
+                  className="w-full bg-white border border-[#E6E2DB] px-3.5 py-2.5 text-[14px] text-[#1F1F1F] rounded-[4px] focus:outline-hidden focus:border-[#C8741F]"
+                />
+              </div>
 
-            <div className="pt-2">
-              <Button type="submit" variant="primary" className="w-full justify-center">
-                Submit Enquiry
-              </Button>
-            </div>
+              {errorMsg && (
+                <p className="text-xs text-red-600 font-medium">{errorMsg}</p>
+              )}
 
-            <p className="text-[11px] text-[#5F5B55] text-center pt-1 font-mono">
-              [TODO: Backend integration for enquiry form]
-            </p>
-          </form>
+              <div className="pt-2">
+                <Button type="submit" variant="primary" disabled={submitting} className="w-full justify-center">
+                  {submitting ? "Submitting..." : "Submit Enquiry"}
+                </Button>
+              </div>
+            </form>
+          )}
         </div>
 
         {/* Drawer Footer info */}

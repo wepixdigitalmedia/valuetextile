@@ -20,54 +20,54 @@ interface TabSlide {
 
 const SLIDES: TabSlide[] = [
   {
-    id: "fabrics",
-    tabLabel: "Fabrics",
-    eyebrow: "/ WAYS TO WORK WITH US",
-    heading: "Fabrics",
-    text: "Knitted fabric developed to your brief: composition, GSM, colour and finish, made in our own knitting and dyeing units in Tirupur. Yarn-dyed and neppy blends available.",
-    buttonLabel: "Explore Fabrics",
-    buttonHref: "/products?cat=Fabric",
-    photo1: {
-      src: "/images/products/cotton-single-jersey.webp",
-      alt: "100% Combed cotton single jersey knit fabric swatch"
-    },
-    photo2: {
-      src: "/images/products/yarn-dyed-knit.webp",
-      alt: "Yarn-dyed custom stripe knitted fabric sample"
-    }
-  },
-  {
-    id: "garments",
-    tabLabel: "Garments",
-    eyebrow: "/ WAYS TO WORK WITH US",
-    heading: "Garments",
-    text: "T-shirts, polos, sweatshirts and kids wear, cut and sewn in our own garment unit to your design, tech pack or physical reference sample.",
-    buttonLabel: "Explore Garments",
-    buttonHref: "/products?cat=Garments",
-    photo1: {
-      src: "/images/products/olive-black-tshirt.webp",
-      alt: "Finished olive and black colour-block knit T-shirt"
-    },
-    photo2: {
-      src: "/images/products/kids-color-block-sweatshirt.webp",
-      alt: "Finished three-tone colour-block children's crewneck sweatshirt"
-    }
-  },
-  {
     id: "full-package",
     tabLabel: "Full package",
     eyebrow: "/ WAYS TO WORK WITH US",
     heading: "Full Package",
-    text: "Fabric and garment developed, made, inspected and shipped as one unified order, with one price, one quality standard and one delivery date.",
-    buttonLabel: "Start Full Package",
+    text: "We make the garment with our own fabric, from your design, tech pack or reference sample. Sampling, production, inspection and shipping in one order, with one price and one delivery date.",
+    buttonLabel: "Start a full-package order",
     buttonHref: "/contact?type=full-package#quote",
     photo1: {
-      src: "/images/products/cotton-modal-blend.webp",
-      alt: "Premium cotton modal blend knitted fabric"
+      src: "/images/ways-export-garments.jpg",
+      alt: "Folded export-ready cotton knitwear garments and dyed fabric swatches in Tirupur"
     },
     photo2: {
-      src: "/images/products/white-blue-pinstriped-shirt.webp",
-      alt: "Finished white and blue pinstriped export shirt"
+      src: "/images/ways-export-cartons.jpg",
+      alt: "Export-ready sealed master cartons and polybagged garments prepared for international shipment"
+    }
+  },
+  {
+    id: "cut-and-make",
+    tabLabel: "Cut and make",
+    eyebrow: "/ WAYS TO WORK WITH US",
+    heading: "Cut and Make",
+    text: "You supply the fabric and trims; we cut, stitch, finish and pack to your specification with in-line production supervision and final garment checks.",
+    buttonLabel: "Ask about cut and make",
+    buttonHref: "/contact?type=cut-and-make#quote",
+    photo1: {
+      src: "/images/slider/cut-and-sew.webp",
+      alt: "In-house garment cutting and stitching line in Tirupur"
+    },
+    photo2: {
+      src: "/images/slider/lab-qc.webp",
+      alt: "In-line garment quality control and inspection floor"
+    }
+  },
+  {
+    id: "made-to-requirements",
+    tabLabel: "Made to your requirements",
+    eyebrow: "/ WAYS TO WORK WITH US",
+    heading: "Made to Your Requirements",
+    text: "Different style, volume or a special request? Send your brief. We work to your size sets and tech packs. We also take fabric-only or yarn-only orders on request.",
+    buttonLabel: "Send your brief",
+    buttonHref: "/contact#quote",
+    photo1: {
+      src: "/images/fabric-rack-showcase.jpg",
+      alt: "Custom fabric and garment specification samples prepared for buyers"
+    },
+    photo2: {
+      src: "/images/slider/fabric-sourcing.webp",
+      alt: "Knitted fabric swatches and custom developments on request"
     }
   }
 ];
@@ -104,11 +104,10 @@ export function WaysToWorkSection() {
                 key={s.id}
                 type="button"
                 onClick={() => setActiveTab(idx)}
-                className={`relative cursor-pointer rounded-full text-base lg:text-[19px] leading-[140%] px-5 sm:px-7 lg:px-8 py-2 sm:py-2.5 transition-all duration-200 ${
-                  isActive
+                className={`relative cursor-pointer rounded-full text-base lg:text-[19px] leading-[140%] px-5 sm:px-7 lg:px-8 py-2 sm:py-2.5 transition-all duration-200 ${isActive
                     ? "border border-[#1F1F1F] bg-transparent text-[#1F1F1F] font-medium shadow-2xs"
                     : "text-[#1F1F1F]/70 hover:text-[#1F1F1F] font-normal border border-transparent"
-                }`}
+                  }`}
               >
                 <span>{s.tabLabel}</span>
               </button>
@@ -120,7 +119,7 @@ export function WaysToWorkSection() {
         {/* MAIN SPLIT CONTENT                                           */}
         {/* ============================================================ */}
         <div className="pt-8 sm:pt-12 lg:pt-14 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          
+
           {/* Left Column (Col 5): Eyebrow + Headline + Paragraph + Button */}
           <div className="lg:col-span-5 flex flex-col justify-between space-y-6 sm:space-y-7">
             <div className="space-y-3 sm:space-y-4">

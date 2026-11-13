@@ -9,23 +9,23 @@ export function WhoWeWorkWithSection() {
   const segments = [
     {
       title: "Fashion and private-label brands",
-      desc: "Your design and label, made to your fabric and fit specification.",
+      desc: "Your design and label, made to your fit and fabric specification.",
     },
     {
-      title: "Kids and baby wear brands [CONFIRM]",
-      desc: "Soft fabrics, lab-tested, made to buyer requirements.",
+      title: "Kids and baby wear brands",
+      desc: "Soft knits made to your safety, tenderness and labelling requirements.",
+    },
+    {
+      title: "Activewear and sportswear brands",
+      desc: "Stretch and performance knits engineered for active, repeat programs.",
     },
     {
       title: "Online sellers and startups",
-      desc: "Smaller starting orders on selected styles [CONFIRM MOQ].",
+      desc: "Smaller starting orders on selected styles with room to scale.",
     },
     {
-      title: "Uniform, promotional and sportswear suppliers",
-      desc: "Repeat programs with consistent shade and size.",
-    },
-    {
-      title: "Retailers, buying houses and garment makers",
-      desc: "Fabric, garment or full-package programs with planned despatch.",
+      title: "Retailers and buying houses",
+      desc: "Larger programs with consistent shade, size sets and planned shipping.",
     },
   ];
 
@@ -33,22 +33,22 @@ export function WhoWeWorkWithSection() {
     {
       num: "1",
       title: "Send your brief",
-      desc: "Product type (fabric, garment or both), GSM or style, quantity and target market. A tech pack or reference sample helps.",
+      desc: "Garment type, quantity, target market and your tech pack or reference sample.",
     },
     {
       num: "2",
       title: "We quote and sample",
-      desc: "You receive a price and development samples [TIME].",
+      desc: "You receive factory-direct pricing and pre-production samples for review.",
     },
     {
       num: "3",
       title: "You approve",
-      desc: "We confirm specification, trims and delivery date.",
+      desc: "We confirm the specification, trims, labels and delivery date.",
     },
     {
       num: "4",
       title: "We produce and ship",
-      desc: "In-house production, inspection and export despatch.",
+      desc: "In-house fabric production, stitching, final QC and export despatch.",
     },
   ];
 
