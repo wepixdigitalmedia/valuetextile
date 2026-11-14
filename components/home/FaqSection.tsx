@@ -2,112 +2,109 @@
 
 import React, { useState } from "react";
 import { Container } from "../ui/Container";
-import { ChevronDown } from "lucide-react";
+import { ArrowDown, ArrowRight } from "lucide-react";
 
 interface FaqItem {
+  id: number;
   q: string;
   a: string;
 }
 
-const FAQS: FaqItem[] = [
+const LEFT_FAQS: FaqItem[] = [
   {
-    q: "What garments do you make?",
-    a: "T-shirts and polos, kids and baby wear, men's and women's knitwear, activewear and loungewear, and custom styles developed to your tech pack or sample.",
+    id: 0,
+    q: "What Types Of Garments Can You Manufacture?",
+    a: "Global fashion brands can manufacture a wide range of knitwear and apparel with us, including crew-neck and V-neck t-shirts, structured polos, infant and children's wear, men's and women's casual knitwear, hoodies, sweatshirts, activewear, and loungewear. Value Textiles specializes in private-label and bulk manufacturing produced from tech packs, reference samples, or original design specifications.",
   },
   {
-    q: "Do you work with your own fabric or ours?",
-    a: "Both. In a full package program we make the garment using our own knitted and dyed fabric. For cut and make, you supply the fabric and trims and our lines assemble and pack.",
+    id: 1,
+    q: "Which Fabrics Are Available For Apparel Production?",
+    a: "All core fabrics are knitted and dyed in our own Tiruppur and Perundurai units, including 100% Combed and Organic Cotton Single Jersey, Pique, Interlock, Auto-Striper yarn-dyed knits, Mini Jacquards, French Terry, Brushed Fleece, Rib, Cotton-Modal, Tencel, and Cotton-Lycra stretch blends.",
   },
   {
-    q: "Do you sell fabric or yarn only?",
-    a: "We take fabric-only and yarn-only orders on request. Send your technical requirement and volume and our export desk will quote it.",
+    id: 2,
+    q: "Why Do Fashion Brands Choose Value Textiles For Garment Manufacturing?",
+    a: "By operating our own Mayer & Cie circular knitting floor, HTHP soft-flow dyeing unit with Zero Liquid Discharge (ZLD), in-house testing laboratory, and garment stitching lines under one roof, we eliminate third-party delays, guarantee shade consistency, and deliver factory-direct export pricing.",
+  },
+];
+
+const RIGHT_FAQS: FaqItem[] = [
+  {
+    id: 3,
+    q: "Do You Offer Custom Private-Label Clothing Manufacturing?",
+    a: "Yes. We provide complete Full-Package (FOB) and Cut & Make (CMT) manufacturing with custom Pantone lab dips, screen and water-based printing, embroidery, custom neck labels, care tags, barcode stickers, and buyer-specified polybag and master carton packing.",
   },
   {
-    q: "What is your minimum order quantity?",
-    a: "We offer clear MOQs per style and per colour. Smaller initial trial runs are supported for emerging brands and new collections.",
+    id: 4,
+    q: "What Is The Minimum Order Quantity For Garment Manufacturing?",
+    a: "We offer practical, scalable MOQs per style and colourway to support both established retail chains and growing international labels. Fit samples, fabric swatches, and pre-production (PP) size sets are developed for your approval before bulk cutting begins.",
   },
   {
-    q: "Do you make private label and custom designs?",
-    a: "Yes. Send your tech pack, CAD or reference sample and our merchandising team develops counter-samples, grading and custom branding.",
-  },
-  {
-    q: "How does sampling work?",
-    a: "Fit samples, fabric lab dips, and pre-production size-set samples are submitted before bulk cutting. Sampling takes typically 7–14 days depending on fabric development.",
-  },
-  {
-    q: "What is your typical lead time?",
-    a: "Typically 30 to 45 days after approval of samples, trims and fabric colour. Exact lead times depend on style complexity, quantity and seasonal production schedules.",
-  },
-  {
-    q: "Which countries do you ship to, and on what terms?",
-    a: "We export globally across Europe, the UK, North America, Australia, and the Middle East on FOB or CIF terms via Tuticorin, Chennai, or Cochin ports.",
-  },
-  {
-    q: "What payment terms do you offer?",
-    a: "We work with standard export commercial terms (including Letter of Credit / LC and Advance against shipping documents) in USD, EUR, and GBP.",
-  },
-  {
-    q: "Which certifications do you hold?",
-    a: "Our partner and production facilities hold OEKO-TEX Standard 100, BCI, GRS, and GOTS certifications. Certificate copies and audit documents are available upon request.",
-  },
-  {
-    q: "Can I visit the factory or see it on video?",
-    a: "Yes. Factory visits in Tirupur are welcome by appointment, and our export desk can coordinate a live video walkthrough of our production lines.",
-  },
-  {
-    q: "How do I get a quote?",
-    a: "Send us the garment type, quantity, target market and your tech pack or reference sample using the form below. We reply within 24 working hours.",
+    id: 5,
+    q: "What Are Your Lead Times, Certifications, And Shipping Terms?",
+    a: "Bulk orders typically ship within 30 to 45 days after sample approval on FOB or CIF terms via Tuticorin, Chennai, or Cochin ports. Our production units are certified to OEKO-TEX® Standard 100, GOTS, GRS, and BCI standards.",
   },
 ];
 
 export function FaqSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openId, setOpenId] = useState<number | null>(0);
 
-  const toggle = (idx: number) => {
-    setOpenIndex(openIndex === idx ? null : idx);
+  const toggle = (id: number) => {
+    setOpenId(openId === id ? null : id);
+  };
+
+  const renderItem = (faq: FaqItem) => {
+    const isOpen = openId === faq.id;
+    return (
+      <div
+        key={faq.id}
+        className={`py-6 border-b transition-colors ${
+          isOpen ? "border-[#111111]" : "border-[#111111]/20"
+        }`}
+      >
+        <button
+          type="button"
+          onClick={() => toggle(faq.id)}
+          className="w-full flex items-start justify-between text-left gap-6 font-heading font-bold text-[15px] sm:text-[16px] text-[#111111] hover:text-[#C8741F] transition-colors cursor-pointer"
+        >
+          <span className="leading-snug">{faq.q}</span>
+          <span className="shrink-0 mt-0.5 text-[#111111]">
+            {isOpen ? (
+              <ArrowDown className="w-4 h-4 stroke-[2]" />
+            ) : (
+              <ArrowRight className="w-4 h-4 stroke-[2]" />
+            )}
+          </span>
+        </button>
+
+        {isOpen && (
+          <p className="mt-4 pr-8 font-body text-[13.5px] sm:text-[14px] text-[#3B3631] leading-[1.65]">
+            {faq.a}
+          </p>
+        )}
+      </div>
+    );
   };
 
   return (
-    <section className="w-full bg-white py-16 sm:py-20 lg:py-24 border-b border-[#E8E2D9]">
+    <section className="w-full bg-[#FCF6E8] py-16 sm:py-20 lg:py-24 border-b border-[#E8E2D9]">
       <Container>
-        <div className="max-w-3xl">
-          <p className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-[#C8741F]">
-            / FAQ
+        {/* Header */}
+        <div className="max-w-3xl mb-10 sm:mb-14">
+          <p className="font-mono text-xs sm:text-sm uppercase tracking-wider text-[#111111]/80">
+            /FAQS
           </p>
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-[46px] font-extrabold text-[#1F1F1F] leading-tight mt-2">
-            Questions from new buyers.
+          <h2 className="font-heading text-3xl sm:text-5xl lg:text-[52px] font-black text-[#111111] leading-[1.05] tracking-tight mt-2">
+            Frequently Asked Questions
           </h2>
         </div>
 
-        {/* FAQ Accordion List */}
-        <div className="mt-10 sm:mt-14 max-w-4xl divide-y divide-[#E8E2D9] border-y border-[#E8E2D9]">
-          {FAQS.map((faq, idx) => {
-            const isOpen = openIndex === idx;
-            return (
-              <div key={idx} className="py-5">
-                <button
-                  type="button"
-                  onClick={() => toggle(idx)}
-                  className="w-full flex items-center justify-between text-left gap-4 font-heading font-bold text-base sm:text-lg text-[#1F1F1F] hover:text-[#C8741F] transition-colors cursor-pointer"
-                >
-                  <span>{faq.q}</span>
-                  <ChevronDown
-                    className={`w-5 h-5 text-[#78716C] shrink-0 transition-transform duration-200 ${
-                      isOpen ? "rotate-180 text-[#C8741F]" : ""
-                    }`}
-                  />
-                </button>
-                {isOpen && (
-                  <p className="font-body text-sm sm:text-base text-[#554F47] leading-relaxed pt-3 animate-in fade-in duration-200">
-                    {faq.a}
-                  </p>
-                )}
-              </div>
-            );
-          })}
+        {/* Two Independent Columns Matching Reference UI */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 xl:gap-x-16 items-start">
+          <div>{LEFT_FAQS.map(renderItem)}</div>
+          <div>{RIGHT_FAQS.map(renderItem)}</div>
         </div>
       </Container>
     </section>
   );
 }
-

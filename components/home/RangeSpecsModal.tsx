@@ -70,7 +70,7 @@ export function RangeSpecsModal({ item, onClose }: RangeSpecsModalProps) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-7">
             {/* Left 5 cols: Image & Angle Thumbnails */}
             <div className="lg:col-span-5 flex flex-col gap-3">
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-[#FAF8F5] border border-[#E8E2D9]">
+              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-[#FAF8F5] border border-[#E8E2D9]">
                 <Image
                   src={currentImage}
                   alt={item.name}

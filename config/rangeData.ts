@@ -20,11 +20,11 @@ export const rangeItems: RangeItem[] = [
     tags: ["Private Label", "Custom Design", "Sample First"],
     moq: "Confirm with us",
     detail: "Crew neck, V-neck, polo and long-sleeve styles in cotton and blends. Plain, printed and yarn-dyed looks.",
-    mainImage: "/images/products/olive-black-tshirt.webp",
+    mainImage: "https://ik.imagekit.io/wpxassets/value%20textiles/menswear/3.webp",
     galleryImages: [
-      "/images/products/olive-black-tshirt.webp",
-      "/images/garments/polos.jpg",
-      "/images/garments/tshirts.jpg"
+      "https://ik.imagekit.io/wpxassets/value%20textiles/menswear/3.webp",
+      "https://ik.imagekit.io/wpxassets/value%20textiles/menswear/2.webp",
+      "https://ik.imagekit.io/wpxassets/value%20textiles/menswear/10.webp"
     ],
     description: "Crew neck, V-neck, polo and long-sleeve styles made with our own knitted fabric in 100% combed cotton and blends. Engineered for international brands with private labelling, fit sampling, and in-house reactive dyeing."
   },
@@ -36,11 +36,11 @@ export const rangeItems: RangeItem[] = [
     tags: ["Soft Knits", "Safety Compliant", "Sample First"],
     moq: "Confirm with us",
     detail: "Soft knits for infants and children, made to buyer safety and labelling requirements.",
-    mainImage: "/images/products/kids-color-block-sweatshirt.webp",
+    mainImage: "https://ik.imagekit.io/wpxassets/value%20textiles/kidswear/11.png",
     galleryImages: [
-      "/images/products/kids-color-block-sweatshirt.webp",
-      "/images/garments/kids-wear.jpg",
-      "/images/products/iridescent-party-dress.webp"
+      "https://ik.imagekit.io/wpxassets/value%20textiles/kidswear/11.png",
+      "https://ik.imagekit.io/wpxassets/value%20textiles/kidswear/14.png",
+      "https://ik.imagekit.io/wpxassets/value%20textiles/kidswear/3.png"
     ],
     description: "Soft knits for infants and children, produced in our own unit with strict safety protocols, needle detection, and certified skin-friendly dyes. Custom sizing and trims to buyer requirements."
   },
@@ -52,11 +52,11 @@ export const rangeItems: RangeItem[] = [
     tags: ["Private Label", "Custom Fit", "Sample First"],
     moq: "Confirm with us",
     detail: "Casual tops, dresses, bottoms and layering pieces in knit fabrics.",
-    mainImage: "/images/products/olive-vneck-sleeveless-top.webp",
+    mainImage: "https://ik.imagekit.io/wpxassets/value%20textiles/womens%20wear/1.png",
     galleryImages: [
-      "/images/products/olive-vneck-sleeveless-top.webp",
-      "/images/products/white-blue-pinstriped-shirt.webp",
-      "/images/products/powder-blue-dotted-top.webp"
+      "https://ik.imagekit.io/wpxassets/value%20textiles/womens%20wear/1.png",
+      "https://ik.imagekit.io/wpxassets/value%20textiles/womens%20wear/2.png",
+      "https://ik.imagekit.io/wpxassets/value%20textiles/menswear/11.webp"
     ],
     description: "Contemporary casual tops, sleeveless jerseys, dresses and layering essentials cut and stitched from in-house knitted fabrics. Tailored to international brand size charts."
   },
@@ -68,28 +68,12 @@ export const rangeItems: RangeItem[] = [
     tags: ["Performance Knits", "Stretch Blends", "Sample First"],
     moq: "Confirm with us",
     detail: "Sports, gym and home wear in stretch and performance knits.",
-    mainImage: "/images/products/powder-blue-dotted-top.webp",
+    mainImage: "https://ik.imagekit.io/wpxassets/value%20textiles/activewear%20and%20lougewear/8.png?updatedAt=1794640088021",
     galleryImages: [
-      "/images/products/powder-blue-dotted-top.webp",
-      "/images/products/kids-color-block-sweatshirt.webp",
-      "/images/products/olive-black-tshirt.webp"
+      "https://ik.imagekit.io/wpxassets/value%20textiles/activewear%20and%20lougewear/8.png?updatedAt=1794640088021",
+      "https://ik.imagekit.io/wpxassets/value%20textiles/activewear%20and%20lougewear/4.png?updatedAt=1794640087972",
+      "https://ik.imagekit.io/wpxassets/value%20textiles/activewear%20and%20lougewear/13.png?updatedAt=1794640087999"
     ],
     description: "Sports, gym and comfortable home wear developed in flexible stretch knits, french terry, and performance cotton blends with moisture-wicking and soft-touch finishing."
-  },
-  {
-    id: "made-to-your-requirements",
-    type: "Garment",
-    name: "Made to Your Requirements",
-    specLine: "Custom Tech Packs • Specialized Blends • All Sizes • Export Scalable",
-    tags: ["Full Package", "Cut & Make", "Custom Brief"],
-    moq: "Confirm with us",
-    detail: "Another style or category? Send your tech pack or reference sample. We quote and sample it at export quality.",
-    mainImage: "/images/products/white-blue-pinstriped-shirt.webp",
-    galleryImages: [
-      "/images/products/white-blue-pinstriped-shirt.webp",
-      "/images/products/olive-black-tshirt.webp",
-      "/images/products/kids-color-block-sweatshirt.webp"
-    ],
-    description: "Have a unique style, custom tech pack, or physical reference garment? Our export desk quotes, develops custom fabric swatches, and produces fit samples for your approval before bulk production."
   }
 ];

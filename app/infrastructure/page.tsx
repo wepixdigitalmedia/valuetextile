@@ -159,25 +159,6 @@ export default function InfrastructurePage() {
                   </div>
                 ))}
               </div>
-
-              {/* Featured 6-Photo Preview Grid matching reference placement */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-2">
-                {INFRASTRUCTURE_GALLERY.slice(0, 6).map((img, idx) => (
-                  <div
-                    key={img.src}
-                    className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-[#FAF8F5] border border-[#E8E2D9] group"
-                  >
-                    <Image
-                      src={img.src}
-                      alt={img.alt}
-                      fill
-                      priority={idx < 3}
-                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 260px"
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                ))}
-              </div>
             </div>
 
             {/* Right Column (Col 4): "We specialized in Following fabrics" Card */}

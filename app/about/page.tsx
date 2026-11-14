@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Tiruppur } from "@/components/ui/Tiruppur";
 import { DirectManufacturerSection } from "@/components/home/DirectManufacturerSection";
+import { BrandLogoGrid } from "@/components/home/TrustStatsAndLogosSection";
 import {
   Factory,
   Globe,
@@ -79,17 +80,6 @@ const CERTS = [
     name: "GOTS (Global Organic Textile Standard)",
     image: "/images/certifications/cert-4-clean.png",
   },
-];
-
-const BRAND_LOGOS = [
-  { name: "Jack & Jones", src: "/images/brands/jac.png" },
-  { name: "LC Waikiki", src: "/images/brands/lc.png" },
-  { name: "Desigual", src: "/images/brands/des.png" },
-  { name: "Pepco", src: "/images/brands/pep.png" },
-  { name: "s.Oliver", src: "/images/brands/so.png" },
-  { name: "OVS", src: "/images/brands/ov.png" },
-  { name: "HE", src: "/images/brands/he.png" },
-  { name: "KappAhl", src: "/images/brands/ke.png" },
 ];
 
 export default function AboutPage() {
@@ -327,23 +317,7 @@ export default function AboutPage() {
             <h3 className="font-heading text-2xl font-bold text-[#1F1F1F] text-center mb-8">
               Brands we supply
             </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-5xl mx-auto">
-              {BRAND_LOGOS.map((brand) => (
-                <div
-                  key={brand.name}
-                  className="h-20 sm:h-24 rounded-2xl bg-white border border-[#E8E2D9] flex items-center justify-center p-4 transition-all duration-300 hover:border-[#C8741F] hover:shadow-2xs group"
-                >
-                  <Image
-                    src={brand.src}
-                    alt={brand.name}
-                    width={160}
-                    height={60}
-                    sizes="(max-width: 640px) 50vw, 200px"
-                    className="max-h-12 w-auto object-contain filter grayscale contrast-125 opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
-                  />
-                </div>
-              ))}
-            </div>
+            <BrandLogoGrid />
           </div>
 
           {/* Bottom Dark Call-to-Action Banner */}

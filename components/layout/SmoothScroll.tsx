@@ -21,7 +21,7 @@ export function SmoothScroll({ children }: { children?: React.ReactNode }) {
       wheelMultiplier: 0.85, // Slower, gentle wheel momentum - feels controlled and satisfying
       touchMultiplier: 1.2,
       autoRaf: true,
-      anchors: true,
+      anchors: false,
     });
 
     (window as unknown as { lenis?: Lenis }).lenis = lenis;

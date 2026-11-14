@@ -147,6 +147,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${fontHeading.variable} ${fontBody.variable} ${fontTamil.variable} h-full antialiased`}
     >
       <head>
@@ -155,7 +156,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-[#FAF8F5] text-[#1F1F1F] font-body selection:bg-[#C8741F]/20 selection:text-[#1F1F1F]">
+      <body
+        suppressHydrationWarning
+        className="min-h-full flex flex-col bg-[#FAF8F5] text-[#1F1F1F] font-body selection:bg-[#C8741F]/20 selection:text-[#1F1F1F]"
+      >
         <SmoothScroll />
         <UtilityBar />
         <Suspense

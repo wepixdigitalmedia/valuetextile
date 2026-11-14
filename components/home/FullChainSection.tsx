@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "../ui/Container";
@@ -16,34 +16,38 @@ interface CapabilitySlide {
 
 const CAPABILITY_SLIDES: CapabilitySlide[] = [
   {
-    id: "finished-garments",
-    pillLabel: "Finished Export Garments",
-    image: "/images/garments/polos.jpg",
-    alt: "Finished knitted polo shirts folded and inspected for international export",
-  },
-  {
-    id: "cut-and-sew",
-    pillLabel: "Cut & Sew Garmenting",
-    image: "/images/slider/cut-and-sew.webp",
-    alt: "Garment manufacturing unit with precision industrial overlock stitching lines",
-  },
-  {
     id: "knitting-dyeing",
-    pillLabel: "In-House Knitting & Dyeing",
-    image: "/images/hero-fabrics.jpeg",
-    alt: "Dyed knitted cotton and blended fabrics produced in our own Tirupur & Perundurai units",
+    pillLabel: "Knitting & Dyeing",
+    image:
+      "https://ik.imagekit.io/wpxassets/value%20textiles/Brand/Colorful%20Yarn%20Skeins%20in%20Warm%20Light.png",
+    alt: "In-house yarn dyeing, circular knitting, and soft-flow fabric processing in our Tiruppur and Perundurai units",
   },
   {
-    id: "lab-testing",
-    pillLabel: "In-House Lab & 4-Point QC",
-    image: "/images/slider/lab-qc.webp",
-    alt: "In-house quality control and final garment inspection table",
+    id: "cutting-sewing",
+    pillLabel: "Cutting & Sewing",
+    image:
+      "https://ik.imagekit.io/wpxassets/value%20textiles/Brand/JUKI%20Stitching%20Satin%20Fabric%20(1).png",
+    alt: "Precision industrial JUKI stitching and garment assembly lines at Value Textiles",
+  },
+  {
+    id: "finished-shipping",
+    pillLabel: "Finished Shipping",
+    image:
+      "https://ik.imagekit.io/wpxassets/value%20textiles/Brand/Global%20Container%20Shipping%20Network.png",
+    alt: "Finished export garments packed and shipped globally via container freight",
   },
 ];
 
 export function FullChainSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const active = CAPABILITY_SLIDES[currentSlide];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % CAPABILITY_SLIDES.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, []);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % CAPABILITY_SLIDES.length);

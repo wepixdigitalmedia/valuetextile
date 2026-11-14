@@ -92,7 +92,7 @@ export function RangeCarouselSection() {
             {/* Desktop Explore Range Button */}
             <div className="hidden lg:block mt-8">
               <Link
-                href="/products?cat=Garments"
+                href="/garments"
                 className="group h-[52px] pl-[25px] pr-[6px] rounded-full inline-flex items-center justify-between gap-3 bg-[#1F1F1F] text-white hover:bg-neutral-800 transition-all font-medium text-[16px] shadow-xs"
               >
                 <span>Explore our garments</span>
@@ -116,7 +116,7 @@ export function RangeCarouselSection() {
                 Garments we make for international brands.
               </h2>
               <p className="font-body text-[14px] sm:text-base lg:text-[17px] text-[#6B655D] leading-relaxed max-w-3xl">
-                Five categories, made in our own units to your design, tech pack or reference sample.
+                Four categories, made in our own units to your design, tech pack or reference sample.
               </p>
             </div>
           </div>
@@ -170,7 +170,7 @@ export function RangeCarouselSection() {
         {/* ===================== MOBILE BOTTOM CTA BUTTON ===================== */}
         <div className="lg:hidden flex justify-center w-full pt-4">
           <Link
-            href="/products"
+            href="/garments"
             className="group h-[52px] pl-[25px] pr-[6px] rounded-full inline-flex items-center justify-between gap-3 bg-[#1F1F1F] text-white hover:bg-neutral-800 transition-all font-medium text-[16px] shadow-xs"
           >
             <span>Explore our range</span>

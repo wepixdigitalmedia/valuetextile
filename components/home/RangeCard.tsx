@@ -23,7 +23,7 @@ export function RangeCard({ item, onOpenSpecs }: RangeCardProps) {
     <article className="group relative bg-white rounded-[28px] sm:rounded-[32px] border border-[#E8E2D9] overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col h-full select-none">
       {/* 1. Image Area */}
       <div className="p-3 sm:p-3.5 pb-0">
-        <div className="relative aspect-[4/3] rounded-[20px] sm:rounded-[22px] overflow-hidden bg-[#FAF8F5]">
+        <div className="relative aspect-[4/5] rounded-[20px] sm:rounded-[22px] overflow-hidden bg-[#FAF8F5]">
           <Image
             src={currentImage}
             alt={item.name}
