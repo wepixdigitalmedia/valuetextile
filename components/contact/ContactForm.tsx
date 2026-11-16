@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
 import { submitEnquiry } from "@/lib/firebase";
 
@@ -17,6 +17,25 @@ export function ContactForm() {
     lookingFor: "Garments, full package (our fabric)",
     message: "",
   });
+
+  // Pre-fill enquiry context when navigated from Search or CTA query params
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const q = params.get("q");
+    const type = params.get("type");
+    if (q || type) {
+      setFormData((prev) => ({
+        ...prev,
+        lookingFor:
+          type === "cut-and-make"
+            ? "Garments, cut and make (your fabric)"
+            : type === "samples"
+            ? "Sample development / Fabric swatches"
+            : prev.lookingFor,
+        message: q && !prev.message ? `Enquiry regarding: ${q}` : prev.message,
+      }));
+    }
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

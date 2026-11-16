@@ -2,30 +2,39 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { Globe, ChevronDown, BookOpen, MessageCircle } from "lucide-react";
+import {
+  ChevronDown,
+  BookOpen,
+  FileText,
+  MessageCircle,
+  ArrowUpRight,
+} from "lucide-react";
 import { Container } from "../ui/Container";
 import { SearchPill } from "./SearchPill";
 import { siteConfig } from "@/config/siteContent";
 
 export function UtilityBar() {
-  const [langOpen, setLangOpen] = useState(false);
-  const langRef = useRef<HTMLDivElement>(null);
+  const [resourcesOpen, setResourcesOpen] = useState(false);
+  const resourcesRef = useRef<HTMLDivElement>(null);
+  const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Close dropdown on outside click or Escape key
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (langRef.current && !langRef.current.contains(e.target as Node)) {
-        setLangOpen(false);
+      if (
+        resourcesRef.current &&
+        !resourcesRef.current.contains(e.target as Node)
+      ) {
+        setResourcesOpen(false);
       }
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        setLangOpen(false);
+        setResourcesOpen(false);
       }
     };
 
-    if (langOpen) {
+    if (resourcesOpen) {
       document.addEventListener("mousedown", handleClickOutside);
       document.addEventListener("keydown", handleKeyDown);
     }
@@ -34,80 +43,112 @@ export function UtilityBar() {
       document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [langOpen]);
+  }, [resourcesOpen]);
+
+  useEffect(() => {
+    return () => {
+      if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
+    };
+  }, []);
+
+  const handleMouseEnter = () => {
+    if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
+    setResourcesOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    closeTimeoutRef.current = setTimeout(() => {
+      setResourcesOpen(false);
+    }, 150);
+  };
 
   return (
-    <div className="relative z-10 w-full bg-[#1F1F1F] text-white pt-3 sm:pt-3.5 pb-[38px] sm:pb-[44px] -mb-[26px] sm:-mb-[30px] border-b border-white/[0.06]">
-      <Container className="flex items-center justify-between gap-4">
-        {/* Left: Compact AI-style Search pill */}
+    <div className="relative w-full bg-[#1F1F1F] text-white pt-3 sm:pt-3.5 pb-[38px] sm:pb-[44px] -mb-[26px] sm:-mb-[30px] border-b border-white/[0.06]">
+      <Container className="flex items-center justify-between gap-3 sm:gap-4">
+        {/* Left: Functional Global Search & Action Pill */}
         <div className="flex-1 max-w-[380px]">
           <SearchPill />
         </div>
 
-        {/* Right: Three compact pill buttons */}
+        {/* Right: Resources Menu (Blog + Guides) & Export Enquiries */}
         <div className="flex items-center gap-2.5 sm:gap-3">
-          {/* 1. Language pill (EN with chevron) */}
-          <div ref={langRef} className="relative hidden md:block">
+          {/* 1. Resources Dropdown Menu connecting Blog & Technical Resources */}
+          <div
+            ref={resourcesRef}
+            className="relative"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
             <button
               type="button"
-              onClick={() => setLangOpen(!langOpen)}
-              aria-expanded={langOpen}
-              className="flex items-center gap-2 h-[38px] px-3.5 rounded-full border border-white/15 bg-white/[0.04] text-[13px] font-medium text-white/90 transition-all hover:border-white/30 hover:bg-white/[0.08] cursor-pointer shadow-2xs"
+              onClick={() => setResourcesOpen((prev) => !prev)}
+              aria-expanded={resourcesOpen}
+              aria-haspopup="menu"
+              className={`flex items-center gap-2 h-[38px] px-3.5 rounded-full border text-[13px] font-medium transition-all cursor-pointer shadow-2xs ${
+                resourcesOpen
+                  ? "border-[#C8741F] bg-white/[0.1] text-white"
+                  : "border-white/15 bg-white/[0.04] text-white/90 hover:border-white/30 hover:bg-white/[0.08]"
+              }`}
             >
-              <Globe className="w-3.5 h-3.5 text-white/70" strokeWidth={1.8} />
-              <span>{siteConfig.utilityBar.language}</span>
+              <BookOpen className="w-3.5 h-3.5 text-[#F29B52]" strokeWidth={1.9} />
+              <span>Resources</span>
               <ChevronDown
                 className={`w-3 h-3 text-white/60 transition-transform duration-200 ${
-                  langOpen ? "rotate-180 text-[#C8741F]" : ""
+                  resourcesOpen ? "rotate-180 text-[#F29B52]" : ""
                 }`}
               />
             </button>
 
-            {/* Elevated dropdown above the overlapping header */}
-            {langOpen && (
+            {resourcesOpen && (
               <div
-                className="absolute right-0 top-full mt-2 w-36 rounded-xl bg-[#1F1F1F]/95 backdrop-blur-md border border-white/20 shadow-2xl py-1.5 z-[60] text-[13px] animate-in fade-in duration-150"
+                className="absolute right-0 top-full mt-2 w-60 rounded-2xl bg-[#1F1F1F] border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.45)] p-1.5 z-[60] animate-in fade-in duration-150"
                 role="menu"
-                aria-label="Language selection"
+                aria-label="Resources and Blog navigation"
               >
-                <button
-                  type="button"
-                  onClick={() => setLangOpen(false)}
-                  className="w-full text-left px-3.5 py-1.5 hover:bg-white/10 text-white font-medium flex items-center justify-between"
+                <Link
+                  href="/blog"
                   role="menuitem"
+                  onClick={() => setResourcesOpen(false)}
+                  className="group flex items-start justify-between gap-3 px-3 py-2.5 rounded-xl hover:bg-white/[0.08] transition-colors"
                 >
-                  English <span className="text-[#C8741F] text-xs">✓</span>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setLangOpen(false)}
-                  className="w-full text-left px-3.5 py-1.5 hover:bg-white/10 text-white/70 hover:text-white"
+                  <div className="flex items-start gap-2.5">
+                    <FileText className="w-4 h-4 text-[#F29B52] shrink-0 mt-0.5" />
+                    <div>
+                      <p className="text-[13px] font-semibold text-white group-hover:text-[#F29B52] transition-colors">
+                        Blog &amp; Insights
+                      </p>
+                      <p className="text-[11px] text-white/60 leading-snug">
+                        Garment sourcing &amp; knitwear articles
+                      </p>
+                    </div>
+                  </div>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-white/40 group-hover:text-[#F29B52] shrink-0 mt-0.5" />
+                </Link>
+
+                <Link
+                  href="/resources"
                   role="menuitem"
+                  onClick={() => setResourcesOpen(false)}
+                  className="group flex items-start justify-between gap-3 px-3 py-2.5 rounded-xl hover:bg-white/[0.08] transition-colors"
                 >
-                  Tamil
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setLangOpen(false)}
-                  className="w-full text-left px-3.5 py-1.5 hover:bg-white/10 text-white/70 hover:text-white"
-                  role="menuitem"
-                >
-                  Français
-                </button>
+                  <div className="flex items-start gap-2.5">
+                    <BookOpen className="w-4 h-4 text-[#F29B52] shrink-0 mt-0.5" />
+                    <div>
+                      <p className="text-[13px] font-semibold text-white group-hover:text-[#F29B52] transition-colors">
+                        Technical Guides
+                      </p>
+                      <p className="text-[11px] text-white/60 leading-snug">
+                        GSM charts, 4-point QC &amp; standards
+                      </p>
+                    </div>
+                  </div>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-white/40 group-hover:text-[#F29B52] shrink-0 mt-0.5" />
+                </Link>
               </div>
             )}
           </div>
 
-          {/* 2. Resources pill */}
-          <Link
-            href={siteConfig.utilityBar.resourcesHref}
-            className="hidden lg:flex items-center gap-2 h-[38px] px-3.5 rounded-full border border-white/15 bg-white/[0.04] text-[13px] font-medium text-white/90 transition-all hover:border-white/30 hover:bg-white/[0.08] shadow-2xs"
-          >
-            <BookOpen className="w-3.5 h-3.5 text-white/70" strokeWidth={1.8} />
-            <span>Resources</span>
-          </Link>
-
-          {/* 3. Export enquiries pill */}
+          {/* 2. Export enquiries pill */}
           <a
             href={siteConfig.utilityBar.whatsappHref}
             target="_blank"

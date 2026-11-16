@@ -69,9 +69,9 @@ export const siteConfig = {
     whatsapp: "https://wa.me/919345630303",
   },
   utilityBar: {
-    searchPlaceholder: "Ask about a style or program…",
-    language: "EN",
+    searchPlaceholder: "Search products, bulk quotes, samples...",
     resourcesHref: "/resources",
+    blogHref: "/blog",
     whatsappHref: "https://wa.me/919345630303",
     exportEnquiriesHref: "/contact#quote",
   },
