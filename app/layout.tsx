@@ -1,6 +1,10 @@
 import React, { Suspense } from "react";
 import type { Metadata, Viewport } from "next";
-import { Inter_Tight, Figtree, Noto_Sans_Tamil } from "next/font/google";
+import {
+  Plus_Jakarta_Sans,
+  Figtree,
+  Noto_Sans_Tamil,
+} from "next/font/google";
 import "./globals.css";
 import { UtilityBar } from "@/components/layout/UtilityBar";
 import { SiteHeader } from "@/components/layout/SiteHeader";
@@ -11,22 +15,22 @@ import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { siteConfig } from "@/config/siteContent";
 
-const fontHeading = Inter_Tight({
-  variable: "--font-heading",
+const fontHeading = Plus_Jakarta_Sans({
+  variable: "--font-vt-heading",
   subsets: ["latin"],
-  weight: ["700", "800", "900"],
+  weight: ["500", "600", "700", "800"],
   display: "swap",
 });
 
 const fontBody = Figtree({
-  variable: "--font-body",
+  variable: "--font-vt-body",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
   display: "swap",
 });
 
 const fontTamil = Noto_Sans_Tamil({
-  variable: "--font-tamil",
+  variable: "--font-vt-tamil",
   subsets: ["tamil"],
   weight: ["500", "600", "700"],
   display: "swap",

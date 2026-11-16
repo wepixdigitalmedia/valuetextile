@@ -235,6 +235,45 @@ export default function AboutPage() {
       </section>
 
       {/* ============================================================ */}
+      {/* FULL-WIDTH FACTORY BANNER                                    */}
+      {/* ============================================================ */}
+      <section className="relative w-full h-[320px] sm:h-[440px] lg:h-[540px] overflow-hidden border-b border-[#E8E2D9] bg-[#1F1F1F]">
+        <Image
+          src="https://ik.imagekit.io/wpxassets/value%20textiles/Textile%20Knitting%20Factory%20in%20Action.webp"
+          alt="Value Textiles knitting and garment manufacturing floor in action in Tiruppur"
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-black/10"
+        />
+        <div className="absolute inset-x-0 bottom-0 z-10 py-8 sm:py-12">
+          <Container>
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+              <div className="max-w-2xl space-y-1.5 text-white">
+                <p className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-[0.16em] text-[#F29B52]">
+                  / INSIDE OUR TIRUPPUR &amp; PERUNDURAI UNITS
+                </p>
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl text-white leading-tight">
+                  From yarn cone to export container under one team.
+                </h2>
+              </div>
+
+              <Link
+                href="/infrastructure"
+                className="inline-flex items-center gap-2 h-[44px] px-6 rounded-full bg-white/95 hover:bg-[#C8741F] text-[#1F1F1F] hover:text-white text-xs sm:text-sm font-heading font-bold tracking-tight transition-colors shrink-0 w-fit shadow-md"
+              >
+                <span>Explore Infrastructure</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </Container>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
       {/* 03. OUR CERTIFICATIONS (Matching valuetextiles.net/about.php) */}
       {/* ============================================================ */}
       <section className="w-full bg-white py-16 sm:py-20 lg:py-24 border-b border-[#E8E2D9]">

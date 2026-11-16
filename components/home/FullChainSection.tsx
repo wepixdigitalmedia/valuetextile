@@ -204,7 +204,7 @@ export function FullChainSection() {
                 </div>
 
                 {/* Big Bold Warm Ochre Title */}
-                <h3 className="text-[30px] sm:text-[38px] lg:text-[40px] xl:text-[46px] text-[#C8741F] leading-[1.1] tracking-[-0.035em] font-heading font-black pt-5 sm:pt-6">
+                <h3 className="font-display text-[32px] sm:text-[40px] lg:text-[42px] xl:text-[48px] text-[#C8741F] leading-[1.08] tracking-tight font-bold pt-5 sm:pt-6">
                   Garments Made With Our Own Fabric
                 </h3>
               </div>

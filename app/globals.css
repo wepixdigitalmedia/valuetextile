@@ -32,9 +32,10 @@
   --color-brand-accent-light: var(--brand-accent-light);
   --color-brand-accent-border: var(--brand-accent-border);
 
-  --font-heading: var(--font-heading), "Inter Tight", system-ui, -apple-system, sans-serif;
-  --font-body: var(--font-body), Figtree, system-ui, -apple-system, sans-serif;
-  --font-sans: var(--font-body), Figtree, system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-vt-heading), "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-heading: var(--font-vt-heading), "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-body: var(--font-vt-body), Figtree, system-ui, -apple-system, sans-serif;
+  --font-sans: var(--font-vt-body), Figtree, system-ui, -apple-system, sans-serif;
 }
 
 html {
@@ -67,23 +68,27 @@ html.lenis body {
 body {
   background-color: var(--white);
   color: var(--stone);
-  font-family: var(--font-body), Figtree, system-ui, -apple-system, sans-serif;
+  font-family: var(--font-vt-body), Figtree, system-ui, -apple-system, sans-serif;
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-.font-heading {
-  font-family: var(--font-heading), "Inter Tight", system-ui, -apple-system, sans-serif;
+.font-heading,
+.font-display,
+h1,
+h2 {
+  font-family: var(--font-vt-heading), "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  font-feature-settings: "liga" 1, "kern" 1;
 }
 
 .font-body {
-  font-family: var(--font-body), Figtree, system-ui, -apple-system, sans-serif;
+  font-family: var(--font-vt-body), Figtree, system-ui, -apple-system, sans-serif;
 }
 
 .font-tamil {
-  font-family: var(--font-tamil), "Noto Sans Tamil", system-ui, -apple-system, sans-serif;
+  font-family: var(--font-vt-tamil), "Noto Sans Tamil", system-ui, -apple-system, sans-serif;
 }
 
 /* Custom hairline borders */
