@@ -213,49 +213,51 @@ export default function AboutPage() {
       {/* ============================================================ */}
       {/* 02. OUR PRODUCTION UNITS & INFRASTRUCTURE                    */}
       {/* ============================================================ */}
-      <section className="w-full bg-[#FAF8F5] py-16 sm:py-20 lg:py-24 border-b border-[#E8E2D9]">
+      <section className="w-full bg-[#FAF8F5] py-12 sm:py-16 border-b border-[#E8E2D9]">
         <Container>
-          <div className="max-w-3xl">
-            <p className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-[#C8741F]">
+          <div className="max-w-2xl">
+            <p className="font-mono text-xs font-bold uppercase tracking-wider text-[#C8741F]">
               / OUR INFRASTRUCTURE
             </p>
-            <h2 className="font-heading text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-[#1F1F1F] leading-tight mt-2">
+            <h2 className="font-heading text-2xl sm:text-3xl lg:text-[36px] font-extrabold text-[#1F1F1F] leading-tight mt-1.5">
               State-of-the-art units across Tirupur &amp; Perundurai.
             </h2>
-            <p className="font-body text-base sm:text-lg text-[#554F47] leading-relaxed mt-3">
+            <p className="font-body text-sm sm:text-base text-[#554F47] leading-relaxed mt-2">
               Every core stage is controlled by our own team across our dedicated garmenting, circular knitting, and soft-flow dyeing facilities.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mt-10 sm:mt-14">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mt-8">
             {DIVISIONS.map((div) => {
               const Icon = div.icon;
               return (
                 <div
                   key={div.title}
-                  className="p-7 sm:p-8 rounded-[28px] bg-white border border-[#E8E2D9] flex flex-col justify-between space-y-5 shadow-2xs hover:border-[#C8741F] transition-all"
+                  className="p-5 rounded-2xl bg-white border border-[#E8E2D9] flex flex-col justify-between space-y-4 shadow-2xs hover:border-[#C8741F] transition-all"
                 >
-                  <div className="flex items-center justify-between gap-4">
-                    <div className="w-12 h-12 rounded-2xl bg-[#FAF8F5] border border-[#E8E2D9] flex items-center justify-center text-[#C8741F]">
-                      <Icon className="w-6 h-6" />
+                  <div className="space-y-3.5">
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="w-10 h-10 rounded-xl bg-[#FAF8F5] border border-[#E8E2D9] flex items-center justify-center text-[#C8741F] shrink-0">
+                        <Icon className="w-4.5 h-4.5" />
+                      </div>
+                      <span className="font-mono text-[10.5px] font-semibold text-[#78716C] bg-[#FAF8F5] px-2.5 py-1 rounded-full border border-[#E8E2D9] truncate">
+                        {div.tag}
+                      </span>
                     </div>
-                    <span className="font-mono text-xs font-semibold text-[#78716C] bg-[#FAF8F5] px-3 py-1 rounded-full border border-[#E8E2D9]">
-                      {div.tag}
-                    </span>
+
+                    <div className="space-y-1.5">
+                      <h3 className="font-heading text-base font-bold text-[#1F1F1F] leading-snug">
+                        {div.title}
+                      </h3>
+                      <p className="font-body text-xs sm:text-[13px] text-[#554F47] leading-relaxed">
+                        {div.description}
+                      </p>
+                    </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <h3 className="font-heading text-xl font-bold text-[#1F1F1F]">
-                      {div.title}
-                    </h3>
-                    <p className="font-body text-sm sm:text-[15px] text-[#554F47] leading-relaxed">
-                      {div.description}
-                    </p>
-                  </div>
-
-                  <div className="pt-4 border-t border-[#E8E2D9] flex items-start gap-2 text-xs font-mono text-[#78716C]">
-                    <MapPin className="w-4 h-4 text-[#C8741F] shrink-0 mt-0.5" />
-                    <span>{div.location}</span>
+                  <div className="pt-3 border-t border-[#E8E2D9] flex items-start gap-1.5 text-[11px] font-mono text-[#78716C]">
+                    <MapPin className="w-3.5 h-3.5 text-[#C8741F] shrink-0 mt-0.5" />
+                    <span className="leading-snug">{div.location}</span>
                   </div>
                 </div>
               );

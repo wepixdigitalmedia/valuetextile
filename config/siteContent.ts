@@ -79,6 +79,10 @@ export const siteConfig = {
     {
       label: "About",
       href: "/about",
+      dropdown: [
+        { label: "About Us", href: "/about" },
+        { label: "Who We Work With", href: "/who-we-work-with" },
+      ],
     },
     {
       label: "Garments",
@@ -100,6 +104,8 @@ export const siteConfig = {
       dropdown: [
         { label: "Garment Manufacturing", href: "/capabilities/garment-manufacturing" },
         { label: "Knitting Division", href: "/capabilities/knitting-division" },
+        { label: "Dyeing Division", href: "/capabilities/dyeing-division" },
+        { label: "Fabric Division", href: "/capabilities/fabric-division" },
       ],
     },
     {
@@ -118,8 +124,8 @@ export const siteConfig = {
   divisions: [
     { label: "Garment Division", href: "/capabilities/garment-manufacturing" },
     { label: "Knitting Division", href: "/capabilities/knitting-division" },
-    { label: "Dyeing Division", href: "/capabilities#dyeing" },
-    { label: "Yarn Division", href: "/capabilities#yarn" },
+    { label: "Dyeing Division", href: "/capabilities/dyeing-division" },
+    { label: "Fabric Division", href: "/capabilities/fabric-division" },
   ] as DivisionItem[],
   hero: {
     eyebrow: "GARMENT MANUFACTURER & EXPORTER · TIRUPUR",
