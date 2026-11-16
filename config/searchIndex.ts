@@ -174,7 +174,7 @@ const PRODUCT_CATALOG_ITEMS: SearchIndexItem[] = [
     href:
       prod.category === "Garments"
         ? "/garments"
-        : `/products?category=${prod.category.toLowerCase()}`,
+        : `/products?category=${prod.category.toLowerCase()}&search=${encodeURIComponent(prod.name.split(" ")[0])}`,
     badge: prod.category,
     keywords: [
       prod.name.toLowerCase(),

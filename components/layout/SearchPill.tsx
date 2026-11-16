@@ -1,107 +1,64 @@
 "use client";
 
 import React, { useState, useRef, useEffect, useMemo } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-import {
-  Search,
-  X,
-  ArrowRight,
-  CornerDownLeft,
-  Sparkles,
-  ExternalLink,
-  Layers,
-  Shirt,
-  Cog,
-  Building2,
-  Zap,
-} from "lucide-react";
-import {
-  searchSite,
-  SUGGESTED_SEARCH_CHIPS,
-  type SearchIndexItem,
-  type SearchItemGroup,
-} from "@/config/searchIndex";
+import { Search, X, ArrowRight, ExternalLink } from "lucide-react";
+import { searchSite, type SearchIndexItem } from "@/config/searchIndex";
 
-function getGroupIcon(group: SearchItemGroup) {
-  switch (group) {
-    case "Quick Actions":
-      return Zap;
-    case "Garment Programs":
-      return Shirt;
-    case "Fabrics & Yarns":
-      return Layers;
-    case "Capabilities & Units":
-      return Cog;
-    case "Company & Quality":
-    default:
-      return Building2;
-  }
-}
+const QUICK_POPULAR_LINKS: { label: string; href: string }[] = [
+  { label: "T-Shirts & Polos", href: "/garments/t-shirts-and-polos" },
+  { label: "Kids & Baby Wear", href: "/garments/kids-and-baby-wear" },
+  { label: "Fabrics & Yarns", href: "/products" },
+  { label: "Request Bulk Quote", href: "/contact#quote" },
+  { label: "Order Samples", href: "/contact?type=samples#quote" },
+  { label: "Dyeing & Knitting", href: "/capabilities" },
+];
 
 export function SearchPill() {
   const router = useRouter();
-  const barInputRef = useRef<HTMLInputElement>(null);
-  const modalInputRef = useRef<HTMLInputElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState("");
-  const [activeIndex, setActiveIndex] = useState(0);
 
-  const results = useMemo(() => searchSite(query), [query]);
+  const results = useMemo(() => {
+    if (!query.trim()) return [];
+    return searchSite(query).slice(0, 6);
+  }, [query]);
 
-  // Append custom enquiry action whenever user has typed text
-  const allItems = useMemo(() => {
-    const trimmed = query.trim();
-    if (!trimmed) return results;
-
-    const customAction: SearchIndexItem = {
-      id: "custom-enquiry-action",
-      title: `Send bulk or sample enquiry for "${trimmed}"`,
-      subtitle: "Pre-fill our Tiruppur export enquiry form with this requirement",
-      group: "Quick Actions",
-      href: `/contact?q=${encodeURIComponent(trimmed)}#quote`,
-      badge: "Direct Enquiry",
-      keywords: [],
-    };
-    return [...results, customAction];
-  }, [results, query]);
-
-  // Global Cmd+K / Ctrl+K shortcut & body scroll lock
+  // Close dropdown on click outside or Escape
   useEffect(() => {
-    const handleGlobalKeyDown = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
-        e.preventDefault();
-        setIsOpen(true);
-      } else if (e.key === "Escape" && isOpen) {
-        e.preventDefault();
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(e.target as Node)
+      ) {
         setIsOpen(false);
       }
     };
 
-    window.addEventListener("keydown", handleGlobalKeyDown);
-    return () => window.removeEventListener("keydown", handleGlobalKeyDown);
-  }, [isOpen]);
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsOpen(false);
+        inputRef.current?.blur();
+      } else if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        setIsOpen(true);
+        inputRef.current?.focus();
+      }
+    };
 
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-      const timer = setTimeout(() => {
-        modalInputRef.current?.focus();
-      }, 30);
-      return () => {
-        clearTimeout(timer);
-        document.body.style.overflow = "";
-      };
-    } else {
-      document.body.style.overflow = "";
-    }
-  }, [isOpen]);
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
-  useEffect(() => {
-    setActiveIndex(0);
-  }, [query]);
-
-  const executeItem = (item: SearchIndexItem) => {
+  const navigateToItem = (item: SearchIndexItem) => {
     setIsOpen(false);
     setQuery("");
     if (item.external) {
@@ -115,60 +72,42 @@ export function SearchPill() {
     router.push(item.href);
   };
 
-  const handleModalKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (allItems.length === 0) return;
-
-    if (e.key === "ArrowDown") {
-      e.preventDefault();
-      setActiveIndex((prev) => (prev + 1) % allItems.length);
-    } else if (e.key === "ArrowUp") {
-      e.preventDefault();
-      setActiveIndex((prev) => (prev - 1 + allItems.length) % allItems.length);
-    } else if (e.key === "Enter") {
-      e.preventDefault();
-      const target = allItems[activeIndex] ?? allItems[0];
-      if (target) executeItem(target);
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const trimmed = query.trim();
+    if (!trimmed) {
+      setIsOpen(true);
+      inputRef.current?.focus();
+      return;
     }
+    if (results.length > 0) {
+      navigateToItem(results[0]);
+      return;
+    }
+    setIsOpen(false);
+    setQuery("");
+    router.push(`/contact?q=${encodeURIComponent(trimmed)}#quote`);
   };
 
-  // Group results for structured visual display while preserving flat index lookup
-  const groupedResults = useMemo(() => {
-    const groups: { name: SearchItemGroup; items: { item: SearchIndexItem; flatIndex: number }[] }[] = [];
-    const map = new Map<SearchItemGroup, { item: SearchIndexItem; flatIndex: number }[]>();
-
-    allItems.forEach((item, flatIndex) => {
-      const existing = map.get(item.group);
-      if (existing) {
-        existing.push({ item, flatIndex });
-      } else {
-        const arr = [{ item, flatIndex }];
-        map.set(item.group, arr);
-        groups.push({ name: item.group, items: arr });
-      }
-    });
-
-    return groups;
-  }, [allItems]);
-
   return (
-    <>
+    <div ref={containerRef} className="relative w-full max-w-[380px]">
       {/* ============================================================ */}
-      {/* TOP BAR SEARCH TRIGGER PILL                                  */}
+      {/* SIMPLE INLINE SEARCH BAR                                     */}
       {/* ============================================================ */}
       <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          setIsOpen(true);
-        }}
-        onClick={() => setIsOpen(true)}
-        className="group relative flex items-center w-full max-w-[380px] h-[42px] rounded-full border border-white/15 bg-white/[0.05] hover:bg-white/[0.09] hover:border-white/30 px-3 transition-all duration-200 focus-within:border-[#C8741F] focus-within:bg-white/[0.09] focus-within:ring-2 focus-within:ring-[#C8741F]/20 cursor-pointer select-none shadow-xs"
+        onSubmit={handleSubmit}
+        className="group relative flex items-center w-full h-[42px] rounded-full border border-white/15 bg-white/[0.06] hover:bg-white/[0.09] hover:border-white/30 px-2.5 transition-all duration-200 focus-within:border-[#C8741F] focus-within:bg-white/[0.1] shadow-xs"
       >
-        <div className="w-7 h-7 rounded-full bg-[#C8741F] text-white flex items-center justify-center shrink-0 mr-2 shadow-xs transition-transform duration-200 group-hover:scale-105">
-          <Search className="w-3.5 h-3.5 text-white" strokeWidth={2.5} />
-        </div>
+        <button
+          type="submit"
+          aria-label="Search"
+          className="w-7 h-7 rounded-full bg-[#C8741F] hover:bg-[#b56618] text-white flex items-center justify-center shrink-0 mr-2.5 transition-colors cursor-pointer"
+        >
+          <Search className="w-3.5 h-3.5" strokeWidth={2.5} />
+        </button>
 
         <input
-          ref={barInputRef}
+          ref={inputRef}
           type="text"
           value={query}
           onFocus={() => setIsOpen(true)}
@@ -176,201 +115,141 @@ export function SearchPill() {
             setQuery(e.target.value);
             if (!isOpen) setIsOpen(true);
           }}
-          placeholder="Search products, bulk quotes, samples..."
-          className="flex-1 bg-transparent border-none outline-hidden text-[13.5px] sm:text-[14px] text-white placeholder:text-white/60 font-body font-normal cursor-pointer"
-          aria-label="Search products, bulk quotes, samples, or capabilities"
+          placeholder="Search products, bulk quote, samples..."
+          className="flex-1 min-w-0 bg-transparent border-none outline-hidden text-[13.5px] sm:text-[14px] text-white placeholder:text-white/60 font-body"
+          aria-label="Search Value Textiles"
+          autoComplete="off"
         />
 
-        <div className="hidden sm:flex items-center gap-1.5 shrink-0 pl-2">
-          <span className="flex items-center gap-1 rounded-[5px] border border-white/20 bg-white/[0.08] px-1.5 py-0.5 text-[11px] font-mono text-white/75 shadow-xs">
-            <span className="text-[10px]">⌘</span>K
-          </span>
-        </div>
+        {query && (
+          <button
+            type="button"
+            onClick={() => {
+              setQuery("");
+              inputRef.current?.focus();
+            }}
+            aria-label="Clear search"
+            className="w-6 h-6 rounded-full text-white/60 hover:text-white hover:bg-white/10 flex items-center justify-center shrink-0 cursor-pointer transition-colors"
+          >
+            <X className="w-3.5 h-3.5" />
+          </button>
+        )}
       </form>
 
       {/* ============================================================ */}
-      {/* COMMAND PALETTE SEARCH & ACTION MODAL                        */}
+      {/* CLEAN INLINE DROPDOWN DIRECTLY BELOW SEARCH BAR              */}
       {/* ============================================================ */}
       {isOpen && (
-        <div
-          className="fixed inset-0 z-[120] flex items-start justify-center pt-[8vh] sm:pt-[11vh] px-3 sm:px-6"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Search Value Textiles"
-        >
-          {/* Blurred Scrim */}
-          <div
-            onClick={() => setIsOpen(false)}
-            className="fixed inset-0 bg-[#14110E]/65 backdrop-blur-xs"
-          />
-
-          {/* Modal Card */}
-          <div
-            data-lenis-prevent
-            className="relative z-10 w-full max-w-[680px] rounded-[24px] bg-[#FFFDF9] border border-[#E6DFD3] shadow-[0_30px_90px_rgba(20,17,14,0.35)] overflow-hidden text-[#1F1F1F]"
-          >
-            {/* Search Input Header */}
-            <div className="flex items-center gap-3 px-4 sm:px-5 py-3.5 bg-white border-b border-[#EAE3D8]">
-              <div className="w-8 h-8 rounded-full bg-[#C8741F] text-white flex items-center justify-center shrink-0">
-                <Search className="w-4 h-4" strokeWidth={2.4} />
+        <div className="absolute left-0 top-full mt-2 w-[min(92vw,440px)] rounded-2xl bg-white border border-[#E6DFD3] shadow-[0_20px_50px_rgba(20,17,14,0.22)] text-[#1F1F1F] z-[80] overflow-hidden">
+          {!query.trim() ? (
+            /* Empty state: Simple 2-column popular links grid (no horizontal scrollbars) */
+            <div className="p-4 space-y-3">
+              <p className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#8C7F72]">
+                Quick Access
+              </p>
+              <div className="grid grid-cols-2 gap-2">
+                {QUICK_POPULAR_LINKS.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center justify-between gap-2 px-3 py-2.5 rounded-xl bg-[#FAF8F5] hover:bg-[#FAF4EA] border border-[#EAE3D8] hover:border-[#C8741F]/50 text-[13px] font-medium text-[#1F1F1F] transition-colors"
+                  >
+                    <span className="truncate">{link.label}</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-[#C8741F] shrink-0" />
+                  </Link>
+                ))}
               </div>
+            </div>
+          ) : (
+            /* Live Filtered Results */
+            <div className="divide-y divide-[#EFEAE1]">
+              {results.length > 0 ? (
+                <div className="p-2 space-y-0.5 max-h-[340px] overflow-y-auto">
+                  {results.map((item) => {
+                    const rowContent = (
+                      <>
+                        <div className="min-w-0 flex-1">
+                          <p className="font-heading text-[14px] font-bold text-[#1F1F1F] group-hover:text-[#C8741F] truncate transition-colors">
+                            {item.title}
+                          </p>
+                          <p className="font-body text-xs text-[#6B645C] truncate">
+                            {item.subtitle}
+                          </p>
+                        </div>
+                        <span className="shrink-0 inline-flex items-center gap-1.5 text-[11px] font-mono font-semibold text-[#8C7F72] group-hover:text-[#C8741F]">
+                          {item.badge && <span>{item.badge}</span>}
+                          {item.external ? (
+                            <ExternalLink className="w-3.5 h-3.5" />
+                          ) : (
+                            <ArrowRight className="w-3.5 h-3.5" />
+                          )}
+                        </span>
+                      </>
+                    );
 
-              <input
-                ref={modalInputRef}
-                type="text"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                onKeyDown={handleModalKeyDown}
-                placeholder="Search products, bulk quotes, samples, dyeing, ZLD, about, contact..."
-                className="flex-1 bg-transparent border-none outline-hidden text-[15px] sm:text-[16px] text-[#111111] placeholder:text-[#8E857B] font-body"
-                autoComplete="off"
-              />
-
-              {query && (
-                <button
-                  type="button"
-                  onClick={() => {
-                    setQuery("");
-                    modalInputRef.current?.focus();
-                  }}
-                  className="px-2.5 py-1 rounded-full bg-[#FAF4EA] text-[#8C531B] hover:bg-[#F3E7D3] text-[11px] font-semibold cursor-pointer transition-colors"
-                >
-                  Clear
-                </button>
+                    return item.external ? (
+                      <a
+                        key={item.id}
+                        href={item.href}
+                        target={
+                          item.href.startsWith("http") ? "_blank" : undefined
+                        }
+                        rel={
+                          item.href.startsWith("http")
+                            ? "noopener noreferrer"
+                            : undefined
+                        }
+                        onClick={() => {
+                          setIsOpen(false);
+                          setQuery("");
+                        }}
+                        className="group flex items-center justify-between gap-3 px-3 py-2.5 rounded-xl hover:bg-[#FAF6EE] transition-colors"
+                      >
+                        {rowContent}
+                      </a>
+                    ) : (
+                      <Link
+                        key={item.id}
+                        href={item.href}
+                        onClick={() => {
+                          setIsOpen(false);
+                          setQuery("");
+                        }}
+                        className="group flex items-center justify-between gap-3 px-3 py-2.5 rounded-xl hover:bg-[#FAF6EE] transition-colors"
+                      >
+                        {rowContent}
+                      </Link>
+                    );
+                  })}
+                </div>
+              ) : (
+                <div className="p-4 text-sm text-[#554F47]">
+                  No exact page found for{" "}
+                  <strong className="text-[#1F1F1F]">&ldquo;{query}&rdquo;</strong>.
+                </div>
               )}
 
-              <button
-                type="button"
-                onClick={() => setIsOpen(false)}
-                aria-label="Close search"
-                className="size-8 rounded-full border border-[#E6DFD3] bg-[#FAF6EE] hover:border-[#C8741F] text-[#554F47] flex items-center justify-center cursor-pointer transition-colors shrink-0"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            </div>
-
-            {/* Quick Suggestion Chips */}
-            <div className="px-4 sm:px-5 py-2.5 bg-[#FAF6EE]/80 border-b border-[#EAE3D8] flex items-center gap-1.5 overflow-x-auto no-scrollbar">
-              <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#9A9086] shrink-0 mr-1">
-                Try:
-              </span>
-              {SUGGESTED_SEARCH_CHIPS.map((chip) => (
-                <button
-                  key={chip}
-                  type="button"
+              {/* Simple Fallback Action Footer */}
+              <div className="p-2 bg-[#FAF8F5] flex flex-col sm:flex-row gap-1.5">
+                <Link
+                  href={`/contact?q=${encodeURIComponent(query.trim())}#quote`}
                   onClick={() => {
-                    setQuery(chip);
-                    modalInputRef.current?.focus();
+                    setIsOpen(false);
+                    setQuery("");
                   }}
-                  className={`shrink-0 px-3 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${
-                    query.toLowerCase() === chip.toLowerCase()
-                      ? "bg-[#1F1F1F] text-white border-[#1F1F1F]"
-                      : "bg-white text-[#4A433C] border-[#E4DDD3] hover:border-[#C8741F] hover:text-[#C8741F]"
-                  }`}
+                  className="flex-1 flex items-center justify-between gap-2 px-3 py-2 rounded-xl bg-[#FAF4EA] hover:bg-[#F3E5CE] text-xs font-semibold text-[#8C531B] transition-colors"
                 >
-                  {chip}
-                </button>
-              ))}
-            </div>
-
-            {/* Results List */}
-            <div className="max-h-[56vh] overflow-y-auto p-3 sm:p-4 space-y-4">
-              {groupedResults.map((group) => {
-                const GroupIcon = getGroupIcon(group.name);
-                return (
-                  <div key={group.name} className="space-y-1.5">
-                    <div className="flex items-center gap-1.5 px-2.5 text-[10.5px] font-mono font-bold uppercase tracking-[0.14em] text-[#8E857B]">
-                      <GroupIcon className="w-3.5 h-3.5 text-[#C8741F]" />
-                      <span>{group.name}</span>
-                    </div>
-
-                    <div className="space-y-1">
-                      {group.items.map(({ item, flatIndex }) => {
-                        const isSelected = flatIndex === activeIndex;
-                        return (
-                          <button
-                            key={item.id}
-                            type="button"
-                            onMouseEnter={() => setActiveIndex(flatIndex)}
-                            onClick={() => executeItem(item)}
-                            className={`w-full text-left flex items-center justify-between gap-3 px-3.5 py-2.5 rounded-2xl transition-all cursor-pointer border ${
-                              isSelected
-                                ? "bg-[#FAF4EA] border-[#C8741F]/45 shadow-2xs"
-                                : "bg-transparent border-transparent hover:bg-[#FAF6EE]"
-                            }`}
-                          >
-                            <div className="min-w-0 flex-1 space-y-0.5">
-                              <div className="flex items-center gap-2">
-                                <span
-                                  className={`font-heading text-[14px] sm:text-[14.5px] font-bold truncate ${
-                                    isSelected
-                                      ? "text-[#111111]"
-                                      : "text-[#1F1F1F]"
-                                  }`}
-                                >
-                                  {item.title}
-                                </span>
-                                {item.badge && (
-                                  <span className="shrink-0 px-2 py-0.5 rounded-full bg-white border border-[#E6DFD3] font-mono text-[10px] font-semibold text-[#8C531B]">
-                                    {item.badge}
-                                  </span>
-                                )}
-                              </div>
-                              <p className="font-body text-xs text-[#6B645C] truncate">
-                                {item.subtitle}
-                              </p>
-                            </div>
-
-                            <span
-                              className={`shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-colors ${
-                                isSelected
-                                  ? "bg-[#C8741F] text-white"
-                                  : "bg-[#F3EDE3] text-[#6B645C]"
-                              }`}
-                            >
-                              {item.external ? (
-                                <ExternalLink className="w-3.5 h-3.5" />
-                              ) : item.id === "custom-enquiry-action" ? (
-                                <Sparkles className="w-3.5 h-3.5" />
-                              ) : (
-                                <ArrowRight className="w-3.5 h-3.5" />
-                              )}
-                            </span>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* Keyboard Hints Footer */}
-            <div className="px-4 sm:px-5 py-2.5 bg-white border-t border-[#EAE3D8] flex items-center justify-between text-[11px] font-mono text-[#8E857B]">
-              <div className="flex items-center gap-3">
-                <span className="inline-flex items-center gap-1">
-                  <kbd className="px-1.5 py-0.5 rounded bg-[#FAF6EE] border border-[#E6DFD3] text-[#1F1F1F]">
-                    ↑↓
-                  </kbd>{" "}
-                  Navigate
-                </span>
-                <span className="inline-flex items-center gap-1">
-                  <kbd className="inline-flex items-center px-1.5 py-0.5 rounded bg-[#FAF6EE] border border-[#E6DFD3] text-[#1F1F1F]">
-                    <CornerDownLeft className="w-2.5 h-2.5" />
-                  </kbd>{" "}
-                  Go / Trigger
-                </span>
+                  <span className="truncate">
+                    Send enquiry for &ldquo;{query.trim()}&rdquo;
+                  </span>
+                  <ArrowRight className="w-3.5 h-3.5 shrink-0" />
+                </Link>
               </div>
-              <span>
-                <kbd className="px-1.5 py-0.5 rounded bg-[#FAF6EE] border border-[#E6DFD3] text-[#1F1F1F]">
-                  ESC
-                </kbd>{" "}
-                Close
-              </span>
             </div>
-          </div>
+          )}
         </div>
       )}
-    </>
+    </div>
   );
 }

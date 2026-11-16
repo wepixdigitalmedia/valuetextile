@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Tiruppur } from "@/components/ui/Tiruppur";
+import { AboutHeroCarousel } from "@/components/about/AboutHeroCarousel";
 import { DirectManufacturerSection } from "@/components/home/DirectManufacturerSection";
 import { BrandLogoGrid } from "@/components/home/TrustStatsAndLogosSection";
 import {
@@ -91,42 +92,9 @@ export default function AboutPage() {
       <section className="relative w-full bg-[#FFFDF9] py-14 sm:py-20 lg:py-24 border-b border-[#E8E2D9] overflow-hidden">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
-            {/* Left Column (Col 6): Editorial Collage & "Welcome to Value Textiles" Badge */}
-            <div className="lg:col-span-6 relative">
-              <div className="grid grid-cols-12 gap-4 items-end">
-                {/* Main Stacked Fabric & Knitwear Photo */}
-                <div className="col-span-7 sm:col-span-7 relative h-[360px] sm:h-[460px] rounded-[28px] overflow-hidden border border-[#E8E2D9] shadow-sm">
-                  <Image
-                    src="/images/hero-fabrics.jpeg"
-                    alt="Stacked dyed knitted fabrics at Value Textiles"
-                    fill
-                    priority
-                    sizes="(max-width: 1024px) 60vw, 400px"
-                    className="object-cover"
-                  />
-                </div>
-
-                {/* Secondary Swatch Hanger Photo */}
-                <div className="col-span-5 sm:col-span-5 relative h-[240px] sm:h-[300px] rounded-[24px] overflow-hidden border border-[#E8E2D9] shadow-sm">
-                  <Image
-                    src="/images/slider/fabric-sourcing.webp"
-                    alt="Yarn-dyed and striped knitted fabric swatches"
-                    fill
-                    sizes="(max-width: 1024px) 40vw, 280px"
-                    className="object-cover"
-                  />
-                </div>
-              </div>
-
-              {/* Floating Warm Ochre Hexagon/Stadium Badge */}
-              <div className="absolute top-6 right-4 sm:right-12 lg:right-8 z-10 w-36 h-36 sm:w-44 sm:h-44 rounded-[32px] rotate-3 bg-[#C8741F] text-white shadow-xl flex flex-col items-center justify-center text-center p-4 border-4 border-white">
-                <span className="font-mono text-[10px] uppercase tracking-widest text-white/80 mb-1">
-                  <Tiruppur />, India
-                </span>
-                <p className="font-heading text-lg sm:text-xl font-extrabold leading-tight -rotate-3">
-                  Welcome to Value Textiles
-                </p>
-              </div>
+            {/* Left Column (Col 6): Auto-Playing Editorial Carousel & Floating Badge */}
+            <div className="lg:col-span-6">
+              <AboutHeroCarousel />
             </div>
 
             {/* Right Column (Col 6): "We Are" Story & Non-Numeric Highlights */}

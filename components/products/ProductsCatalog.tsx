@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { PRODUCTS_DATA, ProductItem, ProductCategory } from "@/config/productsData";
@@ -22,6 +22,17 @@ export function ProductsCatalog() {
   const [activeCategory, setActiveCategory] = useState<"All" | ProductCategory>("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
+
+  // Apply URL filters when navigated from header search (e.g. /products?category=fabric&search=jersey)
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const cat = params.get("category")?.toLowerCase();
+    const q = params.get("search");
+    if (cat === "fabric") setActiveCategory("Fabric");
+    else if (cat === "yarn") setActiveCategory("Yarn");
+    else if (cat === "garments") setActiveCategory("Garments");
+    if (q) setSearchQuery(q);
+  }, []);
 
   const categories: { label: string; value: "All" | ProductCategory; count: number }[] = [
     { label: "All Items", value: "All", count: PRODUCTS_DATA.length },
