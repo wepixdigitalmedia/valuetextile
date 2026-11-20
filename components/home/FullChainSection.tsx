@@ -100,10 +100,10 @@ export function FullChainSection() {
             {/* Impact Statement: Line 1 Charcoal + Line 2 Warm Ochre Accent */}
             <h2 className="font-heading font-black text-[28px] sm:text-[36px] md:text-[42px] lg:text-[46px] xl:text-[50px] leading-[1.08] tracking-[-0.035em]">
               <span className="text-[#1F1F1F]">
-                A garment is only as good as the fabric and the stitching.{" "}
+                Garment durability begins with fabric engineering.{" "}
               </span>
               <span className="text-[#C8741F]">
-                We control both, so quality, cost and delivery date stay with one team.
+                We manage knitting, dyeing, and stitching directly in-house to safeguard technical standards.
               </span>
             </h2>
 
@@ -145,9 +145,9 @@ export function FullChainSection() {
                   </div>
                 </div>
 
-                {/* Narrative text matching the rhythm of the reference */}
+                {/* Narrative text */}
                 <p className="text-[13.5px] sm:text-[14px] text-[#55504A] leading-[1.45]">
-                  At Value Textiles in <Tiruppur />, you talk to the people who run production. Every recommendation is based on what we can make, test and ship from our own units.
+                  Based in <Tiruppur />, we source certified yarns externally and execute all knitting, processing, lab verification, and apparel assembly in our own facilities.
                 </p>
               </div>
 
@@ -200,7 +200,7 @@ export function FullChainSection() {
               <div className="relative z-10">
                 <div className="w-fit px-4 py-1.5 rounded-full bg-[#FAF4EA] border border-[#ECDDC3] text-[12.5px] sm:text-[13px] text-[#8C531B] font-semibold flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#C8741F]" />
-                  <span>From yarn to garment, in one place</span>
+                  <span>Knitted &amp; finished in-house</span>
                 </div>
 
                 {/* Big Bold Warm Ochre Title */}
@@ -221,7 +221,7 @@ export function FullChainSection() {
                   />
                 </div>
                 <p className="text-[14px] sm:text-[15.5px] lg:text-[15.5px] leading-[1.55] text-[#4A4742] max-w-[440px]">
-                  The fabric is knitted, dyed and tested in our own units, then cut and stitched into your garment. One team, one standard, one delivery date.
+                  Every fabric lot moves from circular knitting and soft-flow dyeing through laboratory testing before cutting and assembly—protecting shade continuity and shrinkage tolerance.
                 </p>
               </div>
             </div>
@@ -263,8 +263,8 @@ export function FullChainSection() {
                           onClick={(e) => goToSlide(idx, e)}
                           aria-label={`Go to slide ${idx + 1}`}
                           className={`rounded-full transition-all duration-300 cursor-pointer ${currentSlide === idx
-                              ? "w-8 sm:w-10 h-2 bg-[#C8741F]"
-                              : "size-2 bg-[#C8741F]/30 hover:bg-[#C8741F]/60"
+                            ? "w-8 sm:w-10 h-2 bg-[#C8741F]"
+                            : "size-2 bg-[#C8741F]/30 hover:bg-[#C8741F]/60"
                             }`}
                         />
                       ))}

@@ -212,7 +212,7 @@ async function GarmentCategoryContent({
                 / ABOUT VALUE TEXTILES · <Tiruppur />
               </p>
               <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight">
-                Crafted in-house from yarn to finished garment.
+                Knitted, dyed, tested, and tailored in our own facilities.
               </h2>
               <p className="font-body text-sm sm:text-base text-white/80 leading-relaxed max-w-2xl">
                 {item.description}

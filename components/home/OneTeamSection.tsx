@@ -14,10 +14,10 @@ export function OneTeamSection() {
         {/* ===================== SECTION HEADER ===================== */}
         <div className="max-w-3xl space-y-3">
           <h2 className="font-heading text-[32px] sm:text-[40px] lg:text-[46px] font-black text-[#1F1F1F] leading-[1.12] tracking-[-0.035em]">
-            One team, from fabric to shipment.
+            Integrated operations, engineered for reliability.
           </h2>
           <p className="font-body text-[16px] sm:text-[18px] lg:text-[19px] text-[#6B655D] leading-relaxed">
-            Fabric, garments and export paperwork handled by one team.
+            Direct production oversight, dedicated stitching capacity, and structured technical merchandising across our facilities.
           </p>
         </div>
 
@@ -60,10 +60,10 @@ export function OneTeamSection() {
               <div className="relative z-10 space-y-4">
                 <div className="space-y-2">
                   <h3 className="font-heading text-[21px] sm:text-[23px] lg:text-[25px] text-white font-bold leading-[1.25] tracking-tight">
-                    See how your garments are made.
+                    Direct production oversight at every step.
                   </h3>
                   <p className="text-[13.5px] sm:text-[14px] text-white/90 leading-relaxed">
-                    Fabric, dyeing, stitching and packing all happen in our own units.
+                    Procurement to quality control—circular knitting, soft-flow dyeing, finishing, and apparel assembly run inside our own units.
                   </p>
                 </div>
 
@@ -132,10 +132,10 @@ export function OneTeamSection() {
                 {/* Pillar 2: Fabric Backing */}
                 <div className="space-y-1.5">
                   <h4 className="font-heading text-[20px] sm:text-[22px] font-bold text-[#1F1F1F] tracking-tight leading-snug">
-                    Backed by Our Own Fabric
+                    Backed by In-House Fabric Control
                   </h4>
                   <p className="text-[13.5px] text-[#55504A] leading-relaxed">
-                    In-house circular knitting, soft-flow dyeing, and lab testing under one management team.
+                    Dedicated circular knitting, soft-flow dyeing, and laboratory verification keep shade and GSM consistent across repeat programs.
                   </p>
                 </div>
               </div>
@@ -200,10 +200,10 @@ export function OneTeamSection() {
               {/* Middle: Headline & Core Role */}
               <div className="relative z-10 space-y-3 my-auto py-4">
                 <h3 className="font-heading text-[22px] sm:text-[24px] lg:text-[26px] font-bold text-white leading-snug tracking-tight">
-                  One export desk for your entire program.
+                  Dedicated technical merchandising desk.
                 </h3>
                 <p className="text-[13.5px] sm:text-[14px] text-neutral-300 leading-relaxed">
-                  Our technical merchandising team in Tirupur coordinates your tech packs, lab dips, production runs, and customs clearance.
+                  Our Tiruppur coordinators manage tech-pack reviews, lab-dip approvals, production scheduling, and export documentation.
                 </p>
               </div>
 

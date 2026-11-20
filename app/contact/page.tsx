@@ -38,14 +38,14 @@ export default function ContactPage() {
       <section className="w-full pt-8 sm:pt-12 pb-16 sm:pb-24 overflow-hidden">
         <Container>
           {/* Giant Editorial Headline */}
-          <h1 className="font-heading font-black uppercase text-[#1F1F1F] text-[52px] sm:text-[92px] md:text-[124px] lg:text-[148px] leading-[0.86] tracking-[-0.04em] select-none">
+          <h1 className="font-heading font-extrabold uppercase text-[#1F1F1F] text-[48px] sm:text-[80px] md:text-[108px] lg:text-[132px] leading-[0.95] tracking-[-0.03em] select-none">
             CONTACT US
           </h1>
 
-          {/* Split Row Overlapping the Giant Title on Desktop */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start mt-6 lg:-mt-8 relative z-10">
+          {/* Clean Split Row Directly Below Title (Zero Overlap / Collision) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start mt-8 sm:mt-10 lg:mt-12">
             {/* Left Column (5 cols): Direct Contact Channels */}
-            <div className="lg:col-span-5 lg:pt-16 space-y-8">
+            <div className="lg:col-span-5 lg:pt-2 space-y-8">
               <div className="space-y-1">
                 <p className="font-heading text-base sm:text-lg font-bold text-[#1F1F1F]">
                   Questions or export inquiries?

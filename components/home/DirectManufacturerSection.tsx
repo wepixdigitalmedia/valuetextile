@@ -17,10 +17,10 @@ const DIRECT_POINTS = [
   { label: "Our own units in Tirupur", tag: "3 Integrated Units" },
   { label: "Our own knitting, dyeing and lab testing", tag: "In-House Mill" },
   {
-    label: "One team, one standard, 4-point fabric inspection plus garment checks",
+    label: "Unified standard: 4-point fabric inspection plus in-line & final garment QC",
     tag: "Unified TQM",
   },
-  { label: "Fabric to garment in one place", tag: "100% Traceable" },
+  { label: "Integrated fabric and garment production in one system", tag: "100% Traceable" },
   { label: "Planned and scheduled in-house", tag: "Guaranteed T&A" },
   { label: "Factory-direct pricing", tag: "Zero Commission" },
 ];
@@ -46,9 +46,7 @@ export function DirectManufacturerSection() {
             A manufacturer, not a middleman.
           </h2>
           <p className="font-body text-base sm:text-[17px] text-[#554F47] leading-relaxed mt-3.5">
-            Every stage from yarn to finished garment happens in our own units in
-            Tirupur. That means one quality standard, one team to talk to and no
-            agent margin in the price.
+            Yarns are procured externally to exact specs, while every subsequent stage—knitting, dyeing, lab testing, cutting, and stitching—runs inside our own Tiruppur and Perundurai facilities with direct production oversight and no agent margin.
           </p>
         </div>
 

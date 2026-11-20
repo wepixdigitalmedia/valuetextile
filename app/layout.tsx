@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     template: "%s | Value Textiles",
   },
   description:
-    "Tirupur-based, vertically integrated knitwear manufacturer and exporter. From yarn to garment under one roof: knitting, dyeing, lab testing, finishing, and garmenting for global brands.",
+    "Tirupur-based integrated knitwear manufacturer and exporter. In-house circular knitting, soft-flow dyeing, lab testing, finishing, and garment manufacturing for global brands.",
   keywords: [
     "Value Textiles",
     "Knitwear manufacturer Tirupur",
@@ -93,7 +93,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Value Textiles | Knitted Fabric & Garment Manufacturer in Tirupur",
     description:
-      "From yarn to garment, under one roof. Vertically integrated knitwear manufacturing, dyeing, testing, and apparel export for international brands.",
+      "Integrated knitwear manufacturing, soft-flow dyeing, laboratory testing, and apparel production in Tirupur, India for international brands.",
     url: "https://valuetextiles.com",
     siteName: "Value Textiles",
     images: [
@@ -111,7 +111,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Value Textiles | Knitted Fabric & Garment Manufacturer in Tirupur",
     description:
-      "From yarn to garment, under one roof. Vertically integrated knitwear manufacturing in Tirupur, India.",
+      "Integrated knitwear fabric and garment manufacturing in Tirupur, India.",
     images: ["/images/Value%20Textiles%20Cotton%20Flame%20Logo.png"],
   },
   robots: {

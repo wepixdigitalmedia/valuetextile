@@ -126,7 +126,7 @@ const GARMENT_HIGHLIGHTS = [
   {
     icon: ShieldCheck,
     title: "Total Quality Management",
-    text: "TQM initiatives embedded across every stage—from yarn testing and 4-point fabric inspection to in-line stitching checks and final AQL garment QC.",
+    text: "TQM initiatives embedded across every stage—from incoming yarn verification and 4-point fabric inspection to in-line stitching checks and final AQL garment QC.",
   },
   {
     icon: Leaf,

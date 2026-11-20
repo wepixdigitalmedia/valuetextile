@@ -97,7 +97,7 @@ export function SiteHeader() {
 
           {/* Center: Desktop Navigation with Neat Spacing */}
           <nav
-            className="hidden md:flex items-center gap-5 lg:gap-8"
+            className="hidden md:flex items-center gap-4 lg:gap-7"
             aria-label="Main Navigation"
           >
             {siteConfig.navigation.map((item) => (

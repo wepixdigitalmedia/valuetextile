@@ -296,7 +296,7 @@ const CAPABILITY_ITEMS: SearchIndexItem[] = [
   {
     id: "cap-overview",
     title: "All Capabilities Overview",
-    subtitle: "Four vertically integrated divisions from yarn to finished export garment",
+    subtitle: "Four integrated divisions covering knitting, dyeing, fabric QC & garmenting",
     group: "Capabilities & Units",
     href: "/capabilities",
     badge: "Hub",

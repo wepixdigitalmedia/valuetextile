@@ -112,6 +112,10 @@ export const siteConfig = {
       label: "Quality",
       href: "/quality",
     },
+    {
+      label: "Blog",
+      href: "/blog",
+    },
   ] as NavItem[],
   footerLinks: [
     { label: "About", href: "/about" },
@@ -133,17 +137,17 @@ export const siteConfig = {
     headlineLine2: "made in Tirupur from our own fabric.",
     title: "Knitwear garments, made in Tirupur from our own fabric.",
     descriptionPrefix: "T-shirts, polos, kids wear, knitwear and activewear for international brands. ",
-    descriptionHighlight: "Our own yarn, dyeing and lab testing",
-    descriptionSuffix: " sit behind every order.",
+    descriptionHighlight: "In-house circular knitting, soft-flow dyeing and lab testing",
+    descriptionSuffix: " back every production run.",
     description:
-      "T-shirts, polos, kids wear, knitwear and activewear for international brands. Our own yarn, dyeing and lab testing sit behind every order.",
+      "T-shirts, polos, kids wear, knitwear and activewear for international brands. In-house circular knitting, soft-flow dyeing and lab testing back every production run.",
     quickFacts: [
       "Private label",
       "Samples before bulk",
       "Export quality",
       "Scalable volumes",
     ],
-    buyerQuote: "We deal with one factory team, one quality standard and direct pricing from fabric to garment export.",
+    buyerQuote: "Direct manufacturing oversight from fabric knitting to final AQL audit keeps shade consistency, stitching quality, and schedules dependable.",
     statNumber: "40+",
     statCaption: "Buyers worldwide. And counting.",
     primaryCta: {
@@ -195,9 +199,9 @@ export const siteConfig = {
   },
   process: {
     eyebrow: "OUR PROCESS",
-    title: "Every stage, under our own roof",
+    title: "Structured production control from fabric to dispatch",
     steps: [
-      { step: "01", title: "Yarn" },
+      { step: "01", title: "Yarn Procurement" },
       { step: "02", title: "Knitting" },
       { step: "03", title: "Dyeing" },
       { step: "04", title: "Finishing" },
@@ -213,9 +217,9 @@ export const siteConfig = {
     items: [
       {
         number: "01",
-        title: "One roof, full traceability",
+        title: "Integrated in-house operations",
         description:
-          "From yarn to finished garment, every stage is managed in-house.",
+          "Vetted yarns are knitted, dyed, tested, cut, and stitched inside our own units.",
       },
       {
         number: "02",

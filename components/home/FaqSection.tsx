@@ -24,7 +24,7 @@ const LEFT_FAQS: FaqItem[] = [
   {
     id: 2,
     q: "Why Do Fashion Brands Choose Value Textiles For Garment Manufacturing?",
-    a: "By operating our own Mayer & Cie circular knitting floor, HTHP soft-flow dyeing unit with Zero Liquid Discharge (ZLD), in-house testing laboratory, and garment stitching lines under one roof, we eliminate third-party delays, guarantee shade consistency, and deliver factory-direct export pricing.",
+    a: "We procure specification-grade yarns from trusted spinning partners and execute circular knitting, HTHP soft-flow dyeing, in-house laboratory testing, and garment assembly within our own units—protecting shade consistency, shrinkage control, and direct factory costing without intermediary delays.",
   },
 ];
 

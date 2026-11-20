@@ -50,14 +50,11 @@ export default function CapabilitiesPage() {
         <div className="max-w-3xl mb-16">
           <Eyebrow>OUR CAPABILITIES</Eyebrow>
           <h1 className="font-heading text-[42px] sm:text-[52px] font-extrabold text-[#1F1F1F] leading-[1.0] tracking-[-0.04em] mb-6">
-            From yarn to garment, under one roof.
+            Knitting, dyeing, testing &amp; garmenting in-house.
           </h1>
           <div className="w-12 h-[2px] bg-[#F29B52] mb-8" />
           <p className="font-body text-[17px] text-[#5F5B55] leading-relaxed">
-            By operating our own garmenting, circular knitting, soft-flow
-            dyeing, and fabric testing/inspection divisions, Value Textiles
-            delivers complete traceability, stringent quality management, and
-            dependable production schedules.
+            While yarns are procured externally to exact buyer counts, Value Textiles operates its own circular knitting, soft-flow dyeing, fabric testing, and garment manufacturing divisions for complete quality traceability and dependable delivery schedules.
           </p>
         </div>
 

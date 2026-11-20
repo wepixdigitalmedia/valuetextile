@@ -345,7 +345,7 @@ export default function KnittingDivisionPage() {
                 Need custom stripe, jacquard, or Lycra knit garments?
               </h2>
               <p className="font-body text-sm sm:text-base text-white/80 leading-relaxed">
-                Share your fabric GSM, stripe repeat, or garment tech pack. We knit, dye, test, and stitch under one roof.
+                Share your fabric GSM, stripe repeat, or garment tech pack. We knit, dye, test, and stitch inside our own Tiruppur and Perundurai facilities.
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-4 shrink-0">

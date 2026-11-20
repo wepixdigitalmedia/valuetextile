@@ -257,7 +257,7 @@ export default function AboutPage() {
                   / INSIDE OUR TIRUPPUR &amp; PERUNDURAI UNITS
                 </p>
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl text-white leading-tight">
-                  From yarn cone to export container under one team.
+                  Knitted, dyed, tested, and stitched across our integrated units.
                 </h2>
               </div>
 

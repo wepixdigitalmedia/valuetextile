@@ -25,9 +25,9 @@ const PROCESS_STAGES: ProcessStage[] = [
   },
   {
     number: "03",
-    title: "Our own fabric",
-    description: "Knitted and dyed in our units, tested in our in-house lab, and inspected under the standard 4-point system.",
-    highlight: "In-house knitting & lab",
+    title: "In-house fabric production",
+    description: "Knitted from vetted yarns, dyed in our processing unit, tested in our lab, and graded under the 4-point inspection system.",
+    highlight: "Knitting, dyeing & lab",
   },
   {
     number: "04",
@@ -74,7 +74,7 @@ export function ProcessSection() {
             From your tech pack to your port.
           </h2>
           <p className="font-body text-base sm:text-lg text-[#554F47] leading-relaxed mt-4">
-            From yarn testing to carton sealing, each step is managed in-house so quality standards and delivery dates stay with one team.
+            Every production milestone—from incoming yarn inspection to final AQL carton audit—follows documented technical gates across our integrated departments.
           </p>
         </div>
 
@@ -107,7 +107,7 @@ export function ProcessSection() {
 
         {/* Caption */}
         <p className="mt-8 text-center text-sm font-medium text-[#78716C] max-w-2xl mx-auto">
-          Every stage is managed by our own team, so a delay or a defect can be traced to its source.
+          Documented lot tracking across knitting, dyeing, laboratory testing, and sewing keeps measurements, shades, and timelines accountable.
         </p>
       </Container>
     </section>

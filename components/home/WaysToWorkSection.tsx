@@ -49,8 +49,8 @@ const SLIDES: TabSlide[] = [
       alt: "Layered neutral t-shirts on hangers ready for quality inspection",
     },
     photo2: {
-      src: "https://ik.imagekit.io/wpxassets/value%20textiles/Brand/Young%20Man%20in%20Striped%20Blue%20Sweater.webp",
-      alt: "Finished striped knitwear garment stitched to specification",
+      src: "/images/cut-make-production.jpg",
+      alt: "Cut and make garment panels stacked beside brass tailor shears, thread cones, and sewing workstations",
     },
   },
   {
@@ -89,12 +89,12 @@ export function WaysToWorkSection() {
       className="relative w-full overflow-hidden py-9 sm:py-11 lg:py-13 border-b border-[#E8E2D9]"
       style={{ backgroundColor: "#FAF7F2" }}
     >
-      {/* Mirrored Background Image Layer (horizontal flip so clean area sits behind text on left) */}
+      {/* Atelier Background Image Layer (Smooth matte ivory left, draped cotton knit right) */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-cover bg-center -scale-x-100"
+        className="pointer-events-none absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: `url("/images/ways-to-work-backdrop.webp")`,
+          backgroundImage: `url("/images/ways-atelier-backdrop.jpg")`,
         }}
       />
 

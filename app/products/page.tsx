@@ -60,7 +60,7 @@ export default function ProductsPage() {
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-[#C8741F]" />
-              <span>Full Chain Under One Roof</span>
+              <span>Integrated Knitting, Dyeing &amp; Garmenting</span>
             </div>
           </div>
         </Container>
