@@ -236,7 +236,7 @@ export function EnquiryDrawer({ isOpen, onClose }: EnquiryDrawerProps) {
 
         <div className="pt-6 border-t border-[var(--line)] text-[12px] text-[var(--text-muted)]">
           <p>Direct inquiries: +91 93456 30303</p>
-          <p>Tirupur 641607, Tamil Nadu, India</p>
+          <p>Tiruppur 641607, Tamil Nadu, India</p>
         </div>
       </div>
     </div>

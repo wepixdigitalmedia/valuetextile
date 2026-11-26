@@ -91,7 +91,7 @@ export default function NewBlogPostPage() {
                 required
                 value={formData.title}
                 onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                placeholder="e.g. How to Prepare a Knitwear Tech Pack for Tirupur Production"
+                placeholder="e.g. How to Prepare a Knitwear Tech Pack for Tiruppur Production"
                 className="w-full bg-[var(--white)] border border-[var(--line)] rounded-[12px] px-4 py-3 text-sm text-[var(--black)] placeholder:text-[var(--text-muted)] focus:outline-none focus:border-[var(--black)] focus:ring-2 focus:ring-[var(--accent)]/30"
               />
             </div>

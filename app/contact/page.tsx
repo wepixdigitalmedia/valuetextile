@@ -6,19 +6,19 @@ import { siteConfig } from "@/config/siteContent";
 import { Mail, MapPin, Phone, Clock } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Value Textiles — Garment Manufacturer & Exporter, Tirupur",
+  title: "Contact Us | Value Textiles — Garment Manufacturer & Exporter, Tiruppur",
   description:
-    "Contact Value Textiles in Tirupur, India. Reach our Registered Office in Parapalayam, Knitting Unit at SIDCO Tirupur, or Dyeing Unit at SIPCOT Perundurai.",
+    "Contact Value Textiles in Tiruppur, India. Reach our Registered Office in Parapalayam, Knitting Unit at SIDCO Tiruppur, or Dyeing Unit at SIPCOT Perundurai.",
 };
 
 const FACILITY_LOCATIONS = [
   {
     title: "Registered Office (Garmenting)",
-    address: "No. 3/197 H, Parapalayam, Tirupur - 641607, Tamil Nadu, India",
+    address: "No. 3/197 H, Parapalayam, Tiruppur - 641607, Tamil Nadu, India",
   },
   {
     title: "Knitting Division",
-    address: "Shed No. 61, SIDCO, Tirupur - 641606, Tamil Nadu, India",
+    address: "Shed No. 61, SIDCO, Tiruppur - 641606, Tamil Nadu, India",
   },
   {
     title: "Dyeing & Finishing Division",

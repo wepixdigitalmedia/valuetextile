@@ -9,9 +9,9 @@ import { siteConfig } from "@/config/siteContent";
 import { ArrowRight, CheckCircle2, Cog, Layers, MapPin } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Knitting Division | Value Textiles — Capabilities, Tirupur",
+  title: "Knitting Division | Value Textiles — Capabilities, Tiruppur",
   description:
-    "Value Textiles Knitting Division is equipped with advanced Mayer & Cie circular knitting machines, multi-colour yarn feeders, and 2-shift operations in Tirupur.",
+    "Value Textiles Knitting Division is equipped with advanced Mayer & Cie circular knitting machines, multi-colour yarn feeders, and 2-shift operations in Tiruppur.",
 };
 
 const KNITTING_GALLERY = [
@@ -19,7 +19,7 @@ const KNITTING_GALLERY = [
     src: "https://ik.imagekit.io/wpxassets/value%20textiles/knitting/kn1.jpg",
     title: "Circular Knitting Floor",
     subtitle: "High-precision Mayer & Cie knitting machines",
-    alt: "Circular knitting machinery floor at Value Textiles Tirupur",
+    alt: "Circular knitting machinery floor at Value Textiles Tiruppur",
   },
   {
     src: "https://ik.imagekit.io/wpxassets/value%20textiles/knitting/kn2.jpg",

@@ -8,9 +8,9 @@ import { Tiruppur } from "@/components/ui/Tiruppur";
 import { CheckCircle2, ArrowRight, Factory } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Our Infrastructure | Value Textiles — Garment & Textile Manufacturing, Tirupur",
+  title: "Our Infrastructure | Value Textiles — Garment & Textile Manufacturing, Tiruppur",
   description:
-    "Explore Value Textiles' vertically integrated infrastructure in Tirupur & Perundurai: circular knitting, soft-flow dyeing, compactors, in-house testing lab, and garmenting units.",
+    "Explore Value Textiles' vertically integrated infrastructure in Tiruppur & Perundurai: circular knitting, soft-flow dyeing, compactors, in-house testing lab, and garmenting units.",
 };
 
 const INFRASTRUCTURE_PILLARS = [
@@ -50,7 +50,7 @@ const SPECIALIZED_FABRICS = [
 const INFRASTRUCTURE_GALLERY = [
   {
     src: "https://ik.imagekit.io/wpxassets/value%20textiles/infrastructure/15.webp",
-    alt: "Value Textiles garment stitching and assembly production floor in Tirupur",
+    alt: "Value Textiles garment stitching and assembly production floor in Tiruppur",
   },
   {
     src: "https://ik.imagekit.io/wpxassets/value%20textiles/infrastructure/18.webp",
@@ -217,7 +217,7 @@ export default function InfrastructurePage() {
                 Production Floor &amp; Machinery Gallery
               </h2>
               <p className="text-base text-[var(--text-muted)] mt-2 leading-relaxed">
-                A closer look at our circular knitting, dyeing, compacting, testing lab, and garment stitching lines across Tirupur and Perundurai.
+                A closer look at our circular knitting, dyeing, compacting, testing lab, and garment stitching lines across Tiruppur and Perundurai.
               </p>
             </div>
 

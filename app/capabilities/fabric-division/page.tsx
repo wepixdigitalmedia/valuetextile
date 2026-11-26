@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Fabric Division | Value Textiles — Testing, Inspection & Despatch, Tirupur",
+  title: "Fabric Division | Value Textiles — Testing, Inspection & Despatch, Tiruppur",
   description:
     "Value Textiles Fabric Division features an exclusive in-house Fabric Testing Laboratory (11-point lab testing), 4-Point & 10-Point Fabric Inspection with colour-coded roll identification, and scheduled Fabric Despatch.",
 };

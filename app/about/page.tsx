@@ -23,14 +23,14 @@ import {
 export const metadata: Metadata = {
   title: "About Us | Value Textiles — Vertically Integrated Garment & Textile Manufacturer",
   description:
-    "Value Textiles is a vertically integrated knitwear garment and fabric manufacturer in Tirupur, India, with in-house circular knitting, soft-flow dyeing, lab testing, and garment production.",
+    "Value Textiles is a vertically integrated knitwear garment and fabric manufacturer in Tiruppur, India, with in-house circular knitting, soft-flow dyeing, lab testing, and garment production.",
 };
 
 const DIVISIONS = [
   {
     icon: Scissors,
     title: "Garment Manufacturing Division",
-    location: "No. 3/197 H, Parapalayam, Tirupur - 641607",
+    location: "No. 3/197 H, Parapalayam, Tiruppur - 641607",
     description:
       "Pattern grading, automated spreading and cutting, dedicated stitching lines, thread trimming, steam pressing, needle detection, and export cartooning.",
     tag: "Cut, Stitch & Pack",
@@ -38,7 +38,7 @@ const DIVISIONS = [
   {
     icon: Layers,
     title: "Circular Knitting Division",
-    location: "Shed No. 61, SIDCO, Tirupur - 641606",
+    location: "Shed No. 61, SIDCO, Tiruppur - 641606",
     description:
       "High-speed Mayer & Cie circular knitting machines producing Single Jersey, Auto-Striper, Interlock, Rib, Pique, French Terry, and 2/3-Thread Fleece.",
     tag: "Mayer & Cie · 18–28 GG",
@@ -55,7 +55,7 @@ const DIVISIONS = [
   {
     icon: FlaskConical,
     title: "In-House Testing & Quality Lab",
-    location: "Integrated across Tirupur & Perundurai Units",
+    location: "Integrated across Tiruppur & Perundurai Units",
     description:
       "Spectrophotometer colour matching, physical testing across shrinkage, GSM, spirality, pilling, colourfastness, and 4-point fabric inspection before cutting.",
     tag: "Lab & 4-Point QC",
@@ -180,7 +180,7 @@ export default function AboutPage() {
           <div className="max-w-2xl">
             <Eyebrow>OUR INFRASTRUCTURE</Eyebrow>
             <h2 className="text-2xl sm:text-3xl lg:text-[36px] font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em] mt-2">
-              State-of-the-art units across Tirupur &amp; Perundurai.
+              State-of-the-art units across Tiruppur &amp; Perundurai.
             </h2>
             <p className="text-base text-[var(--text-muted)] leading-relaxed mt-3">
               Every core stage is controlled by our own team across our dedicated garmenting, circular knitting, and soft-flow dyeing facilities.
@@ -327,7 +327,7 @@ export default function AboutPage() {
                 Ready to start a garment or fabric program?
               </h2>
               <p className="text-base text-[var(--text-muted)] leading-relaxed">
-                Send your tech pack, reference sample, or fabric specification to our merchandising desk in Tirupur.
+                Send your tech pack, reference sample, or fabric specification to our merchandising desk in Tiruppur.
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-4 shrink-0">

@@ -11,7 +11,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Fabrics, Yarns & Garments Catalog | Value Textiles Tiruppur",
   description:
-    "Explore our complete 16-product catalog across knitted fabrics, specialty yarns on cone, and manufactured garments from our integrated units in Tirupur, India.",
+    "Explore our complete 16-product catalog across knitted fabrics, specialty yarns on cone, and manufactured garments from our integrated units in Tiruppur, India.",
 };
 
 export default function ProductsPage() {

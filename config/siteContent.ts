@@ -49,14 +49,14 @@ export interface DivisionItem {
 
 export const siteConfig = {
   name: "Value Textiles",
-  tagline: "Knitwear garments, made in Tirupur from our own fabric.",
+  tagline: "Knitwear garments, made in Tiruppur from our own fabric.",
   description:
-    "Tirupur garment manufacturer and exporter. T-shirts, polos, kids wear, knitwear and activewear for international brands, made with our own fabric and in-house dyeing.",
+    "Tiruppur garment manufacturer and exporter. T-shirts, polos, kids wear, knitwear and activewear for international brands, made with our own fabric and in-house dyeing.",
   url: "https://valuetextiles.net",
   contact: {
-    addressShort: "Parapalayam, Tirupur 641607, India",
-    addressFull: "No. 3/197 H, Parapalayam, Tirupur - 641607",
-    knittingAddress: "Shed No. 61, SIDCO, Tirupur - 641606",
+    addressShort: "Parapalayam, Tiruppur 641607, India",
+    addressFull: "No. 3/197 H, Parapalayam, Tiruppur - 641607",
+    knittingAddress: "Shed No. 61, SIDCO, Tiruppur - 641606",
     dyeingAddress: "K6, K7, K8, K9, SIPCOT Industrial Growth Centre, P.V. Palayam (P.O), Perundurai - 638052",
     phoneDisplay: "+91 93456 30303",
     phoneTel: "+919345630303",
@@ -132,10 +132,10 @@ export const siteConfig = {
     { label: "Fabric Division", href: "/capabilities/fabric-division" },
   ] as DivisionItem[],
   hero: {
-    eyebrow: "GARMENT MANUFACTURER & EXPORTER · TIRUPUR",
+    eyebrow: "GARMENT MANUFACTURER & EXPORTER · TIRUPPUR",
     headlineLine1: "Knitwear garments,",
-    headlineLine2: "made in Tirupur from our own fabric.",
-    title: "Knitwear garments, made in Tirupur from our own fabric.",
+    headlineLine2: "made in Tiruppur from our own fabric.",
+    title: "Knitwear garments, made in Tiruppur from our own fabric.",
     descriptionPrefix: "T-shirts, polos, kids wear, knitwear and activewear for international brands. ",
     descriptionHighlight: "In-house circular knitting, soft-flow dyeing and lab testing",
     descriptionSuffix: " back every production run.",
@@ -158,10 +158,10 @@ export const siteConfig = {
       label: "Request Samples",
       href: "/contact?type=samples",
     },
-    imagePlaceholder: "GARMENT MANUFACTURING IN TIRUPUR",
+    imagePlaceholder: "GARMENT MANUFACTURING IN TIRUPPUR",
     imageSrc: "/images/hero-fabric-flow.jpg",
     imageUrl: "/images/hero-fabric-flow.jpg",
-    imageAlt: "Garment manufacturing and clothing production in Tirupur",
+    imageAlt: "Garment manufacturing and clothing production in Tiruppur",
   },
   stats: [
     { value: "20+", label: "Years Experience" },

@@ -58,7 +58,7 @@ export default function BlogPage() {
                 Garment &amp; Knitwear Journal
               </h1>
               <p className="text-base sm:text-lg text-[var(--text-muted)] leading-relaxed">
-                Practical guides on knitwear production, fabric development, 4-point quality control, and direct apparel sourcing from Tirupur, India.
+                Practical guides on knitwear production, fabric development, 4-point quality control, and direct apparel sourcing from Tiruppur, India.
               </p>
             </div>
 

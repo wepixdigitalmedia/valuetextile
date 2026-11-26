@@ -14,7 +14,7 @@ const AGENT_POINTS = [
 ];
 
 const DIRECT_POINTS = [
-  { label: "Our own units in Tirupur" },
+  { label: "Our own units in Tiruppur" },
   { label: "Our own knitting, dyeing and lab testing" },
   { label: "Unified standard: 4-point fabric inspection plus in-line & final garment QC" },
   { label: "Integrated fabric and garment production in one system" },

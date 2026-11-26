@@ -85,7 +85,7 @@ export function ContactForm() {
           Thank you for reaching out.
         </h3>
         <p className="text-base text-[var(--text-muted)] leading-relaxed max-w-md mx-auto mb-7">
-          We have received your message. Our merchandising and export team in Tirupur will review your requirements and respond within 24 working hours.
+          We have received your message. Our merchandising and export team in Tiruppur will review your requirements and respond within 24 working hours.
         </p>
         <button
           type="button"

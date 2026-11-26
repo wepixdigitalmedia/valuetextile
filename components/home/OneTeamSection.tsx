@@ -35,7 +35,7 @@ export function OneTeamSection() {
               <div className="relative h-56 sm:h-60 w-full overflow-hidden bg-[var(--surface)] border-b border-[var(--line)]">
                 <Image
                   src="/images/slider/cut-and-sew.webp"
-                  alt="Value Textiles stitching and garment production line in Tirupur"
+                  alt="Value Textiles stitching and garment production line in Tiruppur"
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-cover object-center group-hover:scale-105 transition-transform duration-500"

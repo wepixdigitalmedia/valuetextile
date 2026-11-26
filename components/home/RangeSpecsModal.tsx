@@ -134,7 +134,7 @@ export function RangeSpecsModal({ item, onClose }: RangeSpecsModalProps) {
                   </div>
                   <div className="py-2 flex items-center justify-between text-[13px]">
                     <span className="text-[var(--text-muted)] font-medium">Manufacturing Location</span>
-                    <span className="font-semibold text-[var(--black)]">In-house units, Tirupur, India</span>
+                    <span className="font-semibold text-[var(--black)]">In-house units, Tiruppur, India</span>
                   </div>
                 </div>
 
@@ -227,7 +227,7 @@ export function RangeSpecsModal({ item, onClose }: RangeSpecsModalProps) {
                     </form>
 
                     <div className="mt-3 pt-3 border-t border-[var(--line)] flex items-center justify-between text-[11px] text-[var(--text-muted)]">
-                      <span>Export desk: No. 3/197 H, Parapalayam, Tirupur 641607</span>
+                      <span>Export desk: No. 3/197 H, Parapalayam, Tiruppur 641607</span>
                       <span>Phone: +91 93456 30303</span>
                     </div>
                   </div>

@@ -12,12 +12,12 @@ export function WhyTirupurSection() {
       <Container>
         {/* Header */}
         <div className="max-w-3xl">
-          <Eyebrow>WHY TIRUPUR</Eyebrow>
+          <Eyebrow>WHY TIRUPPUR</Eyebrow>
           <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em] mt-2">
-            Knitwear sourcing in India starts in Tirupur.
+            Knitwear sourcing in India starts in Tiruppur.
           </h2>
           <p className="text-base sm:text-lg text-[var(--text-muted)] leading-relaxed mt-4">
-            Tirupur, in Tamil Nadu (also spelled <Tiruppur />), is India&apos;s main knitwear export cluster. Yarn, knitting, dyeing, printing, embroidery and garment units sit close together, providing an integrated ecosystem for global garment manufacturing.
+            Tiruppur, in Tamil Nadu (also spelled <Tiruppur />), is India&apos;s main knitwear export cluster. Yarn, knitting, dyeing, printing, embroidery and garment units sit close together, providing an integrated ecosystem for global garment manufacturing.
           </p>
         </div>
 
@@ -73,7 +73,7 @@ export function WhyTirupurSection() {
         <div className="mt-8 p-5 rounded-[12px] bg-[var(--surface)] border border-[var(--line)] flex items-center gap-3 text-sm text-[var(--text-muted)]">
           <MapPin className="w-4 h-4 text-[var(--accent)] shrink-0" />
           <span>
-            Our units are located in Parapalayam, Tirupur. Factory visits and live video tours are welcome by appointment.
+            Our units are located in Parapalayam, Tiruppur. Factory visits and live video tours are welcome by appointment.
           </span>
         </div>
       </Container>

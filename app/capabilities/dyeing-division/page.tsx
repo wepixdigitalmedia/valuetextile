@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Dyeing Division | Value Textiles — Capabilities, Perundurai & Tirupur",
+  title: "Dyeing Division | Value Textiles — Capabilities, Perundurai & Tiruppur",
   description:
     "Value Textiles Dyeing Division features Brazzoli & Dilmenler HTHP soft-flow dyeing machines with SETEX & ORGATEX automation, THIES dispensing, TubeTex & Mario Crosta finishing, and SIMEM Zero Liquid Discharge (ZLD).",
 };

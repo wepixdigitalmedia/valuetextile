@@ -77,14 +77,14 @@ export const STARTER_BLOG_POSTS: BlogPost[] = [
   {
     id: "starter-1",
     slug: "how-in-house-fabric-controls-garment-lead-times",
-    title: "How Making Our Own Fabric Cuts Garment Lead Times in Tirupur",
+    title: "How Making Our Own Fabric Cuts Garment Lead Times in Tiruppur",
     excerpt:
-      "Why sourcing knitwear from a vertically integrated Tirupur manufacturer eliminates fabric mill delays, shade variations, and split accountability.",
+      "Why sourcing knitwear from a vertically integrated Tiruppur manufacturer eliminates fabric mill delays, shade variations, and split accountability.",
     content: `For international apparel brands, the single biggest cause of late garment shipments isn't the sewing line—it's waiting on third-party fabric mills and dye houses.
 
 When a cut-and-sew factory buys fabric on the open market, every shade lot variation, shrinkage failure, or dyeing queue pushes back your ex-factory date.
 
-At Value Textiles, circular knitting, soft-flow dyeing, lab testing, and garment stitching happen under our own management across Tirupur and Perundurai.
+At Value Textiles, circular knitting, soft-flow dyeing, lab testing, and garment stitching happen under our own management across Tiruppur and Perundurai.
 
 What this means for your buying team:
 1. Consistent Shade Continuity: Lab dips are formulated on automated dispensers and verified on spectrophotometer before bulk dyeing.
@@ -105,7 +105,7 @@ What this means for your buying team:
       "A practical look at how systematic roll-by-roll defect scoring protects AQL garment inspection outcomes and reduces cutting waste.",
     content: `Catching a knitting or dyeing defect after a T-shirt or polo is already stitched is the most expensive mistake in apparel manufacturing.
 
-Before any fabric roll enters our cutting room in Parapalayam, Tirupur, it goes through standard 4-point inspection:
+Before any fabric roll enters our cutting room in Parapalayam, Tiruppur, it goes through standard 4-point inspection:
 - Every 100 square yards is scored for slubs, holes, barre, colour streaks, and contamination.
 - Rolls exceeding buyer defect thresholds are isolated or flagged before spreading.
 - Width, GSM, and bowing/skewing are logged alongside colour-coded lot tags.
@@ -132,7 +132,7 @@ Here is how international brands typically pair our specialized knits by garment
 - Activewear & Performance: Cotton-Polyester, Cotton-Lycra, and engineered Tencel blends offering stretch recovery and moisture management.
 - Kids & Baby Wear: Ultra-soft OEKO-TEX certified cotton interlock and rib knits tested for skin safety and dimensional stability.
 
-Need physical swatches before finalizing your tech pack? Our merchandising desk can ship development swatches or counter-samples directly from Tirupur.`,
+Need physical swatches before finalizing your tech pack? Our merchandising desk can ship development swatches or counter-samples directly from Tiruppur.`,
     category: "Fabric & Yarn",
     author: "Technical Merchandising",
     readTime: "5 min read",

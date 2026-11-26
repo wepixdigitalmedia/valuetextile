@@ -49,7 +49,7 @@ export function BlogDetailClient() {
             We couldn&apos;t find this article.
           </h1>
           <p className="text-base text-[var(--text-muted)]">
-            It may have been moved or unpublished. Browse all insights from our Tirupur export desk.
+            It may have been moved or unpublished. Browse all insights from our Tiruppur export desk.
           </p>
           <Link
             href="/blog"
@@ -147,7 +147,7 @@ export function BlogDetailClient() {
                 Planning your next knitwear collection?
               </h2>
               <p className="text-sm text-[var(--text-muted)]">
-                Send your tech pack or sample brief to our merchandising desk in Tirupur.
+                Send your tech pack or sample brief to our merchandising desk in Tiruppur.
               </p>
             </div>
             <Link

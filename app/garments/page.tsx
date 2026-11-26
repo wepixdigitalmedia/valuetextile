@@ -10,7 +10,7 @@ import { GARMENT_CATEGORY_DETAILS } from "@/config/garmentsData";
 import { ArrowRight, Shirt } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Garments | Value Textiles — Export Knitwear & Apparel, Tirupur",
+  title: "Garments | Value Textiles — Export Knitwear & Apparel, Tiruppur",
   description:
     "Explore Value Textiles garment categories: T-Shirts & Polos, Kids & Baby Wear, Men's & Women's Knitwear, Activewear & Loungewear, and Made to Your Requirements.",
 };

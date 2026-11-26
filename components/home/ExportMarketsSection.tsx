@@ -21,7 +21,7 @@ export function ExportMarketsSection() {
         <div className="max-w-3xl">
           <Eyebrow>EXPORT MARKETS</Eyebrow>
           <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em] mt-2">
-            Shipping garments from Tirupur to global markets.
+            Shipping garments from Tiruppur to global markets.
           </h2>
           <p className="text-base sm:text-lg text-[var(--text-muted)] leading-relaxed mt-4">
             We supply finished knitwear garments to apparel brands, retailers and buying houses across Europe, the UK, North America, Australia and the Middle East.

@@ -15,9 +15,9 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Garment Manufacturing Division | Value Textiles — Capabilities, Tirupur",
+  title: "Garment Manufacturing Division | Value Textiles — Capabilities, Tiruppur",
   description:
-    "Value Textiles Garment Manufacturing Division in Tirupur manufactures knitted and woven garments for domestic and global markets with vertically integrated facilities, Total Quality Management, and sustainable production.",
+    "Value Textiles Garment Manufacturing Division in Tiruppur manufactures knitted and woven garments for domestic and global markets with vertically integrated facilities, Total Quality Management, and sustainable production.",
 };
 
 const GARMENT_GALLERY = [
@@ -37,7 +37,7 @@ const GARMENT_GALLERY = [
     src: "https://ik.imagekit.io/wpxassets/value%20textiles/garments/g3.jpg",
     title: "Kids & Baby Wear",
     subtitle: "Soft, skin-safe knits with pull-tested baby-safe trims",
-    alt: "Children's and baby knitwear garment manufactured in Tirupur",
+    alt: "Children's and baby knitwear garment manufactured in Tiruppur",
   },
   {
     src: "https://ik.imagekit.io/wpxassets/value%20textiles/garments/g4.jpg",
@@ -306,7 +306,7 @@ export default function GarmentManufacturingCapabilitiesPage() {
             <div className="max-w-2xl space-y-2.5">
               <Eyebrow>FULL PACKAGE &amp; CUT-AND-MAKE PROGRAMS</Eyebrow>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-[-0.02em] leading-[1.1]">
-                Start your next garment program with our Tirupur team.
+                Start your next garment program with our Tiruppur team.
               </h2>
               <p className="text-base text-[var(--text-muted)] leading-relaxed">
                 Share your tech pack, target quantity, and delivery schedule.

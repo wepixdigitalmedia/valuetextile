@@ -38,7 +38,7 @@ const PROCESS_STAGES: ProcessStage[] = [
   {
     number: "05",
     title: "Stitching",
-    description: "Made on our dedicated garment lines in Tirupur with in-line supervisors and continuous production checks.",
+    description: "Made on our dedicated garment lines in Tiruppur with in-line supervisors and continuous production checks.",
     highlight: "In-line production checks",
   },
   {
