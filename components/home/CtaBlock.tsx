@@ -6,24 +6,16 @@ export function CtaBlock() {
   return (
     <Link
       href="/contact#quote"
-      className="group relative flex items-center justify-between w-[170px] sm:w-[200px] lg:w-[220px] h-[84px] sm:h-[98px] lg:h-[108px] rounded-[22px] sm:rounded-[26px] bg-[#C8741F] hover:bg-[#b86617] px-4 sm:px-5 py-3 shadow-md transition-all duration-300 active:scale-[0.98] select-none cursor-pointer"
+      className="group relative flex items-center justify-between w-[170px] sm:w-[200px] lg:w-[220px] min-h-[72px] sm:min-h-[84px] lg:min-h-[92px] rounded-full bg-[var(--accent)] hover:bg-[var(--accent-hover)] px-5 sm:px-6 py-3 transition-colors duration-200 select-none cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--black)]"
       aria-label="Get a Quote for production"
     >
-      {/* 1px Inner Outline inset */}
-      <div
-        className="pointer-events-none absolute inset-2 sm:inset-2.5 rounded-[16px] sm:rounded-[20px] border border-white/30 transition-colors group-hover:border-white/50"
-        aria-hidden="true"
-      ></div>
-
-      {/* CTA Text */}
-      <span className="relative z-10 font-heading font-bold text-[17px] sm:text-[20px] lg:text-[22px] leading-[1.08] text-white tracking-tight">
+      <span className="font-bold text-[17px] sm:text-[20px] lg:text-[22px] leading-[1.1] text-[var(--on-accent)] tracking-[-0.02em]">
         Get a<br />Quote
       </span>
 
-      {/* White circle containing ochre arrow */}
-      <div className="relative z-10 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white flex items-center justify-center shrink-0 shadow-sm transition-transform duration-300 group-hover:scale-105">
+      <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-[var(--white)] flex items-center justify-center shrink-0 transition-transform duration-200 group-hover:scale-105">
         <ArrowUpRight
-          className="w-4 h-4 sm:w-5 sm:h-5 text-[#C8741F] transition-transform duration-300 ease-out group-hover:rotate-45"
+          className="w-4 h-4 sm:w-5 sm:h-5 text-[var(--accent)] transition-transform duration-200 group-hover:rotate-45"
           strokeWidth={2.5}
         />
       </div>

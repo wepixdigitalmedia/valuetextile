@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { Container } from "../ui/Container";
+import { Eyebrow } from "../ui/Eyebrow";
 
 interface CertificateItem {
   id: string;
@@ -35,17 +36,15 @@ const CERTS: CertificateItem[] = [
 
 export function CertificationsSection() {
   return (
-    <section className="w-full bg-[#FAF8F5] py-14 sm:py-18 lg:py-20 border-b border-[#E8E2D9]">
+    <section className="w-full bg-[var(--surface)] py-16 lg:py-24 border-b border-[var(--line)]">
       <Container>
         {/* Header Block */}
         <div className="max-w-3xl">
-          <p className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-[#C8741F]">
-            / CERTIFICATIONS & COMPLIANCE
-          </p>
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-[#1F1F1F] leading-tight mt-2">
+          <Eyebrow>CERTIFICATIONS &amp; COMPLIANCE</Eyebrow>
+          <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em] mt-2">
             Certified, and verified for every shipment.
           </h2>
-          <p className="font-body text-base sm:text-lg text-[#554F47] leading-relaxed mt-3">
+          <p className="text-base sm:text-lg text-[var(--text-muted)] leading-relaxed mt-3">
             Our units carry independent international certifications covering product safety, recycled content, and organic traceability.
           </p>
         </div>

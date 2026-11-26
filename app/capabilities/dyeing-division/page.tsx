@@ -1,8 +1,9 @@
 import React from "react";
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { Container } from "@/components/ui/Container";
+import { Button } from "@/components/ui/Button";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 import { siteConfig } from "@/config/siteContent";
 import {
   ArrowRight,
@@ -128,59 +129,48 @@ const DYEING_HIGHLIGHTS = [
 
 export default function DyeingDivisionPage() {
   return (
-    <main className="w-full bg-white">
+    <main className="w-full bg-[var(--white)]">
       {/* ============================================================ */}
-      {/* 01. DYEING DIVISION HERO (Matching Knitting Division Layout) */}
+      {/* 01. DYEING DIVISION HERO                                     */}
       {/* ============================================================ */}
-      <section className="relative w-full bg-[#FFFDF9] pt-14 sm:pt-20 pb-14 sm:pb-20 border-b border-[#E8E2D9] overflow-hidden">
-        <div
-          className="pointer-events-none absolute top-0 left-[-5%] w-[520px] h-[520px] rounded-full bg-[#FCE1CA]/35 blur-[150px]"
-          aria-hidden="true"
-        />
-
+      <section className="relative w-full bg-[var(--surface)] py-16 lg:py-24 border-b border-[var(--line)] overflow-hidden">
         <Container className="relative z-10">
           <div className="max-w-4xl space-y-5">
-            <p className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-[#C8741F]">
-              / CAPABILITIES · DYEING DIVISION · SIPCOT PERUNDURAI, INDIA
-            </p>
-            <h1 className="font-heading text-3xl sm:text-5xl lg:text-[56px] font-extrabold text-[#1F1F1F] leading-[1.05] tracking-tight">
+            <Eyebrow>
+              CAPABILITIES · DYEING DIVISION · SIPCOT PERUNDURAI, INDIA
+            </Eyebrow>
+            <h1 className="text-3xl sm:text-5xl lg:text-[56px] font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em]">
               Dyeing Division
             </h1>
-            <p className="font-body text-base sm:text-lg text-[#554F47] leading-relaxed">
+            <p className="text-base sm:text-lg text-[var(--text-muted)] leading-relaxed">
               Usage of wide range of exclusive dyeing machines like soft flow
               dyeing machine, yarn dyeing and fabric dyeing, stenter and tubular
               etc reveals the Organization&apos;s vast experience in
               manufacturing of fabrics and yarn dyeing.
             </p>
-            <p className="font-body text-base sm:text-lg text-[#554F47] leading-relaxed">
+            <p className="text-base sm:text-lg text-[var(--text-muted)] leading-relaxed">
               For knitted fabric processing, we operate high-efficiency
               soft-flow machines equipped with SETEX controllers, ORGATEX
               centralized dyehouse management system, and automated liquid
               chemical &amp; dye dispensing from THIES Germany.
             </p>
 
-            <div className="pt-1 flex items-start sm:items-center gap-2 text-sm font-mono text-[#554F47]">
-              <MapPin className="w-4 h-4 text-[#C8741F] shrink-0 mt-0.5 sm:mt-0" />
+            <div className="pt-1 flex items-start sm:items-center gap-2 text-sm text-[var(--text-muted)]">
+              <MapPin className="w-4 h-4 text-[var(--accent)] shrink-0 mt-0.5 sm:mt-0" />
               <span>
-                <strong className="text-[#1F1F1F]">Dyeing Unit:</strong>{" "}
+                <strong className="text-[var(--black)]">Dyeing Unit:</strong>{" "}
                 {siteConfig.contact.dyeingAddress}
               </span>
             </div>
 
             <div className="flex flex-wrap items-center gap-4 pt-3">
-              <Link
-                href="/contact#quote"
-                className="inline-flex items-center gap-2.5 h-[52px] px-8 rounded-full bg-[#1F1F1F] hover:bg-black text-white text-sm font-semibold transition-all shadow-xs"
-              >
+              <Button href="/contact#quote" variant="primary">
                 <span>Enquire About Dyeing &amp; Fabrics</span>
                 <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link
-                href="/capabilities/knitting-division"
-                className="inline-flex items-center gap-2 h-[52px] px-8 rounded-full border border-[#1F1F1F] text-[#1F1F1F] hover:bg-[#1F1F1F] hover:text-white text-sm font-semibold transition-all"
-              >
+              </Button>
+              <Button href="/capabilities/knitting-division" variant="secondary">
                 <span>Knitting Division</span>
-              </Link>
+              </Button>
             </div>
           </div>
         </Container>
@@ -189,13 +179,11 @@ export default function DyeingDivisionPage() {
       {/* ============================================================ */}
       {/* 02. DYEING DIVISION GALLERY (dy3.jpg & dy5.jpg)              */}
       {/* ============================================================ */}
-      <section className="w-full bg-[#FAF8F5] py-16 sm:py-20 border-b border-[#E8E2D9]">
+      <section className="w-full bg-[var(--surface)] py-16 lg:py-24 border-b border-[var(--line)]">
         <Container>
           <div className="max-w-3xl mb-10 sm:mb-12">
-            <p className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-[#C8741F]">
-              / INSIDE OUR DYEHOUSE
-            </p>
-            <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-[#1F1F1F] leading-tight mt-2">
+            <Eyebrow>INSIDE OUR DYEHOUSE</Eyebrow>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em] mt-2">
               Automated soft-flow dyeing &amp; precision finishing.
             </h2>
           </div>
@@ -204,9 +192,9 @@ export default function DyeingDivisionPage() {
             {DYEING_GALLERY.map((item, idx) => (
               <div
                 key={item.src}
-                className="group rounded-[26px] bg-white border border-[#E8E2D9] overflow-hidden flex flex-col justify-between shadow-2xs hover:border-[#C8741F] transition-all duration-300"
+                className="group rounded-[12px] bg-[var(--white)] border border-[var(--line)] overflow-hidden flex flex-col justify-between hover:border-[var(--black)] transition-colors duration-300"
               >
-                <div className="relative aspect-[16/10] w-full overflow-hidden bg-white">
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-[var(--white)]">
                   <Image
                     src={item.src}
                     alt={item.alt}
@@ -217,10 +205,10 @@ export default function DyeingDivisionPage() {
                   />
                 </div>
                 <div className="p-6 space-y-1.5">
-                  <h3 className="font-heading text-lg font-bold text-[#1F1F1F]">
+                  <h3 className="text-lg font-bold text-[var(--black)]">
                     {item.title}
                   </h3>
-                  <p className="font-body text-sm text-[#554F47]">
+                  <p className="text-sm text-[var(--text-muted)]">
                     {item.subtitle}
                   </p>
                 </div>
@@ -233,49 +221,47 @@ export default function DyeingDivisionPage() {
       {/* ============================================================ */}
       {/* 03. FABRIC DYEING MACHINES & CERTIFICATIONS                  */}
       {/* ============================================================ */}
-      <section className="w-full bg-white py-16 sm:py-20 border-b border-[#E8E2D9]">
+      <section className="w-full bg-[var(--white)] py-16 lg:py-24 border-b border-[var(--line)]">
         <Container className="space-y-14">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
             {/* Left (8 Cols): Dyeing Machines Table */}
             <div className="lg:col-span-8 space-y-5">
               <div>
-                <p className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-[#C8741F]">
-                  / FABRIC DYEING MACHINES
-                </p>
-                <h2 className="font-heading text-2xl sm:text-4xl font-extrabold text-[#1F1F1F] leading-tight mt-2">
+                <Eyebrow>FABRIC DYEING MACHINES</Eyebrow>
+                <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em] mt-2">
                   Dyeing Machines
                 </h2>
-                <p className="font-body text-sm sm:text-base text-[#554F47] mt-2">
+                <p className="text-base text-[var(--text-muted)] mt-2">
                   For knitted fabric processing we have the following Soft-Flow
                   M/C&apos;s with SETEX (controller) &amp; ORGATEX (Centralised
                   Dyehouse management system):
                 </p>
               </div>
 
-              <div className="overflow-x-auto rounded-[22px] border border-[#E8E2D9] bg-white shadow-2xs">
+              <div className="overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
                 <table className="w-full text-left border-collapse min-w-[480px]">
                   <thead>
-                    <tr className="bg-[#FAF8F5] border-b border-[#E8E2D9] text-[#1F1F1F] font-heading text-sm font-bold">
+                    <tr className="bg-[var(--surface)] border-b border-[var(--line)] text-[var(--black)] text-sm font-bold">
                       <th className="py-4 px-6">Machine Make</th>
                       <th className="py-4 px-6">Capacity</th>
                       <th className="py-4 px-6">Type</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-[#E8E2D9] font-body text-sm sm:text-[15px] text-[#3B3631]">
+                  <tbody className="divide-y divide-[var(--line)] text-sm sm:text-[15px] text-[var(--text-muted)]">
                     {DYEING_MACHINES.map((row, idx) => (
                       <tr
                         key={`${row.make}-${row.capacity}-${idx}`}
                         className={
-                          idx % 2 === 1 ? "bg-[#FAF8F5]/60" : "bg-white"
+                          idx % 2 === 1 ? "bg-[var(--surface)]/60" : "bg-[var(--white)]"
                         }
                       >
-                        <td className="py-3.5 px-6 font-medium text-[#1F1F1F]">
+                        <td className="py-3.5 px-6 font-semibold text-[var(--black)]">
                           {row.make}
                         </td>
-                        <td className="py-3.5 px-6 font-mono text-sm">
+                        <td className="py-3.5 px-6 text-sm font-medium text-[var(--black)]">
                           {row.capacity}
                         </td>
-                        <td className="py-3.5 px-6 font-mono text-sm">
+                        <td className="py-3.5 px-6 text-sm font-medium text-[var(--black)]">
                           {row.type}
                         </td>
                       </tr>
@@ -284,7 +270,7 @@ export default function DyeingDivisionPage() {
                 </table>
               </div>
 
-              <p className="font-mono text-xs text-[#6E665E]">
+              <p className="text-xs text-[var(--text-muted)]">
                 * All bulk dyeing M/c&apos;s are connected to Liquid Chemical
                 &amp; dye dispensing system of THIES Germany &amp; Orgatex
                 centralized.
@@ -293,12 +279,10 @@ export default function DyeingDivisionPage() {
 
             {/* Right (4 Cols): Dyeing Certifications Card */}
             <aside className="lg:col-span-4">
-              <div className="rounded-[24px] bg-[#FAF8F5] border-t-4 border-t-[#C8741F] border border-[#E8E2D9] p-7 sm:p-8 space-y-6">
+              <div className="rounded-[12px] bg-[var(--surface)] border-t-4 border-t-[var(--accent)] border border-[var(--line)] p-7 sm:p-8 space-y-6">
                 <div>
-                  <p className="font-mono text-xs font-bold uppercase tracking-wider text-[#C8741F]">
-                    / COMPLIANCE
-                  </p>
-                  <h3 className="font-heading text-2xl font-extrabold text-[#1F1F1F] mt-1">
+                  <Eyebrow>COMPLIANCE</Eyebrow>
+                  <h3 className="text-2xl font-extrabold text-[var(--black)] mt-2">
                     Certifications
                   </h3>
                 </div>
@@ -306,10 +290,10 @@ export default function DyeingDivisionPage() {
                 <ul className="space-y-4">
                   {DYEING_CERTIFICATIONS.map((cert) => (
                     <li key={cert} className="flex items-start gap-3">
-                      <span className="w-5 h-5 rounded-full bg-[#C8741F]/15 text-[#C8741F] flex items-center justify-center shrink-0 mt-0.5">
+                      <span className="w-5 h-5 rounded-full bg-[var(--white)] border border-[var(--line)] text-[var(--accent)] flex items-center justify-center shrink-0 mt-0.5">
                         <CheckCircle2 className="w-3.5 h-3.5" />
                       </span>
-                      <span className="font-heading text-sm sm:text-[15px] font-semibold text-[#1F1F1F]">
+                      <span className="text-sm sm:text-[15px] font-semibold text-[var(--black)]">
                         {cert}
                       </span>
                     </li>
@@ -324,13 +308,11 @@ export default function DyeingDivisionPage() {
       {/* ============================================================ */}
       {/* 04. LAB EQUIPMENTS (COLOR LAB & QUALITY LAB)                 */}
       {/* ============================================================ */}
-      <section className="w-full bg-[#FAF8F5] py-16 sm:py-20 border-b border-[#E8E2D9]">
+      <section className="w-full bg-[var(--surface)] py-16 lg:py-24 border-b border-[var(--line)]">
         <Container className="space-y-10">
           <div className="max-w-3xl">
-            <p className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-[#C8741F]">
-              / IN-HOUSE TESTING &amp; SHADE MATCHING
-            </p>
-            <h2 className="font-heading text-2xl sm:text-4xl font-extrabold text-[#1F1F1F] leading-tight mt-2">
+            <Eyebrow>IN-HOUSE TESTING &amp; SHADE MATCHING</Eyebrow>
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em] mt-2">
               Lab Equipments
             </h2>
           </div>
@@ -338,26 +320,26 @@ export default function DyeingDivisionPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
             {/* Color Lab Table */}
             <div className="space-y-3">
-              <h3 className="font-heading text-base font-bold uppercase tracking-wider text-[#554F47]">
+              <h3 className="text-base font-bold uppercase tracking-[0.14em] text-[var(--black)]">
                 COLOR LAB is equipped with
               </h3>
-              <div className="overflow-x-auto rounded-[22px] border border-[#E8E2D9] bg-white shadow-2xs">
+              <div className="overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
                 <table className="w-full text-left border-collapse">
                   <thead>
-                    <tr className="bg-[#FAF8F5] border-b border-[#E8E2D9] text-[#1F1F1F] font-heading text-sm font-bold">
+                    <tr className="bg-[var(--surface)] border-b border-[var(--line)] text-[var(--black)] text-sm font-bold">
                       <th className="py-3.5 px-6">Make / System</th>
                       <th className="py-3.5 px-6">Equipment</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-[#E8E2D9] font-body text-sm text-[#3B3631]">
+                  <tbody className="divide-y divide-[var(--line)] text-sm text-[var(--text-muted)]">
                     {COLOR_LAB_EQUIPMENTS.map((item, idx) => (
                       <tr
                         key={`${item.brand}-${item.equipment}-${idx}`}
                         className={
-                          idx % 2 === 1 ? "bg-[#FAF8F5]/60" : "bg-white"
+                          idx % 2 === 1 ? "bg-[var(--surface)]/60" : "bg-[var(--white)]"
                         }
                       >
-                        <td className="py-3.5 px-6 font-semibold text-[#1F1F1F]">
+                        <td className="py-3.5 px-6 font-semibold text-[var(--black)]">
                           {item.brand}
                         </td>
                         <td className="py-3.5 px-6">{item.equipment}</td>
@@ -370,29 +352,29 @@ export default function DyeingDivisionPage() {
 
             {/* Quality Lab Table */}
             <div className="space-y-3">
-              <h3 className="font-heading text-base font-bold uppercase tracking-wider text-[#554F47]">
+              <h3 className="text-base font-bold uppercase tracking-[0.14em] text-[var(--black)]">
                 QUALITY LAB is equipped with
               </h3>
-              <div className="overflow-x-auto rounded-[22px] border border-[#E8E2D9] bg-white shadow-2xs">
+              <div className="overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
                 <table className="w-full text-left border-collapse">
                   <thead>
-                    <tr className="bg-[#FAF8F5] border-b border-[#E8E2D9] text-[#1F1F1F] font-heading text-sm font-bold">
+                    <tr className="bg-[var(--surface)] border-b border-[var(--line)] text-[var(--black)] text-sm font-bold">
                       <th className="py-3.5 px-6 w-16">#</th>
                       <th className="py-3.5 px-6">Testing Instrument</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-[#E8E2D9] font-body text-sm text-[#3B3631]">
+                  <tbody className="divide-y divide-[var(--line)] text-sm text-[var(--text-muted)]">
                     {QUALITY_LAB_EQUIPMENTS.map((instrument, idx) => (
                       <tr
                         key={instrument}
                         className={
-                          idx % 2 === 1 ? "bg-[#FAF8F5]/60" : "bg-white"
+                          idx % 2 === 1 ? "bg-[var(--surface)]/60" : "bg-[var(--white)]"
                         }
                       >
-                        <td className="py-3.5 px-6 font-mono text-xs text-[#78716C]">
+                        <td className="py-3.5 px-6 text-xs font-bold text-[var(--black)]">
                           0{idx + 1}
                         </td>
-                        <td className="py-3.5 px-6 font-medium text-[#1F1F1F]">
+                        <td className="py-3.5 px-6 font-medium text-[var(--black)]">
                           {instrument}
                         </td>
                       </tr>
@@ -408,40 +390,38 @@ export default function DyeingDivisionPage() {
       {/* ============================================================ */}
       {/* 05. FINISHING & EFFLUENT TREATMENT PLANT (ZLD)               */}
       {/* ============================================================ */}
-      <section className="w-full bg-white py-16 sm:py-20 border-b border-[#E8E2D9]">
+      <section className="w-full bg-[var(--white)] py-16 lg:py-24 border-b border-[var(--line)]">
         <Container className="space-y-14">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
             {/* Finishing Machinery Table (7 Cols) */}
             <div className="lg:col-span-7 space-y-4">
               <div>
-                <p className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-[#C8741F]">
-                  / COMPACTING, DRYING &amp; SURFACE FINISHING
-                </p>
-                <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-[#1F1F1F] mt-1">
+                <Eyebrow>COMPACTING, DRYING &amp; SURFACE FINISHING</Eyebrow>
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--black)] mt-2">
                   Finishing
                 </h2>
               </div>
 
-              <div className="overflow-x-auto rounded-[22px] border border-[#E8E2D9] bg-white shadow-2xs">
+              <div className="overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
                 <table className="w-full text-left border-collapse">
                   <thead>
-                    <tr className="bg-[#FAF8F5] border-b border-[#E8E2D9] text-[#1F1F1F] font-heading text-sm font-bold">
+                    <tr className="bg-[var(--surface)] border-b border-[var(--line)] text-[var(--black)] text-sm font-bold">
                       <th className="py-3.5 px-5 w-14">No.</th>
                       <th className="py-3.5 px-6">Machine Specification</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-[#E8E2D9] font-body text-sm text-[#3B3631]">
+                  <tbody className="divide-y divide-[var(--line)] text-sm text-[var(--text-muted)]">
                     {FINISHING_MACHINES.map((item, idx) => (
                       <tr
                         key={item.no}
                         className={
-                          idx % 2 === 1 ? "bg-[#FAF8F5]/60" : "bg-white"
+                          idx % 2 === 1 ? "bg-[var(--surface)]/60" : "bg-[var(--white)]"
                         }
                       >
-                        <td className="py-3.5 px-5 font-mono text-xs font-semibold text-[#C8741F]">
+                        <td className="py-3.5 px-5 text-xs font-bold text-[var(--black)]">
                           {item.no}
                         </td>
-                        <td className="py-3.5 px-6 font-medium text-[#1F1F1F]">
+                        <td className="py-3.5 px-6 font-medium text-[var(--black)]">
                           {item.spec}
                         </td>
                       </tr>
@@ -454,34 +434,32 @@ export default function DyeingDivisionPage() {
             {/* Effluent Treatment Plant Table (5 Cols) */}
             <div className="lg:col-span-5 space-y-4">
               <div>
-                <p className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-[#C8741F]">
-                  / ZERO LIQUID DISCHARGE (ZLD)
-                </p>
-                <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-[#1F1F1F] mt-1">
+                <Eyebrow>ZERO LIQUID DISCHARGE (ZLD)</Eyebrow>
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--black)] mt-2">
                   Effluent Treatment Plant
                 </h2>
               </div>
 
-              <div className="overflow-x-auto rounded-[22px] border border-[#E8E2D9] bg-white shadow-2xs">
+              <div className="overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
                 <table className="w-full text-left border-collapse">
                   <thead>
-                    <tr className="bg-[#FAF8F5] border-b border-[#E8E2D9] text-[#1F1F1F] font-heading text-sm font-bold">
+                    <tr className="bg-[var(--surface)] border-b border-[var(--line)] text-[var(--black)] text-sm font-bold">
                       <th className="py-3.5 px-5 w-14">Stage</th>
                       <th className="py-3.5 px-6">Process &amp; Capacity</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-[#E8E2D9] font-body text-sm text-[#3B3631]">
+                  <tbody className="divide-y divide-[var(--line)] text-sm text-[var(--text-muted)]">
                     {ETP_STAGES.map((stage, idx) => (
                       <tr
                         key={stage.no}
                         className={
-                          idx % 2 === 1 ? "bg-[#FAF8F5]/60" : "bg-white"
+                          idx % 2 === 1 ? "bg-[var(--surface)]/60" : "bg-[var(--white)]"
                         }
                       >
-                        <td className="py-3.5 px-5 font-mono text-xs font-semibold text-[#C8741F]">
+                        <td className="py-3.5 px-5 text-xs font-bold text-[var(--black)]">
                           {stage.no}
                         </td>
-                        <td className="py-3.5 px-6 font-medium text-[#1F1F1F] leading-relaxed">
+                        <td className="py-3.5 px-6 font-medium text-[var(--black)] leading-relaxed">
                           {stage.spec}
                         </td>
                       </tr>
@@ -490,7 +468,7 @@ export default function DyeingDivisionPage() {
                 </table>
               </div>
 
-              <div className="p-5 rounded-2xl bg-[#F2F7F1] border border-[#96BC92] text-xs sm:text-sm text-[#1A2419] font-medium leading-relaxed">
+              <div className="p-5 rounded-[12px] bg-[var(--surface)] border border-[var(--line)] border-l-4 border-l-[var(--accent)] text-sm text-[var(--black)] font-medium leading-relaxed">
                 Using the above we are recycling both water as well as salt and
                 meeting the <strong>ZERO LIQUID DISCHARGE (ZLD)</strong> as per
                 Government norms.
@@ -501,9 +479,9 @@ export default function DyeingDivisionPage() {
       </section>
 
       {/* ============================================================ */}
-      {/* 06. HIGHLIGHTS & CTA (Matching Knitting Division Layout)     */}
+      {/* 06. HIGHLIGHTS & CTA                                         */}
       {/* ============================================================ */}
-      <section className="w-full bg-white py-16 sm:py-20 lg:py-24">
+      <section className="w-full bg-[var(--white)] py-16 lg:py-24">
         <Container className="space-y-14">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {DYEING_HIGHLIGHTS.map((item) => {
@@ -511,15 +489,15 @@ export default function DyeingDivisionPage() {
               return (
                 <div
                   key={item.title}
-                  className="p-7 rounded-[26px] bg-[#FAF8F5] border border-[#E8E2D9] space-y-4"
+                  className="p-7 rounded-[12px] bg-[var(--surface)] border border-[var(--line)] space-y-4"
                 >
-                  <div className="w-11 h-11 rounded-xl bg-white border border-[#E8E2D9] flex items-center justify-center text-[#C8741F]">
+                  <div className="w-11 h-11 rounded-[12px] bg-[var(--white)] border border-[var(--line)] flex items-center justify-center text-[var(--accent)]">
                     <Icon className="w-5 h-5" />
                   </div>
-                  <h3 className="font-heading text-xl font-bold text-[#1F1F1F]">
+                  <h3 className="text-xl font-bold text-[var(--black)]">
                     {item.title}
                   </h3>
-                  <p className="font-body text-sm sm:text-[15px] text-[#554F47] leading-relaxed">
+                  <p className="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
                     {item.text}
                   </p>
                 </div>
@@ -527,33 +505,25 @@ export default function DyeingDivisionPage() {
             })}
           </div>
 
-          <div className="rounded-[32px] bg-[#1F1F1F] text-white p-8 sm:p-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+          <div className="rounded-[12px] bg-[var(--surface)] border border-[var(--line)] text-[var(--black)] p-8 sm:p-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
             <div className="max-w-2xl space-y-2.5">
-              <p className="font-mono text-xs uppercase tracking-widest text-[#F7C08A]">
-                / PANTONE LAB DIPS TO BULK PRODUCTION
-              </p>
-              <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight">
+              <Eyebrow>PANTONE LAB DIPS TO BULK PRODUCTION</Eyebrow>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-[-0.02em] leading-[1.1]">
                 Need OEKO-TEX® &amp; GOTS certified fabric dyeing for your garments?
               </h2>
-              <p className="font-body text-sm sm:text-base text-white/80 leading-relaxed">
+              <p className="text-base text-[var(--text-muted)] leading-relaxed">
                 Share your Pantone shade codes, fabric GSM, and garment tech
                 pack. We knit, dye, finish, test, and stitch in our own units.
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-4 shrink-0">
-              <Link
-                href="/contact#quote"
-                className="inline-flex items-center gap-2.5 h-[52px] px-8 rounded-full bg-[#C8741F] hover:bg-[#b56618] text-white font-semibold text-sm transition-all shadow-sm"
-              >
+              <Button href="/contact#quote" variant="primary">
                 <span>Get a Quote</span>
                 <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link
-                href="/garments"
-                className="inline-flex items-center gap-2 h-[52px] px-7 rounded-full border border-white/25 hover:border-white text-white font-semibold text-sm transition-all"
-              >
+              </Button>
+              <Button href="/garments" variant="secondary">
                 <span>Explore Garments</span>
-              </Link>
+              </Button>
             </div>
           </div>
         </Container>

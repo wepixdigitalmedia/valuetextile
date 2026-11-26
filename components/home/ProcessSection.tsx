@@ -63,41 +63,41 @@ const PROCESS_STAGES: ProcessStage[] = [
 
 export function ProcessSection() {
   return (
-    <section className="w-full bg-[#FAF8F5] py-16 sm:py-20 lg:py-24 border-b border-[#E8E2D9]">
+    <section className="w-full bg-[var(--surface)] py-16 lg:py-24 border-b border-[var(--line)]">
       <Container>
-        {/* Header */}
         <div className="max-w-3xl">
-          <p className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-[#C8741F]">
-            / OUR PROCESS
+          <p className="inline-flex items-center gap-3 text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--black)]">
+            <span className="inline-block w-[28px] h-[3px] bg-[var(--accent)] shrink-0" aria-hidden="true" />
+            <span>OUR PROCESS</span>
           </p>
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-[46px] font-extrabold text-[#1F1F1F] leading-tight mt-2">
-            From your tech pack to your port.
+          <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em] mt-3">
+            From your tech pack to your{" "}
+            <span className="text-[var(--accent)]">port.</span>
           </h2>
-          <p className="font-body text-base sm:text-lg text-[#554F47] leading-relaxed mt-4">
+          <p className="text-[16px] sm:text-[17px] text-[var(--text-muted)] leading-[1.6] mt-4">
             Every production milestone—from incoming yarn inspection to final AQL carton audit—follows documented technical gates across our integrated departments.
           </p>
         </div>
 
-        {/* 8-Stage Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10 sm:mt-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10 sm:mt-12">
           {PROCESS_STAGES.map((stage) => (
             <div
               key={stage.number}
-              className="p-6 rounded-2xl bg-white border border-[#E8E2D9] flex flex-col justify-between space-y-4 shadow-2xs hover:border-[#C8741F] transition-all"
+              className="p-6 rounded-[12px] bg-[var(--white)] border border-[var(--line)] flex flex-col justify-between space-y-4 hover:border-[var(--black)] transition-colors"
             >
-              <div className="flex items-center justify-between">
-                <span className="font-mono text-2xl font-extrabold text-[#C8741F]">
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-2xl font-extrabold text-[var(--accent)]">
                   {stage.number}
                 </span>
-                <span className="font-mono text-[11px] font-semibold text-[#78716C] bg-[#FAF8F5] px-2 py-0.5 rounded-md border border-[#E8E2D9]">
+                <span className="text-[11px] font-semibold text-[var(--text-muted)] px-2.5 py-0.5 rounded-[6px] border border-[var(--line)]">
                   {stage.highlight}
                 </span>
               </div>
               <div>
-                <h3 className="font-heading text-lg font-bold text-[#1F1F1F] mb-1.5">
+                <h3 className="text-[18px] font-bold text-[var(--black)] leading-[1.2] mb-2">
                   {stage.title}
                 </h3>
-                <p className="font-body text-sm text-[#554F47] leading-relaxed">
+                <p className="text-[14px] text-[var(--text-muted)] leading-[1.6]">
                   {stage.description}
                 </p>
               </div>
@@ -105,8 +105,7 @@ export function ProcessSection() {
           ))}
         </div>
 
-        {/* Caption */}
-        <p className="mt-8 text-center text-sm font-medium text-[#78716C] max-w-2xl mx-auto">
+        <p className="mt-8 text-center text-sm font-medium text-[var(--text-muted)] max-w-2xl mx-auto">
           Documented lot tracking across knitting, dyeing, laboratory testing, and sewing keeps measurements, shades, and timelines accountable.
         </p>
       </Container>

@@ -77,20 +77,20 @@ export function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="relative overflow-hidden bg-[#231E1A] text-white border border-[#3A322B] p-8 sm:p-12 rounded-[32px] sm:rounded-[40px] shadow-2xl text-center flex flex-col items-center justify-center min-h-[460px]">
-        <div className="w-16 h-16 rounded-full bg-[#C8741F]/20 border border-[#C8741F]/40 flex items-center justify-center text-[#F29B52] mb-5">
+      <div className="relative overflow-hidden bg-[var(--surface)] text-[var(--black)] border border-[var(--line)] p-8 sm:p-12 rounded-[12px] text-center flex flex-col items-center justify-center min-h-[460px]">
+        <div className="w-16 h-16 rounded-full bg-[var(--white)] border border-[var(--line)] flex items-center justify-center text-[var(--accent)] mb-5">
           <CheckCircle2 className="w-9 h-9" />
         </div>
-        <h3 className="font-heading text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-3">
+        <h3 className="text-2xl sm:text-3xl font-extrabold text-[var(--black)] tracking-[-0.02em] mb-3">
           Thank you for reaching out.
         </h3>
-        <p className="font-body text-[15px] text-white/75 leading-relaxed max-w-md mx-auto mb-7">
+        <p className="text-base text-[var(--text-muted)] leading-relaxed max-w-md mx-auto mb-7">
           We have received your message. Our merchandising and export team in Tirupur will review your requirements and respond within 24 working hours.
         </p>
         <button
           type="button"
           onClick={() => setSubmitted(false)}
-          className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-white/25 bg-white/10 hover:border-[#F29B52] text-[13.5px] font-semibold text-white transition-colors cursor-pointer"
+          className="inline-flex items-center justify-center gap-2 min-h-[48px] px-7 rounded-full border-[1.5px] border-[var(--black)] bg-transparent text-[var(--black)] hover:bg-[var(--black)] hover:text-[var(--white)] text-sm font-semibold transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--black)]"
         >
           Send another message
         </button>
@@ -101,13 +101,9 @@ export function ContactForm() {
   return (
     <div
       id="quote"
-      style={{
-        background:
-          "radial-gradient(circle at 88% 12%, rgba(200, 116, 31, 0.28) 0%, transparent 48%), linear-gradient(155deg, #26201B 0%, #1C1815 60%, #151210 100%)",
-      }}
-      className="relative overflow-hidden text-white border border-[#3A322B] p-7 sm:p-10 lg:p-12 rounded-[32px] sm:rounded-[40px] shadow-[0_24px_60px_rgba(31,25,20,0.18)]"
+      className="relative overflow-hidden bg-[var(--surface)] text-[var(--black)] border border-[var(--line)] p-7 sm:p-10 lg:p-12 rounded-[12px]"
     >
-      <p className="font-body text-sm sm:text-base font-medium text-white/90 mb-7">
+      <p className="text-base font-medium text-[var(--black)] mb-7 leading-relaxed">
         We&apos;re excited to hear from you and start your next garment program together
       </p>
 
@@ -124,7 +120,7 @@ export function ContactForm() {
             }
             placeholder="FIRST NAME *"
             aria-label="First Name"
-            className="w-full bg-white/[0.04] border border-white/30 px-4 py-3.5 text-xs sm:text-sm text-white placeholder:text-white/65 placeholder:font-mono placeholder:tracking-wider rounded-2xl focus:outline-hidden focus:border-[#F29B52] transition-colors"
+            className="w-full bg-[var(--white)] border border-[var(--line)] px-4 py-3.5 text-sm text-[var(--black)] placeholder:text-[var(--text-muted)] rounded-[12px] focus:outline-none focus:border-[var(--black)] focus:ring-2 focus:ring-[var(--accent)]/30 transition-colors"
           />
 
           <input
@@ -136,7 +132,7 @@ export function ContactForm() {
             }
             placeholder="LAST NAME / COMPANY"
             aria-label="Last Name or Company"
-            className="w-full bg-white/[0.04] border border-white/30 px-4 py-3.5 text-xs sm:text-sm text-white placeholder:text-white/65 placeholder:font-mono placeholder:tracking-wider rounded-2xl focus:outline-hidden focus:border-[#F29B52] transition-colors"
+            className="w-full bg-[var(--white)] border border-[var(--line)] px-4 py-3.5 text-sm text-[var(--black)] placeholder:text-[var(--text-muted)] rounded-[12px] focus:outline-none focus:border-[var(--black)] focus:ring-2 focus:ring-[var(--accent)]/30 transition-colors"
           />
         </div>
 
@@ -152,10 +148,10 @@ export function ContactForm() {
             }
             placeholder="EMAIL ID *"
             aria-label="Email ID"
-            className="w-full bg-white/[0.04] border border-white/30 px-4 py-3.5 text-xs sm:text-sm text-white placeholder:text-white/65 placeholder:font-mono placeholder:tracking-wider rounded-2xl focus:outline-hidden focus:border-[#F29B52] transition-colors"
+            className="w-full bg-[var(--white)] border border-[var(--line)] px-4 py-3.5 text-sm text-[var(--black)] placeholder:text-[var(--text-muted)] rounded-[12px] focus:outline-none focus:border-[var(--black)] focus:ring-2 focus:ring-[var(--accent)]/30 transition-colors"
           />
 
-          <div className="flex items-stretch rounded-2xl border border-white/30 bg-white/[0.04] overflow-hidden focus-within:border-[#F29B52] transition-colors">
+          <div className="flex items-stretch rounded-[12px] border border-[var(--line)] bg-[var(--white)] overflow-hidden focus-within:border-[var(--black)] focus-within:ring-2 focus-within:ring-[var(--accent)]/30 transition-colors">
             <input
               name="countryCode"
               type="text"
@@ -164,7 +160,7 @@ export function ContactForm() {
                 setFormData({ ...formData, countryCode: e.target.value })
               }
               aria-label="Country code"
-              className="w-16 shrink-0 bg-transparent border-r border-white/25 px-3 py-3.5 text-xs sm:text-sm text-white text-center font-mono focus:outline-hidden"
+              className="w-16 shrink-0 bg-transparent border-r border-[var(--line)] px-3 py-3.5 text-sm text-[var(--black)] text-center font-semibold focus:outline-none"
             />
             <input
               name="phone"
@@ -176,7 +172,7 @@ export function ContactForm() {
               }
               placeholder="PHONE NUMBER *"
               aria-label="Phone Number"
-              className="w-full bg-transparent px-4 py-3.5 text-xs sm:text-sm text-white placeholder:text-white/65 placeholder:font-mono placeholder:tracking-wider focus:outline-hidden"
+              className="w-full bg-transparent px-4 py-3.5 text-sm text-[var(--black)] placeholder:text-[var(--text-muted)] focus:outline-none"
             />
           </div>
         </div>
@@ -193,25 +189,25 @@ export function ContactForm() {
             }
             placeholder="TYPE YOUR MESSAGE *"
             aria-label="Type your message"
-            className="w-full bg-white/[0.04] border border-white/30 px-4 py-3.5 text-xs sm:text-sm text-white placeholder:text-white/65 placeholder:font-mono placeholder:tracking-wider rounded-2xl focus:outline-hidden focus:border-[#F29B52] transition-colors resize-y"
+            className="w-full bg-[var(--white)] border border-[var(--line)] px-4 py-3.5 text-sm text-[var(--black)] placeholder:text-[var(--text-muted)] rounded-[12px] focus:outline-none focus:border-[var(--black)] focus:ring-2 focus:ring-[var(--accent)]/30 transition-colors resize-y"
           />
         </div>
 
         {errorMsg && (
-          <p className="text-xs text-[#F7C08A] bg-white/5 border border-[#F7C08A]/30 rounded-xl px-4 py-2.5">
+          <p className="text-sm font-medium text-[var(--black)] bg-[var(--white)] border border-[var(--accent)] rounded-[12px] px-4 py-2.5">
             {errorMsg}
           </p>
         )}
 
-        {/* Submit Button Matching Reference Pill Style in Our Theme */}
+        {/* Submit Button */}
         <div className="pt-2">
           <button
             type="submit"
             disabled={submitting}
-            className="group inline-flex items-center gap-3 h-[48px] pl-6 pr-1.5 rounded-full bg-[#C8741F] hover:bg-[#b56618] disabled:opacity-60 text-white font-semibold text-sm transition-all cursor-pointer shadow-md"
+            className="group inline-flex items-center gap-3 min-h-[48px] pl-6 pr-2 rounded-full bg-[var(--accent)] hover:bg-[var(--accent-hover)] disabled:opacity-60 text-[var(--on-accent)] font-semibold text-sm transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--black)]"
           >
             <span>{submitting ? "Sending..." : "Submit"}</span>
-            <span className="w-9 h-9 rounded-full bg-white text-[#1F1F1F] flex items-center justify-center group-hover:translate-x-0.5 transition-transform">
+            <span className="w-9 h-9 rounded-full bg-[var(--white)] text-[var(--black)] flex items-center justify-center group-hover:translate-x-0.5 transition-transform">
               {submitting ? (
                 <Loader2 className="w-4 h-4 animate-spin" />
               ) : (

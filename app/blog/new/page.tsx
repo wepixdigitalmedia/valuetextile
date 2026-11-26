@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 import { createBlogPost } from "@/lib/firebase";
 import { ArrowLeft, Send, Loader2 } from "lucide-react";
 
@@ -57,26 +58,24 @@ export default function NewBlogPostPage() {
   };
 
   return (
-    <main className="w-full bg-[#FAF8F5] py-12 sm:py-16 lg:py-20">
+    <main className="w-full bg-[var(--surface)] py-16 lg:py-24">
       <Container className="max-w-3xl">
         <Link
           href="/blog"
-          className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-[#554F47] hover:text-[#C8741F] transition-colors mb-6"
+          className="inline-flex items-center gap-2 text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--black)] hover:text-[var(--accent)] transition-colors mb-6"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           <span>Back to Blog</span>
         </Link>
 
-        <div className="bg-white border border-[#E8E2D9] rounded-[28px] p-7 sm:p-10 shadow-xs">
-          <p className="font-mono text-xs font-bold uppercase tracking-wider text-[#C8741F]">
-            / PUBLISH TO FIRESTORE
-          </p>
-          <h1 className="font-heading text-2xl sm:text-4xl font-extrabold text-[#1F1F1F] mt-1.5 mb-2">
+        <div className="bg-[var(--white)] border border-[var(--line)] rounded-[12px] p-7 sm:p-10">
+          <Eyebrow>PUBLISH TO FIRESTORE</Eyebrow>
+          <h1 className="text-2xl sm:text-4xl font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em] mt-2 mb-2">
             Write a New Article
           </h1>
-          <p className="font-body text-sm text-[#554F47] mb-8">
+          <p className="text-base text-[var(--text-muted)] mb-8 leading-relaxed">
             Articles published here are saved directly to your Cloud Firestore{" "}
-            <code className="font-mono text-xs bg-[#FAF8F5] px-1.5 py-0.5 rounded-sm border border-[#E8E2D9]">
+            <code className="text-xs bg-[var(--surface)] px-1.5 py-0.5 rounded-sm border border-[var(--line)]">
               blogs
             </code>{" "}
             collection.
@@ -84,7 +83,7 @@ export default function NewBlogPostPage() {
 
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-[#1F1F1F] mb-1.5">
+              <label className="block text-xs font-bold uppercase tracking-[0.14em] text-[var(--black)] mb-1.5">
                 Article Title *
               </label>
               <input
@@ -93,13 +92,13 @@ export default function NewBlogPostPage() {
                 value={formData.title}
                 onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                 placeholder="e.g. How to Prepare a Knitwear Tech Pack for Tirupur Production"
-                className="w-full bg-[#FAF8F5] border border-[#E8E2D9] rounded-xl px-4 py-3 text-sm text-[#1F1F1F] focus:outline-hidden focus:ring-2 focus:ring-[#C8741F]"
+                className="w-full bg-[var(--white)] border border-[var(--line)] rounded-[12px] px-4 py-3 text-sm text-[var(--black)] placeholder:text-[var(--text-muted)] focus:outline-none focus:border-[var(--black)] focus:ring-2 focus:ring-[var(--accent)]/30"
               />
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-[#1F1F1F] mb-1.5">
+                <label className="block text-xs font-bold uppercase tracking-[0.14em] text-[var(--black)] mb-1.5">
                   Category *
                 </label>
                 <select
@@ -107,7 +106,7 @@ export default function NewBlogPostPage() {
                   onChange={(e) =>
                     setFormData({ ...formData, category: e.target.value })
                   }
-                  className="w-full bg-[#FAF8F5] border border-[#E8E2D9] rounded-xl px-4 py-3 text-sm text-[#1F1F1F] focus:outline-hidden focus:ring-2 focus:ring-[#C8741F]"
+                  className="w-full bg-[var(--white)] border border-[var(--line)] rounded-[12px] px-4 py-3 text-sm text-[var(--black)] focus:outline-none focus:border-[var(--black)] focus:ring-2 focus:ring-[var(--accent)]/30"
                 >
                   <option value="Garment Manufacturing">Garment Manufacturing</option>
                   <option value="Fabric & Yarn">Fabric &amp; Yarn</option>
@@ -117,19 +116,19 @@ export default function NewBlogPostPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-[#1F1F1F] mb-1.5">
+                <label className="block text-xs font-bold uppercase tracking-[0.14em] text-[var(--black)] mb-1.5">
                   Author
                 </label>
                 <input
                   type="text"
                   value={formData.author}
                   onChange={(e) => setFormData({ ...formData, author: e.target.value })}
-                  className="w-full bg-[#FAF8F5] border border-[#E8E2D9] rounded-xl px-4 py-3 text-sm text-[#1F1F1F] focus:outline-hidden focus:ring-2 focus:ring-[#C8741F]"
+                  className="w-full bg-[var(--white)] border border-[var(--line)] rounded-[12px] px-4 py-3 text-sm text-[var(--black)] focus:outline-none focus:border-[var(--black)] focus:ring-2 focus:ring-[var(--accent)]/30"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-[#1F1F1F] mb-1.5">
+                <label className="block text-xs font-bold uppercase tracking-[0.14em] text-[var(--black)] mb-1.5">
                   Read Time
                 </label>
                 <input
@@ -137,13 +136,13 @@ export default function NewBlogPostPage() {
                   value={formData.readTime}
                   onChange={(e) => setFormData({ ...formData, readTime: e.target.value })}
                   placeholder="4 min read"
-                  className="w-full bg-[#FAF8F5] border border-[#E8E2D9] rounded-xl px-4 py-3 text-sm text-[#1F1F1F] focus:outline-hidden focus:ring-2 focus:ring-[#C8741F]"
+                  className="w-full bg-[var(--white)] border border-[var(--line)] rounded-[12px] px-4 py-3 text-sm text-[var(--black)] placeholder:text-[var(--text-muted)] focus:outline-none focus:border-[var(--black)] focus:ring-2 focus:ring-[var(--accent)]/30"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-[#1F1F1F] mb-1.5">
+              <label className="block text-xs font-bold uppercase tracking-[0.14em] text-[var(--black)] mb-1.5">
                 Cover Image URL
               </label>
               <input
@@ -151,7 +150,7 @@ export default function NewBlogPostPage() {
                 value={formData.coverImage}
                 onChange={(e) => setFormData({ ...formData, coverImage: e.target.value })}
                 placeholder="https://ik.imagekit.io/..."
-                className="w-full bg-[#FAF8F5] border border-[#E8E2D9] rounded-xl px-4 py-3 text-sm text-[#1F1F1F] focus:outline-hidden focus:ring-2 focus:ring-[#C8741F]"
+                className="w-full bg-[var(--white)] border border-[var(--line)] rounded-[12px] px-4 py-3 text-sm text-[var(--black)] placeholder:text-[var(--text-muted)] focus:outline-none focus:border-[var(--black)] focus:ring-2 focus:ring-[var(--accent)]/30"
               />
               <div className="flex flex-wrap gap-2 mt-2">
                 {DEFAULT_IMAGES.map((img) => (
@@ -159,10 +158,10 @@ export default function NewBlogPostPage() {
                     key={img.url}
                     type="button"
                     onClick={() => setFormData({ ...formData, coverImage: img.url })}
-                    className={`text-[11px] font-mono px-2.5 py-1 rounded-full border cursor-pointer transition-colors ${
+                    className={`text-xs font-semibold px-3 py-1 rounded-full border cursor-pointer transition-colors ${
                       formData.coverImage === img.url
-                        ? "bg-[#1F1F1F] text-white border-[#1F1F1F]"
-                        : "bg-[#FAF8F5] text-[#554F47] border-[#E8E2D9] hover:border-[#C8741F]"
+                        ? "bg-[var(--black)] text-[var(--white)] border-[var(--black)]"
+                        : "bg-transparent text-[var(--black)] border-[var(--line)] hover:border-[var(--black)]"
                     }`}
                   >
                     {img.label}
@@ -172,7 +171,7 @@ export default function NewBlogPostPage() {
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-[#1F1F1F] mb-1.5">
+              <label className="block text-xs font-bold uppercase tracking-[0.14em] text-[var(--black)] mb-1.5">
                 Short Excerpt *
               </label>
               <textarea
@@ -181,12 +180,12 @@ export default function NewBlogPostPage() {
                 value={formData.excerpt}
                 onChange={(e) => setFormData({ ...formData, excerpt: e.target.value })}
                 placeholder="A concise 1–2 sentence summary shown on the blog listing card..."
-                className="w-full bg-[#FAF8F5] border border-[#E8E2D9] rounded-xl px-4 py-3 text-sm text-[#1F1F1F] focus:outline-hidden focus:ring-2 focus:ring-[#C8741F]"
+                className="w-full bg-[var(--white)] border border-[var(--line)] rounded-[12px] px-4 py-3 text-sm text-[var(--black)] placeholder:text-[var(--text-muted)] focus:outline-none focus:border-[var(--black)] focus:ring-2 focus:ring-[var(--accent)]/30"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-[#1F1F1F] mb-1.5">
+              <label className="block text-xs font-bold uppercase tracking-[0.14em] text-[var(--black)] mb-1.5">
                 Full Article Content *
               </label>
               <textarea
@@ -195,18 +194,18 @@ export default function NewBlogPostPage() {
                 value={formData.content}
                 onChange={(e) => setFormData({ ...formData, content: e.target.value })}
                 placeholder="Write your full article here. Separate paragraphs with a blank line."
-                className="w-full bg-[#FAF8F5] border border-[#E8E2D9] rounded-xl px-4 py-3 text-sm text-[#1F1F1F] focus:outline-hidden focus:ring-2 focus:ring-[#C8741F]"
+                className="w-full bg-[var(--white)] border border-[var(--line)] rounded-[12px] px-4 py-3 text-sm text-[var(--black)] placeholder:text-[var(--text-muted)] focus:outline-none focus:border-[var(--black)] focus:ring-2 focus:ring-[var(--accent)]/30"
               />
             </div>
 
             {errorMsg && (
-              <p className="text-xs text-red-600 font-medium">{errorMsg}</p>
+              <p className="text-sm text-[var(--accent)] font-medium">{errorMsg}</p>
             )}
 
             <button
               type="submit"
               disabled={submitting}
-              className="inline-flex items-center justify-center gap-2.5 h-[52px] px-8 rounded-full bg-[#C8741F] hover:bg-[#b56618] disabled:opacity-60 text-white font-semibold text-sm transition-all shadow-xs cursor-pointer"
+              className="inline-flex items-center justify-center gap-2.5 min-h-[48px] px-8 rounded-full bg-[var(--accent)] hover:bg-[var(--accent-hover)] disabled:opacity-60 text-[var(--on-accent)] font-semibold text-sm transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--black)]"
             >
               {submitting ? (
                 <>

@@ -1,8 +1,9 @@
 import React from "react";
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { Container } from "@/components/ui/Container";
+import { Button } from "@/components/ui/Button";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Tiruppur } from "@/components/ui/Tiruppur";
 import { CheckCircle2, ArrowRight, Factory } from "lucide-react";
 
@@ -115,24 +116,23 @@ const INFRASTRUCTURE_GALLERY = [
 
 export default function InfrastructurePage() {
   return (
-    <main className="w-full bg-white">
+    <main className="w-full bg-[var(--white)]">
       {/* ============================================================ */}
       {/* TOP HERO & TWO-COLUMN INFRASTRUCTURE OVERVIEW                */}
-      {/* (Matching valuetextiles.net/infrastructure.php layout)       */}
       {/* ============================================================ */}
-      <section className="w-full bg-white py-14 sm:py-20 lg:py-24 border-b border-[#E8E2D9]">
+      <section className="w-full bg-[var(--white)] py-16 lg:py-24 border-b border-[var(--line)]">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start">
             {/* Left Column (Col 8): Heading, Intro, 3 Core Pillars + Highlight Grid */}
             <div className="lg:col-span-8 space-y-10">
               <div className="space-y-4">
-                <p className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-[#C8741F]">
-                  / INFRASTRUCTURE · <Tiruppur /> &amp; PERUNDURAI
-                </p>
-                <h1 className="font-heading text-3xl sm:text-5xl lg:text-[52px] font-extrabold text-[#1F1F1F] leading-[1.06] tracking-tight">
+                <Eyebrow>
+                  INFRASTRUCTURE · <Tiruppur /> &amp; PERUNDURAI
+                </Eyebrow>
+                <h1 className="text-3xl sm:text-5xl lg:text-[52px] font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em]">
                   Our Infrastructure
                 </h1>
-                <p className="font-body text-base sm:text-lg text-[#554F47] leading-relaxed">
+                <p className="text-base sm:text-lg text-[var(--text-muted)] leading-relaxed">
                   At Value Textiles, we have been backed and supported by ultra-modern infrastructure that is spread over a vast area. Our infrastructure comprises manufacturing/designing and in-house quality testing equipped with state-of-the-art imported machinery for fabric to garmenting.
                 </p>
               </div>
@@ -145,14 +145,14 @@ export default function InfrastructurePage() {
                     id={pillar.id}
                     className="flex items-start gap-4 scroll-mt-28"
                   >
-                    <div className="w-7 h-7 rounded-full bg-[#FAF4EA] border border-[#ECDDC3] flex items-center justify-center text-[#C8741F] shrink-0 mt-0.5">
+                    <div className="w-7 h-7 rounded-full bg-[var(--surface)] border border-[var(--line)] flex items-center justify-center text-[var(--accent)] shrink-0 mt-0.5">
                       <CheckCircle2 className="w-4 h-4" />
                     </div>
                     <div className="space-y-1.5">
-                      <h2 className="font-heading text-xl font-bold text-[#1F1F1F]">
+                      <h2 className="text-xl font-bold text-[var(--black)]">
                         {pillar.title}
                       </h2>
-                      <p className="font-body text-[15px] text-[#554F47] leading-relaxed">
+                      <p className="text-base text-[var(--text-muted)] leading-relaxed">
                         {pillar.description}
                       </p>
                     </div>
@@ -166,40 +166,35 @@ export default function InfrastructurePage() {
               id="specialized-fabrics"
               className="lg:col-span-4 scroll-mt-28"
             >
-              <div className="relative rounded-[24px] bg-[#FAF8F5] border-t-4 border-t-[#C8741F] border border-[#E8E2D9] p-7 sm:p-8 shadow-2xs overflow-hidden">
-                {/* Subtle corner accent matching reference */}
-                <div
-                  className="pointer-events-none absolute -bottom-6 -right-6 w-20 h-20 bg-[#C8741F]/15 rotate-45"
-                  aria-hidden="true"
-                />
-
-                <h2 className="font-heading text-2xl sm:text-[26px] font-extrabold text-[#C8741F] leading-snug mb-6">
+              <div className="relative rounded-[12px] bg-[var(--white)] border-t-4 border-t-[var(--accent)] border border-[var(--line)] p-7 sm:p-8 overflow-hidden">
+                <h2 className="text-2xl sm:text-[26px] font-extrabold text-[var(--black)] leading-[1.15] tracking-[-0.02em] mb-6">
                   We specialized in
                   <br />
-                  Following fabrics
+                  <span className="text-[var(--accent)]">Following fabrics</span>
                 </h2>
 
                 <ul className="space-y-4">
                   {SPECIALIZED_FABRICS.map((fabric) => (
                     <li key={fabric} className="flex items-start gap-3">
-                      <span className="w-5 h-5 rounded-full bg-[#C8741F]/15 text-[#C8741F] flex items-center justify-center shrink-0 mt-0.5">
+                      <span className="w-5 h-5 rounded-full bg-[var(--surface)] border border-[var(--line)] text-[var(--accent)] flex items-center justify-center shrink-0 mt-0.5">
                         <CheckCircle2 className="w-3.5 h-3.5" />
                       </span>
-                      <span className="font-heading text-[15px] font-semibold text-[#1F1F1F]">
+                      <span className="text-[15px] font-semibold text-[var(--black)]">
                         {fabric}
                       </span>
                     </li>
                   ))}
                 </ul>
 
-                <div className="mt-8 pt-6 border-t border-[#E8E2D9]">
-                  <Link
+                <div className="mt-8 pt-6 border-t border-[var(--line)]">
+                  <Button
                     href="/contact#quote"
-                    className="w-full inline-flex items-center justify-center gap-2 h-[48px] px-6 rounded-full bg-[#1F1F1F] hover:bg-black text-white text-sm font-semibold transition-all"
+                    variant="primary"
+                    className="w-full"
                   >
                     <span>Request Fabric or Garment Quote</span>
                     <ArrowRight className="w-4 h-4" />
-                  </Link>
+                  </Button>
                 </div>
               </div>
             </aside>
@@ -212,36 +207,35 @@ export default function InfrastructurePage() {
       {/* ============================================================ */}
       <section
         id="gallery"
-        className="w-full bg-[#FAF8F5] py-16 sm:py-20 lg:py-24 scroll-mt-24"
+        className="w-full bg-[var(--surface)] py-16 lg:py-24 scroll-mt-24"
       >
         <Container>
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 sm:mb-12">
             <div className="max-w-2xl">
-              <p className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-[#C8741F]">
-                / INSIDE OUR UNITS
-              </p>
-              <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-[#1F1F1F] leading-tight mt-2">
+              <Eyebrow>INSIDE OUR UNITS</Eyebrow>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em] mt-2">
                 Production Floor &amp; Machinery Gallery
               </h2>
-              <p className="font-body text-base text-[#554F47] mt-2">
+              <p className="text-base text-[var(--text-muted)] mt-2 leading-relaxed">
                 A closer look at our circular knitting, dyeing, compacting, testing lab, and garment stitching lines across Tirupur and Perundurai.
               </p>
             </div>
 
-            <Link
+            <Button
               href="/contact"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-[#E8E2D9] hover:border-[#C8741F] text-sm font-semibold text-[#1F1F1F] transition-colors shrink-0 w-fit"
+              variant="secondary"
+              className="shrink-0 w-fit"
             >
-              <Factory className="w-4 h-4 text-[#C8741F]" />
+              <Factory className="w-4 h-4" />
               <span>Book a Factory Visit</span>
-            </Link>
+            </Button>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
             {INFRASTRUCTURE_GALLERY.map((img) => (
               <div
                 key={img.src}
-                className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-white border border-[#E8E2D9] shadow-2xs group"
+                className="relative aspect-[4/3] rounded-[12px] overflow-hidden bg-[var(--white)] border border-[var(--line)] group"
               >
                 <Image
                   src={img.src}

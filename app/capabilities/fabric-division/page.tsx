@@ -1,8 +1,9 @@
 import React from "react";
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { Container } from "@/components/ui/Container";
+import { Button } from "@/components/ui/Button";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Tiruppur } from "@/components/ui/Tiruppur";
 import { siteConfig } from "@/config/siteContent";
 import {
@@ -77,26 +78,26 @@ const POINTS_ALLOWED = [
 const STICKER_IDENTIFICATION = [
   {
     color: "RED",
-    dotClass: "bg-red-600",
-    badgeClass: "bg-red-50 text-red-800 border-red-200",
+    dotClass: "bg-[var(--accent)]",
+    badgeClass: "bg-[var(--white)] text-[var(--black)] border-[var(--accent)]",
     meaning: "Not OK",
   },
   {
     color: "ORANGE",
-    dotClass: "bg-orange-500",
-    badgeClass: "bg-orange-50 text-orange-800 border-orange-200",
+    dotClass: "bg-[var(--accent)] opacity-60",
+    badgeClass: "bg-[var(--white)] text-[var(--black)] border-[var(--line)]",
     meaning: "Conditionally Approved (Cut This Rolls First)",
   },
   {
     color: "YELLOW",
-    dotClass: "bg-amber-400",
-    badgeClass: "bg-amber-50 text-amber-900 border-amber-200",
+    dotClass: "bg-[var(--text-muted)]",
+    badgeClass: "bg-[var(--white)] text-[var(--black)] border-[var(--line)]",
     meaning: "Accepted (Cut This Rolls after Orange)",
   },
   {
     color: "GREEN",
-    dotClass: "bg-emerald-600",
-    badgeClass: "bg-emerald-50 text-emerald-800 border-emerald-200",
+    dotClass: "bg-[var(--black)]",
+    badgeClass: "bg-[var(--white)] text-[var(--black)] border-[var(--black)]",
     meaning: "Passed (Cut This Rolls after Yellow)",
   },
 ];
@@ -170,60 +171,49 @@ const FABRIC_HIGHLIGHTS = [
 
 export default function FabricDivisionPage() {
   return (
-    <main className="w-full bg-white">
+    <main className="w-full bg-[var(--white)]">
       {/* ============================================================ */}
-      {/* 01. FABRIC DIVISION HERO (Matching Knitting Division Layout) */}
+      {/* 01. FABRIC DIVISION HERO                                     */}
       {/* ============================================================ */}
-      <section className="relative w-full bg-[#FFFDF9] pt-14 sm:pt-20 pb-14 sm:pb-20 border-b border-[#E8E2D9] overflow-hidden">
-        <div
-          className="pointer-events-none absolute top-0 left-[-5%] w-[520px] h-[520px] rounded-full bg-[#FCE1CA]/35 blur-[150px]"
-          aria-hidden="true"
-        />
-
+      <section className="relative w-full bg-[var(--surface)] py-16 lg:py-24 border-b border-[var(--line)] overflow-hidden">
         <Container className="relative z-10">
           <div className="max-w-4xl space-y-5">
-            <p className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-[#C8741F]">
-              / CAPABILITIES · FABRIC DIVISION · <Tiruppur />, INDIA
-            </p>
-            <h1 className="font-heading text-3xl sm:text-5xl lg:text-[56px] font-extrabold text-[#1F1F1F] leading-[1.05] tracking-tight">
+            <Eyebrow>
+              CAPABILITIES · FABRIC DIVISION · <Tiruppur />, INDIA
+            </Eyebrow>
+            <h1 className="text-3xl sm:text-5xl lg:text-[56px] font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em]">
               Fabric Division
             </h1>
-            <p className="font-body text-base sm:text-lg text-[#554F47] leading-relaxed">
+            <p className="text-base sm:text-lg text-[var(--text-muted)] leading-relaxed">
               Value Textiles always aims to achieve and ensure optimum quality
               fabric at all times. Our Fabric Division integrates an exclusive
               in-house Fabric Testing Laboratory, 4-Point and 10-Point Fabric
               Inspection systems, and a Time &amp; Action driven Fabric Despatch
               department.
             </p>
-            <p className="font-body text-base sm:text-lg text-[#554F47] leading-relaxed">
+            <p className="text-base sm:text-lg text-[var(--text-muted)] leading-relaxed">
               Whether supplying our own garment stitching lines or shipping
               finished knitted fabric rolls directly to buyers, every lot is
               verified for physical stability, colour fastness, surface
               perfection, and protective packing.
             </p>
 
-            <div className="pt-1 flex items-center gap-2 text-sm font-mono text-[#554F47]">
-              <MapPin className="w-4 h-4 text-[#C8741F] shrink-0" />
+            <div className="pt-1 flex items-center gap-2 text-sm text-[var(--text-muted)]">
+              <MapPin className="w-4 h-4 text-[var(--accent)] shrink-0" />
               <span>
-                <strong className="text-[#1F1F1F]">Fabric &amp; QC Unit:</strong>{" "}
+                <strong className="text-[var(--black)]">Fabric &amp; QC Unit:</strong>{" "}
                 {siteConfig.contact.addressFull}
               </span>
             </div>
 
             <div className="flex flex-wrap items-center gap-4 pt-3">
-              <Link
-                href="/contact#quote"
-                className="inline-flex items-center gap-2.5 h-[52px] px-8 rounded-full bg-[#1F1F1F] hover:bg-black text-white text-sm font-semibold transition-all shadow-xs"
-              >
+              <Button href="/contact#quote" variant="primary">
                 <span>Enquire About Fabrics &amp; Garments</span>
                 <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link
-                href="/capabilities/dyeing-division"
-                className="inline-flex items-center gap-2 h-[52px] px-8 rounded-full border border-[#1F1F1F] text-[#1F1F1F] hover:bg-[#1F1F1F] hover:text-white text-sm font-semibold transition-all"
-              >
+              </Button>
+              <Button href="/capabilities/dyeing-division" variant="secondary">
                 <span>Dyeing Division</span>
-              </Link>
+              </Button>
             </div>
           </div>
         </Container>
@@ -232,19 +222,17 @@ export default function FabricDivisionPage() {
       {/* ============================================================ */}
       {/* 02. FABRIC TESTING - LABORATORY (Table + te1, te2, te4, te3) */}
       {/* ============================================================ */}
-      <section className="w-full bg-white py-16 sm:py-20 border-b border-[#E8E2D9]">
+      <section className="w-full bg-[var(--white)] py-16 lg:py-24 border-b border-[var(--line)]">
         <Container className="space-y-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
             {/* Left (6 Cols): Intro + 11-Test Table */}
             <div className="lg:col-span-6 space-y-6">
               <div>
-                <p className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-[#C8741F]">
-                  / 01 · IN-HOUSE QUALITY VERIFICATION
-                </p>
-                <h2 className="font-heading text-2xl sm:text-4xl font-extrabold text-[#1F1F1F] leading-tight mt-2">
+                <Eyebrow>01 · IN-HOUSE QUALITY VERIFICATION</Eyebrow>
+                <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em] mt-2">
                   Fabric Testing – Laboratory
                 </h2>
-                <p className="font-body text-sm sm:text-base text-[#554F47] leading-relaxed mt-3">
+                <p className="text-base text-[var(--text-muted)] leading-relaxed mt-3">
                   Value Textile always aims to achieve and ensure for optimum
                   quality Fabric at all times. Our exclusive Fabric Testing
                   Laboratory ensures on the quality of our Fabric undergoing the
@@ -252,26 +240,26 @@ export default function FabricDivisionPage() {
                 </p>
               </div>
 
-              <div className="overflow-x-auto rounded-[22px] border border-[#E8E2D9] bg-white shadow-2xs">
+              <div className="overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
                 <table className="w-full text-left border-collapse">
                   <thead>
-                    <tr className="bg-[#FAF8F5] border-b border-[#E8E2D9] text-[#1F1F1F] font-heading text-sm font-bold">
+                    <tr className="bg-[var(--surface)] border-b border-[var(--line)] text-[var(--black)] text-sm font-bold">
                       <th className="py-3.5 px-6 w-20">SNo</th>
                       <th className="py-3.5 px-6">TEST</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-[#E8E2D9] font-body text-sm sm:text-[15px] text-[#3B3631]">
+                  <tbody className="divide-y divide-[var(--line)] text-sm sm:text-[15px] text-[var(--text-muted)]">
                     {LAB_TESTS.map((row, idx) => (
                       <tr
                         key={row.sno}
                         className={
-                          idx % 2 === 1 ? "bg-[#FAF8F5]/60" : "bg-white"
+                          idx % 2 === 1 ? "bg-[var(--surface)]/60" : "bg-[var(--white)]"
                         }
                       >
-                        <td className="py-3 px-6 font-mono text-xs font-semibold text-[#C8741F]">
+                        <td className="py-3 px-6 text-xs font-bold text-[var(--black)]">
                           {row.sno}
                         </td>
-                        <td className="py-3 px-6 font-medium text-[#1F1F1F]">
+                        <td className="py-3 px-6 font-medium text-[var(--black)]">
                           {row.test}
                         </td>
                       </tr>
@@ -286,9 +274,9 @@ export default function FabricDivisionPage() {
               {LAB_IMAGES.map((item, idx) => (
                 <div
                   key={item.src}
-                  className="group rounded-[24px] bg-[#FAF8F5] border border-[#E8E2D9] overflow-hidden flex flex-col justify-between shadow-2xs hover:border-[#C8741F] transition-all duration-300"
+                  className="group rounded-[12px] bg-[var(--surface)] border border-[var(--line)] overflow-hidden flex flex-col justify-between hover:border-[var(--black)] transition-colors duration-300"
                 >
-                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-white">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-[var(--white)]">
                     <Image
                       src={item.src}
                       alt={item.alt}
@@ -299,10 +287,10 @@ export default function FabricDivisionPage() {
                     />
                   </div>
                   <div className="p-5 space-y-1">
-                    <h3 className="font-heading text-base font-bold text-[#1F1F1F]">
+                    <h3 className="text-base font-bold text-[var(--black)]">
                       {item.title}
                     </h3>
-                    <p className="font-body text-xs sm:text-[13px] text-[#554F47]">
+                    <p className="text-xs sm:text-[13px] text-[var(--text-muted)]">
                       {item.subtitle}
                     </p>
                   </div>
@@ -316,16 +304,14 @@ export default function FabricDivisionPage() {
       {/* ============================================================ */}
       {/* 03. FABRIC INSPECTION (4-Point & 10-Point + Sticker ID + fi1-4) */}
       {/* ============================================================ */}
-      <section className="w-full bg-[#FAF8F5] py-16 sm:py-20 border-b border-[#E8E2D9]">
+      <section className="w-full bg-[var(--surface)] py-16 lg:py-24 border-b border-[var(--line)]">
         <Container className="space-y-12">
           <div className="max-w-3xl">
-            <p className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-[#C8741F]">
-              / 02 · 4-POINT &amp; 10-POINT QUALITY SYSTEM
-            </p>
-            <h2 className="font-heading text-2xl sm:text-4xl font-extrabold text-[#1F1F1F] leading-tight mt-2">
+            <Eyebrow>02 · 4-POINT &amp; 10-POINT QUALITY SYSTEM</Eyebrow>
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em] mt-2">
               Fabric Inspection
             </h2>
-            <p className="font-body text-sm sm:text-base text-[#554F47] leading-relaxed mt-3">
+            <p className="text-base text-[var(--text-muted)] leading-relaxed mt-3">
               The 4 Point system that is widely used in apparel Industry is
               followed in Value Textile for Fabric Inspection. However,
               depending upon our customer requests and to give them utmost
@@ -338,26 +324,26 @@ export default function FabricDivisionPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
             {/* Table 1: Total Rolls of Lot vs No. of Rolls to be checked (5 Cols) */}
             <div className="lg:col-span-5 space-y-3">
-              <h3 className="font-heading text-base font-bold text-[#1F1F1F]">
+              <h3 className="text-base font-bold text-[var(--black)]">
                 Roll Sampling Plan
               </h3>
-              <div className="overflow-x-auto rounded-[22px] border border-[#E8E2D9] bg-white shadow-2xs">
+              <div className="overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
                 <table className="w-full text-left border-collapse">
                   <thead>
-                    <tr className="bg-[#FAF8F5] border-b border-[#E8E2D9] text-[#1F1F1F] font-heading text-sm font-bold">
+                    <tr className="bg-[var(--surface)] border-b border-[var(--line)] text-[var(--black)] text-sm font-bold">
                       <th className="py-3.5 px-5">Total Rolls of Lot</th>
                       <th className="py-3.5 px-5">No. of Rolls to be checked</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-[#E8E2D9] font-body text-sm text-[#3B3631]">
+                  <tbody className="divide-y divide-[var(--line)] text-sm text-[var(--text-muted)]">
                     {INSPECTION_LOT_SAMPLING.map((row, idx) => (
                       <tr
                         key={row.totalRolls}
                         className={
-                          idx % 2 === 1 ? "bg-[#FAF8F5]/60" : "bg-white"
+                          idx % 2 === 1 ? "bg-[var(--surface)]/60" : "bg-[var(--white)]"
                         }
                       >
-                        <td className="py-3.5 px-5 font-medium text-[#1F1F1F]">
+                        <td className="py-3.5 px-5 font-medium text-[var(--black)]">
                           {row.totalRolls}
                         </td>
                         <td className="py-3.5 px-5">{row.checkedRolls}</td>
@@ -370,29 +356,29 @@ export default function FabricDivisionPage() {
 
             {/* Table 2: Points Allowed / 100 Mtrs (3 Cols) */}
             <div className="lg:col-span-3 space-y-3">
-              <h3 className="font-heading text-base font-bold text-[#1F1F1F]">
+              <h3 className="text-base font-bold text-[var(--black)]">
                 Points Allowed / 100 Mtrs
               </h3>
-              <div className="overflow-x-auto rounded-[22px] border border-[#E8E2D9] bg-white shadow-2xs">
+              <div className="overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
                 <table className="w-full text-left border-collapse">
                   <thead>
-                    <tr className="bg-[#FAF8F5] border-b border-[#E8E2D9] text-[#1F1F1F] font-heading text-sm font-bold">
+                    <tr className="bg-[var(--surface)] border-b border-[var(--line)] text-[var(--black)] text-sm font-bold">
                       <th className="py-3.5 px-5">Points</th>
                       <th className="py-3.5 px-5">Result</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-[#E8E2D9] font-body text-sm text-[#3B3631]">
+                  <tbody className="divide-y divide-[var(--line)] text-sm text-[var(--text-muted)]">
                     {POINTS_ALLOWED.map((row, idx) => (
                       <tr
                         key={row.points}
                         className={
-                          idx % 2 === 1 ? "bg-[#FAF8F5]/60" : "bg-white"
+                          idx % 2 === 1 ? "bg-[var(--surface)]/60" : "bg-[var(--white)]"
                         }
                       >
-                        <td className="py-3.5 px-5 font-mono text-xs sm:text-sm font-semibold text-[#1F1F1F]">
+                        <td className="py-3.5 px-5 text-sm font-semibold text-[var(--black)]">
                           {row.points}
                         </td>
-                        <td className="py-3.5 px-5 font-medium text-[#1F1F1F]">
+                        <td className="py-3.5 px-5 font-medium text-[var(--black)]">
                           {row.decision}
                         </td>
                       </tr>
@@ -404,23 +390,23 @@ export default function FabricDivisionPage() {
 
             {/* Table 3: Sticker Identification (4 Cols) */}
             <div className="lg:col-span-4 space-y-3">
-              <h3 className="font-heading text-base font-bold text-[#1F1F1F]">
+              <h3 className="text-base font-bold text-[var(--black)]">
                 Sticker Identification
               </h3>
-              <div className="overflow-x-auto rounded-[22px] border border-[#E8E2D9] bg-white shadow-2xs">
+              <div className="overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
                 <table className="w-full text-left border-collapse">
                   <thead>
-                    <tr className="bg-[#FAF8F5] border-b border-[#E8E2D9] text-[#1F1F1F] font-heading text-sm font-bold">
+                    <tr className="bg-[var(--surface)] border-b border-[var(--line)] text-[var(--black)] text-sm font-bold">
                       <th className="py-3.5 px-5">Sticker</th>
                       <th className="py-3.5 px-5">Identification</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-[#E8E2D9] font-body text-sm text-[#3B3631]">
+                  <tbody className="divide-y divide-[var(--line)] text-sm text-[var(--text-muted)]">
                     {STICKER_IDENTIFICATION.map((item, idx) => (
                       <tr
                         key={item.color}
                         className={
-                          idx % 2 === 1 ? "bg-[#FAF8F5]/60" : "bg-white"
+                          idx % 2 === 1 ? "bg-[var(--surface)]/60" : "bg-[var(--white)]"
                         }
                       >
                         <td className="py-3.5 px-5">
@@ -433,7 +419,7 @@ export default function FabricDivisionPage() {
                             {item.color}
                           </span>
                         </td>
-                        <td className="py-3.5 px-5 font-medium text-[#1F1F1F]">
+                        <td className="py-3.5 px-5 font-medium text-[var(--black)]">
                           {item.meaning}
                         </td>
                       </tr>
@@ -449,9 +435,9 @@ export default function FabricDivisionPage() {
             {INSPECTION_IMAGES.map((item) => (
               <div
                 key={item.src}
-                className="group rounded-[24px] bg-white border border-[#E8E2D9] overflow-hidden flex flex-col justify-between shadow-2xs hover:border-[#C8741F] transition-all duration-300"
+                className="group rounded-[12px] bg-[var(--white)] border border-[var(--line)] overflow-hidden flex flex-col justify-between hover:border-[var(--black)] transition-colors duration-300"
               >
-                <div className="relative aspect-[4/3] w-full overflow-hidden bg-white">
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-[var(--white)]">
                   <Image
                     src={item.src}
                     alt={item.alt}
@@ -461,10 +447,10 @@ export default function FabricDivisionPage() {
                   />
                 </div>
                 <div className="p-5 space-y-1">
-                  <h3 className="font-heading text-base font-bold text-[#1F1F1F]">
+                  <h3 className="text-base font-bold text-[var(--black)]">
                     {item.title}
                   </h3>
-                  <p className="font-body text-xs sm:text-[13px] text-[#554F47]">
+                  <p className="text-xs sm:text-[13px] text-[var(--text-muted)]">
                     {item.subtitle}
                   </p>
                 </div>
@@ -477,19 +463,17 @@ export default function FabricDivisionPage() {
       {/* ============================================================ */}
       {/* 04. FABRIC DESPATCH (Lead Time Table + d4, d1)               */}
       {/* ============================================================ */}
-      <section className="w-full bg-white py-16 sm:py-20 border-b border-[#E8E2D9]">
+      <section className="w-full bg-[var(--white)] py-16 lg:py-24 border-b border-[var(--line)]">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
             {/* Left (5 Cols): Despatch Overview + Lead Time Table */}
             <div className="lg:col-span-5 space-y-6">
               <div>
-                <p className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-[#C8741F]">
-                  / 03 · PACKING &amp; LOGISTICS
-                </p>
-                <h2 className="font-heading text-2xl sm:text-4xl font-extrabold text-[#1F1F1F] leading-tight mt-2">
+                <Eyebrow>03 · PACKING &amp; LOGISTICS</Eyebrow>
+                <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em] mt-2">
                   Fabric Despatch
                 </h2>
-                <p className="font-body text-sm sm:text-base text-[#554F47] leading-relaxed mt-3">
+                <p className="text-base text-[var(--text-muted)] leading-relaxed mt-3">
                   The Organization always aims at Customer satisfaction through
                   its despatches of right quantity of Fabric at right time and
                   with utmost safety. The time and action plan followed in the
@@ -499,26 +483,26 @@ export default function FabricDivisionPage() {
                 </p>
               </div>
 
-              <div className="overflow-x-auto rounded-[22px] border border-[#E8E2D9] bg-white shadow-2xs">
+              <div className="overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
                 <table className="w-full text-left border-collapse">
                   <thead>
-                    <tr className="bg-[#FAF8F5] border-b border-[#E8E2D9] text-[#1F1F1F] font-heading text-sm font-bold">
+                    <tr className="bg-[var(--surface)] border-b border-[var(--line)] text-[var(--black)] text-sm font-bold">
                       <th className="py-4 px-6">Type Of Fabric</th>
                       <th className="py-4 px-6">Lead Time</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-[#E8E2D9] font-body text-sm sm:text-[15px] text-[#3B3631]">
+                  <tbody className="divide-y divide-[var(--line)] text-sm sm:text-[15px] text-[var(--text-muted)]">
                     {DESPATCH_LEAD_TIMES.map((row, idx) => (
                       <tr
                         key={row.fabricType}
                         className={
-                          idx % 2 === 1 ? "bg-[#FAF8F5]/60" : "bg-white"
+                          idx % 2 === 1 ? "bg-[var(--surface)]/60" : "bg-[var(--white)]"
                         }
                       >
-                        <td className="py-3.5 px-6 font-bold text-[#1F1F1F]">
+                        <td className="py-3.5 px-6 font-bold text-[var(--black)]">
                           {row.fabricType}
                         </td>
-                        <td className="py-3.5 px-6 font-mono text-sm">
+                        <td className="py-3.5 px-6 text-sm font-medium text-[var(--black)]">
                           {row.leadTime}
                         </td>
                       </tr>
@@ -533,9 +517,9 @@ export default function FabricDivisionPage() {
               {DESPATCH_IMAGES.map((item) => (
                 <div
                   key={item.src}
-                  className="group rounded-[26px] bg-[#FAF8F5] border border-[#E8E2D9] overflow-hidden flex flex-col justify-between shadow-2xs hover:border-[#C8741F] transition-all duration-300"
+                  className="group rounded-[12px] bg-[var(--surface)] border border-[var(--line)] overflow-hidden flex flex-col justify-between hover:border-[var(--black)] transition-colors duration-300"
                 >
-                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-white">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-[var(--white)]">
                     <Image
                       src={item.src}
                       alt={item.alt}
@@ -545,10 +529,10 @@ export default function FabricDivisionPage() {
                     />
                   </div>
                   <div className="p-6 space-y-1.5">
-                    <h3 className="font-heading text-lg font-bold text-[#1F1F1F]">
+                    <h3 className="text-lg font-bold text-[var(--black)]">
                       {item.title}
                     </h3>
-                    <p className="font-body text-sm text-[#554F47]">
+                    <p className="text-sm text-[var(--text-muted)]">
                       {item.subtitle}
                     </p>
                   </div>
@@ -560,9 +544,9 @@ export default function FabricDivisionPage() {
       </section>
 
       {/* ============================================================ */}
-      {/* 05. HIGHLIGHTS & CTA (Matching Knitting Division Layout)     */}
+      {/* 05. HIGHLIGHTS & CTA                                         */}
       {/* ============================================================ */}
-      <section className="w-full bg-[#FAF8F5] py-16 sm:py-20 lg:py-24">
+      <section className="w-full bg-[var(--surface)] py-16 lg:py-24">
         <Container className="space-y-14">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {FABRIC_HIGHLIGHTS.map((item) => {
@@ -570,15 +554,15 @@ export default function FabricDivisionPage() {
               return (
                 <div
                   key={item.title}
-                  className="p-7 rounded-[26px] bg-white border border-[#E8E2D9] space-y-4"
+                  className="p-7 rounded-[12px] bg-[var(--white)] border border-[var(--line)] space-y-4"
                 >
-                  <div className="w-11 h-11 rounded-xl bg-[#FAF8F5] border border-[#E8E2D9] flex items-center justify-center text-[#C8741F]">
+                  <div className="w-11 h-11 rounded-[12px] bg-[var(--surface)] border border-[var(--line)] flex items-center justify-center text-[var(--accent)]">
                     <Icon className="w-5 h-5" />
                   </div>
-                  <h3 className="font-heading text-xl font-bold text-[#1F1F1F]">
+                  <h3 className="text-xl font-bold text-[var(--black)]">
                     {item.title}
                   </h3>
-                  <p className="font-body text-sm sm:text-[15px] text-[#554F47] leading-relaxed">
+                  <p className="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
                     {item.text}
                   </p>
                 </div>
@@ -586,33 +570,25 @@ export default function FabricDivisionPage() {
             })}
           </div>
 
-          <div className="rounded-[32px] bg-[#1F1F1F] text-white p-8 sm:p-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+          <div className="rounded-[12px] bg-[var(--white)] border border-[var(--line)] text-[var(--black)] p-8 sm:p-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
             <div className="max-w-2xl space-y-2.5">
-              <p className="font-mono text-xs uppercase tracking-widest text-[#F7C08A]">
-                / LAB-TESTED &amp; 4-POINT INSPECTED KNITS
-              </p>
-              <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight">
+              <Eyebrow>LAB-TESTED &amp; 4-POINT INSPECTED KNITS</Eyebrow>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-[-0.02em] leading-[1.1]">
                 Ready to source lab-verified fabrics or full-package garments?
               </h2>
-              <p className="font-body text-sm sm:text-base text-white/80 leading-relaxed">
+              <p className="text-base text-[var(--text-muted)] leading-relaxed">
                 Share your fabric GSM, composition, or garment tech pack with
                 our Tiruppur merchandising desk.
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-4 shrink-0">
-              <Link
-                href="/contact#quote"
-                className="inline-flex items-center gap-2.5 h-[52px] px-8 rounded-full bg-[#C8741F] hover:bg-[#b56618] text-white font-semibold text-sm transition-all shadow-sm"
-              >
+              <Button href="/contact#quote" variant="primary">
                 <span>Get a Quote</span>
                 <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link
-                href="/garments"
-                className="inline-flex items-center gap-2 h-[52px] px-7 rounded-full border border-white/25 hover:border-white text-white font-semibold text-sm transition-all"
-              >
+              </Button>
+              <Button href="/garments" variant="secondary">
                 <span>Explore Garments</span>
-              </Link>
+              </Button>
             </div>
           </div>
         </Container>

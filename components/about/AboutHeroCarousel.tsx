@@ -37,7 +37,7 @@ export function AboutHeroCarousel() {
   return (
     <div className="relative w-full max-w-[520px] mx-auto lg:mx-0">
       {/* Clean Auto-Playing 4:5 Image Carousel (No Nav Buttons / No Dots) */}
-      <div className="relative w-full aspect-[4/5] rounded-[28px] sm:rounded-[34px] overflow-hidden border border-[#E8E2D9] bg-[#F5F0E7] shadow-sm">
+      <div className="relative w-full aspect-[4/5] rounded-[12px] overflow-hidden border border-[var(--line)] bg-[var(--surface)]">
         {HERO_SLIDES.map((slide, idx) => (
           <Image
             key={slide.src}
@@ -53,12 +53,12 @@ export function AboutHeroCarousel() {
         ))}
       </div>
 
-      {/* Floating Warm Ochre Badge */}
-      <div className="absolute top-5 right-4 sm:top-6 sm:right-6 z-10 w-36 h-36 sm:w-44 sm:h-44 rounded-[32px] rotate-3 bg-[#C8741F] text-white shadow-xl flex flex-col items-center justify-center text-center p-4 border-4 border-white">
-        <span className="font-mono text-[10px] uppercase tracking-widest text-white/80 mb-1">
+      {/* Floating Accent Badge */}
+      <div className="absolute top-5 right-4 sm:top-6 sm:right-6 z-10 w-36 h-36 sm:w-44 sm:h-44 rounded-[12px] rotate-3 bg-[var(--accent)] text-[var(--on-accent)] flex flex-col items-center justify-center text-center p-4 border-4 border-[var(--white)]">
+        <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--on-accent)]/90 mb-1">
           <Tiruppur />, India
         </span>
-        <p className="font-heading text-lg sm:text-xl font-extrabold leading-tight -rotate-3">
+        <p className="text-lg sm:text-xl font-extrabold leading-tight tracking-[-0.02em] -rotate-3">
           Welcome to Value Textiles
         </p>
       </div>

@@ -45,15 +45,15 @@ const DIVISIONS = [
 
 export default function CapabilitiesPage() {
   return (
-    <section className="py-20 md:py-28 bg-white">
+    <section className="py-16 lg:py-24 bg-[var(--white)]">
       <Container>
         <div className="max-w-3xl mb-16">
           <Eyebrow>OUR CAPABILITIES</Eyebrow>
-          <h1 className="font-heading text-[42px] sm:text-[52px] font-extrabold text-[#1F1F1F] leading-[1.0] tracking-[-0.04em] mb-6">
+          <h1 className="text-[42px] sm:text-[52px] font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em] mt-2 mb-6">
             Knitting, dyeing, testing &amp; garmenting in-house.
           </h1>
-          <div className="w-12 h-[2px] bg-[#F29B52] mb-8" />
-          <p className="font-body text-[17px] text-[#5F5B55] leading-relaxed">
+          <div className="w-12 h-[3px] bg-[var(--accent)] mb-8" />
+          <p className="text-[17px] text-[var(--text-muted)] leading-relaxed">
             While yarns are procured externally to exact buyer counts, Value Textiles operates its own circular knitting, soft-flow dyeing, fabric testing, and garment manufacturing divisions for complete quality traceability and dependable delivery schedules.
           </p>
         </div>
@@ -64,25 +64,25 @@ export default function CapabilitiesPage() {
               key={div.id}
               id={div.id}
               href={div.href}
-              className="group bg-[#FAF8F5] border border-[#E6E2DB] hover:border-[#C8741F] p-8 rounded-[24px] flex flex-col justify-between transition-all shadow-2xs"
+              className="group bg-[var(--white)] border border-[var(--line)] hover:border-[var(--black)] p-8 rounded-[12px] flex flex-col justify-between transition-colors"
             >
               <div>
-                <span className="font-heading text-[11px] font-bold text-[#C8741F] tracking-[0.18em] uppercase mb-2 block">
+                <span className="text-xs font-bold text-[var(--accent)] tracking-[0.14em] uppercase mb-2 block">
                   0{idx + 1} DIVISION
                 </span>
-                <h2 className="font-heading text-[22px] sm:text-[26px] font-bold text-[#1F1F1F] group-hover:text-[#C8741F] mb-3 tracking-tight transition-colors">
+                <h2 className="text-[22px] sm:text-[26px] font-bold text-[var(--black)] group-hover:text-[var(--accent)] mb-3 tracking-[-0.02em] transition-colors">
                   {div.title}
                 </h2>
-                <p className="font-body text-[15px] text-[#5F5B55] leading-relaxed mb-6">
+                <p className="text-base text-[var(--text-muted)] leading-relaxed mb-6">
                   {div.desc}
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-[#E6E2DB] flex items-center justify-between gap-3">
-                <span className="font-mono text-xs font-medium text-[#5F5B55]">
+              <div className="pt-4 border-t border-[var(--line)] flex items-center justify-between gap-3">
+                <span className="text-xs font-medium text-[var(--text-muted)]">
                   {div.highlights}
                 </span>
-                <span className="inline-flex items-center gap-1.5 font-heading text-xs font-bold uppercase tracking-wider text-[#C8741F] shrink-0 group-hover:translate-x-1 transition-transform">
+                <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.14em] text-[var(--accent)] shrink-0 group-hover:translate-x-1 transition-transform">
                   Explore <ArrowRight className="w-3.5 h-3.5" />
                 </span>
               </div>
@@ -90,7 +90,7 @@ export default function CapabilitiesPage() {
           ))}
         </div>
 
-        <div className="flex gap-4">
+        <div className="flex flex-wrap gap-4">
           <Button href="/contact" variant="primary">
             Get a Quote
           </Button>

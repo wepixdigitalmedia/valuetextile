@@ -23,7 +23,6 @@ export function SiteHeader() {
   const [expandedGroup, setExpandedGroup] = useState<string | null>("Garments");
   const pathname = usePathname();
 
-  // Scroll listener: smoothly transitions top corners to full square header when docked at top
   useEffect(() => {
     let ticking = false;
 
@@ -44,12 +43,10 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile drawer on route change
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [pathname]);
 
-  // Close on Escape key & lock body scroll when mobile drawer is open
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") setMobileMenuOpen(false);
@@ -74,10 +71,10 @@ export function SiteHeader() {
   return (
     <>
       <header
-        className={`sticky top-0 z-40 w-full h-[76px] sm:h-[84px] md:h-[92px] lg:h-[98px] transition-[border-radius,box-shadow,background-color,border-color] duration-300 ease-out ${
+        className={`sticky top-0 z-40 w-full h-[76px] sm:h-[84px] md:h-[92px] lg:h-[98px] transition-[border-radius,background-color,border-color] duration-300 ease-out bg-[var(--white)] ${
           isScrolled
-            ? "bg-white/95 backdrop-blur-md border-b border-[#E6E2DB] shadow-xs rounded-t-none border-t-transparent"
-            : "bg-white rounded-t-[26px] sm:rounded-t-[30px] border-t border-black/[0.04]"
+            ? "border-b border-[var(--line)] rounded-t-none"
+            : "rounded-t-[26px] sm:rounded-t-[30px] border-t border-b border-[var(--line)]"
         }`}
       >
         <Container className="h-full flex items-center justify-between">
@@ -86,7 +83,7 @@ export function SiteHeader() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(true)}
-              className="size-10 -ml-1 inline-flex items-center justify-center rounded-full bg-[#FAF6EE] border border-[#E6DFD3] text-[#1F1F1F] hover:border-[#C8741F] focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#C8741F] md:hidden cursor-pointer transition-colors"
+              className="size-10 -ml-1 inline-flex items-center justify-center rounded-full bg-[var(--surface)] border border-[var(--line)] text-[var(--black)] hover:border-[var(--black)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--black)] md:hidden cursor-pointer transition-colors"
               aria-label="Open navigation menu"
               aria-expanded={mobileMenuOpen}
             >
@@ -95,7 +92,7 @@ export function SiteHeader() {
             <Logo />
           </div>
 
-          {/* Center: Desktop Navigation with Neat Spacing */}
+          {/* Center: Desktop Navigation */}
           <nav
             className="hidden md:flex items-center gap-4 lg:gap-7"
             aria-label="Main Navigation"
@@ -117,9 +114,7 @@ export function SiteHeader() {
         </Container>
       </header>
 
-      {/* ============================================================ */}
-      {/* MODERN MOBILE SIDEBAR DRAWER (Outside <header> for true fixed) */}
-      {/* ============================================================ */}
+      {/* Mobile Sidebar Drawer */}
       <div
         className={`fixed inset-0 z-100 md:hidden transition-visibility duration-300 ${
           mobileMenuOpen
@@ -128,41 +123,40 @@ export function SiteHeader() {
         }`}
         aria-hidden={!mobileMenuOpen}
       >
-        {/* Backdrop Scrim */}
         <div
           onClick={() => setMobileMenuOpen(false)}
-          className={`fixed inset-0 bg-[#14110E]/55 backdrop-blur-xs transition-opacity duration-300 ${
+          className={`fixed inset-0 bg-[var(--black)]/50 transition-opacity duration-300 ${
             mobileMenuOpen ? "opacity-100" : "opacity-0"
           }`}
         />
 
-        {/* Slide-Out Left Sidebar Panel */}
         <aside
           data-lenis-prevent
           aria-label="Mobile Navigation Drawer"
-          className={`fixed top-0 left-0 bottom-0 w-[86vw] max-w-[360px] bg-[#FFFDF9] border-r border-[#E6DFD3] shadow-[20px_0_60px_rgba(20,17,14,0.25)] flex flex-col justify-between transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          className={`fixed top-0 left-0 bottom-0 w-[86vw] max-w-[360px] bg-[var(--white)] border-r border-[var(--line)] flex flex-col justify-between transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
             mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
           }`}
         >
-          {/* 01. Drawer Top Header */}
-          <div className="h-[76px] px-5 flex items-center justify-between border-b border-[#EAE3D8] bg-white shrink-0">
+          {/* Drawer Top Header */}
+          <div className="h-[76px] px-5 flex items-center justify-between border-b border-[var(--line)] bg-[var(--white)] shrink-0">
             <div onClick={() => setMobileMenuOpen(false)}>
               <Logo />
             </div>
             <button
               type="button"
               onClick={() => setMobileMenuOpen(false)}
-              className="size-9 rounded-full bg-[#FAF6EE] border border-[#E6DFD3] text-[#1F1F1F] hover:border-[#C8741F] flex items-center justify-center transition-colors cursor-pointer"
+              className="size-9 rounded-full bg-[var(--surface)] border border-[var(--line)] text-[var(--black)] hover:border-[var(--black)] flex items-center justify-center transition-colors cursor-pointer"
               aria-label="Close navigation menu"
             >
               <X className="w-4.5 h-4.5" strokeWidth={2.2} />
             </button>
           </div>
 
-          {/* 02. Scrollable Navigation List with Smooth Accordions */}
+          {/* Scrollable Navigation List */}
           <div className="flex-1 overflow-y-auto px-5 py-5">
-            <p className="font-mono text-[10.5px] font-bold uppercase tracking-[0.16em] text-[#9A9086] mb-3 px-2">
-              Navigation
+            <p className="inline-flex items-center gap-2.5 text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--black)] mb-3 px-2">
+              <span className="inline-block w-[28px] h-[3px] bg-[var(--accent)]" aria-hidden="true" />
+              <span>Navigation</span>
             </p>
 
             <nav className="space-y-1.5" aria-label="Mobile Navigation">
@@ -177,21 +171,21 @@ export function SiteHeader() {
                 return (
                   <div
                     key={item.label}
-                    className="rounded-2xl border border-transparent transition-colors"
+                    className="rounded-[12px] border border-transparent transition-colors"
                   >
                     {hasDropdown ? (
                       <>
                         <div
-                          className={`flex items-center justify-between rounded-xl px-3 py-2.5 transition-colors ${
+                          className={`flex items-center justify-between rounded-[10px] px-3 py-2.5 transition-colors ${
                             isActive
-                              ? "bg-[#FAF4EA] text-[#C8741F]"
-                              : "hover:bg-[#FAF6EE] text-[#1F1F1F]"
+                              ? "bg-[var(--surface)] border-l-2 border-[var(--accent)] text-[var(--black)]"
+                              : "hover:bg-[var(--surface)] text-[var(--black)]"
                           }`}
                         >
                           <Link
                             href={item.href}
                             onClick={() => setMobileMenuOpen(false)}
-                            className="font-heading text-[16px] font-bold tracking-tight flex-1"
+                            className="text-[16px] font-bold flex-1"
                           >
                             {item.label}
                           </Link>
@@ -200,12 +194,12 @@ export function SiteHeader() {
                             onClick={() => toggleAccordion(item.label)}
                             aria-label={`Toggle ${item.label} submenu`}
                             aria-expanded={isExpanded}
-                            className="size-8 rounded-lg flex items-center justify-center text-[#5F5B55] hover:bg-black/[0.04] cursor-pointer"
+                            className="size-8 rounded-lg flex items-center justify-center text-[var(--text-muted)] hover:bg-[var(--line)]/50 cursor-pointer"
                           >
                             <ChevronDown
                               className={`w-4 h-4 transition-transform duration-200 ${
                                 isExpanded
-                                  ? "rotate-180 text-[#C8741F]"
+                                  ? "rotate-180 text-[var(--black)]"
                                   : ""
                               }`}
                             />
@@ -213,7 +207,7 @@ export function SiteHeader() {
                         </div>
 
                         {isExpanded && (
-                          <div className="mt-1 ml-4 pl-3.5 border-l-2 border-[#C8741F]/30 space-y-1 py-1">
+                          <div className="mt-1 ml-4 pl-3.5 border-l-2 border-[var(--accent)] space-y-1 py-1">
                             {item.dropdown!.map((sub) => {
                               const subActive = pathname === sub.href;
                               return (
@@ -221,10 +215,10 @@ export function SiteHeader() {
                                   key={sub.href}
                                   href={sub.href}
                                   onClick={() => setMobileMenuOpen(false)}
-                                  className={`block px-3 py-2 rounded-lg text-[14px] font-body transition-colors ${
+                                  className={`block px-3 py-2 rounded-[8px] text-[14px] transition-colors ${
                                     subActive
-                                      ? "bg-[#FAF4EA] text-[#C8741F] font-semibold"
-                                      : "text-[#554F47] hover:text-[#1F1F1F] hover:bg-[#FAF6EE]"
+                                      ? "bg-[var(--surface)] text-[var(--black)] font-bold"
+                                      : "text-[var(--text-muted)] hover:text-[var(--black)] hover:bg-[var(--surface)]"
                                   }`}
                                 >
                                   {sub.label}
@@ -238,14 +232,14 @@ export function SiteHeader() {
                       <Link
                         href={item.href}
                         onClick={() => setMobileMenuOpen(false)}
-                        className={`flex items-center justify-between rounded-xl px-3 py-2.5 font-heading text-[16px] font-bold tracking-tight transition-colors ${
+                        className={`flex items-center justify-between rounded-[10px] px-3 py-2.5 text-[16px] font-bold transition-colors ${
                           isActive
-                            ? "bg-[#FAF4EA] text-[#C8741F]"
-                            : "text-[#1F1F1F] hover:bg-[#FAF6EE]"
+                            ? "bg-[var(--surface)] border-l-2 border-[var(--accent)] text-[var(--black)]"
+                            : "text-[var(--black)] hover:bg-[var(--surface)]"
                         }`}
                       >
                         <span>{item.label}</span>
-                        <ArrowRight className="w-4 h-4 text-[#9A9086]" />
+                        <ArrowRight className="w-4 h-4 text-[var(--text-muted)]" />
                       </Link>
                     )}
                   </div>
@@ -254,21 +248,21 @@ export function SiteHeader() {
             </nav>
           </div>
 
-          {/* 03. Drawer Bottom Footer: Direct Contact + Action Pills */}
-          <div className="p-5 border-t border-[#EAE3D8] bg-[#FAF6EE]/70 space-y-4 shrink-0">
-            <div className="space-y-1.5 text-xs text-[#554F47]">
+          {/* Drawer Bottom Footer */}
+          <div className="p-5 border-t border-[var(--line)] bg-[var(--surface)] space-y-4 shrink-0">
+            <div className="space-y-1.5 text-xs text-[var(--black)]">
               <a
                 href={`tel:${siteConfig.contact.phoneTel}`}
-                className="flex items-center gap-2 hover:text-[#C8741F] transition-colors font-medium"
+                className="flex items-center gap-2 hover:text-[var(--accent)] transition-colors font-medium"
               >
-                <Phone className="w-3.5 h-3.5 text-[#C8741F]" />
+                <Phone className="w-3.5 h-3.5 text-[var(--black)]" />
                 <span>{siteConfig.contact.phoneDisplay}</span>
               </a>
               <a
                 href={`mailto:${siteConfig.contact.email}`}
-                className="flex items-center gap-2 hover:text-[#C8741F] transition-colors font-medium"
+                className="flex items-center gap-2 hover:text-[var(--accent)] transition-colors font-medium"
               >
-                <Mail className="w-3.5 h-3.5 text-[#C8741F]" />
+                <Mail className="w-3.5 h-3.5 text-[var(--black)]" />
                 <span>{siteConfig.contact.email}</span>
               </a>
             </div>
@@ -277,7 +271,7 @@ export function SiteHeader() {
               <Link
                 href="/contact#quote"
                 onClick={() => setMobileMenuOpen(false)}
-                className="inline-flex items-center justify-center gap-1.5 h-11 rounded-full bg-[#C8741F] hover:bg-[#b56618] text-white font-heading font-bold text-xs uppercase tracking-wider shadow-xs transition-colors"
+                className="inline-flex items-center justify-center gap-1.5 min-h-[48px] px-4 rounded-full bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-[var(--on-accent)] font-semibold text-xs uppercase tracking-wider transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--black)]"
               >
                 <span>Get a Quote</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -285,7 +279,7 @@ export function SiteHeader() {
               <Link
                 href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="inline-flex items-center justify-center h-11 rounded-full bg-[#1F1F1F] hover:bg-black text-white font-heading font-bold text-xs uppercase tracking-wider transition-colors"
+                className="inline-flex items-center justify-center min-h-[48px] px-4 rounded-full border-[1.5px] border-[var(--black)] text-[var(--black)] hover:bg-[var(--black)] hover:text-[var(--white)] font-semibold text-xs uppercase tracking-wider transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--black)]"
               >
                 Contact Us
               </Link>

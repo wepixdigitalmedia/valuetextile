@@ -2,45 +2,63 @@
 
 :root {
   --white: #FFFFFF;
-  --ivory: #FAF8F5;
-  --ivory-warm: #FAF5EE;
-  --charcoal: #1F1F1F;
-  --charcoal-hover: #141414;
-  --stone: #554F47;
-  --stone-muted: #78716C;
-  --line: #E8E2D9;
-  
-  /* Unified Value Textiles Ochre / Brand Amber (Rooted in Hero CTA) */
-  --brand-accent: #C8741F;
-  --brand-accent-hover: #B36417;
-  --brand-accent-light: #FAF4EA;
-  --brand-accent-border: #ECDDC3;
+  --surface: #F6F5F2;
+  --line: #E4E4E0;
+  --black: #111111;
+  --text-muted: #5C5C5C;
+  --accent: #CF3A1B;
+  --accent-hover: #B02F14;
+  --on-accent: #FFFFFF;
 }
 
 @theme {
   --color-white: var(--white);
-  --color-ivory: var(--ivory);
-  --color-ivory-warm: var(--ivory-warm);
-  --color-charcoal: var(--charcoal);
-  --color-charcoal-hover: var(--charcoal-hover);
-  --color-stone: var(--stone);
-  --color-stone-muted: var(--stone-muted);
+  --color-surface: var(--surface);
   --color-line: var(--line);
-  
-  --color-brand-accent: var(--brand-accent);
-  --color-brand-accent-hover: var(--brand-accent-hover);
-  --color-brand-accent-light: var(--brand-accent-light);
-  --color-brand-accent-border: var(--brand-accent-border);
+  --color-black: var(--black);
+  --color-text-muted: var(--text-muted);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-on-accent: var(--on-accent);
 
-  --font-display: var(--font-vt-heading), "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
-  --font-heading: var(--font-vt-heading), "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
-  --font-body: var(--font-vt-body), Figtree, system-ui, -apple-system, sans-serif;
-  --font-sans: var(--font-vt-body), Figtree, system-ui, -apple-system, sans-serif;
+  --font-sans: var(--font-manrope), system-ui, -apple-system, sans-serif;
+  --font-heading: var(--font-manrope), system-ui, -apple-system, sans-serif;
+  --font-body: var(--font-manrope), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-manrope), system-ui, -apple-system, sans-serif;
 }
 
-html {
-  background-color: var(--white);
-  color: var(--charcoal);
+@layer base {
+  html {
+    background-color: var(--white);
+    color: var(--black);
+    font-family: var(--font-manrope), system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    background-color: var(--white);
+    color: var(--text-muted);
+    font-family: var(--font-manrope), system-ui, -apple-system, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: var(--black);
+    font-family: var(--font-manrope), system-ui, -apple-system, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  a {
+    color: inherit;
+  }
 }
 
 /* Lenis smooth scroll integration */
@@ -65,38 +83,13 @@ html.lenis body {
   pointer-events: none;
 }
 
-body {
-  background-color: var(--white);
-  color: var(--stone);
-  font-family: var(--font-vt-body), Figtree, system-ui, -apple-system, sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 .font-heading,
-.font-display,
-h1,
-h2 {
-  font-family: var(--font-vt-heading), "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
-  font-feature-settings: "liga" 1, "kern" 1;
+.font-body,
+.font-sans,
+.font-mono {
+  font-family: var(--font-manrope), system-ui, -apple-system, sans-serif;
 }
 
-.font-body {
-  font-family: var(--font-vt-body), Figtree, system-ui, -apple-system, sans-serif;
-}
-
-.font-tamil {
-  font-family: var(--font-vt-tamil), "Noto Sans Tamil", system-ui, -apple-system, sans-serif;
-}
-
-/* Custom hairline borders */
 .border-line {
   border-color: var(--line);
-}
-
-/* Cinema warm grade filter for factory videos to match editorial palette */
-.video-cinema-grade {
-  filter: contrast(1.03) saturate(0.94) brightness(0.97);
 }

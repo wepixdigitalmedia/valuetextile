@@ -63,7 +63,7 @@ export function UtilityBar() {
   };
 
   return (
-    <div className="relative w-full bg-[#1F1F1F] text-white pt-3 sm:pt-3.5 pb-[38px] sm:pb-[44px] -mb-[26px] sm:-mb-[30px] border-b border-white/[0.06]">
+    <div className="relative w-full bg-[var(--black)] text-[var(--white)] pt-3 sm:pt-3.5 pb-[38px] sm:pb-[44px] -mb-[26px] sm:-mb-[30px]">
       <Container className="flex items-center justify-between gap-3 sm:gap-4">
         {/* Left: Functional Global Search & Action Pill */}
         <div className="flex-1 max-w-[380px]">
@@ -84,24 +84,24 @@ export function UtilityBar() {
               onClick={() => setResourcesOpen((prev) => !prev)}
               aria-expanded={resourcesOpen}
               aria-haspopup="menu"
-              className={`flex items-center gap-2 h-[38px] px-3.5 rounded-full border text-[13px] font-medium transition-all cursor-pointer shadow-2xs ${
+              className={`flex items-center gap-2 h-[38px] px-3.5 rounded-full border text-[13px] font-medium transition-colors cursor-pointer text-[var(--white)] ${
                 resourcesOpen
-                  ? "border-[#C8741F] bg-white/[0.1] text-white"
-                  : "border-white/15 bg-white/[0.04] text-white/90 hover:border-white/30 hover:bg-white/[0.08]"
+                  ? "bg-white/20 border-white/60"
+                  : "bg-white/10 border-white/25 hover:bg-white/20 hover:border-white/50"
               }`}
             >
-              <BookOpen className="w-3.5 h-3.5 text-[#F29B52]" strokeWidth={1.9} />
+              <BookOpen className="w-3.5 h-3.5 text-[var(--white)]" strokeWidth={1.8} />
               <span>Resources</span>
               <ChevronDown
-                className={`w-3 h-3 text-white/60 transition-transform duration-200 ${
-                  resourcesOpen ? "rotate-180 text-[#F29B52]" : ""
+                className={`w-3 h-3 text-[var(--white)]/80 transition-transform duration-200 ${
+                  resourcesOpen ? "rotate-180" : ""
                 }`}
               />
             </button>
 
             {resourcesOpen && (
               <div
-                className="absolute right-0 top-full mt-2 w-60 rounded-2xl bg-[#1F1F1F] border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.45)] p-1.5 z-[60] animate-in fade-in duration-150"
+                className="absolute right-0 top-full mt-2 w-60 rounded-[12px] bg-[var(--white)] border border-[var(--line)] shadow-sm p-1.5 z-[60]"
                 role="menu"
                 aria-label="Resources and Blog navigation"
               >
@@ -109,40 +109,40 @@ export function UtilityBar() {
                   href="/blog"
                   role="menuitem"
                   onClick={() => setResourcesOpen(false)}
-                  className="group flex items-start justify-between gap-3 px-3 py-2.5 rounded-xl hover:bg-white/[0.08] transition-colors"
+                  className="group flex items-start justify-between gap-3 px-3 py-2.5 rounded-[8px] hover:bg-[var(--surface)] transition-colors"
                 >
                   <div className="flex items-start gap-2.5">
-                    <FileText className="w-4 h-4 text-[#F29B52] shrink-0 mt-0.5" />
+                    <FileText className="w-4 h-4 text-[var(--accent)] shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-[13px] font-semibold text-white group-hover:text-[#F29B52] transition-colors">
+                      <p className="text-[13px] font-semibold text-[var(--black)] group-hover:text-[var(--accent)] transition-colors">
                         Blog &amp; Insights
                       </p>
-                      <p className="text-[11px] text-white/60 leading-snug">
+                      <p className="text-[11px] text-[var(--text-muted)] leading-snug">
                         Garment sourcing &amp; knitwear articles
                       </p>
                     </div>
                   </div>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-white/40 group-hover:text-[#F29B52] shrink-0 mt-0.5" />
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[var(--text-muted)] group-hover:text-[var(--accent)] shrink-0 mt-0.5" />
                 </Link>
 
                 <Link
                   href="/resources"
                   role="menuitem"
                   onClick={() => setResourcesOpen(false)}
-                  className="group flex items-start justify-between gap-3 px-3 py-2.5 rounded-xl hover:bg-white/[0.08] transition-colors"
+                  className="group flex items-start justify-between gap-3 px-3 py-2.5 rounded-[8px] hover:bg-[var(--surface)] transition-colors"
                 >
                   <div className="flex items-start gap-2.5">
-                    <BookOpen className="w-4 h-4 text-[#F29B52] shrink-0 mt-0.5" />
+                    <BookOpen className="w-4 h-4 text-[var(--accent)] shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-[13px] font-semibold text-white group-hover:text-[#F29B52] transition-colors">
+                      <p className="text-[13px] font-semibold text-[var(--black)] group-hover:text-[var(--accent)] transition-colors">
                         Technical Guides
                       </p>
-                      <p className="text-[11px] text-white/60 leading-snug">
+                      <p className="text-[11px] text-[var(--text-muted)] leading-snug">
                         GSM charts, 4-point QC &amp; standards
                       </p>
                     </div>
                   </div>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-white/40 group-hover:text-[#F29B52] shrink-0 mt-0.5" />
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[var(--text-muted)] group-hover:text-[var(--accent)] shrink-0 mt-0.5" />
                 </Link>
               </div>
             )}
@@ -153,10 +153,10 @@ export function UtilityBar() {
             href={siteConfig.utilityBar.whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 h-[38px] px-3.5 rounded-full border border-white/15 bg-white/[0.04] text-[13px] font-medium text-white/90 transition-all hover:border-white/30 hover:bg-white/[0.08] shadow-2xs"
+            className="flex items-center gap-2 h-[38px] px-3.5 rounded-full border border-white/25 bg-white/10 text-[13px] font-medium text-[var(--white)] transition-colors hover:bg-white/20 hover:border-white/50"
             aria-label="Export enquiries on WhatsApp"
           >
-            <MessageCircle className="w-3.5 h-3.5 text-[#C8741F]" strokeWidth={2} />
+            <MessageCircle className="w-3.5 h-3.5 text-[var(--white)]" strokeWidth={2} />
             <span className="hidden sm:inline">Export enquiries</span>
           </a>
         </div>

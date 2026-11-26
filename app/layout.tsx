@@ -1,10 +1,6 @@
 import React, { Suspense } from "react";
 import type { Metadata, Viewport } from "next";
-import {
-  Plus_Jakarta_Sans,
-  Figtree,
-  Noto_Sans_Tamil,
-} from "next/font/google";
+import { Manrope } from "next/font/google";
 import "./globals.css";
 import { UtilityBar } from "@/components/layout/UtilityBar";
 import { SiteHeader } from "@/components/layout/SiteHeader";
@@ -15,31 +11,17 @@ import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { siteConfig } from "@/config/siteContent";
 
-const fontHeading = Plus_Jakarta_Sans({
-  variable: "--font-vt-heading",
+const fontManrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
-  display: "swap",
-});
-
-const fontBody = Figtree({
-  variable: "--font-vt-body",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  display: "swap",
-});
-
-const fontTamil = Noto_Sans_Tamil({
-  variable: "--font-vt-tamil",
-  subsets: ["tamil"],
-  weight: ["500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#FAF8F5" },
-    { media: "(prefers-color-scheme: dark)", color: "#1F1F1F" },
+    { media: "(prefers-color-scheme: light)", color: "#FFFFFF" },
+    { media: "(prefers-color-scheme: dark)", color: "#111111" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -98,7 +80,7 @@ export const metadata: Metadata = {
     siteName: "Value Textiles",
     images: [
       {
-        url: "/images/Value%20Textiles%20Cotton%20Flame%20Logo.png",
+        url: "/Value%20Textiles%20Leaf%20Emblem%20Logo.png",
         width: 2172,
         height: 724,
         alt: "Value Textiles Logo",
@@ -112,7 +94,7 @@ export const metadata: Metadata = {
     title: "Value Textiles | Knitted Fabric & Garment Manufacturer in Tirupur",
     description:
       "Integrated knitwear fabric and garment manufacturing in Tirupur, India.",
-    images: ["/images/Value%20Textiles%20Cotton%20Flame%20Logo.png"],
+    images: ["/Value%20Textiles%20Leaf%20Emblem%20Logo.png"],
   },
   robots: {
     index: true,
@@ -130,7 +112,7 @@ export default function RootLayout({
     "@type": "Organization",
     name: siteConfig.name,
     url: siteConfig.url,
-    logo: "https://valuetextiles.com/images/Value%20Textiles%20Cotton%20Flame%20Logo.png",
+    logo: "https://valuetextiles.com/Value%20Textiles%20Leaf%20Emblem%20Logo.png",
     description: siteConfig.description,
     address: {
       "@type": "PostalAddress",
@@ -152,7 +134,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${fontHeading.variable} ${fontBody.variable} ${fontTamil.variable} h-full antialiased`}
+      className={`${fontManrope.variable} h-full antialiased`}
     >
       <head>
         <script
@@ -162,13 +144,13 @@ export default function RootLayout({
       </head>
       <body
         suppressHydrationWarning
-        className="min-h-full flex flex-col bg-[#FAF8F5] text-[#1F1F1F] font-body selection:bg-[#C8741F]/20 selection:text-[#1F1F1F]"
+        className="min-h-full flex flex-col bg-[var(--white)] text-[var(--black)] font-sans selection:bg-[var(--accent)]/15 selection:text-[var(--black)]"
       >
         <SmoothScroll />
         <UtilityBar />
         <Suspense
           fallback={
-            <div className="h-[76px] sm:h-[84px] md:h-[92px] lg:h-[98px] bg-white border-b border-[#E6E2DB]" />
+            <div className="h-[76px] sm:h-[84px] md:h-[92px] lg:h-[98px] bg-[var(--white)] border-b border-[var(--line)]" />
           }
         >
           <SiteHeader />

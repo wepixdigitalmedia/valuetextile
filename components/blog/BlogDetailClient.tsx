@@ -29,10 +29,10 @@ export function BlogDetailClient() {
 
   if (loading) {
     return (
-      <main className="w-full bg-white py-28">
-        <Container className="flex flex-col items-center justify-center gap-3 text-[#78716C]">
-          <Loader2 className="w-7 h-7 animate-spin text-[#C8741F]" />
-          <p className="font-mono text-xs uppercase tracking-wider">Loading article...</p>
+      <main className="w-full bg-[var(--white)] py-28">
+        <Container className="flex flex-col items-center justify-center gap-3 text-[var(--text-muted)]">
+          <Loader2 className="w-7 h-7 animate-spin text-[var(--accent)]" />
+          <p className="text-xs font-bold uppercase tracking-[0.14em]">Loading article...</p>
         </Container>
       </main>
     );
@@ -40,20 +40,20 @@ export function BlogDetailClient() {
 
   if (!post) {
     return (
-      <main className="w-full bg-[#FAF8F5] py-24">
+      <main className="w-full bg-[var(--surface)] py-24">
         <Container className="max-w-2xl text-center space-y-5">
-          <p className="font-mono text-xs font-bold uppercase tracking-wider text-[#C8741F]">
+          <p className="text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--black)]">
             404 · ARTICLE NOT FOUND
           </p>
-          <h1 className="font-heading text-3xl sm:text-4xl font-extrabold text-[#1F1F1F]">
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-[var(--black)]">
             We couldn&apos;t find this article.
           </h1>
-          <p className="font-body text-base text-[#554F47]">
+          <p className="text-base text-[var(--text-muted)]">
             It may have been moved or unpublished. Browse all insights from our Tirupur export desk.
           </p>
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#1F1F1F] text-white text-sm font-semibold"
+            className="inline-flex items-center gap-2 min-h-[48px] px-6 rounded-full bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-[var(--on-accent)] text-sm font-semibold transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Blog</span>
@@ -69,44 +69,44 @@ export function BlogDetailClient() {
     .filter(Boolean);
 
   return (
-    <main className="w-full bg-white">
+    <main className="w-full bg-[var(--white)]">
       {/* Article Header */}
-      <section className="w-full bg-[#FAF8F5] pt-10 sm:pt-14 pb-12 border-b border-[#E8E2D9]">
+      <section className="w-full bg-[var(--surface)] pt-12 sm:pt-16 pb-12 border-b border-[var(--line)]">
         <Container className="max-w-4xl">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-[#554F47] hover:text-[#C8741F] transition-colors mb-6"
+            className="inline-flex items-center gap-2 text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--black)] hover:text-[var(--accent)] transition-colors mb-6"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Back to Journal</span>
           </Link>
 
           <div className="space-y-4">
-            <span className="inline-block px-3.5 py-1 rounded-full bg-white border border-[#E8E2D9] font-mono text-xs font-bold text-[#C8741F]">
+            <span className="inline-block px-3.5 py-1 rounded-full bg-[var(--white)] border border-[var(--line)] text-xs font-semibold text-[var(--black)]">
               {post.category}
             </span>
 
-            <h1 className="font-heading text-3xl sm:text-4xl lg:text-[46px] font-extrabold text-[#1F1F1F] leading-[1.1] tracking-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-[46px] font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em]">
               {post.title}
             </h1>
 
-            <p className="font-body text-lg text-[#554F47] leading-relaxed">
+            <p className="text-lg text-[var(--text-muted)] leading-relaxed">
               {post.excerpt}
             </p>
 
-            <div className="flex flex-wrap items-center gap-4 pt-3 text-xs font-mono text-[#78716C]">
+            <div className="flex flex-wrap items-center gap-4 pt-3 text-xs text-[var(--text-muted)]">
               <span className="inline-flex items-center gap-1.5">
-                <User className="w-3.5 h-3.5 text-[#C8741F]" />
+                <User className="w-3.5 h-3.5 text-[var(--black)]" />
                 {post.author}
               </span>
               <span>·</span>
               <span className="inline-flex items-center gap-1.5">
-                <Calendar className="w-3.5 h-3.5 text-[#C8741F]" />
+                <Calendar className="w-3.5 h-3.5 text-[var(--black)]" />
                 {post.publishedAt}
               </span>
               <span>·</span>
               <span className="inline-flex items-center gap-1.5">
-                <Clock className="w-3.5 h-3.5 text-[#C8741F]" />
+                <Clock className="w-3.5 h-3.5 text-[var(--black)]" />
                 {post.readTime}
               </span>
             </div>
@@ -115,9 +115,9 @@ export function BlogDetailClient() {
       </section>
 
       {/* Cover Image & Body */}
-      <section className="py-12 sm:py-16">
+      <section className="py-16 lg:py-24">
         <Container className="max-w-4xl space-y-10">
-          <div className="relative aspect-[16/9] w-full rounded-[28px] overflow-hidden border border-[#E8E2D9] bg-[#FAF8F5] shadow-xs">
+          <div className="relative aspect-[16/9] w-full rounded-[12px] overflow-hidden border border-[var(--line)] bg-[var(--surface)]">
             <Image
               src={post.coverImage}
               alt={post.title}
@@ -128,7 +128,7 @@ export function BlogDetailClient() {
             />
           </div>
 
-          <article className="space-y-6 font-body text-base sm:text-[17px] text-[#33302C] leading-[1.78]">
+          <article className="space-y-6 text-base sm:text-[17px] text-[var(--text-muted)] leading-relaxed">
             {paragraphs.map((block, idx) => (
               <p key={idx} className="whitespace-pre-line">
                 {block}
@@ -137,21 +137,22 @@ export function BlogDetailClient() {
           </article>
 
           {/* Bottom Export CTA */}
-          <div className="mt-14 p-8 sm:p-10 rounded-[28px] bg-[#1F1F1F] text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+          <div className="mt-14 p-8 sm:p-10 rounded-[12px] bg-[var(--surface)] border border-[var(--line)] text-[var(--black)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
             <div className="space-y-2 max-w-xl">
-              <p className="font-mono text-xs uppercase tracking-wider text-[#F7C08A]">
-                / DIRECT GARMENT MANUFACTURING
+              <p className="inline-flex items-center gap-2.5 text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--black)]">
+                <span className="inline-block w-7 h-[3px] bg-[var(--accent)]" aria-hidden="true" />
+                DIRECT GARMENT MANUFACTURING
               </p>
-              <h2 className="font-heading text-2xl font-extrabold">
+              <h2 className="text-2xl font-extrabold text-[var(--black)]">
                 Planning your next knitwear collection?
               </h2>
-              <p className="font-body text-sm text-white/80">
+              <p className="text-sm text-[var(--text-muted)]">
                 Send your tech pack or sample brief to our merchandising desk in Tirupur.
               </p>
             </div>
             <Link
               href="/contact#quote"
-              className="inline-flex items-center gap-2 h-[48px] px-7 rounded-full bg-[#C8741F] hover:bg-[#b56618] text-white text-sm font-semibold transition-colors shrink-0"
+              className="inline-flex items-center gap-2 min-h-[48px] px-7 rounded-full bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-[var(--on-accent)] text-sm font-semibold transition-colors shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--black)]"
             >
               <span>Get a Quote</span>
               <ArrowRight className="w-4 h-4" />

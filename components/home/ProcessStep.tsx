@@ -31,14 +31,14 @@ export function ProcessStep({ step }: ProcessStepProps) {
   const IconComponent = stepIcons[step.step] || GitBranch;
 
   return (
-    <div className="group flex flex-col border-t border-[#E6E2DB] pt-3.5 pb-2 transition-all duration-200 hover:border-[#F29B52]">
+    <div className="group flex flex-col border-t border-[var(--line)] pt-3.5 pb-2 transition-colors duration-200 hover:border-[var(--accent)]">
       <div className="flex items-center justify-between mb-1.5">
-        <span className="font-heading text-[11px] font-bold text-[#C8741F] tracking-[0.1em]">
+        <span className="text-[12px] font-bold text-[var(--accent)] tracking-[0.1em]">
           {step.step}
         </span>
-        <IconComponent className="w-3.5 h-3.5 text-[#5F5B55]/60 group-hover:text-[#F29B52] transition-colors" strokeWidth={1.8} />
+        <IconComponent className="w-3.5 h-3.5 text-[var(--text-muted)] group-hover:text-[var(--accent)] transition-colors" strokeWidth={1.8} />
       </div>
-      <h3 className="font-heading text-[15px] sm:text-[16px] font-bold text-[#1F1F1F] leading-snug tracking-tight group-hover:text-[#C8741F] transition-colors">
+      <h3 className="text-[15px] sm:text-[16px] font-bold text-[var(--black)] leading-snug tracking-[-0.02em] group-hover:text-[var(--accent)] transition-colors">
         {step.title}
       </h3>
     </div>

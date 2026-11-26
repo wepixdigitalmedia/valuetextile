@@ -35,15 +35,15 @@ const resources = [
 
 export default function ResourcesPage() {
   return (
-    <section className="py-16 sm:py-20 md:py-24 bg-white">
+    <section className="py-16 lg:py-24 bg-[var(--white)]">
       <Container>
         <div className="max-w-3xl mb-12">
           <Eyebrow>SOURCING RESOURCES &amp; BLOG</Eyebrow>
-          <h1 className="font-heading text-[38px] sm:text-[50px] font-extrabold text-[#1F1F1F] leading-[1.04] tracking-[-0.04em] mb-5">
+          <h1 className="text-[38px] sm:text-[50px] font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em] mt-2 mb-5">
             Technical guides, quality standards &amp; blog.
           </h1>
-          <div className="w-12 h-[2px] bg-[#F29B52] mb-6" />
-          <p className="font-body text-[16px] sm:text-[17px] text-[#5F5B55] leading-relaxed">
+          <div className="w-12 h-[3px] bg-[var(--accent)] mb-6" />
+          <p className="text-base sm:text-[17px] text-[var(--text-muted)] leading-relaxed">
             Explore our manufacturing specifications, 4-point quality
             checklists, and practical knitwear sourcing articles from our
             Tiruppur production team.
@@ -51,16 +51,16 @@ export default function ResourcesPage() {
         </div>
 
         {/* Connected Blog Banner */}
-        <div className="mb-12 rounded-[28px] bg-[#FAF4EA] border border-[#E6D7BE] p-7 sm:p-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+        <div className="mb-12 rounded-[12px] bg-[var(--surface)] border border-[var(--line)] p-7 sm:p-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="max-w-2xl space-y-2.5">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#E6DFD3] text-[11px] font-mono font-bold uppercase tracking-wider text-[#C8741F]">
-              <FileText className="w-3.5 h-3.5" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--white)] border border-[var(--line)] text-xs font-bold uppercase tracking-[0.14em] text-[var(--black)]">
+              <FileText className="w-3.5 h-3.5 text-[var(--accent)]" />
               <span>Value Textiles Blog &amp; Journal</span>
             </div>
-            <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-[#1F1F1F] tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--black)] tracking-[-0.02em]">
               Garment &amp; Knitwear Sourcing Insights
             </h2>
-            <p className="font-body text-sm sm:text-[15px] text-[#554F47] leading-relaxed">
+            <p className="text-base text-[var(--text-muted)] leading-relaxed">
               Read in-depth articles on Tiruppur knitwear production, GSM &amp;
               shrinkage control, soft-flow dyeing, and private-label export
               planning.
@@ -68,13 +68,10 @@ export default function ResourcesPage() {
           </div>
 
           <div className="flex flex-wrap items-center gap-3 shrink-0">
-            <Link
-              href="/blog"
-              className="inline-flex items-center gap-2 h-[48px] px-7 rounded-full bg-[#1F1F1F] hover:bg-[#C8741F] text-white text-sm font-semibold transition-colors"
-            >
+            <Button href="/blog" variant="primary">
               <span>Read the Blog</span>
               <ArrowRight className="w-4 h-4" />
-            </Link>
+            </Button>
           </div>
         </div>
 
@@ -84,23 +81,23 @@ export default function ResourcesPage() {
             <Link
               key={item.title}
               href={item.href}
-              className="group bg-[#FAF8F5] border border-[#E6E2DB] hover:border-[#C8741F] p-7 rounded-[24px] flex flex-col justify-between transition-all shadow-2xs"
+              className="group bg-[var(--white)] border border-[var(--line)] hover:border-[var(--black)] p-7 rounded-[12px] flex flex-col justify-between transition-colors"
             >
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <span className="font-heading text-[11px] font-bold text-[#C8741F] tracking-[0.18em] uppercase">
+                  <span className="text-xs font-bold text-[var(--accent)] tracking-[0.14em] uppercase">
                     GUIDE 0{idx + 1}
                   </span>
-                  <BookOpen className="w-4 h-4 text-[#C8741F]" />
+                  <BookOpen className="w-4 h-4 text-[var(--accent)]" />
                 </div>
-                <h2 className="font-heading text-[19px] sm:text-[20px] font-bold text-[#1F1F1F] group-hover:text-[#C8741F] mb-3 leading-snug tracking-tight transition-colors">
+                <h2 className="text-[19px] sm:text-[20px] font-bold text-[var(--black)] group-hover:text-[var(--accent)] mb-3 leading-snug tracking-[-0.02em] transition-colors">
                   {item.title}
                 </h2>
-                <p className="font-body text-[14px] text-[#5F5B55] leading-relaxed mb-6">
+                <p className="text-sm text-[var(--text-muted)] leading-relaxed mb-6">
                   {item.desc}
                 </p>
               </div>
-              <div className="pt-4 border-t border-[#E6E2DB] flex items-center justify-between text-xs font-heading font-bold uppercase tracking-wider text-[#1F1F1F] group-hover:text-[#C8741F]">
+              <div className="pt-4 border-t border-[var(--line)] flex items-center justify-between text-xs font-bold uppercase tracking-[0.14em] text-[var(--black)] group-hover:text-[var(--accent)]">
                 <span>{item.ctaLabel}</span>
                 <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
               </div>
@@ -115,8 +112,8 @@ export default function ResourcesPage() {
           <Button href="/products" variant="secondary">
             Browse Products
           </Button>
-          <span className="inline-flex items-center gap-1.5 text-xs font-mono text-[#78716C] ml-auto">
-            <CheckCircle2 className="w-3.5 h-3.5 text-[#C8741F]" />
+          <span className="inline-flex items-center gap-1.5 text-xs text-[var(--text-muted)] ml-auto">
+            <CheckCircle2 className="w-3.5 h-3.5 text-[var(--accent)]" />
             Technical spec sheets available on request
           </span>
         </div>

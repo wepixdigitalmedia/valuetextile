@@ -105,20 +105,19 @@ export function BrandLogoGrid() {
 
 export function TrustStatsAndLogosSection() {
   return (
-    <section className="w-full bg-white py-16 sm:py-20 lg:py-24 border-b border-[#E8E2D9]">
+    <section className="w-full bg-[var(--white)] py-16 lg:py-24 border-b border-[var(--line)]">
       <Container className="space-y-12">
-        {/* Top Overview (Badges Removed) */}
         <div className="flex flex-col items-center text-center space-y-3">
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#1F1F1F] tracking-tight">
-            Built for repeat export orders.
+          <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em]">
+            Built for repeat{" "}
+            <span className="text-[var(--accent)]">export orders.</span>
           </h2>
-          <p className="text-base sm:text-lg text-[#554F47] max-w-2xl font-body">
+          <p className="text-[16px] sm:text-[18px] text-[var(--text-muted)] leading-[1.6] max-w-2xl">
             Direct knitwear manufacturing with in-house fabric production, dependable lead times, and single-desk accountability.
           </p>
         </div>
 
-        {/* Buyer Brand Cards Grid */}
-        <div className="pt-4">
+        <div className="pt-2">
           <BrandLogoGrid />
         </div>
       </Container>

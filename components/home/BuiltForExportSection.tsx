@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Container } from "../ui/Container";
+import { Eyebrow } from "../ui/Eyebrow";
 
 const TILES = [
   {
@@ -44,16 +45,14 @@ const TILES = [
 
 export function BuiltForExportSection() {
   return (
-    <section className="w-full bg-white py-16 sm:py-20 lg:py-24 border-b border-[#E8E2D9]">
+    <section className="w-full bg-[var(--white)] py-16 lg:py-24 border-b border-[var(--line)]">
       <Container>
         <div className="max-w-3xl">
-          <p className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-[#C8741F]">
-            / BUILT FOR EXPORT
-          </p>
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-[46px] font-extrabold text-[#1F1F1F] leading-tight mt-2">
+          <Eyebrow>BUILT FOR EXPORT</Eyebrow>
+          <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em] mt-2">
             What overseas garment buyers ask us first.
           </h2>
-          <p className="font-body text-base sm:text-lg text-[#554F47] leading-relaxed mt-4">
+          <p className="text-base sm:text-lg text-[var(--text-muted)] leading-relaxed mt-4">
             Straight answers on order size, samples, timing and shipping, so you can plan before you write to us.
           </p>
         </div>
@@ -63,21 +62,24 @@ export function BuiltForExportSection() {
           {TILES.map((tile) => (
             <div
               key={tile.number}
-              className="p-7 rounded-[28px] bg-[#FAF8F5] border border-[#E8E2D9] flex flex-col justify-between space-y-4 hover:border-[#C8741F] transition-all"
+              className="p-7 rounded-[12px] bg-[var(--surface)] border border-[var(--line)] flex flex-col justify-between space-y-4 hover:border-[var(--black)] transition-colors"
             >
-              <div className="flex items-center justify-between">
-                <span className="font-mono text-xs font-bold text-[#C8741F] uppercase tracking-wider">
-                  Question #{tile.number}
+              <div className="flex items-center justify-between gap-2">
+                <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[var(--black)] uppercase tracking-[0.14em]">
+                  <span>Question</span>
+                  <span className="px-2 py-0.5 rounded-full bg-[var(--accent)] text-[var(--on-accent)]">
+                    #{tile.number}
+                  </span>
                 </span>
-                <span className="font-mono text-[11px] font-semibold text-[#78716C] bg-white px-2 py-0.5 rounded-full border border-[#E8E2D9]">
+                <span className="text-xs font-semibold text-[var(--text-muted)] px-2.5 py-0.5 rounded-full border border-[var(--line)]">
                   {tile.badge}
                 </span>
               </div>
               <div>
-                <h3 className="font-heading text-lg font-bold text-[#1F1F1F] mb-2">
+                <h3 className="text-lg font-bold text-[var(--black)] mb-2">
                   {tile.title}
                 </h3>
-                <p className="font-body text-sm text-[#554F47] leading-relaxed">
+                <p className="text-sm text-[var(--text-muted)] leading-relaxed">
                   {tile.copy}
                 </p>
               </div>

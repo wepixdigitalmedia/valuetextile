@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
+import { Button } from "@/components/ui/Button";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Tiruppur } from "@/components/ui/Tiruppur";
 import { fetchPublishedBlogs, BlogPost } from "@/lib/firebase";
 import { ArrowRight, Calendar, Clock, Plus, Loader2 } from "lucide-react";
@@ -41,36 +43,33 @@ export default function BlogPage() {
       : posts.filter((p) => p.category === selectedCategory);
 
   return (
-    <main className="w-full bg-[#FAF8F5] min-h-[70vh]">
+    <main className="w-full bg-[var(--surface)] min-h-[70vh]">
       {/* ============================================================ */}
       {/* HEADER SECTION                                               */}
       {/* ============================================================ */}
-      <section className="w-full bg-white pt-12 sm:pt-16 pb-10 sm:pb-12 border-b border-[#E8E2D9]">
+      <section className="w-full bg-[var(--white)] py-16 lg:py-24 border-b border-[var(--line)]">
         <Container>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div className="max-w-3xl space-y-3">
-              <p className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-[#C8741F]">
-                / INSIGHTS &amp; TECHNICAL BLOG · <Tiruppur />
-              </p>
-              <h1 className="font-heading text-3xl sm:text-5xl lg:text-[52px] font-extrabold text-[#1F1F1F] leading-[1.06] tracking-tight">
+              <Eyebrow>
+                INSIGHTS &amp; TECHNICAL BLOG · <Tiruppur />
+              </Eyebrow>
+              <h1 className="text-3xl sm:text-5xl lg:text-[52px] font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em]">
                 Garment &amp; Knitwear Journal
               </h1>
-              <p className="font-body text-base sm:text-lg text-[#554F47] leading-relaxed">
+              <p className="text-base sm:text-lg text-[var(--text-muted)] leading-relaxed">
                 Practical guides on knitwear production, fabric development, 4-point quality control, and direct apparel sourcing from Tirupur, India.
               </p>
             </div>
 
-            <Link
-              href="/blog/new"
-              className="inline-flex items-center gap-2 h-[48px] px-6 rounded-full bg-[#1F1F1F] hover:bg-black text-white text-sm font-semibold transition-all shadow-xs shrink-0 w-fit"
-            >
+            <Button href="/blog/new" variant="primary" className="shrink-0 w-fit">
               <Plus className="w-4 h-4" />
               <span>Write Article</span>
-            </Link>
+            </Button>
           </div>
 
           {/* Category Filter Pills */}
-          <div className="flex flex-wrap items-center gap-2.5 mt-8 pt-6 border-t border-[#E8E2D9]">
+          <div className="flex flex-wrap items-center gap-2.5 mt-8 pt-6 border-t border-[var(--line)]">
             {CATEGORIES.map((cat) => {
               const active = selectedCategory === cat;
               return (
@@ -78,10 +77,10 @@ export default function BlogPage() {
                   key={cat}
                   type="button"
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+                  className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--black)] ${
                     active
-                      ? "bg-[#1F1F1F] text-white shadow-2xs"
-                      : "bg-[#FAF8F5] text-[#554F47] border border-[#E8E2D9] hover:border-[#C8741F] hover:text-[#1F1F1F]"
+                      ? "bg-[var(--black)] text-[var(--white)]"
+                      : "bg-[var(--white)] text-[var(--black)] border border-[var(--line)] hover:border-[var(--black)]"
                   }`}
                 >
                   {cat}
@@ -89,7 +88,7 @@ export default function BlogPage() {
               );
             })}
             {!loading && (
-              <span className="ml-auto font-mono text-[11px] text-[#78716C] hidden sm:inline">
+              <span className="ml-auto text-xs text-[var(--text-muted)] hidden sm:inline">
                 {fromFirestore ? "Synced with Firestore" : "Starter Articles (Add yours to Firestore)"}
               </span>
             )}
@@ -100,30 +99,27 @@ export default function BlogPage() {
       {/* ============================================================ */}
       {/* ARTICLES GRID                                                */}
       {/* ============================================================ */}
-      <section className="py-12 sm:py-16 lg:py-20">
+      <section className="py-16 lg:py-24">
         <Container>
           {loading ? (
-            <div className="py-20 flex flex-col items-center justify-center text-[#78716C] gap-3">
-              <Loader2 className="w-7 h-7 animate-spin text-[#C8741F]" />
-              <p className="font-mono text-xs uppercase tracking-wider">
+            <div className="py-20 flex flex-col items-center justify-center text-[var(--text-muted)] gap-3">
+              <Loader2 className="w-7 h-7 animate-spin text-[var(--accent)]" />
+              <p className="text-xs font-bold uppercase tracking-[0.14em]">
                 Loading articles from Firestore...
               </p>
             </div>
           ) : filteredPosts.length === 0 ? (
-            <div className="py-16 text-center bg-white rounded-[28px] border border-[#E8E2D9] p-8">
-              <p className="font-heading text-xl font-bold text-[#1F1F1F]">
+            <div className="py-16 text-center bg-[var(--white)] rounded-[12px] border border-[var(--line)] p-8">
+              <p className="text-xl font-bold text-[var(--black)]">
                 No articles in this category yet.
               </p>
-              <p className="font-body text-sm text-[#554F47] mt-2 mb-6">
+              <p className="text-sm text-[var(--text-muted)] mt-2 mb-6">
                 Publish a new article or switch to another category.
               </p>
-              <Link
-                href="/blog/new"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#C8741F] text-white text-sm font-semibold"
-              >
+              <Button href="/blog/new" variant="primary">
                 <Plus className="w-4 h-4" />
                 <span>Create First Article</span>
-              </Link>
+              </Button>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 sm:gap-8">
@@ -131,11 +127,11 @@ export default function BlogPage() {
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
-                  className="group bg-white rounded-[24px] border border-[#E8E2D9] overflow-hidden flex flex-col justify-between shadow-2xs hover:border-[#C8741F] hover:shadow-md transition-all duration-300"
+                  className="group bg-[var(--white)] rounded-[12px] border border-[var(--line)] overflow-hidden flex flex-col justify-between hover:border-[var(--black)] transition-colors duration-300"
                 >
                   <div>
                     {/* Cover Image */}
-                    <div className="relative aspect-[16/10] w-full bg-[#FAF8F5] overflow-hidden">
+                    <div className="relative aspect-[16/10] w-full bg-[var(--surface)] overflow-hidden">
                       <Image
                         src={post.coverImage}
                         alt={post.title}
@@ -143,38 +139,38 @@ export default function BlogPage() {
                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
-                      <span className="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-white/95 backdrop-blur-xs text-[11px] font-mono font-bold text-[#C8741F] shadow-xs">
+                      <span className="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-[var(--white)] border border-[var(--line)] text-[11px] font-bold text-[var(--black)]">
                         {post.category}
                       </span>
                     </div>
 
                     {/* Text Content */}
                     <div className="p-6 space-y-3">
-                      <div className="flex items-center gap-3 text-xs font-mono text-[#78716C]">
+                      <div className="flex items-center gap-3 text-xs text-[var(--text-muted)]">
                         <span className="inline-flex items-center gap-1">
-                          <Calendar className="w-3.5 h-3.5 text-[#C8741F]" />
+                          <Calendar className="w-3.5 h-3.5 text-[var(--accent)]" />
                           {post.publishedAt}
                         </span>
                         <span>·</span>
                         <span className="inline-flex items-center gap-1">
-                          <Clock className="w-3.5 h-3.5 text-[#C8741F]" />
+                          <Clock className="w-3.5 h-3.5 text-[var(--accent)]" />
                           {post.readTime}
                         </span>
                       </div>
 
-                      <h2 className="font-heading text-xl font-extrabold text-[#1F1F1F] leading-snug group-hover:text-[#C8741F] transition-colors">
+                      <h2 className="text-xl font-extrabold text-[var(--black)] leading-snug group-hover:text-[var(--accent)] transition-colors">
                         {post.title}
                       </h2>
 
-                      <p className="font-body text-sm text-[#554F47] leading-relaxed line-clamp-3">
+                      <p className="text-sm text-[var(--text-muted)] leading-relaxed line-clamp-3">
                         {post.excerpt}
                       </p>
                     </div>
                   </div>
 
-                  <div className="px-6 pb-6 pt-3 border-t border-[#E8E2D9]/70 flex items-center justify-between text-xs font-semibold text-[#1F1F1F]">
+                  <div className="px-6 pb-6 pt-3 border-t border-[var(--line)] flex items-center justify-between text-xs font-semibold text-[var(--black)]">
                     <span>By {post.author}</span>
-                    <span className="inline-flex items-center gap-1 text-[#C8741F] group-hover:translate-x-0.5 transition-transform">
+                    <span className="inline-flex items-center gap-1 text-[var(--accent)] group-hover:translate-x-0.5 transition-transform">
                       Read article
                       <ArrowRight className="w-3.5 h-3.5" />
                     </span>

@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/Container";
+import { Button } from "@/components/ui/Button";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Tiruppur } from "@/components/ui/Tiruppur";
 import {
   GARMENT_CATEGORY_DETAILS,
@@ -75,60 +77,60 @@ async function GarmentCategoryContent({
   ];
 
   return (
-    <main className="w-full bg-[#FFFDF9]">
+    <main className="w-full bg-[var(--white)]">
       {/* ============================================================ */}
       {/* 01. HERO SECTION                                             */}
       {/* ============================================================ */}
-      <section className="w-full pt-6 sm:pt-8 pb-8 sm:pb-12 border-b border-[#E8E2D9]">
+      <section className="w-full py-16 lg:py-24 border-b border-[var(--line)]">
         <Container>
-          <div className="mb-5 flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#78716C]">
+          <div className="mb-6 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-[var(--text-muted)]">
             <Link
               href="/garments"
-              className="inline-flex items-center gap-1.5 hover:text-[#1F1F1F] transition-colors"
+              className="inline-flex items-center gap-1.5 text-[var(--black)] hover:text-[var(--accent)] transition-colors"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>Garments</span>
             </Link>
             <span>/</span>
-            <span className="text-[#1F1F1F] font-semibold">{item.title}</span>
+            <span className="text-[var(--black)] font-bold">{item.title}</span>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
             <div className="lg:col-span-7 space-y-4">
-              <div className="space-y-2.5">
-                <p className="font-mono text-xs font-bold uppercase tracking-[0.16em] text-[#C8741F]">
-                  / {item.eyebrow} · <Tiruppur />, INDIA
-                </p>
-                <h1 className="font-heading text-2xl sm:text-4xl lg:text-[42px] font-extrabold text-[#1F1F1F] leading-[1.08] tracking-tight">
+              <div className="space-y-3">
+                <Eyebrow>
+                  {item.eyebrow} · <Tiruppur />, INDIA
+                </Eyebrow>
+                <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em]">
                   {item.title}
                 </h1>
-                <p className="font-body text-sm sm:text-base font-medium text-[#1F1F1F] leading-relaxed">
+                <p className="text-base font-medium text-[var(--black)] leading-relaxed">
                   {item.tagline}
                 </p>
-                <p className="font-body text-sm text-[#554F47] leading-relaxed">
+                <p className="text-base text-[var(--text-muted)] leading-relaxed">
                   {item.description}
                 </p>
               </div>
 
-              <div className="flex flex-wrap items-center gap-3 pt-1">
-                <Link
+              <div className="flex flex-wrap items-center gap-3 pt-2">
+                <Button
                   href={`/contact?program=${encodeURIComponent(item.title)}#quote`}
-                  className="inline-flex items-center gap-2 h-[44px] px-6 rounded-full bg-[#1F1F1F] hover:bg-black text-white text-xs sm:text-sm font-semibold transition-all"
+                  variant="primary"
                 >
                   <span>Request Export Quote</span>
                   <ArrowRight className="w-4 h-4" />
-                </Link>
-                <Link
+                </Button>
+                <Button
                   href={`/contact?type=samples&program=${encodeURIComponent(item.title)}#quote`}
-                  className="inline-flex items-center gap-2 h-[44px] px-6 rounded-full border border-[#1F1F1F] text-[#1F1F1F] hover:bg-[#1F1F1F] hover:text-white text-xs sm:text-sm font-semibold transition-all"
+                  variant="secondary"
                 >
                   <span>Order Fit Sample</span>
-                </Link>
+                </Button>
               </div>
             </div>
 
             <div className="lg:col-span-5">
-              <div className="relative aspect-square w-full max-w-[380px] lg:ml-auto rounded-[20px] overflow-hidden border border-[#E8E2D9] bg-white shadow-2xs">
+              <div className="relative aspect-square w-full max-w-[380px] lg:ml-auto rounded-[12px] overflow-hidden border border-[var(--line)] bg-[var(--white)]">
                 <Image
                   src={item.heroImage}
                   alt={item.title}
@@ -146,13 +148,13 @@ async function GarmentCategoryContent({
       {/* ============================================================ */}
       {/* 02. OUR PRODUCT GRIDS                                        */}
       {/* ============================================================ */}
-      <section className="w-full bg-[#FAF8F5] py-14 sm:py-20 border-b border-[#E8E2D9]">
+      <section className="w-full bg-[var(--surface)] py-16 lg:py-24 border-b border-[var(--line)]">
         <Container>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
             {gridImages.map((imgSrc, idx) => (
               <div
                 key={`${imgSrc}-${idx}`}
-                className="relative aspect-[4/5] w-full rounded-[20px] overflow-hidden border border-[#E8E2D9] bg-white"
+                className="relative aspect-[4/5] w-full rounded-[12px] overflow-hidden border border-[var(--line)] bg-[var(--white)]"
               >
                 <Image
                   src={imgSrc}
@@ -170,28 +172,26 @@ async function GarmentCategoryContent({
       {/* ============================================================ */}
       {/* 03. WHAT WE WILL PROVIDE                                     */}
       {/* ============================================================ */}
-      <section className="w-full bg-white py-14 sm:py-20 border-b border-[#E8E2D9]">
+      <section className="w-full bg-[var(--white)] py-16 lg:py-24 border-b border-[var(--line)]">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
             <div className="lg:col-span-4 space-y-3">
-              <p className="font-mono text-xs font-bold uppercase tracking-[0.16em] text-[#C8741F]">
-                / WHAT WE WILL PROVIDE
-              </p>
-              <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-[#1F1F1F] leading-tight">
+              <Eyebrow>WHAT WE WILL PROVIDE</Eyebrow>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em]">
                 Tailored to your tech pack and brand standards.
               </h2>
             </div>
 
-            <div className="lg:col-span-8 border-t border-[#E8E2D9] divide-y divide-[#E8E2D9]">
+            <div className="lg:col-span-8 border-t border-[var(--line)] divide-y divide-[var(--line)]">
               {provideRows.map((row) => (
                 <div
                   key={row.label}
                   className="py-4 sm:py-5 flex flex-col sm:flex-row sm:items-baseline gap-1.5 sm:gap-8"
                 >
-                  <span className="w-28 shrink-0 font-mono text-xs uppercase tracking-wider text-[#78716C]">
+                  <span className="w-28 shrink-0 text-xs font-bold uppercase tracking-[0.14em] text-[var(--text-muted)]">
                     {row.label}
                   </span>
-                  <span className="font-body text-sm sm:text-[15px] text-[#1F1F1F] leading-relaxed">
+                  <span className="text-base text-[var(--black)] leading-relaxed">
                     {row.value}
                   </span>
                 </div>
@@ -204,35 +204,35 @@ async function GarmentCategoryContent({
       {/* ============================================================ */}
       {/* 04. ABOUT US ON THESE GARMENTS                               */}
       {/* ============================================================ */}
-      <section className="w-full bg-white py-16 sm:py-20">
+      <section className="w-full bg-[var(--white)] py-16 lg:py-24">
         <Container>
-          <div className="rounded-[28px] bg-[#1F1F1F] text-white p-8 sm:p-12 lg:p-14 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="rounded-[12px] bg-[var(--surface)] border border-[var(--line)] text-[var(--black)] p-8 sm:p-12 lg:p-14 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-8 space-y-4">
-              <p className="font-mono text-xs uppercase tracking-[0.16em] text-[#F7C08A]">
-                / ABOUT VALUE TEXTILES · <Tiruppur />
-              </p>
-              <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight">
+              <Eyebrow>
+                ABOUT VALUE TEXTILES · <Tiruppur />
+              </Eyebrow>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-[-0.02em] leading-[1.1]">
                 Knitted, dyed, tested, and tailored in our own facilities.
               </h2>
-              <p className="font-body text-sm sm:text-base text-white/80 leading-relaxed max-w-2xl">
+              <p className="text-base text-[var(--text-muted)] leading-relaxed max-w-2xl">
                 {item.description}
               </p>
             </div>
 
             <div className="lg:col-span-4 flex flex-wrap lg:justify-end gap-3.5">
-              <Link
+              <Button
                 href={`/contact?program=${encodeURIComponent(item.title)}#quote`}
-                className="inline-flex items-center gap-2.5 h-[50px] px-7 rounded-full bg-[#C8741F] hover:bg-[#b56618] text-white text-sm font-semibold transition-all"
+                variant="primary"
               >
                 <span>Start a Program</span>
                 <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link
+              </Button>
+              <Button
                 href="/capabilities/garment-manufacturing"
-                className="inline-flex items-center gap-2 h-[50px] px-6 rounded-full border border-white/25 hover:border-white text-white text-sm font-semibold transition-all"
+                variant="secondary"
               >
                 <span>Our Capabilities</span>
-              </Link>
+              </Button>
             </div>
           </div>
         </Container>

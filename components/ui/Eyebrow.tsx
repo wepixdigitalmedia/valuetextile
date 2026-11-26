@@ -14,11 +14,14 @@ export function Eyebrow({
 }: EyebrowProps) {
   return (
     <Component
-      className={`text-[11px] md:text-[12px] font-semibold uppercase tracking-[0.18em] text-[#C8741F] mb-3 ${className}`}
+      className={`inline-flex items-center gap-3 text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--black)] mb-3 ${className}`}
       {...props}
     >
-      {children}
+      <span
+        className="inline-block w-[28px] h-[3px] bg-[var(--accent)] shrink-0"
+        aria-hidden="true"
+      />
+      <span>{children}</span>
     </Component>
   );
 }
-

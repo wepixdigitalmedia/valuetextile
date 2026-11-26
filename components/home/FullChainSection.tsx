@@ -59,64 +59,44 @@ export function FullChainSection() {
   };
 
   return (
-    <section className="relative w-full bg-[#FFFDF9] py-16 sm:py-20 lg:py-24 overflow-hidden border-b border-[#E8E2D9]">
-      {/* Warm Ambient Peachy-Amber Radial Glow (exact luxury textile atmosphere from reference) */}
-      <div
-        className="pointer-events-none absolute top-12 left-[-10%] w-[680px] h-[680px] rounded-full bg-[#FCE1CA]/35 blur-[160px]"
-        aria-hidden="true"
-      />
-      <div
-        className="pointer-events-none absolute bottom-[-10%] right-[-5%] w-[520px] h-[520px] rounded-full bg-[#FBF1DF]/40 blur-[140px]"
-        aria-hidden="true"
-      />
-
-      <Container className="relative z-10 space-y-10 sm:space-y-14 lg:space-y-16">
-        {/* ============================================================ */}
-        {/* TOP BLOCK: About statement & team strip (exact reference UI) */}
-        {/* ============================================================ */}
+    <section className="relative w-full bg-[var(--surface)] py-16 lg:py-24 overflow-hidden border-t border-b border-[var(--line)]">
+      <Container className="space-y-12 lg:space-y-16">
+        {/* TOP BLOCK */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
-          {/* Left Column (Desktop): / MADE IN TIRUPUR + spaced About us pill */}
           <div className="lg:col-span-3 flex lg:flex-col justify-between items-start gap-4">
-            <div>
-              <p className="text-[12px] sm:text-[13px] font-heading font-bold tracking-[0.14em] text-[#78716C] uppercase leading-tight">
-                / MADE IN <span className="font-tamil font-semibold">திருப்பூர்</span> (TIRUPPUR)
-              </p>
-            </div>
+            <p className="inline-flex items-center gap-3 text-[13px] font-bold tracking-[0.14em] text-[var(--black)] uppercase">
+              <span className="inline-block w-[28px] h-[3px] bg-[var(--accent)] shrink-0" aria-hidden="true" />
+              <span>
+                MADE IN <Tiruppur />
+              </span>
+            </p>
 
-            {/* About us pill aligned with bottom of headline on desktop */}
             <div className="lg:mt-16 xl:mt-20">
               <Link
                 href="/about"
-                className="inline-flex items-center gap-2 h-9 px-4 rounded-full border border-[#E8E2D9] bg-white hover:bg-white text-[13px] font-medium text-[#1F1F1F] shadow-2xs transition-all hover:border-[#C8741F]"
+                className="inline-flex items-center gap-2 h-9 px-4 rounded-full border border-[var(--line)] bg-[var(--white)] text-[13px] font-semibold text-[var(--black)] transition-colors hover:border-[var(--black)] hover:text-[var(--accent)]"
               >
-                <span className="w-2 h-2 rounded-full bg-[#C8741F] shrink-0" />
+                <span className="w-2 h-2 rounded-full bg-[var(--accent)] shrink-0" />
                 <span>About us</span>
               </Link>
             </div>
           </div>
 
-          {/* Right Area: Statement + team strip + CTA buttons */}
           <div className="lg:col-span-9 flex flex-col space-y-6 sm:space-y-7">
-            {/* Impact Statement: Line 1 Charcoal + Line 2 Warm Ochre Accent */}
-            <h2 className="font-heading font-black text-[28px] sm:text-[36px] md:text-[42px] lg:text-[46px] xl:text-[50px] leading-[1.08] tracking-[-0.035em]">
-              <span className="text-[#1F1F1F]">
-                Garment durability begins with fabric engineering.{" "}
-              </span>
-              <span className="text-[#C8741F]">
-                We manage knitting, dyeing, and stitching directly in-house to safeguard technical standards.
-              </span>
+            <h2 className="font-extrabold text-[28px] sm:text-[36px] md:text-[42px] lg:text-[46px] xl:text-[50px] leading-[1.1] tracking-[-0.02em] text-[var(--black)]">
+              <span className="text-[var(--accent)]">Knitting, dyeing,</span>{" "}
+              and{" "}
+              <span className="text-[var(--accent)]">stitching</span>{" "}
+              in-house for durable garments.
             </h2>
 
-            {/* Sub-row: 3 Team Photos + Narrative + Action Buttons */}
             <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-6 xl:gap-8 pt-2">
-              {/* Team photos + narrative */}
               <div className="flex items-center gap-4 max-w-[500px]">
-                {/* 3 Overlapping Circular Photos: Export Manager, Merchandiser, Quality Head */}
                 <div
                   className="flex -space-x-3 shrink-0"
                   aria-label="Production and export leadership team"
                 >
-                  <div className="relative size-[44px] sm:size-[48px] rounded-full overflow-hidden border-2 border-white shadow-xs bg-[#FAF5EE]">
+                  <div className="relative size-[44px] sm:size-[48px] rounded-full overflow-hidden border-2 border-[var(--white)] bg-[var(--surface)]">
                     <Image
                       src="/images/team-1.webp"
                       alt="Export Manager"
@@ -125,7 +105,7 @@ export function FullChainSection() {
                       className="object-cover"
                     />
                   </div>
-                  <div className="relative size-[44px] sm:size-[48px] rounded-full overflow-hidden border-2 border-white shadow-xs bg-[#FAF5EE]">
+                  <div className="relative size-[44px] sm:size-[48px] rounded-full overflow-hidden border-2 border-[var(--white)] bg-[var(--surface)]">
                     <Image
                       src="/images/team-2.webp"
                       alt="Merchandiser"
@@ -134,7 +114,7 @@ export function FullChainSection() {
                       className="object-cover"
                     />
                   </div>
-                  <div className="relative size-[44px] sm:size-[48px] rounded-full overflow-hidden border-2 border-white shadow-xs bg-[#FAF5EE]">
+                  <div className="relative size-[44px] sm:size-[48px] rounded-full overflow-hidden border-2 border-[var(--white)] bg-[var(--surface)]">
                     <Image
                       src="/images/team-3.webp"
                       alt="Quality Head"
@@ -145,30 +125,28 @@ export function FullChainSection() {
                   </div>
                 </div>
 
-                {/* Narrative text */}
-                <p className="text-[13.5px] sm:text-[14px] text-[#55504A] leading-[1.45]">
+                <p className="text-[15px] sm:text-[16px] text-[var(--text-muted)] leading-[1.6]">
                   Based in <Tiruppur />, we source certified yarns externally and execute all knitting, processing, lab verification, and apparel assembly in our own facilities.
                 </p>
               </div>
 
-              {/* Action Buttons: Book a factory visit [CONFIRM] & About us */}
               <div className="flex flex-wrap sm:flex-nowrap items-center gap-3 shrink-0">
                 <Link
                   href="/contact"
-                  className="group inline-flex items-center justify-between gap-3 h-[50px] pl-6 pr-2 rounded-full bg-[#1F1F1F] hover:bg-black text-white text-[14px] font-semibold transition-all shadow-xs"
+                  className="group inline-flex items-center justify-between gap-3 min-h-[48px] pl-6 pr-2 py-2 rounded-full bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-[var(--on-accent)] text-[14px] font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--black)]"
                 >
                   <span>Book a factory visit</span>
-                  <span className="w-8 h-8 rounded-full bg-white text-[#1F1F1F] flex items-center justify-center shrink-0 transition-transform duration-200 group-hover:translate-x-0.5">
+                  <span className="w-8 h-8 rounded-full bg-[var(--white)] text-[var(--black)] flex items-center justify-center shrink-0 transition-transform duration-200 group-hover:translate-x-0.5">
                     <ArrowRight className="w-4 h-4" strokeWidth={2.4} />
                   </span>
                 </Link>
 
                 <Link
                   href="/about"
-                  className="group inline-flex items-center justify-between gap-3 h-[50px] pl-6 pr-2 rounded-full border border-[#1F1F1F] bg-white hover:bg-[#1F1F1F] hover:text-white text-[#1F1F1F] text-[14px] font-semibold transition-all"
+                  className="group inline-flex items-center justify-between gap-3 min-h-[48px] pl-6 pr-2 py-2 rounded-full border-[1.5px] border-[var(--black)] bg-transparent hover:bg-[var(--black)] text-[var(--black)] hover:text-[var(--white)] text-[14px] font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--black)]"
                 >
                   <span>About us</span>
-                  <span className="w-8 h-8 rounded-full bg-[#1F1F1F] text-white group-hover:bg-white group-hover:text-[#1F1F1F] flex items-center justify-center shrink-0 transition-colors">
+                  <span className="w-8 h-8 rounded-full bg-[var(--black)] text-[var(--white)] group-hover:bg-[var(--white)] group-hover:text-[var(--black)] flex items-center justify-center shrink-0 transition-colors">
                     <ArrowRight className="w-4 h-4" strokeWidth={2.4} />
                   </span>
                 </Link>
@@ -177,63 +155,44 @@ export function FullChainSection() {
           </div>
         </div>
 
-        {/* ============================================================ */}
-        {/* BOTTOM BLOCK: Full Stack Fabric & Garment Sourcing Card       */}
-        {/* (Exact match to Fabriclore stadium card UI geometry)          */}
-        {/* ============================================================ */}
-        <div className="relative w-full rounded-[32px] sm:rounded-[44px] lg:rounded-[48px] bg-[#FFFDF9] border border-[#C8741F]/40 shadow-[0px_8px_32px_rgba(200,116,31,0.06)] overflow-hidden">
+        {/* BOTTOM BLOCK */}
+        <div className="relative w-full rounded-[12px] bg-[var(--white)] border border-[var(--line)] overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[460px] lg:min-h-[520px] items-stretch">
-            {/* Left Content Area (Col 5): Clean, spacious, with bold ochre title & swatch icon */}
-            <div className="relative lg:col-span-5 p-7 sm:p-10 lg:p-10 xl:p-14 flex flex-col justify-between">
-              {/* Subtle chevron process arrows watermark in background */}
-              <div className="pointer-events-none absolute bottom-0 right-0 w-3/4 max-w-[320px] opacity-[0.06] select-none">
-                <Image
-                  src="/images/bg-arrow.png"
-                  alt=""
-                  width={320}
-                  height={240}
-                  className="w-full h-auto object-contain"
-                />
-              </div>
-
-              {/* Top Pill Tag */}
+            <div className="relative lg:col-span-5 p-7 sm:p-10 lg:p-12 flex flex-col justify-between">
               <div className="relative z-10">
-                <div className="w-fit px-4 py-1.5 rounded-full bg-[#FAF4EA] border border-[#ECDDC3] text-[12.5px] sm:text-[13px] text-[#8C531B] font-semibold flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#C8741F]" />
+                <div className="w-fit px-3.5 py-1 rounded-full border border-[var(--line)] text-[12px] text-[var(--text-muted)] font-semibold flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)]" />
                   <span>Knitted &amp; finished in-house</span>
                 </div>
 
-                {/* Big Bold Warm Ochre Title */}
-                <h3 className="font-display text-[32px] sm:text-[40px] lg:text-[42px] xl:text-[48px] text-[#C8741F] leading-[1.08] tracking-tight font-bold pt-5 sm:pt-6">
-                  Garments Made With Our Own Fabric
+                <h3 className="text-[32px] sm:text-[40px] lg:text-[42px] xl:text-[48px] text-[var(--black)] leading-[1.1] tracking-[-0.02em] font-extrabold pt-5 sm:pt-6">
+                  Garments Made With{" "}
+                  <span className="text-[var(--accent)]">Our Fabric</span>
                 </h3>
               </div>
 
-              {/* Swatch Icon & Editorial Description (spacious, uncluttered) */}
               <div className="relative z-10 flex items-start gap-3.5 sm:gap-4 pt-6 sm:pt-8 pb-4">
-                <div className="size-[42px] sm:size-[48px] shrink-0 mt-0.5">
+                <div className="size-[42px] sm:size-[48px] shrink-0 mt-0.5 rounded-[8px] border border-[var(--line)] p-1.5 bg-[var(--surface)]">
                   <Image
                     src="/images/swatch-icon.png"
                     alt="Textile Swatch Icon"
                     width={48}
                     height={48}
-                    className="w-full h-auto object-contain"
+                    className="w-full h-auto object-contain grayscale contrast-125"
                   />
                 </div>
-                <p className="text-[14px] sm:text-[15.5px] lg:text-[15.5px] leading-[1.55] text-[#4A4742] max-w-[440px]">
+                <p className="text-[16px] leading-[1.6] text-[var(--text-muted)] max-w-[440px]">
                   Every fabric lot moves from circular knitting and soft-flow dyeing through laboratory testing before cutting and assembly—protecting shade continuity and shrinkage tolerance.
                 </p>
               </div>
             </div>
 
-            {/* Right Media Area: Expanded Width for enhanced visibility on desktop */}
-            <div className="relative lg:col-span-7 min-h-[380px] sm:min-h-[440px] lg:min-h-full overflow-hidden bg-[#FAF5EE]">
+            <div className="relative lg:col-span-7 min-h-[380px] sm:min-h-[440px] lg:min-h-full overflow-hidden bg-[var(--surface)]">
               <div
                 onClick={nextSlide}
                 className="group relative w-full h-full cursor-pointer select-none"
                 title="Click to view next capability"
               >
-                {/* Full-bleed Editorial Photograph with smooth transition */}
                 <Image
                   key={active.id}
                   src={active.image}
@@ -244,17 +203,12 @@ export function FullChainSection() {
                   className="object-cover object-center transition-transform duration-700 group-hover:scale-103"
                 />
 
-                {/* Subtle soft gradient scrim at bottom so floating capsule pops cleanly */}
-                <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
-
-                {/* Floating Frosted Capsule at Bottom Center (exact match to Fabriclore) */}
                 <div className="absolute left-1/2 -translate-x-1/2 bottom-5 sm:bottom-6 z-20 w-auto px-4 max-w-[90%]">
-                  <div className="bg-white/95 backdrop-blur-md rounded-full px-5 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between gap-5 sm:gap-7 shadow-[0px_8px_24px_rgba(0,0,0,0.14)] border border-black/5 hover:bg-white transition-all">
-                    <span className="text-[13.5px] sm:text-[14.5px] font-semibold text-[#1F1F1F] tracking-tight whitespace-nowrap">
+                  <div className="bg-[var(--white)] rounded-full px-5 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between gap-5 sm:gap-7 border border-[var(--line)]">
+                    <span className="text-[14px] font-semibold text-[var(--black)] whitespace-nowrap">
                       {active.pillLabel}
                     </span>
 
-                    {/* Progress Indicator: Active amber bar (#C8741F) + Inactive dots */}
                     <div className="flex items-center gap-1.5 shrink-0" aria-label="Slide indicators">
                       {CAPABILITY_SLIDES.map((_, idx) => (
                         <button
@@ -262,10 +216,11 @@ export function FullChainSection() {
                           type="button"
                           onClick={(e) => goToSlide(idx, e)}
                           aria-label={`Go to slide ${idx + 1}`}
-                          className={`rounded-full transition-all duration-300 cursor-pointer ${currentSlide === idx
-                            ? "w-8 sm:w-10 h-2 bg-[#C8741F]"
-                            : "size-2 bg-[#C8741F]/30 hover:bg-[#C8741F]/60"
-                            }`}
+                          className={`rounded-full transition-all duration-300 cursor-pointer ${
+                            currentSlide === idx
+                              ? "w-8 sm:w-10 h-2 bg-[var(--accent)]"
+                              : "size-2 bg-[var(--line)] hover:bg-[var(--black)]"
+                          }`}
                         />
                       ))}
                     </div>

@@ -16,50 +16,40 @@ export const metadata: Metadata = {
 
 export default function ProductsPage() {
   return (
-    <div className="w-full bg-white">
+    <div className="w-full bg-[var(--white)]">
       {/* ============================================================ */}
       {/* PAGE HERO HEADER                                              */}
       {/* ============================================================ */}
-      <section className="relative w-full pt-16 sm:pt-20 md:pt-24 pb-12 sm:pb-16 bg-[#FFFDF9] border-b border-[#E8E2D9] overflow-hidden">
-        {/* Ambient Warm Atmosphere */}
-        <div
-          className="pointer-events-none absolute top-0 left-[-5%] w-[580px] h-[580px] rounded-full bg-[#FCE1CA]/35 blur-[160px]"
-          aria-hidden="true"
-        />
-        <div
-          className="pointer-events-none absolute bottom-0 right-[-5%] w-[480px] h-[480px] rounded-full bg-[#FBF1DF]/40 blur-[140px]"
-          aria-hidden="true"
-        />
-
+      <section className="relative w-full py-16 lg:py-24 bg-[var(--surface)] border-b border-[var(--line)] overflow-hidden">
         <Container className="relative z-10 space-y-6">
           <div className="flex flex-wrap items-center gap-3">
-            <Eyebrow>/ PRODUCTS &amp; SOURCING CATALOG</Eyebrow>
-            <span className="text-[12px] font-mono text-[#8C531B] bg-[#FAF4EA] px-3 py-1 rounded-full border border-[#ECDDC3]">
+            <Eyebrow>PRODUCTS &amp; SOURCING CATALOG</Eyebrow>
+            <span className="text-[12px] font-semibold text-[var(--black)] bg-[var(--white)] px-3 py-1 rounded-full border border-[var(--line)]">
               16 Core Items Available for Specification
             </span>
           </div>
 
           <div className="max-w-4xl space-y-4">
-            <h1 className="font-heading text-[36px] sm:text-[46px] md:text-[54px] lg:text-[60px] font-black text-[#1F1F1F] leading-[1.05] tracking-[-0.035em]">
+            <h1 className="text-[36px] sm:text-[46px] md:text-[54px] lg:text-[60px] font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em]">
               Knitted fabrics, specialty yarns &amp; private label apparel.
             </h1>
-            <p className="font-body text-[16px] sm:text-[18px] text-[#55504A] leading-relaxed max-w-3xl">
+            <p className="text-base sm:text-[18px] text-[var(--text-muted)] leading-relaxed max-w-3xl">
               Manufactured in our own integrated units in <Tiruppur />. Every item shown is produced to your exact technical specifications—custom blend ratios, yarn counts, GSM weights, lab dip pantones, and finishes.
             </p>
           </div>
 
           {/* Quick Pillars Strip */}
-          <div className="flex flex-wrap items-center gap-6 pt-2 text-[13px] text-[#6B655D]">
+          <div className="flex flex-wrap items-center gap-6 pt-2 text-[14px] text-[var(--text-muted)]">
             <div className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#C8741F]" />
+              <CheckCircle2 className="w-4 h-4 text-[var(--accent)]" />
               <span>1:1 Swatch Kits &amp; Lab Dips</span>
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#C8741F]" />
+              <CheckCircle2 className="w-4 h-4 text-[var(--accent)]" />
               <span>In-House Testing &amp; 4-Point Inspection</span>
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#C8741F]" />
+              <CheckCircle2 className="w-4 h-4 text-[var(--accent)]" />
               <span>Integrated Knitting, Dyeing &amp; Garmenting</span>
             </div>
           </div>
@@ -69,7 +59,7 @@ export default function ProductsPage() {
       {/* ============================================================ */}
       {/* MAIN CATALOG SECTION                                          */}
       {/* ============================================================ */}
-      <section className="py-14 sm:py-18 lg:py-20 bg-white">
+      <section className="py-16 lg:py-24 bg-[var(--white)]">
         <Container>
           <ProductsCatalog />
         </Container>
@@ -78,17 +68,15 @@ export default function ProductsPage() {
       {/* ============================================================ */}
       {/* CUSTOM DEVELOPMENT & SOURCING GUIDANCE BLOCK                 */}
       {/* ============================================================ */}
-      <section className="py-16 sm:py-20 bg-[#FAF8F5] border-t border-[#E8E2D9]">
+      <section className="py-16 lg:py-24 bg-[var(--surface)] border-t border-[var(--line)]">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-8 space-y-4">
-              <span className="text-[12.5px] font-mono text-[#C8741F] font-bold uppercase tracking-wider">
-                Custom Development &amp; Sampling
-              </span>
-              <h2 className="font-heading text-[28px] sm:text-[36px] font-black text-[#1F1F1F] leading-tight tracking-[-0.03em]">
+              <Eyebrow>Custom Development &amp; Sampling</Eyebrow>
+              <h2 className="text-[28px] sm:text-[36px] font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em]">
                 Need a specific blend ratio, custom GSM, or strike-off?
               </h2>
-              <p className="text-[15px] sm:text-[16px] text-[#55504A] leading-relaxed max-w-2xl">
+              <p className="text-base text-[var(--text-muted)] leading-relaxed max-w-2xl">
                 Our in-house technical team in <Tiruppur /> assists buyers in dialing in exact fabric constructions, bio-wash finishes, reactive dye lab dips, and garment fit samples before bulk commitment.
               </p>
               <div className="flex flex-wrap items-center gap-4 pt-2">
@@ -101,17 +89,17 @@ export default function ProductsPage() {
               </div>
             </div>
 
-            <div className="lg:col-span-4 bg-white p-6 sm:p-7 rounded-3xl border border-[#E8E2D9] shadow-xs space-y-3">
-              <div className="flex items-center gap-3 text-[#1F1F1F]">
-                <ShieldCheck className="w-6 h-6 text-[#C8741F] shrink-0" />
-                <h3 className="font-heading font-bold text-[17px]">
+            <div className="lg:col-span-4 bg-[var(--white)] p-6 sm:p-7 rounded-[12px] border border-[var(--line)] space-y-3">
+              <div className="flex items-center gap-3 text-[var(--black)]">
+                <ShieldCheck className="w-6 h-6 text-[var(--accent)] shrink-0" />
+                <h3 className="font-bold text-[17px]">
                   Specification Verification
                 </h3>
               </div>
-              <p className="text-[13.5px] text-[#6B655D] leading-relaxed">
+              <p className="text-sm text-[var(--text-muted)] leading-relaxed">
                 Exact fibre percentages, yarn grades, construction, GSM, width, and MOQs are customized to match your collection&apos;s commercial requirements.
               </p>
-              <p className="text-[12px] font-mono text-[#8C531B] bg-[#FAF4EA] p-2.5 rounded-xl border border-[#ECDDC3]">
+              <p className="text-[12px] font-semibold text-[var(--black)] px-3 py-2 rounded-[12px] border border-[var(--line)]">
                 Direct pricing &amp; specs with no broker markup.
               </p>
             </div>

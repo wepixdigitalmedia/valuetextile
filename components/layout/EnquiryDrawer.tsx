@@ -24,7 +24,6 @@ export function EnquiryDrawer({ isOpen, onClose }: EnquiryDrawerProps) {
     message: "",
   });
 
-  // Close on Escape & trap focus
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape" && isOpen) {
@@ -71,9 +70,12 @@ export function EnquiryDrawer({ isOpen, onClose }: EnquiryDrawerProps) {
 
   if (!isOpen) return null;
 
+  const inputClass =
+    "w-full bg-[var(--white)] border border-[var(--line)] px-3.5 py-2.5 text-[14px] text-[var(--black)] placeholder:text-[var(--text-muted)] rounded-[8px] focus:outline-hidden focus:border-[var(--black)] focus:ring-2 focus:ring-[var(--accent)]/25 transition-colors";
+
   return (
     <div
-      className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex justify-end animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 bg-[var(--black)]/50 flex justify-end"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -83,18 +85,18 @@ export function EnquiryDrawer({ isOpen, onClose }: EnquiryDrawerProps) {
         ref={panelRef}
         data-lenis-prevent
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-md h-full bg-[#FAF8F5] border-l border-[#E6E2DB] shadow-2xl p-6 sm:p-8 flex flex-col justify-between overflow-y-auto animate-in slide-in-from-right duration-250 ease-out"
+        className="relative w-full max-w-md h-full bg-[var(--surface)] border-l border-[var(--line)] p-6 sm:p-8 flex flex-col justify-between overflow-y-auto"
       >
-        {/* Drawer Header */}
         <div>
-          <div className="flex items-center justify-between pb-5 border-b border-[#E6E2DB]">
+          <div className="flex items-center justify-between pb-5 border-b border-[var(--line)]">
             <div>
-              <span className="text-[11px] font-bold tracking-[0.18em] text-[#C8741F] uppercase">
-                QUICK SOURCING INQUIRY
+              <span className="inline-flex items-center gap-2.5 text-[13px] font-bold tracking-[0.14em] text-[var(--black)] uppercase">
+                <span className="inline-block w-[28px] h-[3px] bg-[var(--accent)]" aria-hidden="true" />
+                <span>QUICK ENQUIRY</span>
               </span>
               <h2
                 id="enquiry-drawer-title"
-                className="font-heading text-[26px] font-extrabold text-[#1F1F1F] tracking-[-0.03em] mt-1"
+                className="text-[26px] font-extrabold text-[var(--black)] tracking-[-0.02em] leading-[1.1] mt-2"
               >
                 Send an Enquiry
               </h2>
@@ -102,7 +104,7 @@ export function EnquiryDrawer({ isOpen, onClose }: EnquiryDrawerProps) {
             <button
               type="button"
               onClick={onClose}
-              className="p-2 -mr-2 text-[#5F5B55] hover:text-[#1F1F1F] rounded-full hover:bg-black/5 transition-colors"
+              className="p-2 -mr-2 text-[var(--text-muted)] hover:text-[var(--black)] rounded-full hover:bg-[var(--white)] transition-colors cursor-pointer"
               aria-label="Close enquiry drawer"
             >
               <X className="w-5 h-5" />
@@ -110,31 +112,30 @@ export function EnquiryDrawer({ isOpen, onClose }: EnquiryDrawerProps) {
           </div>
 
           {submitted ? (
-            <div className="mt-10 py-10 px-4 text-center space-y-4 bg-white rounded-xl border border-[#E6E2DB]">
-              <div className="w-12 h-12 rounded-full bg-[#E5F2E9] flex items-center justify-center text-[#265239] mx-auto">
+            <div className="mt-10 py-10 px-6 text-center space-y-4 bg-[var(--white)] rounded-[12px] border border-[var(--line)]">
+              <div className="w-12 h-12 rounded-full bg-[var(--surface)] border border-[var(--line)] flex items-center justify-center text-[var(--accent)] mx-auto">
                 <CheckCircle2 className="w-7 h-7" />
               </div>
-              <h3 className="font-heading text-xl font-bold text-[#1F1F1F]">
+              <h3 className="text-xl font-bold text-[var(--black)]">
                 Enquiry Received
               </h3>
-              <p className="text-sm text-[#5F5B55] leading-relaxed">
+              <p className="text-sm text-[var(--text-muted)] leading-relaxed">
                 Thank you. Our export desk will reply within 24 working hours.
               </p>
               <button
                 type="button"
                 onClick={() => setSubmitted(false)}
-                className="text-xs font-semibold text-[#C8741F] underline underline-offset-4 cursor-pointer"
+                className="text-xs font-semibold text-[var(--black)] hover:text-[var(--accent)] underline underline-offset-4 cursor-pointer"
               >
                 Send another enquiry
               </button>
             </div>
           ) : (
-            /* Form */
             <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
               <div>
                 <label
                   htmlFor="drawerName"
-                  className="block text-[13px] font-medium text-[#1F1F1F] mb-1"
+                  className="block text-[13px] font-semibold text-[var(--black)] mb-1"
                 >
                   Full Name *
                 </label>
@@ -146,14 +147,14 @@ export function EnquiryDrawer({ isOpen, onClose }: EnquiryDrawerProps) {
                   value={formData.fullName}
                   onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                   placeholder="Jane Doe"
-                  className="w-full bg-white border border-[#E6E2DB] px-3.5 py-2.5 text-[14px] text-[#1F1F1F] rounded-[4px] focus:outline-hidden focus:border-[#C8741F]"
+                  className={inputClass}
                 />
               </div>
 
               <div>
                 <label
                   htmlFor="drawerCompany"
-                  className="block text-[13px] font-medium text-[#1F1F1F] mb-1"
+                  className="block text-[13px] font-semibold text-[var(--black)] mb-1"
                 >
                   Company / Brand *
                 </label>
@@ -164,14 +165,14 @@ export function EnquiryDrawer({ isOpen, onClose }: EnquiryDrawerProps) {
                   value={formData.company}
                   onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                   placeholder="Acme Clothing Co."
-                  className="w-full bg-white border border-[#E6E2DB] px-3.5 py-2.5 text-[14px] text-[#1F1F1F] rounded-[4px] focus:outline-hidden focus:border-[#C8741F]"
+                  className={inputClass}
                 />
               </div>
 
               <div>
                 <label
                   htmlFor="drawerEmail"
-                  className="block text-[13px] font-medium text-[#1F1F1F] mb-1"
+                  className="block text-[13px] font-semibold text-[var(--black)] mb-1"
                 >
                   Work Email *
                 </label>
@@ -182,14 +183,14 @@ export function EnquiryDrawer({ isOpen, onClose }: EnquiryDrawerProps) {
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="jane@acme.com"
-                  className="w-full bg-white border border-[#E6E2DB] px-3.5 py-2.5 text-[14px] text-[#1F1F1F] rounded-[4px] focus:outline-hidden focus:border-[#C8741F]"
+                  className={inputClass}
                 />
               </div>
 
               <div>
                 <label
                   htmlFor="drawerWhatsapp"
-                  className="block text-[13px] font-medium text-[#1F1F1F] mb-1"
+                  className="block text-[13px] font-semibold text-[var(--black)] mb-1"
                 >
                   WhatsApp Number
                 </label>
@@ -199,14 +200,14 @@ export function EnquiryDrawer({ isOpen, onClose }: EnquiryDrawerProps) {
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   placeholder="+1 555 123 4567"
-                  className="w-full bg-white border border-[#E6E2DB] px-3.5 py-2.5 text-[14px] text-[#1F1F1F] rounded-[4px] focus:outline-hidden focus:border-[#C8741F]"
+                  className={inputClass}
                 />
               </div>
 
               <div>
                 <label
                   htmlFor="drawerMessage"
-                  className="block text-[13px] font-medium text-[#1F1F1F] mb-1"
+                  className="block text-[13px] font-semibold text-[var(--black)] mb-1"
                 >
                   Message &amp; Specs
                 </label>
@@ -216,12 +217,12 @@ export function EnquiryDrawer({ isOpen, onClose }: EnquiryDrawerProps) {
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   placeholder="Specify garment style, fabric type, GSM, target quantities..."
-                  className="w-full bg-white border border-[#E6E2DB] px-3.5 py-2.5 text-[14px] text-[#1F1F1F] rounded-[4px] focus:outline-hidden focus:border-[#C8741F]"
+                  className={inputClass}
                 />
               </div>
 
               {errorMsg && (
-                <p className="text-xs text-red-600 font-medium">{errorMsg}</p>
+                <p className="text-xs text-[var(--accent)] font-medium">{errorMsg}</p>
               )}
 
               <div className="pt-2">
@@ -233,8 +234,7 @@ export function EnquiryDrawer({ isOpen, onClose }: EnquiryDrawerProps) {
           )}
         </div>
 
-        {/* Drawer Footer info */}
-        <div className="pt-6 border-t border-[#E6E2DB] text-[12px] text-[#5F5B55]">
+        <div className="pt-6 border-t border-[var(--line)] text-[12px] text-[var(--text-muted)]">
           <p>Direct inquiries: +91 93456 30303</p>
           <p>Tirupur 641607, Tamil Nadu, India</p>
         </div>
@@ -242,4 +242,3 @@ export function EnquiryDrawer({ isOpen, onClose }: EnquiryDrawerProps) {
     </div>
   );
 }
-

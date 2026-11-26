@@ -78,24 +78,17 @@ const CLIENT_SEGMENTS: ClientSegment[] = [
 export function WhoWeWorkWithSection() {
   return (
     <div className="w-full">
-      {/* ============================================================ */}
-      {/* 01. HERO SECTION: BRANDS AT EVERY STAGE                      */}
-      {/* ============================================================ */}
-      <section className="relative w-full bg-[#FFFDF9] pt-14 sm:pt-20 pb-12 sm:pb-16 border-b border-[#E8E2D9] overflow-hidden">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -top-24 left-[-6%] w-[520px] h-[520px] rounded-full bg-[#FCE1CA]/35 blur-[150px]"
-        />
-
-        <Container className="relative z-10">
+      <section className="relative w-full bg-[var(--white)] py-16 lg:py-24 border-b border-[var(--line)] overflow-hidden">
+        <Container>
           <div className="max-w-3xl space-y-4">
-            <p className="font-mono text-xs sm:text-sm font-bold uppercase tracking-[0.14em] text-[#C8741F]">
-              / WHO WE WORK WITH
+            <p className="inline-flex items-center gap-3 text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--black)]">
+              <span className="inline-block w-[28px] h-[3px] bg-[var(--accent)] shrink-0" aria-hidden="true" />
+              <span>WHO WE WORK WITH</span>
             </p>
-            <h1 className="font-heading text-4xl sm:text-5xl lg:text-[56px] font-extrabold text-[#111111] leading-[1.06] tracking-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em]">
               Brands at every stage.
             </h1>
-            <p className="font-body text-base sm:text-lg text-[#554F47] leading-relaxed">
+            <p className="text-[16px] sm:text-[18px] text-[var(--text-muted)] leading-[1.6]">
               From emerging DTC labels launching their first capsule to global
               retail buying houses running year-round programs, we adapt our
               knitting, dyeing, and garment lines to fit how you source.
@@ -104,60 +97,54 @@ export function WhoWeWorkWithSection() {
         </Container>
       </section>
 
-      {/* ============================================================ */}
-      {/* 02. INDIVIDUAL STACKED EDITORIAL SECTIONS (NO CARDS)         */}
-      {/*     Title -> Short Description -> Full-Width Image           */}
-      {/* ============================================================ */}
       <div id="who-we-work-with" className="w-full">
         {CLIENT_SEGMENTS.map((seg, idx) => {
           const isTinted = idx % 2 === 0;
           return (
             <section
               key={seg.num}
-              className={`w-full py-14 sm:py-18 lg:py-20 border-b border-[#E8E2D9] ${
-                isTinted ? "bg-[#FAF8F5]" : "bg-white"
+              className={`w-full py-16 lg:py-24 border-b border-[var(--line)] ${
+                isTinted ? "bg-[var(--surface)]" : "bg-[var(--white)]"
               }`}
             >
               <Container className="space-y-6 sm:space-y-8">
-                {/* 1. Title & Short Description */}
                 <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5">
                   <div className="max-w-3xl space-y-3">
                     <div className="flex items-center gap-2.5">
-                      <span className="font-mono text-xs font-bold text-[#C8741F] tracking-widest">
+                      <span className="text-[13px] font-bold text-[var(--accent)] tracking-widest">
                         {seg.num}
                       </span>
-                      <span className="text-[#D4CBBF]">·</span>
-                      <span className="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-[#78716C]">
+                      <span className="text-[var(--line)]">·</span>
+                      <span className="text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--black)]">
                         {seg.tag}
                       </span>
                     </div>
 
-                    <h2 className="font-heading text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-[#111111] leading-[1.1] tracking-tight">
+                    <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em]">
                       {seg.title}
                     </h2>
 
-                    <p className="font-body text-base sm:text-[17px] text-[#554F47] leading-relaxed">
+                    <p className="text-[16px] sm:text-[17px] text-[var(--text-muted)] leading-[1.6]">
                       {seg.desc}
                     </p>
                   </div>
 
                   <Link
                     href={seg.href}
-                    className="inline-flex items-center gap-2 font-heading text-xs sm:text-[13px] font-bold uppercase tracking-[0.12em] text-[#111111] hover:text-[#C8741F] transition-colors shrink-0 w-fit group pb-1"
+                    className="inline-flex items-center gap-2 text-[13px] font-bold uppercase tracking-[0.12em] text-[var(--black)] hover:text-[var(--accent)] transition-colors shrink-0 w-fit group pb-1"
                   >
                     <span>{seg.ctaLabel}</span>
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </div>
 
-                {/* 2. Full-Width Image Below */}
-                <div className="relative w-full aspect-[16/9] sm:aspect-[21/10] lg:h-[520px] lg:aspect-auto rounded-[20px] sm:rounded-[28px] overflow-hidden bg-[#EFEAE1]">
+                <div className="relative w-full aspect-[16/9] sm:aspect-[21/10] lg:h-[520px] lg:aspect-auto rounded-[12px] overflow-hidden bg-[var(--surface)] border border-[var(--line)]">
                   <Image
                     src={seg.image}
                     alt={seg.alt}
                     fill
                     priority={idx === 0}
-                    sizes="(max-width: 1280px) 100vw, 1280px"
+                    sizes="(max-width: 1200px) 100vw, 1200px"
                     className="object-cover object-center"
                   />
                 </div>

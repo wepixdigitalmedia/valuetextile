@@ -30,39 +30,39 @@ const industries = [
 
 export default function IndustriesPage() {
   return (
-    <section className="py-20 md:py-28 bg-white">
+    <section className="py-16 lg:py-24 bg-[var(--white)]">
       <Container>
         <div className="max-w-3xl mb-16">
           <Eyebrow>MARKETS SERVED</Eyebrow>
-          <h1 className="font-heading text-[42px] sm:text-[52px] font-extrabold text-[#1F1F1F] leading-[1.0] tracking-[-0.04em] mb-6">
+          <h1 className="text-[42px] sm:text-[52px] font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em] mt-2 mb-6">
             Trusted by global fashion and apparel partners.
           </h1>
-          <div className="w-12 h-[2px] bg-[#F29B52] mb-8" />
-          <p className="font-body text-[17px] text-[#5F5B55] leading-relaxed">
+          <div className="w-12 h-[3px] bg-[var(--accent)] mb-8" />
+          <p className="text-[17px] text-[var(--text-muted)] leading-relaxed">
             With over 40 active buyers worldwide across North America, Europe, the Middle East, and Asia-Pacific, Value Textiles understands the nuances of international compliance, export logistics, and retail calendars.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 border-t border-l border-[#E6E2DB] mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 border-t border-l border-[var(--line)] mb-16">
           {industries.map((ind, idx) => (
             <div
               key={ind.title}
-              className="p-8 border-b border-r border-[#E6E2DB]"
+              className="p-8 border-b border-r border-[var(--line)]"
             >
-              <span className="font-heading text-[11px] font-bold text-[#C8741F] tracking-[0.18em] uppercase mb-2 block">
+              <span className="text-xs font-bold text-[var(--accent)] tracking-[0.14em] uppercase mb-2 block">
                 0{idx + 1} SECTOR
               </span>
-              <h2 className="font-heading text-[21px] sm:text-[22px] font-bold text-[#1F1F1F] mb-2.5 tracking-tight">
+              <h2 className="text-[21px] sm:text-[22px] font-bold text-[var(--black)] mb-2.5 tracking-[-0.02em]">
                 {ind.title}
               </h2>
-              <p className="font-body text-[15px] text-[#5F5B55] leading-relaxed">
+              <p className="text-base text-[var(--text-muted)] leading-relaxed">
                 {ind.desc}
               </p>
             </div>
           ))}
         </div>
 
-        <div className="flex gap-4">
+        <div className="flex flex-wrap gap-4">
           <Button href="/contact" variant="primary">
             Partner With Us
           </Button>

@@ -59,16 +59,16 @@ export function FaqSection() {
       <div
         key={faq.id}
         className={`py-6 border-b transition-colors ${
-          isOpen ? "border-[#111111]" : "border-[#111111]/20"
+          isOpen ? "border-[var(--accent)]" : "border-[var(--line)]"
         }`}
       >
         <button
           type="button"
           onClick={() => toggle(faq.id)}
-          className="w-full flex items-start justify-between text-left gap-6 font-heading font-bold text-[15px] sm:text-[16px] text-[#111111] hover:text-[#C8741F] transition-colors cursor-pointer"
+          className="w-full flex items-start justify-between text-left gap-6 font-bold text-[16px] text-[var(--black)] hover:opacity-80 transition-opacity cursor-pointer"
         >
-          <span className="leading-snug">{faq.q}</span>
-          <span className="shrink-0 mt-0.5 text-[#111111]">
+          <span className="leading-[1.4]">{faq.q}</span>
+          <span className="shrink-0 mt-0.5 text-[var(--black)]">
             {isOpen ? (
               <ArrowDown className="w-4 h-4 stroke-[2]" />
             ) : (
@@ -78,7 +78,7 @@ export function FaqSection() {
         </button>
 
         {isOpen && (
-          <p className="mt-4 pr-8 font-body text-[13.5px] sm:text-[14px] text-[#3B3631] leading-[1.65]">
+          <p className="mt-4 pr-8 text-[15px] text-[var(--text-muted)] leading-[1.6]">
             {faq.a}
           </p>
         )}
@@ -87,19 +87,18 @@ export function FaqSection() {
   };
 
   return (
-    <section className="w-full bg-[#FCF6E8] py-16 sm:py-20 lg:py-24 border-b border-[#E8E2D9]">
+    <section className="w-full bg-[var(--surface)] py-16 lg:py-24 border-b border-[var(--line)]">
       <Container>
-        {/* Header */}
-        <div className="max-w-3xl mb-10 sm:mb-14">
-          <p className="font-mono text-xs sm:text-sm uppercase tracking-wider text-[#111111]/80">
-            /FAQS
+        <div className="max-w-3xl mb-10 sm:mb-12">
+          <p className="inline-flex items-center gap-3 text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--black)]">
+            <span className="inline-block w-[28px] h-[3px] bg-[var(--accent)] shrink-0" aria-hidden="true" />
+            <span>FAQS</span>
           </p>
-          <h2 className="font-heading text-3xl sm:text-5xl lg:text-[52px] font-black text-[#111111] leading-[1.05] tracking-tight mt-2">
+          <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em] mt-3">
             Frequently Asked Questions
           </h2>
         </div>
 
-        {/* Two Independent Columns Matching Reference UI */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 xl:gap-x-16 items-start">
           <div>{LEFT_FAQS.map(renderItem)}</div>
           <div>{RIGHT_FAQS.map(renderItem)}</div>

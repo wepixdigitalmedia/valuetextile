@@ -26,7 +26,6 @@ export function ScrollToTop() {
   }, []);
 
   const scrollToTop = () => {
-    // If Lenis smooth scroll instance exists on window
     const lenis = (window as unknown as { lenis?: { scrollTo: (target: number) => void } }).lenis;
     if (lenis && typeof lenis.scrollTo === "function") {
       lenis.scrollTo(0);
@@ -41,7 +40,7 @@ export function ScrollToTop() {
       onClick={scrollToTop}
       aria-label="Go to top"
       title="Scroll to top"
-      className={`fixed bottom-5 left-4 sm:bottom-6 sm:left-6 z-40 size-9 sm:size-11 rounded-full bg-white/95 backdrop-blur-md border border-[#E8E2D9] text-[#1F1F1F] shadow-lg flex items-center justify-center transition-all duration-300 hover:border-[#C8741F] hover:text-[#C8741F] hover:scale-105 active:scale-95 cursor-pointer ${
+      className={`fixed bottom-5 left-4 sm:bottom-6 sm:left-6 z-40 size-10 sm:size-11 rounded-full bg-[var(--white)] border border-[var(--line)] text-[var(--black)] flex items-center justify-center transition-all duration-300 hover:border-[var(--black)] hover:text-[var(--accent)] cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--black)] ${
         visible
           ? "opacity-100 translate-y-0 pointer-events-auto"
           : "opacity-0 translate-y-4 pointer-events-none"
@@ -51,4 +50,3 @@ export function ScrollToTop() {
     </button>
   );
 }
-

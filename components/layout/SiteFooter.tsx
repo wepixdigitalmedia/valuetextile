@@ -19,13 +19,11 @@ export function SiteFooter() {
   const { contact } = siteConfig;
 
   return (
-    <footer className="w-full bg-[#0A0A0A] text-white rounded-t-[28px] sm:rounded-t-[36px] pt-12 sm:pt-16 pb-8 overflow-hidden">
+    <footer className="w-full bg-[var(--black)] text-[var(--white)] rounded-t-[28px] sm:rounded-t-[36px] pt-16 pb-8 overflow-hidden">
       <Container>
-        {/* ============================================================ */}
-        {/* 01. TOP BAR: COPYRIGHT LEFT + PILL NAVIGATION RIGHT          */}
-        {/* ============================================================ */}
+        {/* Top Bar: Copyright left + Pill navigation right */}
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-12 sm:pb-16">
-          <p className="font-body text-xs sm:text-sm text-white/65">
+          <p className="text-sm text-[var(--white)]/80">
             © <CurrentYear />, Value Textiles.
           </p>
 
@@ -37,7 +35,7 @@ export function SiteFooter() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="px-4 py-2 rounded-full bg-white/[0.06] border border-white/15 text-xs sm:text-[13px] font-medium text-white/90 hover:bg-white hover:text-[#0A0A0A] transition-all"
+                className="px-4 py-2 rounded-full border border-[var(--white)]/25 text-xs sm:text-[13px] font-medium text-[var(--white)] hover:bg-[var(--white)] hover:text-[var(--black)] transition-colors"
               >
                 {item.label}
               </Link>
@@ -45,23 +43,20 @@ export function SiteFooter() {
           </nav>
         </div>
 
-        {/* ============================================================ */}
-        {/* 02. MIDDLE GRID: STATEMENT + SOCIALS LEFT, 2x2 INFO RIGHT    */}
-        {/* ============================================================ */}
+        {/* Middle Grid: Statement + Socials Left, 2x2 Info Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 pb-12 sm:pb-16 items-start">
-          {/* Left Column: Big Statement & Social Icons */}
           <div className="lg:col-span-6 flex flex-col justify-between space-y-8 sm:space-y-12">
-            <h2 className="font-heading text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-white leading-[1.08] tracking-tight max-w-md">
+            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-[var(--white)] leading-[1.1] tracking-[-0.02em] max-w-md">
               Simplifying garment sourcing for global brands.
             </h2>
 
-            <div className="flex items-center gap-4 text-white/80">
+            <div className="flex items-center gap-4 text-[var(--white)]">
               <a
                 href={contact.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="w-9 h-9 rounded-lg border border-white/15 flex items-center justify-center hover:text-white hover:border-white/40 transition-colors"
+                className="w-9 h-9 rounded-[8px] border border-[var(--white)]/25 flex items-center justify-center text-[var(--white)] hover:bg-[var(--white)] hover:text-[var(--black)] transition-colors"
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -83,7 +78,7 @@ export function SiteFooter() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="w-9 h-9 rounded-lg border border-white/15 flex items-center justify-center hover:text-white hover:border-white/40 transition-colors"
+                className="w-9 h-9 rounded-[8px] border border-[var(--white)]/25 flex items-center justify-center text-[var(--white)] hover:bg-[var(--white)] hover:text-[var(--black)] transition-colors"
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -103,60 +98,63 @@ export function SiteFooter() {
               <a
                 href={`mailto:${contact.email}`}
                 aria-label="Email Value Textiles"
-                className="w-9 h-9 rounded-lg border border-white/15 flex items-center justify-center hover:text-white hover:border-white/40 transition-colors"
+                className="w-9 h-9 rounded-[8px] border border-[var(--white)]/25 flex items-center justify-center text-[var(--white)] hover:bg-[var(--white)] hover:text-[var(--black)] transition-colors"
               >
                 <Mail className="w-4 h-4" />
               </a>
               <a
                 href={`tel:${contact.phoneTel}`}
                 aria-label="Call Value Textiles"
-                className="w-9 h-9 rounded-lg border border-white/15 flex items-center justify-center hover:text-white hover:border-white/40 transition-colors"
+                className="w-9 h-9 rounded-[8px] border border-[var(--white)]/25 flex items-center justify-center text-[var(--white)] hover:bg-[var(--white)] hover:text-[var(--black)] transition-colors"
               >
                 <Phone className="w-4 h-4" />
               </a>
             </div>
           </div>
 
-          {/* Right Column: 2x2 Contact Metadata Grid */}
           <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-y-10 sm:gap-x-12">
-            {/* Location */}
             <div className="space-y-2">
-              <p className="font-body text-xs text-white/45">Location</p>
-              <p className="font-body text-sm text-white/90 leading-relaxed max-w-xs">
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--white)]/65">
+                Location
+              </p>
+              <p className="text-sm text-[var(--white)] leading-relaxed max-w-xs">
                 {contact.addressFull}, Tamil Nadu, India.
               </p>
             </div>
 
-            {/* Open from */}
             <div className="space-y-2">
-              <p className="font-body text-xs text-white/45">Open from</p>
-              <p className="font-body text-sm text-white/90 leading-relaxed">
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--white)]/65">
+                Open from
+              </p>
+              <p className="text-sm text-[var(--white)] leading-relaxed">
                 Monday to Saturday
                 <br />
                 9:00 am – 6:30 pm IST
               </p>
             </div>
 
-            {/* Contact us */}
             <div className="space-y-2">
-              <p className="font-body text-xs text-white/45">Contact us</p>
-              <p className="font-body text-sm text-white/90">
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--white)]/65">
+                Contact us
+              </p>
+              <p className="text-sm text-[var(--white)]">
                 <a
                   href={`tel:${contact.phoneTel}`}
-                  className="hover:text-[#F29B52] transition-colors"
+                  className="hover:underline transition-opacity"
                 >
                   {contact.phoneDisplay}
                 </a>
               </p>
             </div>
 
-            {/* Email id */}
             <div className="space-y-2">
-              <p className="font-body text-xs text-white/45">Email id</p>
-              <p className="font-body text-sm text-white/90">
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--white)]/65">
+                Email id
+              </p>
+              <p className="text-sm text-[var(--white)]">
                 <a
                   href={`mailto:${contact.email}`}
-                  className="hover:text-[#F29B52] transition-colors"
+                  className="hover:underline transition-opacity"
                 >
                   {contact.email}
                 </a>
@@ -165,51 +163,47 @@ export function SiteFooter() {
           </div>
         </div>
 
-        {/* ============================================================ */}
-        {/* 03. OVERSIZED TYPOGRAPHIC WATERMARK                          */}
-        {/* ============================================================ */}
+        {/* Oversized Typographic Watermark */}
         <div
           className="py-2 sm:py-4 select-none overflow-hidden"
           aria-hidden="true"
         >
-          <p className="font-heading font-black uppercase text-center text-[11vw] sm:text-[10.5vw] lg:text-[112px] xl:text-[132px] leading-[0.88] tracking-[0.04em] text-white/[0.08] whitespace-nowrap">
+          <p className="font-extrabold uppercase text-center text-[11vw] sm:text-[10.5vw] lg:text-[112px] xl:text-[132px] leading-[0.88] tracking-[0.04em] text-[var(--white)]/10 whitespace-nowrap">
             VALUE TEXTILES
           </p>
         </div>
 
-        {/* ============================================================ */}
-        {/* 04. BOTTOM LINKS STRIP                                       */}
-        {/* ============================================================ */}
-        <div className="pt-6 flex flex-wrap items-center justify-between gap-4 text-xs text-white/60">
+        {/* Bottom Links Strip */}
+        <div className="pt-6 flex flex-wrap items-center justify-between gap-4 text-xs text-[var(--white)]/75">
           <div className="flex flex-wrap items-center gap-2.5">
             <Link
               href="/capabilities/garment-manufacturing"
-              className="hover:text-white transition-colors"
+              className="hover:text-[var(--white)] hover:underline transition-colors"
             >
               Garment Division
             </Link>
             <span>·</span>
             <Link
               href="/capabilities/knitting-division"
-              className="hover:text-white transition-colors"
+              className="hover:text-[var(--white)] hover:underline transition-colors"
             >
               Knitting Division
             </Link>
             <span>·</span>
             <Link
-              href="/infrastructure#dyeing"
-              className="hover:text-white transition-colors"
+              href="/capabilities/dyeing-division"
+              className="hover:text-[var(--white)] hover:underline transition-colors"
             >
               Dyeing Division
             </Link>
           </div>
 
           <div className="flex flex-wrap items-center gap-2.5">
-            <Link href="/quality" className="hover:text-white transition-colors">
+            <Link href="/quality" className="hover:text-[var(--white)] hover:underline transition-colors">
               Quality &amp; Compliance
             </Link>
             <span>·</span>
-            <Link href="/contact" className="hover:text-white transition-colors">
+            <Link href="/contact" className="hover:text-[var(--white)] hover:underline transition-colors">
               Export Enquiries
             </Link>
           </div>

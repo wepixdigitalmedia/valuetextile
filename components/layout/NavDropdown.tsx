@@ -43,7 +43,7 @@ export function NavDropdown({
     return (
       <Link
         href={href}
-        className="font-heading font-semibold text-[15px] tracking-tight text-[#1F1F1F] hover:text-[#C8741F] transition-colors py-1.5"
+        className="font-semibold text-[15px] text-[var(--black)] hover:text-[var(--accent)] transition-colors py-1.5"
       >
         {label}
       </Link>
@@ -65,24 +65,23 @@ export function NavDropdown({
     >
       <Link
         href={href}
-        className={`inline-flex items-center gap-1 font-heading font-semibold text-[#1F1F1F] hover:text-[#C8741F] transition-all py-1.5 px-2 rounded-lg hover:bg-black/[0.03] focus:outline-hidden ${
+        className={`inline-flex items-center gap-1 font-semibold text-[var(--black)] hover:text-[var(--accent)] transition-colors py-1.5 px-2 rounded-[8px] hover:bg-[var(--surface)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--black)] ${
           compact ? "text-[14px]" : "text-[15px]"
         }`}
         aria-expanded={isOpen}
       >
         <span>{label}</span>
         <ChevronDown
-          className={`w-3.5 h-3.5 text-[#5F5B55] transition-transform duration-200 ${
-            isOpen ? "rotate-180 text-[#C8741F]" : ""
+          className={`w-3.5 h-3.5 text-[var(--text-muted)] transition-transform duration-200 ${
+            isOpen ? "rotate-180 text-[var(--accent)]" : ""
           }`}
           strokeWidth={2}
         />
       </Link>
 
-      {/* Modern floating menu panel */}
       {isOpen && (
         <div
-          className="absolute top-full left-0 mt-2 min-w-[230px] rounded-xl bg-white/98 backdrop-blur-md border border-[#E6E2DB] shadow-xl p-1.5 z-50 animate-in fade-in slide-in-from-top-1 duration-150"
+          className="absolute top-full left-0 mt-2 min-w-[230px] rounded-[12px] bg-[var(--white)] border border-[var(--line)] shadow-sm p-1.5 z-50"
           role="menu"
           aria-label={`${label} submenu`}
         >
@@ -92,10 +91,10 @@ export function NavDropdown({
               href={subItem.href}
               role="menuitem"
               onClick={() => setIsOpen(false)}
-              className="group flex items-center justify-between px-3 py-2 text-[13px] font-body font-medium text-[#1F1F1F] rounded-lg hover:bg-[#FAF8F5] hover:text-[#C8741F] transition-colors"
+              className="group flex items-center justify-between px-3 py-2 text-[13px] font-medium text-[var(--black)] rounded-[8px] hover:bg-[var(--surface)] hover:text-[var(--accent)] transition-colors"
             >
               <span>{subItem.label}</span>
-              <ArrowUpRight className="w-3.5 h-3.5 opacity-0 -translate-x-1 transition-all group-hover:opacity-100 group-hover:translate-x-0 text-[#C8741F]" />
+              <ArrowUpRight className="w-3.5 h-3.5 opacity-0 -translate-x-1 transition-all group-hover:opacity-100 group-hover:translate-x-0 text-[var(--accent)]" />
             </Link>
           ))}
         </div>

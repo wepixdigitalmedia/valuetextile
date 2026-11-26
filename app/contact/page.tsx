@@ -31,14 +31,14 @@ export default function ContactPage() {
   const { contact } = siteConfig;
 
   return (
-    <main className="w-full bg-[#FFFDF9]">
+    <main className="w-full bg-[var(--white)]">
       {/* ============================================================ */}
       {/* 01. OVERSIZED DISPLAY TITLE + OVERLAPPING FORM SECTION       */}
       {/* ============================================================ */}
-      <section className="w-full pt-8 sm:pt-12 pb-16 sm:pb-24 overflow-hidden">
+      <section className="w-full pt-12 sm:pt-16 pb-16 lg:pb-24 overflow-hidden">
         <Container>
           {/* Giant Editorial Headline */}
-          <h1 className="font-heading font-extrabold uppercase text-[#1F1F1F] text-[48px] sm:text-[80px] md:text-[108px] lg:text-[132px] leading-[0.95] tracking-[-0.03em] select-none">
+          <h1 className="font-extrabold uppercase text-[var(--black)] text-[48px] sm:text-[80px] md:text-[108px] lg:text-[132px] leading-[1.05] tracking-[-0.02em] select-none">
             CONTACT US
           </h1>
 
@@ -47,10 +47,10 @@ export default function ContactPage() {
             {/* Left Column (5 cols): Direct Contact Channels */}
             <div className="lg:col-span-5 lg:pt-2 space-y-8">
               <div className="space-y-1">
-                <p className="font-heading text-base sm:text-lg font-bold text-[#1F1F1F]">
+                <p className="text-base sm:text-lg font-bold text-[var(--black)]">
                   Questions or export inquiries?
                 </p>
-                <p className="font-body text-sm sm:text-base text-[#554F47]">
+                <p className="text-base text-[var(--text-muted)] leading-relaxed">
                   Get in touch through the options below
                 </p>
               </div>
@@ -58,20 +58,20 @@ export default function ContactPage() {
               <div className="space-y-6">
                 {/* Chat with us / Email */}
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-full bg-[#FAF4EA] border border-[#E8DEC8] flex items-center justify-center text-[#C8741F] shrink-0">
+                  <div className="w-14 h-14 rounded-full bg-[var(--surface)] border border-[var(--line)] flex items-center justify-center text-[var(--accent)] shrink-0">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
-                    <p className="font-body text-xs sm:text-sm text-[#554F47]">
+                    <p className="text-xs sm:text-sm text-[var(--text-muted)]">
                       Chat with us
                     </p>
                     <a
                       href={`mailto:${contact.email}`}
-                      className="font-heading text-base sm:text-lg font-bold text-[#C8741F] hover:underline"
+                      className="text-base sm:text-lg font-bold text-[var(--black)] hover:text-[var(--accent)] transition-colors"
                     >
                       {contact.email}
                     </a>
-                    <p className="font-mono text-[11px] text-[#78716C] mt-0.5">
+                    <p className="text-[12px] text-[var(--text-muted)] mt-0.5">
                       eswarasamy@valuetextiles.net · sundaram@valuetextiles.net
                     </p>
                   </div>
@@ -79,16 +79,16 @@ export default function ContactPage() {
 
                 {/* Call us / Phone & WhatsApp */}
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-full bg-[#FAF4EA] border border-[#E8DEC8] flex items-center justify-center text-[#C8741F] shrink-0">
+                  <div className="w-14 h-14 rounded-full bg-[var(--surface)] border border-[var(--line)] flex items-center justify-center text-[var(--accent)] shrink-0">
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
-                    <p className="font-body text-xs sm:text-sm text-[#554F47]">
+                    <p className="text-xs sm:text-sm text-[var(--text-muted)]">
                       Call or WhatsApp us
                     </p>
                     <a
                       href={`tel:${contact.phoneTel}`}
-                      className="font-heading text-base sm:text-lg font-bold text-[#C8741F] hover:underline"
+                      className="text-base sm:text-lg font-bold text-[var(--black)] hover:text-[var(--accent)] transition-colors"
                     >
                       {contact.phoneDisplay}
                     </a>
@@ -97,14 +97,14 @@ export default function ContactPage() {
 
                 {/* Working Hours */}
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-full bg-[#FAF4EA] border border-[#E8DEC8] flex items-center justify-center text-[#C8741F] shrink-0">
+                  <div className="w-14 h-14 rounded-full bg-[var(--surface)] border border-[var(--line)] flex items-center justify-center text-[var(--accent)] shrink-0">
                     <Clock className="w-5 h-5" />
                   </div>
                   <div>
-                    <p className="font-body text-xs sm:text-sm text-[#554F47]">
+                    <p className="text-xs sm:text-sm text-[var(--text-muted)]">
                       Export desk hours
                     </p>
-                    <p className="font-heading text-sm sm:text-base font-bold text-[#1F1F1F]">
+                    <p className="text-sm sm:text-base font-bold text-[var(--black)]">
                       Mon – Sat · 9:00 AM – 6:30 PM IST
                     </p>
                   </div>
@@ -112,7 +112,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Right Column (7 cols): Warm-Themed Overlapping Form Card */}
+            {/* Right Column (7 cols): Surface Form Card */}
             <div className="lg:col-span-7">
               <ContactForm />
             </div>
@@ -123,22 +123,22 @@ export default function ContactPage() {
       {/* ============================================================ */}
       {/* 02. OUR UNIT ADDRESSES STRIP                                 */}
       {/* ============================================================ */}
-      <section className="w-full bg-[#FAF8F5] py-14 sm:py-16 border-t border-[#E8E2D9]">
+      <section className="w-full bg-[var(--surface)] py-16 lg:py-24 border-t border-[var(--line)]">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {FACILITY_LOCATIONS.map((unit) => (
               <div
                 key={unit.title}
-                className="p-6 rounded-[24px] bg-white border border-[#E8E2D9] flex items-start gap-3.5"
+                className="p-6 rounded-[12px] bg-[var(--white)] border border-[var(--line)] flex items-start gap-3.5"
               >
-                <div className="w-10 h-10 rounded-full bg-[#FAF4EA] border border-[#E8DEC8] flex items-center justify-center text-[#C8741F] shrink-0 mt-0.5">
+                <div className="w-10 h-10 rounded-full bg-[var(--surface)] border border-[var(--line)] flex items-center justify-center text-[var(--accent)] shrink-0 mt-0.5">
                   <MapPin className="w-4 h-4" />
                 </div>
                 <div className="space-y-1">
-                  <h2 className="font-heading text-base font-bold text-[#1F1F1F]">
+                  <h2 className="text-base font-bold text-[var(--black)]">
                     {unit.title}
                   </h2>
-                  <p className="font-body text-xs sm:text-sm text-[#554F47] leading-relaxed">
+                  <p className="text-sm text-[var(--text-muted)] leading-relaxed">
                     {unit.address}
                   </p>
                 </div>
