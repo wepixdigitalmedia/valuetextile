@@ -71,11 +71,10 @@ export function SiteHeader() {
   return (
     <>
       <header
-        className={`sticky top-0 z-40 w-full h-[76px] sm:h-[84px] md:h-[92px] lg:h-[98px] transition-[border-radius,background-color,border-color] duration-300 ease-out bg-[var(--white)] ${
-          isScrolled
-            ? "border-b border-[var(--line)] rounded-t-none"
-            : "rounded-t-[26px] sm:rounded-t-[30px] border-t border-b border-[var(--line)]"
-        }`}
+        className={`sticky top-0 z-40 w-full h-[76px] sm:h-[84px] md:h-[92px] lg:h-[98px] transition-[border-radius,background-color,border-color] duration-300 ease-out bg-[var(--white)] ${isScrolled
+          ? "border-b border-[var(--line)] rounded-t-none"
+          : "rounded-t-[26px] sm:rounded-t-[30px] border-t border-b border-[var(--line)]"
+          }`}
       >
         <Container className="h-full flex items-center justify-between">
           {/* Left: Hamburger Button (Mobile) + Brand Logo */}
@@ -116,26 +115,23 @@ export function SiteHeader() {
 
       {/* Mobile Sidebar Drawer */}
       <div
-        className={`fixed inset-0 z-100 md:hidden transition-visibility duration-300 ${
-          mobileMenuOpen
-            ? "visible pointer-events-auto"
-            : "invisible pointer-events-none"
-        }`}
+        className={`fixed inset-0 z-100 md:hidden transition-visibility duration-300 ${mobileMenuOpen
+          ? "visible pointer-events-auto"
+          : "invisible pointer-events-none"
+          }`}
         aria-hidden={!mobileMenuOpen}
       >
         <div
           onClick={() => setMobileMenuOpen(false)}
-          className={`fixed inset-0 bg-[var(--black)]/50 transition-opacity duration-300 ${
-            mobileMenuOpen ? "opacity-100" : "opacity-0"
-          }`}
+          className={`fixed inset-0 bg-[var(--black)]/50 transition-opacity duration-300 ${mobileMenuOpen ? "opacity-100" : "opacity-0"
+            }`}
         />
 
         <aside
           data-lenis-prevent
           aria-label="Mobile Navigation Drawer"
-          className={`fixed top-0 left-0 bottom-0 w-[86vw] max-w-[360px] bg-[var(--white)] border-r border-[var(--line)] flex flex-col justify-between transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-            mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
-          }`}
+          className={`fixed top-0 left-0 bottom-0 w-[86vw] max-w-[360px] bg-[var(--white)] border-r border-[var(--line)] flex flex-col justify-between transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+            }`}
         >
           {/* Drawer Top Header */}
           <div className="h-[76px] px-5 flex items-center justify-between border-b border-[var(--line)] bg-[var(--white)] shrink-0">
@@ -176,11 +172,10 @@ export function SiteHeader() {
                     {hasDropdown ? (
                       <>
                         <div
-                          className={`flex items-center justify-between rounded-[10px] px-3 py-2.5 transition-colors ${
-                            isActive
-                              ? "bg-[var(--surface)] border-l-2 border-[var(--accent)] text-[var(--black)]"
-                              : "hover:bg-[var(--surface)] text-[var(--black)]"
-                          }`}
+                          className={`flex items-center justify-between rounded-[10px] px-3 py-2.5 transition-colors ${isActive
+                            ? "bg-[var(--surface)] border-l-2 border-[var(--accent)] text-[var(--black)]"
+                            : "hover:bg-[var(--surface)] text-[var(--black)]"
+                            }`}
                         >
                           <Link
                             href={item.href}
@@ -197,11 +192,10 @@ export function SiteHeader() {
                             className="size-8 rounded-lg flex items-center justify-center text-[var(--text-muted)] hover:bg-[var(--line)]/50 cursor-pointer"
                           >
                             <ChevronDown
-                              className={`w-4 h-4 transition-transform duration-200 ${
-                                isExpanded
-                                  ? "rotate-180 text-[var(--black)]"
-                                  : ""
-                              }`}
+                              className={`w-4 h-4 transition-transform duration-200 ${isExpanded
+                                ? "rotate-180 text-[var(--black)]"
+                                : ""
+                                }`}
                             />
                           </button>
                         </div>
@@ -215,11 +209,10 @@ export function SiteHeader() {
                                   key={sub.href}
                                   href={sub.href}
                                   onClick={() => setMobileMenuOpen(false)}
-                                  className={`block px-3 py-2 rounded-[8px] text-[14px] transition-colors ${
-                                    subActive
-                                      ? "bg-[var(--surface)] text-[var(--black)] font-bold"
-                                      : "text-[var(--text-muted)] hover:text-[var(--black)] hover:bg-[var(--surface)]"
-                                  }`}
+                                  className={`block px-3 py-2 rounded-[8px] text-[14px] transition-colors ${subActive
+                                    ? "bg-[var(--surface)] text-[var(--black)] font-bold"
+                                    : "text-[var(--text-muted)] hover:text-[var(--black)] hover:bg-[var(--surface)]"
+                                    }`}
                                 >
                                   {sub.label}
                                 </Link>
@@ -232,11 +225,10 @@ export function SiteHeader() {
                       <Link
                         href={item.href}
                         onClick={() => setMobileMenuOpen(false)}
-                        className={`flex items-center justify-between rounded-[10px] px-3 py-2.5 text-[16px] font-bold transition-colors ${
-                          isActive
-                            ? "bg-[var(--surface)] border-l-2 border-[var(--accent)] text-[var(--black)]"
-                            : "text-[var(--black)] hover:bg-[var(--surface)]"
-                        }`}
+                        className={`flex items-center justify-between rounded-[10px] px-3 py-2.5 text-[16px] font-bold transition-colors ${isActive
+                          ? "bg-[var(--surface)] border-l-2 border-[var(--accent)] text-[var(--black)]"
+                          : "text-[var(--black)] hover:bg-[var(--surface)]"
+                          }`}
                       >
                         <span>{item.label}</span>
                         <ArrowRight className="w-4 h-4 text-[var(--text-muted)]" />
