@@ -1,5 +1,5 @@
 import { GARMENT_CATEGORY_DETAILS } from "./garmentsData";
-import { PRODUCTS_DATA } from "./productsData";
+import { BLOG_POSTS } from "./blogPosts";
 import { siteConfig } from "./siteContent";
 
 export type SearchItemGroup =
@@ -129,67 +129,21 @@ const GARMENT_CATEGORY_ITEMS: SearchIndexItem[] = [
   ...GARMENT_CATEGORY_DETAILS.map((cat) => ({
     id: `garment-cat-${cat.slug}`,
     title: cat.title,
-    subtitle: cat.tagline,
+    subtitle: cat.headline,
     group: "Garment Programs" as const,
     href: `/garments/${cat.slug}`,
-    badge: cat.sizeRange.split(" ")[0],
+    badge: "Garments",
     keywords: [
       cat.title.toLowerCase(),
       cat.eyebrow.toLowerCase(),
       cat.specsSummary.toLowerCase(),
       ...cat.fabrics.map((f) => f.toLowerCase()),
       ...cat.styles.map((s) => s.toLowerCase()),
-      ...cat.finishes.map((f) => f.toLowerCase()),
+      ...cat.certificates.map((c) => c.toLowerCase()),
     ],
   })),
 ];
 
-const PRODUCT_CATALOG_ITEMS: SearchIndexItem[] = [
-  {
-    id: "products-all",
-    title: "Browse All Fabrics, Yarns & Garments",
-    subtitle: "Complete product catalogue for buyer specification development",
-    group: "Fabrics & Yarns",
-    href: "/products",
-    badge: "Products",
-    keywords: [
-      "product",
-      "products",
-      "gsm",
-      "blends",
-      "fabric",
-      "yarn",
-      "catalogue",
-      "catalog",
-    ],
-  },
-  ...PRODUCTS_DATA.map((prod) => ({
-    id: `product-${prod.id}`,
-    title: prod.name,
-    subtitle: prod.cardDescription,
-    group:
-      prod.category === "Garments"
-        ? ("Garment Programs" as const)
-        : ("Fabrics & Yarns" as const),
-    href:
-      prod.category === "Garments"
-        ? "/garments"
-        : `/products?category=${prod.category.toLowerCase()}&search=${encodeURIComponent(prod.name.split(" ")[0])}`,
-    badge: prod.category,
-    keywords: [
-      prod.name.toLowerCase(),
-      prod.category.toLowerCase(),
-      prod.productType.toLowerCase(),
-      prod.composition.toLowerCase(),
-      prod.construction?.toLowerCase() ?? "",
-      prod.yarnCount?.toLowerCase() ?? "",
-      ...prod.features.map((f) => f.toLowerCase()),
-      "gsm",
-      "blend",
-      "moq",
-    ],
-  })),
-];
 
 const CAPABILITY_ITEMS: SearchIndexItem[] = [
   {
@@ -345,10 +299,10 @@ const COMPANY_ITEMS: SearchIndexItem[] = [
   },
   {
     id: "page-infrastructure",
-    title: "Our Infrastructure & Specialized Fabrics",
-    subtitle: "Unit facilities, machinery gallery & specialized fabric compositions",
+    title: "Our Units and Machinery",
+    subtitle: "Knitting, dyeing, lab and garment units with photos",
     group: "Company & Quality",
-    href: "/infrastructure",
+    href: "/capabilities",
     badge: "Facilities",
     keywords: [
       "infrastructure",
@@ -362,9 +316,18 @@ const COMPANY_ITEMS: SearchIndexItem[] = [
     ],
   },
   {
+    id: "page-how-to-order",
+    title: "How to Order",
+    subtitle: "Quote, samples, approval, production and shipping in six steps",
+    group: "Company & Quality",
+    href: "/how-to-order",
+    badge: "Process",
+    keywords: ["how to order", "process", "sampling", "samples", "lead time", "moq", "minimum order", "payment terms", "shipping", "tech pack", "company profile"],
+  },
+  {
     id: "page-quality",
-    title: "Quality Assurance & Certifications",
-    subtitle: "OEKO-TEX Standard 100, GOTS, GRS, BCI, 4-point QC & AQL audits",
+    title: "Quality and Certificates",
+    subtitle: "Yarn and fabric testing, 4-point and 10-point inspection, OEKO-TEX, GOTS, OCS, BCI, GRS",
     group: "Company & Quality",
     href: "/quality",
     badge: "Certified",
@@ -385,24 +348,6 @@ const COMPANY_ITEMS: SearchIndexItem[] = [
     ],
   },
   {
-    id: "page-resources",
-    title: "Technical Resources & GSM Guides",
-    subtitle: "Knit fabric GSM & yarn count charts, 4-point guide & compliance specs",
-    group: "Company & Quality",
-    href: "/resources",
-    badge: "Guides",
-    keywords: [
-      "resources",
-      "guide",
-      "chart",
-      "gsm",
-      "yarn count",
-      "conversion",
-      "astm",
-      "technical",
-    ],
-  },
-  {
     id: "page-blog",
     title: "Blog & Sourcing Insights",
     subtitle: "Articles on Tiruppur knitwear sourcing, dyeing & garment exports",
@@ -411,6 +356,15 @@ const COMPANY_ITEMS: SearchIndexItem[] = [
     badge: "Blog",
     keywords: ["blog", "articles", "news", "insights", "journal"],
   },
+  ...BLOG_POSTS.map((p) => ({
+    id: `blog-${p.slug}`,
+    title: p.title,
+    subtitle: p.excerpt,
+    group: "Company & Quality" as const,
+    href: `/blog/${p.slug}`,
+    badge: "Article",
+    keywords: [p.category.toLowerCase(), ...p.title.toLowerCase().split(" ")],
+  })),
   {
     id: "page-contact",
     title: "Contact Us & Factory Addresses",
@@ -439,7 +393,6 @@ export const SEARCH_INDEX: SearchIndexItem[] = [
   ...GARMENT_CATEGORY_ITEMS,
   ...CAPABILITY_ITEMS,
   ...COMPANY_ITEMS,
-  ...PRODUCT_CATALOG_ITEMS,
 ];
 
 export const SUGGESTED_SEARCH_CHIPS = [

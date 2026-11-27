@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Container } from "../ui/Container";
 import { Eyebrow } from "../ui/Eyebrow";
 
@@ -40,12 +41,12 @@ export function CertificationsSection() {
       <Container>
         {/* Header Block */}
         <div className="max-w-3xl">
-          <Eyebrow>CERTIFICATIONS &amp; COMPLIANCE</Eyebrow>
+          <Eyebrow>CERTIFICATES</Eyebrow>
           <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em] mt-2">
-            Certified, and verified for every shipment.
+            The certificates we hold.
           </h2>
           <p className="text-base sm:text-lg text-[var(--text-muted)] leading-relaxed mt-3">
-            Our units carry independent international certifications covering product safety, recycled content, and organic traceability.
+            Independent certification for product safety, organic content, recycled content and cotton sourcing.
           </p>
         </div>
 
@@ -66,6 +67,14 @@ export function CertificationsSection() {
               />
             </div>
           ))}
+        </div>
+        <div className="mt-8 sm:mt-10">
+          <Link
+            href="/quality"
+            className="inline-flex items-center gap-1.5 text-[14px] font-semibold text-[var(--black)] underline underline-offset-4 hover:text-[var(--accent)] transition-colors"
+          >
+            See certificate numbers and our testing
+          </Link>
         </div>
       </Container>
     </section>

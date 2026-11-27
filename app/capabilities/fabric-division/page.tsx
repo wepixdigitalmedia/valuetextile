@@ -2,22 +2,15 @@ import React from "react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
-import { Button } from "@/components/ui/Button";
+import { DivisionHero } from "@/components/capabilities/DivisionHero";
+import { DivisionNext } from "@/components/capabilities/DivisionNext";
+import Link from "next/link";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { Tiruppur } from "@/components/ui/Tiruppur";
-import { siteConfig } from "@/config/siteContent";
-import {
-  ArrowRight,
-  ClipboardCheck,
-  FlaskConical,
-  MapPin,
-  Truck,
-} from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Fabric Division | Value Textiles — Testing, Inspection & Despatch, Tiruppur",
+  title: "Fabric Lab, Inspection and Despatch",
   description:
-    "Value Textiles Fabric Division features an exclusive in-house Fabric Testing Laboratory (11-point lab testing), 4-Point & 10-Point Fabric Inspection with colour-coded roll identification, and scheduled Fabric Despatch.",
+    "An 11-test in-house fabric lab, 4-point and 10-point inspection, and scheduled fabric despatch from Tiruppur.",
 };
 
 const LAB_TESTS = [
@@ -151,73 +144,23 @@ const DESPATCH_IMAGES = [
   },
 ];
 
-const FABRIC_HIGHLIGHTS = [
-  {
-    icon: FlaskConical,
-    title: "11-Parameter In-House Lab",
-    text: "Every fabric batch is tested in our exclusive laboratory for GSM weight, yarn count, construction, 5 colour-fastness metrics, shrinkage, and spirality.",
-  },
-  {
-    icon: ClipboardCheck,
-    title: "4-Point & 10-Point Inspection",
-    text: "Strict roll sampling with <30 points/100m pass criteria and Red, Orange, Yellow, and Green sticker identification for controlled cutting and shipment.",
-  },
-  {
-    icon: Truck,
-    title: "Guaranteed Despatch Lead Times",
-    text: "Disciplined Time & Action (T&A) execution delivering Solid fabrics in 30 days, Melange in 35 days, and Yarn-Dyed or All-Over Print in 45 days.",
-  },
-];
-
 export default function FabricDivisionPage() {
   return (
     <main className="w-full bg-[var(--white)]">
-      {/* ============================================================ */}
-      {/* 01. FABRIC DIVISION HERO                                     */}
-      {/* ============================================================ */}
-      <section className="relative w-full bg-[var(--surface)] py-16 lg:py-24 border-b border-[var(--line)] overflow-hidden">
-        <Container className="relative z-10">
-          <div className="max-w-4xl space-y-5">
-            <Eyebrow>
-              CAPABILITIES · FABRIC DIVISION · <Tiruppur />, INDIA
-            </Eyebrow>
-            <h1 className="text-3xl sm:text-5xl lg:text-[56px] font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em]">
-              Fabric Division
-            </h1>
-            <p className="text-base sm:text-lg text-[var(--text-muted)] leading-relaxed">
-              Value Textiles always aims to achieve and ensure optimum quality
-              fabric at all times. Our Fabric Division integrates an exclusive
-              in-house Fabric Testing Laboratory, 4-Point and 10-Point Fabric
-              Inspection systems, and a Time &amp; Action driven Fabric Despatch
-              department.
-            </p>
-            <p className="text-base sm:text-lg text-[var(--text-muted)] leading-relaxed">
-              Whether supplying our own garment stitching lines or shipping
-              finished knitted fabric rolls directly to buyers, every lot is
-              verified for physical stability, colour fastness, surface
-              perfection, and protective packing.
-            </p>
-
-            <div className="pt-1 flex items-center gap-2 text-sm text-[var(--text-muted)]">
-              <MapPin className="w-4 h-4 text-[var(--accent)] shrink-0" />
-              <span>
-                <strong className="text-[var(--black)]">Fabric &amp; QC Unit:</strong>{" "}
-                {siteConfig.contact.addressFull}
-              </span>
-            </div>
-
-            <div className="flex flex-wrap items-center gap-4 pt-3">
-              <Button href="/contact#quote" variant="primary">
-                <span>Enquire About Fabrics &amp; Garments</span>
-                <ArrowRight className="w-4 h-4" />
-              </Button>
-              <Button href="/capabilities/dyeing-division" variant="secondary">
-                <span>Dyeing Division</span>
-              </Button>
-            </div>
-          </div>
-        </Container>
-      </section>
+      <DivisionHero
+        eyebrow="FABRIC LAB, INSPECTION AND DESPATCH"
+        title="Every fabric lot tested and graded before it is cut."
+        intro={[
+          "Our in-house lab runs 11 tests on fabric, and every roll is graded under the 4-point and 10-point inspection systems before it goes to the cutting table or out to a buyer.",
+          "We supply our own garment lines and, on request, finished knitted fabric to buyers.",
+        ]}
+        stats={[
+          { value: "11", label: "Lab tests on fabric" },
+          { value: "4-point + 10-point", label: "Fabric inspection systems" },
+          { value: "4 colours", label: "Roll tags set the cutting order" },
+          { value: "30 days", label: "Solid fabric, from lab dip approval" },
+        ]}
+      />
 
       {/* ============================================================ */}
       {/* 02. FABRIC TESTING - LABORATORY (Table + te1, te2, te4, te3) */}
@@ -544,55 +487,54 @@ export default function FabricDivisionPage() {
       </section>
 
       {/* ============================================================ */}
-      {/* 05. HIGHLIGHTS & CTA                                         */}
+      {/* FABRICS WE MAKE (fabric catalogue folded in from /products)  */}
       {/* ============================================================ */}
-      <section className="w-full bg-[var(--surface)] py-16 lg:py-24">
-        <Container className="space-y-14">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            {FABRIC_HIGHLIGHTS.map((item) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={item.title}
-                  className="p-7 rounded-[12px] bg-[var(--white)] border border-[var(--line)] space-y-4"
-                >
-                  <div className="w-11 h-11 rounded-[12px] bg-[var(--surface)] border border-[var(--line)] flex items-center justify-center text-[var(--accent)]">
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <h3 className="text-xl font-bold text-[var(--black)]">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
-                    {item.text}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="rounded-[12px] bg-[var(--white)] border border-[var(--line)] text-[var(--black)] p-8 sm:p-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
-            <div className="max-w-2xl space-y-2.5">
-              <Eyebrow>LAB-TESTED &amp; 4-POINT INSPECTED KNITS</Eyebrow>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-[-0.02em] leading-[1.1]">
-                Ready to source lab-verified fabrics or full-package garments?
+      <section className="w-full bg-[var(--surface)] py-14 lg:py-20 border-t border-[var(--line)]">
+        <Container>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+            <div className="lg:col-span-5">
+              <h2 className="text-[28px] sm:text-[36px] font-extrabold leading-[1.1] tracking-[-0.02em] text-[var(--black)]">
+                What we knit <span className="text-[var(--accent)]">and dye.</span>
               </h2>
-              <p className="text-base text-[var(--text-muted)] leading-relaxed">
-                Share your fabric GSM, composition, or garment tech pack with
-                our Tiruppur merchandising desk.
+              <p className="mt-3 text-[16px] leading-[1.6] text-[var(--text-muted)] max-w-md">
+                Garments are our main product. Need fabric only? We take fabric and yarn-dyed fabric orders on request.
               </p>
+              <Link
+                href="/contact?type=fabric#quote"
+                className="mt-5 inline-flex items-center min-h-[48px] px-6 py-2 rounded-full border-[1.5px] border-[var(--black)] text-[var(--black)] hover:bg-[var(--black)] hover:text-[var(--white)] text-[14px] font-semibold transition-colors"
+              >
+                Ask about fabric only
+              </Link>
             </div>
-            <div className="flex flex-wrap items-center gap-4 shrink-0">
-              <Button href="/contact#quote" variant="primary">
-                <span>Get a Quote</span>
-                <ArrowRight className="w-4 h-4" />
-              </Button>
-              <Button href="/garments" variant="secondary">
-                <span>Explore Garments</span>
-              </Button>
-            </div>
+            <dl className="lg:col-span-7 border-t border-[var(--line)] divide-y divide-[var(--line)]">
+              <div className="py-4 sm:py-5 flex flex-col sm:flex-row gap-1.5 sm:gap-8">
+                <dt className="w-32 shrink-0 text-[12px] font-bold uppercase tracking-[0.14em] text-[var(--text-muted)] pt-0.5">Fibres</dt>
+                <dd className="text-[16px] leading-[1.6] text-[var(--black)]">
+                  Cotton and organic cotton, polyester, Lycra, viscose, rayon, Tencel, bamboo and modal, alone or blended.
+                </dd>
+              </div>
+              <div className="py-4 sm:py-5 flex flex-col sm:flex-row gap-1.5 sm:gap-8">
+                <dt className="w-32 shrink-0 text-[12px] font-bold uppercase tracking-[0.14em] text-[var(--text-muted)] pt-0.5">Constructions</dt>
+                <dd className="text-[16px] leading-[1.6] text-[var(--black)]">
+                  Single jersey, rib, interlock, auto-striper, mini jacquard and Lycra jersey.
+                </dd>
+              </div>
+              <div className="py-4 sm:py-5 flex flex-col sm:flex-row gap-1.5 sm:gap-8">
+                <dt className="w-32 shrink-0 text-[12px] font-bold uppercase tracking-[0.14em] text-[var(--text-muted)] pt-0.5">Dyeing</dt>
+                <dd className="text-[16px] leading-[1.6] text-[var(--black)]">
+                  Solid, yarn-dyed, melange and all-over print, in our own dye house.
+                </dd>
+              </div>
+            </dl>
           </div>
         </Container>
       </section>
+
+      <DivisionNext
+        current="fabric"
+        quoteHeading="Ready to test your fabric with us?"
+        quoteText="Send your fabric specification or tech pack. We tell you what we can knit, dye and test, and how long it takes."
+      />
     </main>
   );
 }

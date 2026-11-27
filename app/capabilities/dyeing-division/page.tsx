@@ -2,22 +2,16 @@ import React from "react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
-import { Button } from "@/components/ui/Button";
+import { DivisionHero } from "@/components/capabilities/DivisionHero";
+import { DivisionNext } from "@/components/capabilities/DivisionNext";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { siteConfig } from "@/config/siteContent";
-import {
-  ArrowRight,
-  CheckCircle2,
-  Droplets,
-  FlaskConical,
-  MapPin,
-  ShieldCheck,
-} from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Dyeing Division | Value Textiles — Capabilities, Perundurai & Tiruppur",
+  title: "Dyeing Division",
   description:
-    "Value Textiles Dyeing Division features Brazzoli & Dilmenler HTHP soft-flow dyeing machines with SETEX & ORGATEX automation, THIES dispensing, TubeTex & Mario Crosta finishing, and SIMEM Zero Liquid Discharge (ZLD).",
+    "Soft-flow dyeing from 25 kg to 1,500 kg batches, a colour lab, finishing and a Zero Liquid Discharge effluent plant in Perundurai.",
 };
 
 const DYEING_GALLERY = [
@@ -109,72 +103,24 @@ const ETP_STAGES = [
   },
 ];
 
-const DYEING_HIGHLIGHTS = [
-  {
-    icon: Droplets,
-    title: "SETEX, ORGATEX & THIES Automation",
-    text: "All bulk soft-flow dyeing machines operate with SETEX controllers, ORGATEX centralized dyehouse management, and THIES Germany liquid chemical & dye dispensing.",
-  },
-  {
-    icon: FlaskConical,
-    title: "Color & Quality Testing Labs",
-    text: "Equipped with Konica Minolta spectrophotometer, SPI Autolab dispensing, VeriVide colour cabinet, and full physical fastness and shrinkage testing.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Zero Liquid Discharge (ZLD)",
-    text: "Automated SIMEM Italy biological & RO plant with ozone colour removal and multi-effect evaporation, recycling both water and salt per government norms.",
-  },
-];
-
 export default function DyeingDivisionPage() {
   return (
     <main className="w-full bg-[var(--white)]">
-      {/* ============================================================ */}
-      {/* 01. DYEING DIVISION HERO                                     */}
-      {/* ============================================================ */}
-      <section className="relative w-full bg-[var(--surface)] py-16 lg:py-24 border-b border-[var(--line)] overflow-hidden">
-        <Container className="relative z-10">
-          <div className="max-w-4xl space-y-5">
-            <Eyebrow>
-              CAPABILITIES · DYEING DIVISION · SIPCOT PERUNDURAI, INDIA
-            </Eyebrow>
-            <h1 className="text-3xl sm:text-5xl lg:text-[56px] font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em]">
-              Dyeing Division
-            </h1>
-            <p className="text-base sm:text-lg text-[var(--text-muted)] leading-relaxed">
-              Usage of wide range of exclusive dyeing machines like soft flow
-              dyeing machine, yarn dyeing and fabric dyeing, stenter and tubular
-              etc reveals the Organization&apos;s vast experience in
-              manufacturing of fabrics and yarn dyeing.
-            </p>
-            <p className="text-base sm:text-lg text-[var(--text-muted)] leading-relaxed">
-              For knitted fabric processing, we operate high-efficiency
-              soft-flow machines equipped with SETEX controllers, ORGATEX
-              centralized dyehouse management system, and automated liquid
-              chemical &amp; dye dispensing from THIES Germany.
-            </p>
-
-            <div className="pt-1 flex items-start sm:items-center gap-2 text-sm text-[var(--text-muted)]">
-              <MapPin className="w-4 h-4 text-[var(--accent)] shrink-0 mt-0.5 sm:mt-0" />
-              <span>
-                <strong className="text-[var(--black)]">Dyeing Unit:</strong>{" "}
-                {siteConfig.contact.dyeingAddress}
-              </span>
-            </div>
-
-            <div className="flex flex-wrap items-center gap-4 pt-3">
-              <Button href="/contact#quote" variant="primary">
-                <span>Enquire About Dyeing &amp; Fabrics</span>
-                <ArrowRight className="w-4 h-4" />
-              </Button>
-              <Button href="/capabilities/knitting-division" variant="secondary">
-                <span>Knitting Division</span>
-              </Button>
-            </div>
-          </div>
-        </Container>
-      </section>
+      <DivisionHero
+        eyebrow="DYEING DIVISION"
+        title="Our own dye house, from 25 kg samples to 1,500 kg batches."
+        intro={[
+          "Soft-flow dyeing machines with SETEX controllers and ORGATEX dye-house management, with liquid dye and chemical dispensing from THIES, Germany, dye our knitted fabric and yarn.",
+          "An effluent treatment plant recycles both water and salt, meeting Zero Liquid Discharge norms.",
+        ]}
+        location={`Dyeing unit: ${siteConfig.contact.dyeingAddress}`}
+        stats={[
+          { value: "25 to 1,500 kg", label: "Batch sizes" },
+          { value: "SETEX + ORGATEX", label: "Machine and dye-house control" },
+          { value: "Colour lab", label: "Spectrophotometer and colour cabinet" },
+          { value: "ZLD", label: "Water and salt recycled" },
+        ]}
+      />
 
       {/* ============================================================ */}
       {/* 02. DYEING DIVISION GALLERY (dy3.jpg & dy5.jpg)              */}
@@ -478,56 +424,11 @@ export default function DyeingDivisionPage() {
         </Container>
       </section>
 
-      {/* ============================================================ */}
-      {/* 06. HIGHLIGHTS & CTA                                         */}
-      {/* ============================================================ */}
-      <section className="w-full bg-[var(--white)] py-16 lg:py-24">
-        <Container className="space-y-14">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            {DYEING_HIGHLIGHTS.map((item) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={item.title}
-                  className="p-7 rounded-[12px] bg-[var(--surface)] border border-[var(--line)] space-y-4"
-                >
-                  <div className="w-11 h-11 rounded-[12px] bg-[var(--white)] border border-[var(--line)] flex items-center justify-center text-[var(--accent)]">
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <h3 className="text-xl font-bold text-[var(--black)]">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
-                    {item.text}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="rounded-[12px] bg-[var(--surface)] border border-[var(--line)] text-[var(--black)] p-8 sm:p-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
-            <div className="max-w-2xl space-y-2.5">
-              <Eyebrow>PANTONE LAB DIPS TO BULK PRODUCTION</Eyebrow>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-[-0.02em] leading-[1.1]">
-                Need OEKO-TEX® &amp; GOTS certified fabric dyeing for your garments?
-              </h2>
-              <p className="text-base text-[var(--text-muted)] leading-relaxed">
-                Share your Pantone shade codes, fabric GSM, and garment tech
-                pack. We knit, dye, finish, test, and stitch in our own units.
-              </p>
-            </div>
-            <div className="flex flex-wrap items-center gap-4 shrink-0">
-              <Button href="/contact#quote" variant="primary">
-                <span>Get a Quote</span>
-                <ArrowRight className="w-4 h-4" />
-              </Button>
-              <Button href="/garments" variant="secondary">
-                <span>Explore Garments</span>
-              </Button>
-            </div>
-          </div>
-        </Container>
-      </section>
+      <DivisionNext
+        current="dyeing"
+        quoteHeading="Need certified dyeing for your garments?"
+        quoteText="Share your Pantone codes, fabric GSM and tech pack. We knit, dye, finish, test and stitch in our own units."
+      />
     </main>
   );
 }

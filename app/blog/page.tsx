@@ -1,187 +1,129 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
+import React from "react";
+import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { Button } from "@/components/ui/Button";
-import { Eyebrow } from "@/components/ui/Eyebrow";
-import { Tiruppur } from "@/components/ui/Tiruppur";
-import { fetchPublishedBlogs, BlogPost } from "@/lib/firebase";
-import { ArrowRight, Calendar, Clock, Plus, Loader2 } from "lucide-react";
+import { BLOG_POSTS, formatPostDate } from "@/config/blogPosts";
+import { ArrowRight } from "lucide-react";
 
-const CATEGORIES = [
-  "All",
-  "Garment Manufacturing",
-  "Fabric & Yarn",
-  "Quality & Compliance",
-  "Export & Logistics",
-];
+export const metadata: Metadata = {
+  title: "Blog",
+  description:
+    "Practical notes from a Tiruppur knitwear factory: fabric inspection, lab tests, yarn testing and how to order garments.",
+};
 
 export default function BlogPage() {
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [fromFirestore, setFromFirestore] = useState(false);
-
-  useEffect(() => {
-    let active = true;
-    fetchPublishedBlogs().then((res) => {
-      if (!active) return;
-      setPosts(res.posts);
-      setFromFirestore(res.fromFirestore);
-      setLoading(false);
-    });
-    return () => {
-      active = false;
-    };
-  }, []);
-
-  const filteredPosts =
-    selectedCategory === "All"
-      ? posts
-      : posts.filter((p) => p.category === selectedCategory);
+  const [featured, ...rest] = BLOG_POSTS;
 
   return (
-    <main className="w-full bg-[var(--surface)] min-h-[70vh]">
-      {/* ============================================================ */}
-      {/* HEADER SECTION                                               */}
-      {/* ============================================================ */}
-      <section className="w-full bg-[var(--white)] py-16 lg:py-24 border-b border-[var(--line)]">
+    <main className="w-full bg-[var(--white)]">
+      <section className="w-full bg-[var(--surface)] py-14 lg:py-20 border-b border-[var(--line)]">
         <Container>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <div className="max-w-3xl space-y-3">
-              <Eyebrow>
-                INSIGHTS &amp; TECHNICAL BLOG · <Tiruppur />
-              </Eyebrow>
-              <h1 className="text-3xl sm:text-5xl lg:text-[52px] font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em]">
-                Garment &amp; Knitwear Journal
-              </h1>
-              <p className="text-base sm:text-lg text-[var(--text-muted)] leading-relaxed">
-                Practical guides on knitwear production, fabric development, 4-point quality control, and direct apparel sourcing from Tiruppur, India.
-              </p>
-            </div>
-
-            <Button href="/blog/new" variant="primary" className="shrink-0 w-fit">
-              <Plus className="w-4 h-4" />
-              <span>Write Article</span>
-            </Button>
-          </div>
-
-          {/* Category Filter Pills */}
-          <div className="flex flex-wrap items-center gap-2.5 mt-8 pt-6 border-t border-[var(--line)]">
-            {CATEGORIES.map((cat) => {
-              const active = selectedCategory === cat;
-              return (
-                <button
-                  key={cat}
-                  type="button"
-                  onClick={() => setSelectedCategory(cat)}
-                  className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--black)] ${
-                    active
-                      ? "bg-[var(--black)] text-[var(--white)]"
-                      : "bg-[var(--white)] text-[var(--black)] border border-[var(--line)] hover:border-[var(--black)]"
-                  }`}
-                >
-                  {cat}
-                </button>
-              );
-            })}
-            {!loading && (
-              <span className="ml-auto text-xs text-[var(--text-muted)] hidden sm:inline">
-                {fromFirestore ? "Synced with Firestore" : "Starter Articles (Add yours to Firestore)"}
-              </span>
-            )}
+          <div className="max-w-3xl">
+            <p className="inline-flex items-center gap-3 text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--black)]">
+              <span className="inline-block w-[28px] h-[3px] bg-[var(--accent)] shrink-0" aria-hidden="true" />
+              <span>BLOG</span>
+            </p>
+            <h1 className="mt-3 text-[34px] sm:text-[46px] lg:text-[54px] font-extrabold leading-[1.08] tracking-[-0.02em] text-[var(--black)]">
+              Practical notes on <span className="text-[var(--accent)]">knitwear quality and sourcing.</span>
+            </h1>
+            <p className="mt-4 text-[16px] sm:text-[18px] leading-[1.6] text-[var(--text-muted)] max-w-2xl">
+              Short, plain explanations from the people who run our knitting, dyeing, lab and garment units.
+            </p>
           </div>
         </Container>
       </section>
 
-      {/* ============================================================ */}
-      {/* ARTICLES GRID                                                */}
-      {/* ============================================================ */}
-      <section className="py-16 lg:py-24">
-        <Container>
-          {loading ? (
-            <div className="py-20 flex flex-col items-center justify-center text-[var(--text-muted)] gap-3">
-              <Loader2 className="w-7 h-7 animate-spin text-[var(--accent)]" />
-              <p className="text-xs font-bold uppercase tracking-[0.14em]">
-                Loading articles from Firestore...
-              </p>
-            </div>
-          ) : filteredPosts.length === 0 ? (
-            <div className="py-16 text-center bg-[var(--white)] rounded-[12px] border border-[var(--line)] p-8">
-              <p className="text-xl font-bold text-[var(--black)]">
-                No articles in this category yet.
-              </p>
-              <p className="text-sm text-[var(--text-muted)] mt-2 mb-6">
-                Publish a new article or switch to another category.
-              </p>
-              <Button href="/blog/new" variant="primary">
-                <Plus className="w-4 h-4" />
-                <span>Create First Article</span>
-              </Button>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 sm:gap-8">
-              {filteredPosts.map((post) => (
-                <Link
-                  key={post.slug}
-                  href={`/blog/${post.slug}`}
-                  className="group bg-[var(--white)] rounded-[12px] border border-[var(--line)] overflow-hidden flex flex-col justify-between hover:border-[var(--black)] transition-colors duration-300"
-                >
-                  <div>
-                    {/* Cover Image */}
-                    <div className="relative aspect-[16/10] w-full bg-[var(--surface)] overflow-hidden">
-                      <Image
-                        src={post.coverImage}
-                        alt={post.title}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <span className="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-[var(--white)] border border-[var(--line)] text-[11px] font-bold text-[var(--black)]">
-                        {post.category}
-                      </span>
-                    </div>
-
-                    {/* Text Content */}
-                    <div className="p-6 space-y-3">
-                      <div className="flex items-center gap-3 text-xs text-[var(--text-muted)]">
-                        <span className="inline-flex items-center gap-1">
-                          <Calendar className="w-3.5 h-3.5 text-[var(--accent)]" />
-                          {post.publishedAt}
-                        </span>
-                        <span>·</span>
-                        <span className="inline-flex items-center gap-1">
-                          <Clock className="w-3.5 h-3.5 text-[var(--accent)]" />
-                          {post.readTime}
-                        </span>
-                      </div>
-
-                      <h2 className="text-xl font-extrabold text-[var(--black)] leading-snug group-hover:text-[var(--accent)] transition-colors">
-                        {post.title}
-                      </h2>
-
-                      <p className="text-sm text-[var(--text-muted)] leading-relaxed line-clamp-3">
-                        {post.excerpt}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="px-6 pb-6 pt-3 border-t border-[var(--line)] flex items-center justify-between text-xs font-semibold text-[var(--black)]">
-                    <span>By {post.author}</span>
-                    <span className="inline-flex items-center gap-1 text-[var(--accent)] group-hover:translate-x-0.5 transition-transform">
-                      Read article
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </span>
-                  </div>
-                </Link>
-              ))}
-            </div>
+      <section className="w-full bg-[var(--white)] py-14 lg:py-20">
+        <Container className="space-y-10">
+          {featured && (
+            <Link
+              href={`/blog/${featured.slug}`}
+              className="group grid grid-cols-1 lg:grid-cols-12 gap-0 overflow-hidden rounded-[12px] border border-[var(--line)] hover:border-[var(--black)] transition-colors"
+            >
+              <div className="relative lg:col-span-7 aspect-[16/10] lg:aspect-auto lg:min-h-[340px] bg-[var(--surface)]">
+                <Image
+                  src={featured.coverImage}
+                  alt={featured.coverAlt}
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 60vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="lg:col-span-5 flex flex-col justify-center p-6 sm:p-9">
+                <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-[var(--accent)]">
+                  {featured.category}
+                </p>
+                <h2 className="mt-2 text-[26px] sm:text-[30px] font-extrabold leading-[1.15] tracking-[-0.02em] text-[var(--black)] group-hover:text-[var(--accent)] transition-colors">
+                  {featured.title}
+                </h2>
+                <p className="mt-3 text-[15.5px] leading-[1.65] text-[var(--text-muted)]">{featured.excerpt}</p>
+                <p className="mt-4 text-[13px] text-[var(--text-muted)]">
+                  {formatPostDate(featured.publishedAt)} · {featured.readTime}
+                </p>
+                <span className="mt-5 inline-flex items-center gap-1.5 text-[14px] font-semibold text-[var(--black)] group-hover:text-[var(--accent)] transition-colors">
+                  Read article <ArrowRight className="w-4 h-4" strokeWidth={2.2} />
+                </span>
+              </div>
+            </Link>
           )}
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {rest.map((post) => (
+              <Link
+                key={post.slug}
+                href={`/blog/${post.slug}`}
+                className="group flex flex-col overflow-hidden rounded-[12px] border border-[var(--line)] hover:border-[var(--black)] transition-colors"
+              >
+                <div className="relative aspect-[16/10] w-full bg-[var(--surface)] border-b border-[var(--line)]">
+                  <Image
+                    src={post.coverImage}
+                    alt={post.coverAlt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="flex flex-1 flex-col p-6">
+                  <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-[var(--accent)]">{post.category}</p>
+                  <h2 className="mt-2 text-[20px] font-extrabold leading-[1.2] tracking-[-0.02em] text-[var(--black)] group-hover:text-[var(--accent)] transition-colors">
+                    {post.title}
+                  </h2>
+                  <p className="mt-2 text-[14.5px] leading-[1.6] text-[var(--text-muted)]">{post.excerpt}</p>
+                  <p className="mt-auto pt-4 text-[13px] text-[var(--text-muted)]">
+                    {formatPostDate(post.publishedAt)} · {post.readTime}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section className="w-full bg-[var(--surface)] py-14 lg:py-20 border-t border-[var(--line)]">
+        <Container>
+          <div className="rounded-[12px] border border-[var(--line)] bg-[var(--white)] p-7 sm:p-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+            <div className="max-w-2xl">
+              <h2 className="text-[26px] sm:text-[34px] font-extrabold leading-[1.1] tracking-[-0.02em] text-[var(--black)]">
+                Have a question this does not answer?
+              </h2>
+              <p className="mt-2 text-[15px] sm:text-[16px] leading-[1.6] text-[var(--text-muted)]">
+                Send it with your tech pack. A merchandiser replies within 24 working hours.
+              </p>
+            </div>
+            <Link
+              href="/contact#quote"
+              className="group inline-flex w-fit shrink-0 items-center gap-3 min-h-[48px] pl-6 pr-2 py-2 rounded-full bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-[var(--on-accent)] text-[14px] font-semibold transition-colors"
+            >
+              <span>Get a quote</span>
+              <span className="w-8 h-8 rounded-full bg-[var(--white)] text-[var(--black)] flex items-center justify-center">
+                <ArrowRight className="w-4 h-4" strokeWidth={2.4} />
+              </span>
+            </Link>
+          </div>
         </Container>
       </section>
     </main>
   );
 }
-

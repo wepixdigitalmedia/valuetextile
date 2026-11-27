@@ -1,29 +1,28 @@
 import React from "react";
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
-import { ContactForm } from "@/components/contact/ContactForm";
+import { QuoteForm } from "@/components/forms/QuoteForm";
+import { Fact } from "@/components/ui/Fact";
 import { siteConfig } from "@/config/siteContent";
-import { Mail, MapPin, Phone, Clock } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Value Textiles — Garment Manufacturer & Exporter, Tiruppur",
+  title: "Get a Quote",
   description:
-    "Contact Value Textiles in Tiruppur, India. Reach our Registered Office in Parapalayam, Knitting Unit at SIDCO Tiruppur, or Dyeing Unit at SIPCOT Perundurai.",
+    "Send your style to Value Textiles in Tiruppur, India. A merchandiser replies within 24 working hours with costing and sampling lead times.",
 };
 
-const FACILITY_LOCATIONS = [
+const UNITS = [
   {
-    title: "Registered Office (Garmenting)",
+    title: "Registered office and garment unit",
     address: "No. 3/197 H, Parapalayam, Tiruppur - 641607, Tamil Nadu, India",
   },
   {
-    title: "Knitting Division",
+    title: "Knitting unit",
     address: "Shed No. 61, SIDCO, Tiruppur - 641606, Tamil Nadu, India",
   },
   {
-    title: "Dyeing & Finishing Division",
-    address:
-      "K6, K7, K8, K9, SIPCOT Industrial Growth Centre, P.V. Palayam (P.O), Perundurai - 638052",
+    title: "Dyeing and finishing unit",
+    address: "K6, K7, K8, K9, SIPCOT Industrial Growth Centre, P.V. Palayam (P.O), Perundurai - 638052",
   },
 ];
 
@@ -32,116 +31,102 @@ export default function ContactPage() {
 
   return (
     <main className="w-full bg-[var(--white)]">
-      {/* ============================================================ */}
-      {/* 01. OVERSIZED DISPLAY TITLE + OVERLAPPING FORM SECTION       */}
-      {/* ============================================================ */}
-      <section className="w-full pt-12 sm:pt-16 pb-16 lg:pb-24 overflow-hidden">
+      <section className="w-full pt-12 sm:pt-16 pb-16 lg:pb-24">
         <Container>
-          {/* Giant Editorial Headline */}
-          <h1 className="font-extrabold uppercase text-[var(--black)] text-[48px] sm:text-[80px] md:text-[108px] lg:text-[132px] leading-[1.05] tracking-[-0.02em] select-none">
-            CONTACT US
-          </h1>
+          <div className="max-w-3xl">
+            <p className="inline-flex items-center gap-3 text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--black)]">
+              <span className="inline-block w-[28px] h-[3px] bg-[var(--accent)] shrink-0" aria-hidden="true" />
+              <span>GET A QUOTE</span>
+            </p>
+            <h1 className="mt-3 text-[36px] sm:text-[48px] lg:text-[56px] font-extrabold leading-[1.08] tracking-[-0.02em] text-[var(--black)]">
+              Send us your style.{" "}
+              <span className="text-[var(--accent)]">We reply within 24 working hours.</span>
+            </h1>
+            <p className="mt-4 text-[16px] sm:text-[18px] leading-[1.6] text-[var(--text-muted)] max-w-2xl">
+              Share a tech pack, a sample or just a brief. A merchandiser in Tiruppur answers with costing and a sampling plan.
+            </p>
+          </div>
 
-          {/* Clean Split Row Directly Below Title (Zero Overlap / Collision) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start mt-8 sm:mt-10 lg:mt-12">
-            {/* Left Column (5 cols): Direct Contact Channels */}
-            <div className="lg:col-span-5 lg:pt-2 space-y-8">
-              <div className="space-y-1">
-                <p className="text-base sm:text-lg font-bold text-[var(--black)]">
-                  Questions or export inquiries?
-                </p>
-                <p className="text-base text-[var(--text-muted)] leading-relaxed">
-                  Get in touch through the options below
-                </p>
+          <div className="mt-10 lg:mt-14 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+            <div className="lg:col-span-5 space-y-10 order-2 lg:order-1">
+              <div>
+                <h2 className="text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--black)]">What happens next</h2>
+                <ol className="mt-4 divide-y divide-[var(--line)] border-y border-[var(--line)]">
+                  <li className="flex gap-4 py-4">
+                    <span className="text-[13px] font-bold text-[var(--accent)] pt-0.5">01</span>
+                    <div>
+                      <h3 className="text-[15px] font-bold text-[var(--black)]">We read your request</h3>
+                      <p className="mt-0.5 text-[14px] leading-[1.6] text-[var(--text-muted)]">
+                        A merchandiser checks the style, fabric, GSM and quantity against what we can make.
+                      </p>
+                    </div>
+                  </li>
+                  <li className="flex gap-4 py-4">
+                    <span className="text-[13px] font-bold text-[var(--accent)] pt-0.5">02</span>
+                    <div>
+                      <h3 className="text-[15px] font-bold text-[var(--black)]">You get costing and a sample plan</h3>
+                      <p className="mt-0.5 text-[14px] leading-[1.6] text-[var(--text-muted)]">
+                        Sample lead time: <Fact k="sampleLeadTime" />
+                      </p>
+                    </div>
+                  </li>
+                  <li className="flex gap-4 py-4">
+                    <span className="text-[13px] font-bold text-[var(--accent)] pt-0.5">03</span>
+                    <div>
+                      <h3 className="text-[15px] font-bold text-[var(--black)]">Approve the sample, we start bulk</h3>
+                      <p className="mt-0.5 text-[14px] leading-[1.6] text-[var(--text-muted)]">
+                        Bulk lead time: <Fact k="bulkLeadTime" />
+                      </p>
+                    </div>
+                  </li>
+                </ol>
               </div>
 
-              <div className="space-y-6">
-                {/* Chat with us / Email */}
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-full bg-[var(--surface)] border border-[var(--line)] flex items-center justify-center text-[var(--accent)] shrink-0">
-                    <Mail className="w-5 h-5" />
+              <div>
+                <h2 className="text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--black)]">Prefer to talk?</h2>
+                <dl className="mt-4 space-y-4 text-[15px]">
+                  <div>
+                    <dt className="text-[12px] text-[var(--text-muted)]">WhatsApp or call</dt>
+                    <dd className="mt-0.5 font-bold text-[var(--black)]">
+                      <a href={contact.whatsapp} className="hover:text-[var(--accent)] transition-colors">
+                        {contact.phoneDisplay}
+                      </a>
+                    </dd>
                   </div>
                   <div>
-                    <p className="text-xs sm:text-sm text-[var(--text-muted)]">
-                      Chat with us
-                    </p>
-                    <a
-                      href={`mailto:${contact.email}`}
-                      className="text-base sm:text-lg font-bold text-[var(--black)] hover:text-[var(--accent)] transition-colors"
-                    >
-                      {contact.email}
-                    </a>
-                    <p className="text-[12px] text-[var(--text-muted)] mt-0.5">
-                      eswarasamy@valuetextiles.net · sundaram@valuetextiles.net
-                    </p>
-                  </div>
-                </div>
-
-                {/* Call us / Phone & WhatsApp */}
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-full bg-[var(--surface)] border border-[var(--line)] flex items-center justify-center text-[var(--accent)] shrink-0">
-                    <Phone className="w-5 h-5" />
+                    <dt className="text-[12px] text-[var(--text-muted)]">Email</dt>
+                    <dd className="mt-0.5 font-bold text-[var(--black)]">
+                      <a href={`mailto:${contact.email}`} className="hover:text-[var(--accent)] transition-colors">
+                        {contact.email}
+                      </a>
+                    </dd>
                   </div>
                   <div>
-                    <p className="text-xs sm:text-sm text-[var(--text-muted)]">
-                      Call or WhatsApp us
-                    </p>
-                    <a
-                      href={`tel:${contact.phoneTel}`}
-                      className="text-base sm:text-lg font-bold text-[var(--black)] hover:text-[var(--accent)] transition-colors"
-                    >
-                      {contact.phoneDisplay}
-                    </a>
+                    <dt className="text-[12px] text-[var(--text-muted)]">Export desk hours</dt>
+                    <dd className="mt-0.5 font-bold text-[var(--black)]">Mon to Sat, 9:00 am to 6:30 pm IST</dd>
                   </div>
-                </div>
-
-                {/* Working Hours */}
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-full bg-[var(--surface)] border border-[var(--line)] flex items-center justify-center text-[var(--accent)] shrink-0">
-                    <Clock className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="text-xs sm:text-sm text-[var(--text-muted)]">
-                      Export desk hours
-                    </p>
-                    <p className="text-sm sm:text-base font-bold text-[var(--black)]">
-                      Mon – Sat · 9:00 AM – 6:30 PM IST
-                    </p>
-                  </div>
-                </div>
+                </dl>
               </div>
             </div>
 
-            {/* Right Column (7 cols): Surface Form Card */}
-            <div className="lg:col-span-7">
-              <ContactForm />
+            <div
+              id="quote"
+              className="lg:col-span-7 order-1 lg:order-2 scroll-mt-28 bg-[var(--white)] p-6 sm:p-9 lg:p-10 rounded-[12px] border border-[var(--line)]"
+            >
+              <QuoteForm source="contact-page" />
             </div>
           </div>
         </Container>
       </section>
 
-      {/* ============================================================ */}
-      {/* 02. OUR UNIT ADDRESSES STRIP                                 */}
-      {/* ============================================================ */}
-      <section className="w-full bg-[var(--surface)] py-16 lg:py-24 border-t border-[var(--line)]">
+      <section className="w-full bg-[var(--surface)] py-14 lg:py-20 border-t border-[var(--line)]">
         <Container>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {FACILITY_LOCATIONS.map((unit) => (
-              <div
-                key={unit.title}
-                className="p-6 rounded-[12px] bg-[var(--white)] border border-[var(--line)] flex items-start gap-3.5"
-              >
-                <div className="w-10 h-10 rounded-full bg-[var(--surface)] border border-[var(--line)] flex items-center justify-center text-[var(--accent)] shrink-0 mt-0.5">
-                  <MapPin className="w-4 h-4" />
-                </div>
-                <div className="space-y-1">
-                  <h2 className="text-base font-bold text-[var(--black)]">
-                    {unit.title}
-                  </h2>
-                  <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-                    {unit.address}
-                  </p>
-                </div>
+          <h2 className="text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--black)]">Our units</h2>
+          <div className="mt-5 grid grid-cols-1 md:grid-cols-3 gap-5">
+            {UNITS.map((unit) => (
+              <div key={unit.title} className="rounded-[12px] border border-[var(--line)] bg-[var(--white)] p-6">
+                <h3 className="text-[16px] font-bold text-[var(--black)]">{unit.title}</h3>
+                <p className="mt-1.5 text-[14px] leading-[1.6] text-[var(--text-muted)]">{unit.address}</p>
               </div>
             ))}
           </div>

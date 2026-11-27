@@ -9,7 +9,7 @@ import { searchSite, type SearchIndexItem } from "@/config/searchIndex";
 const QUICK_POPULAR_LINKS: { label: string; href: string }[] = [
   { label: "T-Shirts & Polos", href: "/garments/t-shirts-and-polos" },
   { label: "Kids & Baby Wear", href: "/garments/kids-and-baby-wear" },
-  { label: "Fabrics & Yarns", href: "/products" },
+  { label: "Fabric", href: "/capabilities/fabric-division" },
   { label: "Request Bulk Quote", href: "/contact#quote" },
   { label: "Order Samples", href: "/contact?type=samples#quote" },
   { label: "Dyeing & Knitting", href: "/capabilities" },

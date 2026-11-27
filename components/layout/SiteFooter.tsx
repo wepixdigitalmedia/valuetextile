@@ -8,11 +8,11 @@ import { Mail, Phone } from "lucide-react";
 const FOOTER_PILL_LINKS = [
   { label: "About Us", href: "/about" },
   { label: "Garments", href: "/garments" },
-  { label: "Infrastructure", href: "/infrastructure" },
   { label: "Capabilities", href: "/capabilities" },
   { label: "Quality", href: "/quality" },
+  { label: "How to order", href: "/how-to-order" },
   { label: "Blogs", href: "/blog" },
-  { label: "Contact us", href: "/contact" },
+  { label: "Get a quote", href: "/contact" },
 ];
 
 export function SiteFooter() {
@@ -23,9 +23,17 @@ export function SiteFooter() {
       <Container>
         {/* Top Bar: Copyright left + Pill navigation right */}
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-12 sm:pb-16">
-          <p className="text-sm text-[var(--white)]/80">
-            © <CurrentYear />, Value Textiles.
-          </p>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-1 text-sm text-[var(--white)]/80">
+            <p>
+              © <CurrentYear />, Value Textiles.
+            </p>
+            <Link href="/privacy" className="hover:text-[var(--white)] hover:underline transition-colors">
+              Privacy
+            </Link>
+            <Link href="/terms" className="hover:text-[var(--white)] hover:underline transition-colors">
+              Terms
+            </Link>
+          </div>
 
           <nav
             aria-label="Footer navigation"
@@ -47,54 +55,10 @@ export function SiteFooter() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 pb-12 sm:pb-16 items-start">
           <div className="lg:col-span-6 flex flex-col justify-between space-y-8 sm:space-y-12">
             <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-[var(--white)] leading-[1.1] tracking-[-0.02em] max-w-md">
-              Simplifying garment sourcing for global brands.
+              One partner, from knit to shipped.
             </h2>
 
             <div className="flex items-center gap-4 text-[var(--white)]">
-              <a
-                href={contact.whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="w-9 h-9 rounded-[8px] border border-[var(--white)]/25 flex items-center justify-center text-[var(--white)] hover:bg-[var(--white)] hover:text-[var(--black)] transition-colors"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.75"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="w-4 h-4"
-                  aria-hidden="true"
-                >
-                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-                </svg>
-              </a>
-              <a
-                href={contact.whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="w-9 h-9 rounded-[8px] border border-[var(--white)]/25 flex items-center justify-center text-[var(--white)] hover:bg-[var(--white)] hover:text-[var(--black)] transition-colors"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.75"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="w-4 h-4"
-                  aria-hidden="true"
-                >
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                  <rect width="4" height="12" x="2" y="9" />
-                  <circle cx="4" cy="4" r="2" />
-                </svg>
-              </a>
               <a
                 href={`mailto:${contact.email}`}
                 aria-label="Email Value Textiles"

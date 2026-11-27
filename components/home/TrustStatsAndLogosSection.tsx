@@ -61,65 +61,36 @@ export const BRAND_LOGO_CARDS: BrandCardItem[] = [
   },
 ];
 
-const NOISE_SVG_DATA_URI =
-  "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.32'/%3E%3C/svg%3E\")";
 
-export function BrandLogoGrid() {
+export function BrandStrip() {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-7 max-w-5xl mx-auto">
-      {BRAND_LOGO_CARDS.map((brand, idx) => (
-        <div
-          key={idx}
-          style={{ background: brand.gradient }}
-          className="group relative aspect-[4/5] rounded-[26px] sm:rounded-[32px] overflow-hidden flex items-center justify-center p-6 sm:p-8 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1"
-        >
-          {/* Frosted Grain Texture Overlay */}
-          <div
-            className="pointer-events-none absolute inset-0 mix-blend-overlay opacity-45"
-            style={{ backgroundImage: NOISE_SVG_DATA_URI }}
-            aria-hidden="true"
+    <div className="rounded-[12px] bg-[var(--black)] px-6 py-7 sm:px-10 sm:py-8">
+      <div className="grid grid-cols-4 lg:grid-cols-8 gap-x-6 gap-y-7 items-center">
+        {BRAND_LOGO_CARDS.map((brand, idx) => (
+          <Image
+            key={idx}
+            src={brand.src}
+            alt={brand.name}
+            width={160}
+            height={64}
+            sizes="(max-width: 1024px) 22vw, 120px"
+            className="h-7 sm:h-9 w-auto max-w-full mx-auto object-contain"
           />
-
-          {/* Subtle Inner Highlight Ring */}
-          <div
-            className="pointer-events-none absolute inset-0 rounded-[26px] sm:rounded-[32px] ring-1 ring-inset ring-white/15"
-            aria-hidden="true"
-          />
-
-          {/* Centered White Brand Logo */}
-          <div className="relative z-10 w-full h-full flex items-center justify-center">
-            <Image
-              src={brand.src}
-              alt={brand.name}
-              width={220}
-              height={110}
-              sizes="(max-width: 640px) 42vw, 220px"
-              className="max-h-16 sm:max-h-20 lg:max-h-24 w-auto object-contain drop-shadow-[0_2px_10px_rgba(0,0,0,0.22)] group-hover:scale-105 transition-transform duration-500"
-            />
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
 
 export function TrustStatsAndLogosSection() {
   return (
-    <section className="w-full bg-[var(--white)] py-16 lg:py-24 border-b border-[var(--line)]">
-      <Container className="space-y-12">
-        <div className="flex flex-col items-center text-center space-y-3">
-          <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em]">
-            Built for repeat{" "}
-            <span className="text-[var(--accent)]">export orders.</span>
-          </h2>
-          <p className="text-[16px] sm:text-[18px] text-[var(--text-muted)] leading-[1.6] max-w-2xl">
-            Direct knitwear manufacturing with in-house fabric production, dependable lead times, and single-desk accountability.
-          </p>
-        </div>
-
-        <div className="pt-2">
-          <BrandLogoGrid />
-        </div>
+    <section className="w-full bg-[var(--white)] py-10 lg:py-12 border-b border-[var(--line)]">
+      <Container className="space-y-5">
+        <p className="inline-flex items-center gap-3 text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--black)]">
+          <span className="inline-block w-[28px] h-[3px] bg-[var(--accent)] shrink-0" aria-hidden="true" />
+          <span>Brands we make for</span>
+        </p>
+        <BrandStrip />
       </Container>
     </section>
   );

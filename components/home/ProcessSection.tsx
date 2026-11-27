@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Container } from "../ui/Container";
+import { ImageSlot } from "../ui/ImageSlot";
 
 interface ProcessStage {
   number: string;
@@ -13,51 +14,51 @@ interface ProcessStage {
 const PROCESS_STAGES: ProcessStage[] = [
   {
     number: "01",
-    title: "Tech pack & quote",
-    description: "You send your design, tech pack or reference sample, and our export desk quotes with detailed fabric and production specs.",
-    highlight: "Design & quote",
+    title: "Yarn",
+    description: "Vetted yarn is sourced from outside mills. We test every lot ourselves before it is allowed into knitting.",
+    highlight: "Sourced & tested",
   },
   {
     number: "02",
-    title: "Sampling",
-    description: "Fit sample, fabric lab dips, and pre-production samples delivered for your approval before bulk cutting begins.",
-    highlight: "Pre-production approval",
+    title: "Knitting",
+    description: "Mayer & Cie circular knitting: single jersey, rib, interlock, striper, mini jacquard and Lycra jersey.",
+    highlight: "In-house",
   },
   {
     number: "03",
-    title: "In-house fabric production",
-    description: "Knitted from vetted yarns, dyed in our processing unit, tested in our lab, and graded under the 4-point inspection system.",
-    highlight: "Knitting, dyeing & lab",
+    title: "Dyeing",
+    description: "Soft-flow dyeing up to 1,500 kg a batch, with ORGATEX dye-house control for repeatable shades.",
+    highlight: "In-house",
   },
   {
     number: "04",
-    title: "Precision cutting",
-    description: "Fabric is relaxed and precision-cut to approved patterns, grading, and complete size sets.",
-    highlight: "Pattern & size sets",
+    title: "Finishing",
+    description: "Stenter and tubular finishing set GSM, width and shrinkage before the fabric reaches the cutting table.",
+    highlight: "In-house",
   },
   {
     number: "05",
-    title: "Stitching",
-    description: "Made on our dedicated garment lines in Tiruppur with in-line supervisors and continuous production checks.",
-    highlight: "In-line production checks",
+    title: "Lab testing",
+    description: "Our own fabric lab verifies shade, shrinkage and fabric performance against your specification.",
+    highlight: "In-house",
   },
   {
     number: "06",
-    title: "Finishing & QC",
-    description: "Thread trimming, pressing, needle detection, labelling, and 100% final garment inspection.",
-    highlight: "Final garment inspection",
+    title: "Inspection",
+    description: "Fabric is graded under the 4-point system, then checked again at garment stage.",
+    highlight: "In-house",
   },
   {
     number: "07",
-    title: "Custom packing",
-    description: "Packed strictly to your labelling, barcode, folding, polybag, and carton export instructions.",
-    highlight: "Custom packing specs",
+    title: "Garmenting",
+    description: "Cutting, stitching, trimming and finishing on our own garment lines, with in-line checks.",
+    highlight: "In-house",
   },
   {
     number: "08",
-    title: "Export shipping",
-    description: "Export documentation prepared and goods despatched via Tuticorin, Chennai, or Cochin ports on the agreed date.",
-    highlight: "On-schedule shipping",
+    title: "Packing & despatch",
+    description: "Packed to your labelling and carton instructions. Documents and shipping are handled by us.",
+    highlight: "In-house",
   },
 ];
 
@@ -68,18 +69,50 @@ export function ProcessSection() {
         <div className="max-w-3xl">
           <p className="inline-flex items-center gap-3 text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--black)]">
             <span className="inline-block w-[28px] h-[3px] bg-[var(--accent)] shrink-0" aria-hidden="true" />
-            <span>OUR PROCESS</span>
+            <span>THE CHAIN · EIGHT STAGES</span>
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em] mt-3">
-            From your tech pack to your{" "}
-            <span className="text-[var(--accent)]">port.</span>
+            Seven of eight stages{" "}
+            <span className="text-[var(--accent)]">under our own control.</span>
           </h2>
           <p className="text-[16px] sm:text-[17px] text-[var(--text-muted)] leading-[1.6] mt-4">
-            Every production milestone—from incoming yarn inspection to final AQL carton audit—follows documented technical gates across our integrated departments.
+            Only yarn is bought in, and we test it before it enters production. Everything after it is run by one team, so there is nobody else to hand a problem to.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10 sm:mt-12">
+        {/* Photo strip: four real shots from the chain */}
+        <div className="mt-10 sm:mt-12 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+          <ImageSlot
+            label="Knitting"
+            hint="Close shot of fabric coming off a circular knitting machine."
+            desktop={{ w: 800, h: 600, src: "/images/home/chain-knitting.webp" }}
+            mobile={{ w: 600, h: 450, src: "/images/home/chain-knitting.webp" }}
+            alt="Knitted fabric coming off a circular knitting machine"
+          />
+          <ImageSlot
+            label="Dyeing"
+            hint="Dye house: soft-flow machines or a fabric batch being unloaded."
+            desktop={{ w: 800, h: 600, src: "/images/home/chain-dyeing.webp" }}
+            mobile={{ w: 600, h: 450, src: "/images/home/chain-dyeing.webp" }}
+            alt="Freshly dyed fabric being unloaded from a soft-flow dyeing machine"
+          />
+          <ImageSlot
+            label="Lab and inspection"
+            hint="Technician testing a fabric sample, or a 4-point inspection table."
+            desktop={{ w: 800, h: 600, src: "/images/home/chain-lab.webp" }}
+            mobile={{ w: 600, h: 450, src: "/images/home/chain-lab.webp" }}
+            alt="Technician inspecting knitted fabric on an inspection table"
+          />
+          <ImageSlot
+            label="Garmenting"
+            hint="Stitching line with operators at work, or finished garments on the packing table."
+            desktop={{ w: 800, h: 600, src: "/images/home/chain-garmenting.webp" }}
+            mobile={{ w: 600, h: 450, src: "/images/home/chain-garmenting.webp" }}
+            alt="Operators at a garment stitching line"
+          />
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6 sm:mt-8">
           {PROCESS_STAGES.map((stage) => (
             <div
               key={stage.number}
@@ -106,7 +139,7 @@ export function ProcessSection() {
         </div>
 
         <p className="mt-8 text-center text-sm font-medium text-[var(--text-muted)] max-w-2xl mx-auto">
-          Documented lot tracking across knitting, dyeing, laboratory testing, and sewing keeps measurements, shades, and timelines accountable.
+          One partner, full accountability: the same team answers for shade, fit and delivery date.
         </p>
       </Container>
     </section>

@@ -1,104 +1,192 @@
 import React from "react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { Eyebrow } from "@/components/ui/Eyebrow";
-import { Button } from "@/components/ui/Button";
 import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Capabilities | Value Textiles — Vertically Integrated Divisions",
+  title: "Capabilities",
   description:
-    "Explore Value Textiles' four core manufacturing divisions: Garment Manufacturing, Circular Knitting, Soft-Flow Dyeing & Finishing, and Fabric Testing, Inspection & Despatch.",
+    "Knitting, dyeing, fabric lab, inspection, garment stitching and packing in our own units in Tiruppur and Perundurai. Only yarn is bought in.",
 };
 
-const DIVISIONS = [
+const STAGES = [
   {
-    id: "garment",
-    title: "Garment Manufacturing",
-    href: "/capabilities/garment-manufacturing",
-    desc: "CAD pattern grading, automated spreading, band-knife cutting, JUKI/Pegasus sewing lines, steam finishing, 9-point needle detection, and AQL export packing.",
-    highlights: "T-Shirts · Polos · Kids & Baby Wear · Knitwear · Activewear",
-  },
-  {
-    id: "knitting",
-    title: "Knitting Division",
+    number: "01",
+    title: "Knitting",
     href: "/capabilities/knitting-division",
-    desc: "High-speed Mayer & Cie circular knitting machines (18–28 GG) with 4 to 10 colour auto-stripers, 72-feeder mini jacquards, rib, interlock, and Lycra jersey.",
-    highlights: "Mayer & Cie · 2-Shift Supervised Operations · SIDCO Tiruppur",
+    stat: "2 shifts a day",
+    text: "Mayer & Cie circular knitting: single jersey, rib, interlock, striper, mini jacquard and Lycra jersey.",
+    place: "SIDCO, Tiruppur",
   },
   {
-    id: "dyeing",
-    title: "Dyeing Division",
+    number: "02",
+    title: "Dyeing",
     href: "/capabilities/dyeing-division",
-    desc: "Brazzoli & Dilmenler HTHP soft-flow dyeing with SETEX/ORGATEX automation, THIES dispensing, TubeTex & Mario Crosta finishing, and SIMEM Zero Liquid Discharge (ZLD).",
-    highlights: "OEKO-TEX® Class 1 · GOTS · OCS · ZDHC · SIPCOT Perundurai",
+    stat: "25 to 1,500 kg batches",
+    text: "Soft-flow dyeing with SETEX and ORGATEX control, a colour lab, finishing and an effluent plant that recycles water and salt.",
+    place: "SIPCOT, Perundurai",
   },
   {
-    id: "fabric",
-    title: "Fabric Division",
+    number: "03",
+    title: "Fabric lab and inspection",
     href: "/capabilities/fabric-division",
-    desc: "11-point in-house Fabric Testing Laboratory, 4-Point & 10-Point Fabric Inspection with colour-coded roll grading, and Time & Action scheduled Fabric Despatch.",
-    highlights: "Lab Testing · 4-Point & 10-Point QC · 30–45 Day Lead Times",
+    stat: "11 lab tests",
+    text: "Every lot tested, then graded under the 4-point and 10-point systems before cutting or despatch.",
+    place: "Tiruppur",
   },
+  {
+    number: "04",
+    title: "Garments",
+    href: "/capabilities/garment-manufacturing",
+    stat: "60,000+ garments a month",
+    text: "Cutting, stitching, finishing and export packing on our own lines, from our own fabric.",
+    place: "Parapalayam, Tiruppur",
+  },
+];
+
+const PHOTOS = [
+  { n: 15, alt: "Exterior of a Value Textiles unit in Tiruppur" },
+  { n: 12, alt: "Operator at a fabric inspection machine" },
+  { n: 14, alt: "Operator at a cutting table with fabric and pattern pieces" },
+  { n: 8, alt: "Stacked bundles of white fabric in storage" },
+  { n: 11, alt: "Hands trimming white knitted fabric with scissors" },
+  { n: 10, alt: "Operator at a fabric processing station under inspection light" },
+  { n: 5, alt: "Sewing machine stitching a maroon garment" },
+  { n: 3, alt: "Cones of cotton yarn" },
 ];
 
 export default function CapabilitiesPage() {
   return (
-    <section className="py-16 lg:py-24 bg-[var(--white)]">
-      <Container>
-        <div className="max-w-3xl mb-16">
-          <Eyebrow>OUR CAPABILITIES</Eyebrow>
-          <h1 className="text-[42px] sm:text-[52px] font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em] mt-2 mb-6">
-            Knitting, dyeing, testing &amp; garmenting in-house.
-          </h1>
-          <div className="w-12 h-[3px] bg-[var(--accent)] mb-8" />
-          <p className="text-[17px] text-[var(--text-muted)] leading-relaxed">
-            While yarns are procured externally to exact buyer counts, Value Textiles operates its own circular knitting, soft-flow dyeing, fabric testing, and garment manufacturing divisions for complete quality traceability and dependable delivery schedules.
+    <main className="w-full bg-[var(--white)]">
+      <section className="w-full bg-[var(--surface)] py-14 lg:py-20 border-b border-[var(--line)]">
+        <Container>
+          <div className="max-w-3xl">
+            <p className="inline-flex items-center gap-3 text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--black)]">
+              <span className="inline-block w-[28px] h-[3px] bg-[var(--accent)] shrink-0" aria-hidden="true" />
+              <span>CAPABILITIES</span>
+            </p>
+            <h1 className="mt-3 text-[36px] sm:text-[48px] lg:text-[56px] font-extrabold leading-[1.08] tracking-[-0.02em] text-[var(--black)]">
+              Every stage after yarn, <span className="text-[var(--accent)]">under one roof.</span>
+            </h1>
+            <p className="mt-4 text-[16px] sm:text-[18px] leading-[1.6] text-[var(--text-muted)] max-w-2xl">
+              Yarn is bought in and tested. Knitting, dyeing, the fabric lab, stitching and packing are run by our own
+              teams across units in Tiruppur and Perundurai, so one company answers for the result.
+            </p>
+            <div className="mt-7 flex flex-wrap items-center gap-3">
+              <Link
+                href="/contact#quote"
+                className="group inline-flex items-center gap-3 min-h-[48px] pl-6 pr-2 py-2 rounded-full bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-[var(--on-accent)] text-[14px] font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--black)]"
+              >
+                <span>Get a quote</span>
+                <span className="w-8 h-8 rounded-full bg-[var(--white)] text-[var(--black)] flex items-center justify-center">
+                  <ArrowRight className="w-4 h-4" strokeWidth={2.4} />
+                </span>
+              </Link>
+              <Link
+                href="/contact?type=samples#quote"
+                className="inline-flex items-center min-h-[48px] px-6 py-2 rounded-full border-[1.5px] border-[var(--black)] text-[var(--black)] hover:bg-[var(--black)] hover:text-[var(--white)] text-[14px] font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--black)]"
+              >
+                Request samples
+              </Link>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <section className="w-full bg-[var(--white)] py-14 lg:py-20">
+        <Container>
+          <p className="text-[13px] font-semibold text-[var(--text-muted)]">
+            Start: vetted yarn is bought from outside mills and tested by us before it enters knitting.
           </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-          {DIVISIONS.map((div, idx) => (
+          <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-6">
+            {STAGES.map((s) => (
+              <Link
+                key={s.number}
+                href={s.href}
+                className="group flex flex-col justify-between rounded-[12px] border border-[var(--line)] bg-[var(--white)] p-6 sm:p-7 hover:border-[var(--black)] transition-colors"
+              >
+                <div>
+                  <div className="flex items-baseline justify-between gap-4">
+                    <span className="text-[13px] font-bold text-[var(--accent)]">{s.number}</span>
+                    <span className="text-[12px] font-semibold text-[var(--text-muted)]">{s.place}</span>
+                  </div>
+                  <h2 className="mt-3 text-[24px] sm:text-[26px] font-extrabold leading-[1.15] tracking-[-0.02em] text-[var(--black)] group-hover:text-[var(--accent)] transition-colors">
+                    {s.title}
+                  </h2>
+                  <p className="mt-2 text-[34px] font-extrabold leading-none tracking-[-0.02em] text-[var(--black)]">
+                    {s.stat}
+                  </p>
+                  <p className="mt-4 text-[15px] leading-[1.6] text-[var(--text-muted)]">{s.text}</p>
+                </div>
+                <span className="mt-6 inline-flex items-center gap-1.5 text-[14px] font-semibold text-[var(--black)] group-hover:text-[var(--accent)] transition-colors">
+                  See this stage
+                  <ArrowRight className="w-4 h-4" strokeWidth={2.2} />
+                </span>
+              </Link>
+            ))}
+          </div>
+          <p className="mt-6 text-[15px] text-[var(--text-muted)]">
+            Need fabric only? We take fabric and yarn-dyed fabric orders on request.{" "}
             <Link
-              key={div.id}
-              id={div.id}
-              href={div.href}
-              className="group bg-[var(--white)] border border-[var(--line)] hover:border-[var(--black)] p-8 rounded-[12px] flex flex-col justify-between transition-colors"
+              href="/capabilities/fabric-division"
+              className="font-semibold text-[var(--black)] underline underline-offset-4 hover:text-[var(--accent)] transition-colors"
             >
-              <div>
-                <span className="text-xs font-bold text-[var(--accent)] tracking-[0.14em] uppercase mb-2 block">
-                  0{idx + 1} DIVISION
-                </span>
-                <h2 className="text-[22px] sm:text-[26px] font-bold text-[var(--black)] group-hover:text-[var(--accent)] mb-3 tracking-[-0.02em] transition-colors">
-                  {div.title}
-                </h2>
-                <p className="text-base text-[var(--text-muted)] leading-relaxed mb-6">
-                  {div.desc}
-                </p>
-              </div>
-
-              <div className="pt-4 border-t border-[var(--line)] flex items-center justify-between gap-3">
-                <span className="text-xs font-medium text-[var(--text-muted)]">
-                  {div.highlights}
-                </span>
-                <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.14em] text-[var(--accent)] shrink-0 group-hover:translate-x-1 transition-transform">
-                  Explore <ArrowRight className="w-3.5 h-3.5" />
-                </span>
-              </div>
+              See what we knit and dye
             </Link>
-          ))}
-        </div>
+            .
+          </p>
+        </Container>
+      </section>
 
-        <div className="flex flex-wrap gap-4">
-          <Button href="/contact" variant="primary">
-            Get a Quote
-          </Button>
-          <Button href="/garments" variant="secondary">
-            Explore Garments
-          </Button>
-        </div>
-      </Container>
-    </section>
+      <section className="w-full bg-[var(--surface)] py-14 lg:py-20 border-t border-[var(--line)]">
+        <Container>
+          <h2 className="text-[28px] sm:text-[36px] font-extrabold leading-[1.1] tracking-[-0.02em] text-[var(--black)]">
+            Inside our units
+          </h2>
+          <div className="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+            {PHOTOS.map((p) => (
+              <div
+                key={p.n}
+                className="relative aspect-[4/3] w-full overflow-hidden rounded-[12px] border border-[var(--line)] bg-[var(--white)]"
+              >
+                <Image
+                  src={`https://ik.imagekit.io/wpxassets/value%20textiles/infrastructure/${p.n}.webp`}
+                  alt={p.alt}
+                  fill
+                  sizes="(max-width: 1024px) 50vw, 25vw"
+                  className="object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section className="w-full bg-[var(--white)] py-14 lg:py-20">
+        <Container>
+          <div className="rounded-[12px] border border-[var(--line)] bg-[var(--surface)] p-7 sm:p-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+            <div className="max-w-2xl">
+              <h2 className="text-[26px] sm:text-[34px] font-extrabold leading-[1.1] tracking-[-0.02em] text-[var(--black)]">
+                Tell us what you need made.
+              </h2>
+              <p className="mt-2 text-[15px] sm:text-[16px] leading-[1.6] text-[var(--text-muted)]">
+                A merchandiser replies within 24 working hours with costing and a sampling plan.
+              </p>
+            </div>
+            <Link
+              href="/contact#quote"
+              className="group inline-flex w-fit shrink-0 items-center gap-3 min-h-[48px] pl-6 pr-2 py-2 rounded-full bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-[var(--on-accent)] text-[14px] font-semibold transition-colors"
+            >
+              <span>Get a quote</span>
+              <span className="w-8 h-8 rounded-full bg-[var(--white)] text-[var(--black)] flex items-center justify-center">
+                <ArrowRight className="w-4 h-4" strokeWidth={2.4} />
+              </span>
+            </Link>
+          </div>
+        </Container>
+      </section>
+    </main>
   );
 }

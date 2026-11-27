@@ -147,6 +147,7 @@ export function RangeCarouselSection() {
       </Container>
 
       <RangeSpecsModal
+        key={selectedItem?.id ?? "closed"}
         item={selectedItem}
         onClose={() => setSelectedItem(null)}
       />

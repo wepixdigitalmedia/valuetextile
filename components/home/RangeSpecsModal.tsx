@@ -18,11 +18,6 @@ export function RangeSpecsModal({ item, onClose }: RangeSpecsModalProps) {
   const [reqType, setReqType] = useState<"sample" | "quote">("sample");
 
   useEffect(() => {
-    setActiveImgIndex(0);
-    setEnquirySent(false);
-  }, [item]);
-
-  useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };

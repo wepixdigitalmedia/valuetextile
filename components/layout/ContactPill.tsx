@@ -11,27 +11,28 @@ export function ContactPill({ compact = false }: ContactPillProps) {
     <>
       {/* Mobile view: Compact circular button */}
       <Link
-        href="/contact"
+        href="/contact#quote"
         className="md:hidden size-12 rounded-full bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-[var(--on-accent)] flex items-center justify-center transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--black)]"
-        aria-label="Contact Value Textiles"
+        aria-label="Get a quote from Value Textiles"
       >
         <PhoneCall className="w-4 h-4 text-[var(--on-accent)]" strokeWidth={2.2} />
       </Link>
 
       {/* Desktop / Tablet view: Primary pill CTA */}
       <Link
-        href="/contact"
+        href="/contact#quote"
         className={`hidden md:inline-flex group relative items-center rounded-full bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-[var(--on-accent)] transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--black)] select-none ${
           compact ? "min-h-[40px] pl-4 pr-1.5 gap-2.5" : "min-h-[48px] pl-6 pr-2 gap-3"
         }`}
-        aria-label="Contact Value Textiles"
+        aria-label="Get a quote from Value Textiles"
       >
         <span
           className={`font-bold ${
             compact ? "text-[14px]" : "text-[15px]"
           }`}
         >
-          Contact
+          <span className="xl:hidden">Quote</span>
+          <span className="hidden xl:inline">Get a quote</span>
         </span>
 
         <span

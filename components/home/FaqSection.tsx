@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Container } from "../ui/Container";
 import { ArrowDown, ArrowRight } from "lucide-react";
+import { factValue } from "@/config/ownerFacts";
 
 interface FaqItem {
   id: number;
@@ -19,12 +20,12 @@ const LEFT_FAQS: FaqItem[] = [
   {
     id: 1,
     q: "Which Fabrics Are Available For Apparel Production?",
-    a: "All core fabrics are knitted and dyed in our own Tiruppur and Perundurai units, including 100% Combed and Organic Cotton Single Jersey, Pique, Interlock, Auto-Striper yarn-dyed knits, Mini Jacquards, French Terry, Brushed Fleece, Rib, Cotton-Modal, Tencel, and Cotton-Lycra stretch blends.",
+    a: "All core fabrics are knitted and dyed in our own Tiruppur and Perundurai units, including 100% Combed and Organic Cotton Single Jersey, Interlock, Rib, Auto-Striper knits, Mini Jacquards, Cotton-Modal, Tencel, and Cotton-Lycra stretch blends.",
   },
   {
     id: 2,
-    q: "Why Do Fashion Brands Choose Value Textiles For Garment Manufacturing?",
-    a: "We procure specification-grade yarns from trusted spinning partners and execute circular knitting, HTHP soft-flow dyeing, in-house laboratory testing, and garment assembly within our own units—protecting shade consistency, shrinkage control, and direct factory costing without intermediary delays.",
+    q: "What Stays In-House, And What Do You Buy In?",
+    a: "We do not spin yarn. We buy yarn to your specification from vetted mills and test every lot before knitting. Everything after that is done in our own units: circular knitting, soft-flow dyeing, finishing, lab testing, inspection, garmenting and export packing. One team answers for shade, fit and delivery date.",
   },
 ];
 
@@ -37,12 +38,23 @@ const RIGHT_FAQS: FaqItem[] = [
   {
     id: 4,
     q: "What Is The Minimum Order Quantity For Garment Manufacturing?",
-    a: "We offer practical, scalable MOQs per style and colourway to support both established retail chains and growing international labels. Fit samples, fabric swatches, and pre-production (PP) size sets are developed for your approval before bulk cutting begins.",
+    a: (factValue("moq")
+      ? `Our minimum order is ${factValue("moq")}. `
+      : "MOQs are set per style and colour. Tell us the style and quantity you have in mind and we will confirm. ") +
+      "We make fit samples, fabric swatches and pre-production size sets for your approval before bulk cutting.",
   },
   {
     id: 5,
     q: "What Are Your Lead Times, Certifications, And Shipping Terms?",
-    a: "Bulk orders typically ship within 30 to 45 days after sample approval on FOB or CIF terms via Tuticorin, Chennai, or Cochin ports. Our production units are certified to OEKO-TEX® Standard 100, GOTS, GRS, and BCI standards.",
+    a: [
+      factValue("bulkLeadTime")
+        ? `Bulk orders ship ${factValue("bulkLeadTime")}.`
+        : "We confirm the bulk lead time with your quote, once the sample is approved.",
+      factValue("ports")
+        ? `We ship from ${factValue("ports")} on FOB or CIF terms.`
+        : "We ship from South India ports on FOB or CIF terms.",
+      "Our production is certified to OEKO-TEX® Standard 100, GOTS, GRS and BCI standards.",
+    ].join(" "),
   },
 ];
 

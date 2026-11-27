@@ -19,9 +19,12 @@ import { siteConfig } from "@/config/siteContent";
 
 export function SiteHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [expandedGroup, setExpandedGroup] = useState<string | null>("Garments");
   const pathname = usePathname();
+  // The mobile menu is open only for the page it was opened on, so it closes by itself on navigation.
+  const [menuPath, setMenuPath] = useState<string | null>(null);
+  const mobileMenuOpen = menuPath !== null && menuPath === pathname;
+  const setMobileMenuOpen = (open: boolean) => setMenuPath(open ? pathname : null);
 
   useEffect(() => {
     let ticking = false;
@@ -44,12 +47,8 @@ export function SiteHeader() {
   }, []);
 
   useEffect(() => {
-    setMobileMenuOpen(false);
-  }, [pathname]);
-
-  useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setMobileMenuOpen(false);
+      if (e.key === "Escape") setMenuPath(null);
     };
 
     if (mobileMenuOpen) {

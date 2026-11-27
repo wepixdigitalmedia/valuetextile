@@ -2,22 +2,16 @@ import React from "react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
-import { Button } from "@/components/ui/Button";
+import { DivisionHero } from "@/components/capabilities/DivisionHero";
+import { DivisionNext } from "@/components/capabilities/DivisionNext";
+import { factValue, factText } from "@/config/ownerFacts";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { Tiruppur } from "@/components/ui/Tiruppur";
 import { siteConfig } from "@/config/siteContent";
-import {
-  ArrowRight,
-  Factory,
-  Leaf,
-  MapPin,
-  ShieldCheck,
-} from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Garment Manufacturing Division | Value Textiles — Capabilities, Tiruppur",
+  title: "Garment Manufacturing",
   description:
-    "Value Textiles Garment Manufacturing Division in Tiruppur manufactures knitted and woven garments for domestic and global markets with vertically integrated facilities, Total Quality Management, and sustainable production.",
+    "Cutting, stitching, finishing and export packing from our own fabric in Tiruppur. T-shirts, polos, kids wear, knitwear and activewear.",
 };
 
 const GARMENT_GALLERY = [
@@ -30,206 +24,102 @@ const GARMENT_GALLERY = [
   {
     src: "https://ik.imagekit.io/wpxassets/value%20textiles/garments/g2.jpg",
     title: "Polos & Structured Collars",
-    subtitle: "Pique, interlock & yarn-dyed auto-striper polos",
+    subtitle: "Interlock and striped polos",
     alt: "Export-grade polo and knitwear garment from Value Textiles",
   },
   {
     src: "https://ik.imagekit.io/wpxassets/value%20textiles/garments/g3.jpg",
     title: "Kids & Baby Wear",
-    subtitle: "Soft, skin-safe knits with pull-tested baby-safe trims",
+    subtitle: "Soft cotton knits for babies and children",
     alt: "Children's and baby knitwear garment manufactured in Tiruppur",
   },
   {
     src: "https://ik.imagekit.io/wpxassets/value%20textiles/garments/g4.jpg",
     title: "Men's & Women's Knitwear",
-    subtitle: "Tops, hoodies, sweatshirts & seasonal fashion styles",
+    subtitle: "Tops, pullovers and layering pieces",
     alt: "Men's and women's knitwear collection made with in-house fabric",
   },
   {
     src: "https://ik.imagekit.io/wpxassets/value%20textiles/garments/g5.jpg",
     title: "Activewear & Loungewear",
-    subtitle: "Flatlock stretch performance & breathable lounge sets",
+    subtitle: "Stretch and lounge knits",
     alt: "Activewear and loungewear garment stitched on dedicated lines",
   },
   {
     src: "https://ik.imagekit.io/wpxassets/value%20textiles/garments/g6.jpg",
     title: "Private Label & Export Packing",
-    subtitle: "Custom trims, branding, needle detection & master cartons",
+    subtitle: "Private label packing and master cartons",
     alt: "Private label finished garment ready for international export",
-  },
-];
-
-const GARMENT_LINE_SPECS = [
-  {
-    stage: "CAD Pattern & Grading",
-    machinery: "Digital CAD Pattern & Marker System",
-    capability: "Custom Brand Grading (Infant to 3XL)",
-    spiOrStandard: "±0.5 cm Spec Tolerance",
-    qcCheck: "Proto & Size-Set Fit Approval",
-  },
-  {
-    stage: "Fabric Relaxation & Spreading",
-    machinery: "Relaxation Racks & Precision Lay Tables",
-    capability: "Tubular & Open-Width Knit Spreading",
-    spiOrStandard: "24-Hr Tension-Free Rest",
-    qcCheck: "4-Point Fabric & Shade Lot Check",
-  },
-  {
-    stage: "Cutting & Panel Matching",
-    machinery: "Straight Knife & Precision Band Knife Cutters",
-    capability: "Auto-Striper & Jacquard Stripe Alignment",
-    spiOrStandard: "100% Die / Template Accuracy",
-    qcCheck: "100% Cut-Panel & Bundle Audit",
-  },
-  {
-    stage: "Overlock & Seam Assembly",
-    machinery: "JUKI / Pegasus 4-Thread & 5-Thread Overlock",
-    capability: "Shoulder Taping, Side Seams & Rib Attach",
-    spiOrStandard: "11–13 SPI (Stitches Per Inch)",
-    qcCheck: "In-Line Roaming QC Inspection",
-  },
-  {
-    stage: "Flatlock & Coverstitch",
-    machinery: "3-Needle 5-Thread Flatbed & Cylinder Interlock",
-    capability: "Bottom Hem, Sleeve Hem & Activewear Flatseams",
-    spiOrStandard: "Stretch Recovery Calibrated",
-    qcCheck: "Seam Elasticity & Unravelling Test",
-  },
-  {
-    stage: "Lockstitch, Placket & Trims",
-    machinery: "Computerised Single-Needle, Bartack & Snap Attach",
-    capability: "Polo Plackets, Collar Topstitch & Baby Snaps",
-    spiOrStandard: "90N Pull-Force Snap Standard",
-    qcCheck: "Symmetry & Pull-Test Verification",
-  },
-  {
-    stage: "Finishing & Steam Pressing",
-    machinery: "Vacuum Steam Ironing Tables & Spot Cleaning",
-    capability: "Dimensional Shaping, Thread Trimming & Tagging",
-    spiOrStandard: "Buyer Folding & Presentation Spec",
-    qcCheck: "100% Piece-by-Piece Measurement & Visual QC",
-  },
-  {
-    stage: "Needle Detection & Carton Packing",
-    machinery: "9-Point Conveyor Ferrous Metal Detector",
-    capability: "Polybag, Barcode, Hanger & Master Carton Packing",
-    spiOrStandard: "1.0 mm Fe Sensitivity Calibration",
-    qcCheck: "AQL 1.5 / 2.5 Final Statistical Audit",
-  },
-];
-
-const GARMENT_HIGHLIGHTS = [
-  {
-    icon: Factory,
-    title: "Vertically Integrated Facilities",
-    text: "Our own knitting, soft-flow dyeing, testing lab, and garment stitching lines eliminate third-party delays and protect shade consistency.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Total Quality Management",
-    text: "TQM initiatives embedded across every stage—from incoming yarn verification and 4-point fabric inspection to in-line stitching checks and final AQL garment QC.",
-  },
-  {
-    icon: Leaf,
-    title: "Sustainable & Ethical Fashion",
-    text: "Responsible manufacturing with Zero Liquid Discharge (ZLD) water recycling, BCI, GRS, GOTS, and OEKO-TEX® certified production practices.",
   },
 ];
 
 export default function GarmentManufacturingCapabilitiesPage() {
   return (
     <main className="w-full bg-[var(--white)]">
-      {/* ============================================================ */}
-      {/* 01. GARMENT DIVISION HERO                                    */}
-      {/* ============================================================ */}
-      <section className="relative w-full bg-[var(--surface)] py-16 lg:py-24 border-b border-[var(--line)] overflow-hidden">
-        <Container className="relative z-10">
-          <div className="max-w-4xl space-y-5">
-            <Eyebrow>
-              CAPABILITIES · GARMENT DIVISION · <Tiruppur />, INDIA
-            </Eyebrow>
-            <h1 className="text-3xl sm:text-5xl lg:text-[56px] font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em]">
-              Garment Manufacturing
-            </h1>
-            <p className="text-base sm:text-lg text-[var(--text-muted)] leading-relaxed">
-              Value Textiles manufactures knitted and woven garments for the
-              domestic and global markets with its vertically-integrated
-              infrastructural facilities, hi-tech machinery and skilled
-              personnel. A quality-centric company, Value Textiles has adopted
-              Total Quality Management initiatives in all its processes.
-            </p>
-            <p className="text-base sm:text-lg text-[var(--text-muted)] leading-relaxed">
-              Our commitment to sustainability extends to every stage of
-              production, ensuring responsible manufacturing processes and
-              promoting ethical fashion. Discover our collection that combines
-              style and sustainability, making a positive impact on the
-              environment and the world we live in.
-            </p>
-
-            <div className="pt-1 flex items-center gap-2 text-sm text-[var(--text-muted)]">
-              <MapPin className="w-4 h-4 text-[var(--accent)] shrink-0" />
-              <span>
-                <strong className="text-[var(--black)]">Garmenting Unit:</strong>{" "}
-                {siteConfig.contact.addressFull}
-              </span>
-            </div>
-
-            <div className="flex flex-wrap items-center gap-4 pt-3">
-              <Button href="/contact#quote" variant="primary">
-                <span>Request Garment Quote</span>
-                <ArrowRight className="w-4 h-4" />
-              </Button>
-              <Button href="/capabilities/knitting-division" variant="secondary">
-                <span>Knitting Division</span>
-              </Button>
-            </div>
-          </div>
-        </Container>
-      </section>
+      <DivisionHero
+        eyebrow="GARMENT DIVISION"
+        title="Garments cut and stitched from our own fabric."
+        intro={[
+          "Cutting, stitching, finishing and export packing happen in our own garment unit, using fabric we knitted, dyed and tested ourselves.",
+          "We make T-shirts and polos, kids and baby wear, men's and women's knitwear, and activewear and loungewear for international brands.",
+        ]}
+        location={`Garment unit: ${siteConfig.contact.addressFull}`}
+        stats={[
+          { value: "60,000+", label: "Garments a month" },
+          { value: "4", label: "Garment programs" },
+          { value: "Own fabric", label: "Knitted, dyed and tested in-house" },
+          { value: "OEKO-TEX Class 1", label: "Certified for baby articles" },
+        ]}
+      />
 
       {/* ============================================================ */}
-      {/* 02. PRODUCTION LINE & SEWING SPECIFICATION TABLE             */}
+      {/* 02. HOW AN ORDER MOVES THROUGH THE UNIT                      */}
       {/* ============================================================ */}
-      <section className="w-full bg-[var(--white)] py-16 lg:py-24 border-b border-[var(--line)]">
+      <section className="w-full bg-[var(--white)] py-14 lg:py-20 border-b border-[var(--line)]">
         <Container>
-          <div className="max-w-3xl mb-8 sm:mb-10">
-            <Eyebrow>PRODUCTION LINEUP &amp; STANDARDS</Eyebrow>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em] mt-2">
-              Cut, Stitch &amp; Export Finishing Specifications
-            </h2>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start">
+            <div className="lg:col-span-4">
+              <h2 className="text-[28px] sm:text-[36px] font-extrabold leading-[1.1] tracking-[-0.02em] text-[var(--black)]">
+                How an order moves <span className="text-[var(--accent)]">through the unit.</span>
+              </h2>
+              <p className="mt-3 text-[15px] leading-[1.6] text-[var(--text-muted)]">
+                The same steps for every style, from your tech pack to the carton.
+              </p>
+            </div>
+            <ol className="lg:col-span-8 divide-y divide-[var(--line)] border-y border-[var(--line)]">
+              {[
+                ["Fit and pre-production samples", "We work from your tech pack or a reference sample and send samples for your approval before bulk cutting."],
+                ["Fabric from our own lots", "Cutting starts only from fabric that passed our lab and 4-point inspection."],
+                ["Cutting and stitching", "Panels are cut to your patterns and stitched on our own lines with checks along the line."],
+                ["Finishing and final inspection", factText("aqlLevel")],
+                ["Packing to your instructions", "Labelling, folding, polybags and master cartons follow your packing specification."],
+              ].map(([title, text], i) => (
+                <li key={title} className="flex gap-5 py-5">
+                  <span className="text-[13px] font-bold text-[var(--accent)] pt-1">{String(i + 1).padStart(2, "0")}</span>
+                  <div>
+                    <h3 className="text-[18px] font-bold text-[var(--black)]">{title}</h3>
+                    <p className="mt-1 text-[15px] leading-[1.6] text-[var(--text-muted)]">{text}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
           </div>
-
-          <div className="overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
-            <table className="w-full text-left border-collapse min-w-[760px]">
-              <thead>
-                <tr className="bg-[var(--surface)] border-b border-[var(--line)] text-[var(--black)] text-sm font-bold">
-                  <th className="py-4 px-6">Production Stage</th>
-                  <th className="py-4 px-6">Machinery &amp; Setup</th>
-                  <th className="py-4 px-6">Operation Capability</th>
-                  <th className="py-4 px-6">Standard / Parameter</th>
-                  <th className="py-4 px-6">Quality Gate</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-[var(--line)] text-sm sm:text-[15px] text-[var(--text-muted)]">
-                {GARMENT_LINE_SPECS.map((row, idx) => (
-                  <tr
-                    key={row.stage}
-                    className={idx % 2 === 1 ? "bg-[var(--surface)]/60" : "bg-[var(--white)]"}
-                  >
-                    <td className="py-3.5 px-6 font-semibold text-[var(--black)]">
-                      {row.stage}
-                    </td>
-                    <td className="py-3.5 px-6">{row.machinery}</td>
-                    <td className="py-3.5 px-6">{row.capability}</td>
-                    <td className="py-3.5 px-6 text-xs sm:text-sm font-medium text-[var(--black)]">
-                      {row.spiOrStandard}
-                    </td>
-                    <td className="py-3.5 px-6">{row.qcCheck}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          {(factValue("garmentUnitDetails") || factValue("needleDetection")) && (
+            <dl className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-px overflow-hidden rounded-[12px] border border-[var(--line)] bg-[var(--line)]">
+              {factValue("garmentUnitDetails") && (
+                <div className="bg-[var(--white)] px-5 py-5">
+                  <dt className="text-[12px] font-semibold text-[var(--text-muted)]">Sewing lines and machines</dt>
+                  <dd className="mt-1 text-[16px] font-bold text-[var(--black)]">{factValue("garmentUnitDetails")}</dd>
+                </div>
+              )}
+              {factValue("needleDetection") && (
+                <div className="bg-[var(--white)] px-5 py-5">
+                  <dt className="text-[12px] font-semibold text-[var(--text-muted)]">Needle detection</dt>
+                  <dd className="mt-1 text-[16px] font-bold text-[var(--black)]">{factValue("needleDetection")}</dd>
+                </div>
+              )}
+            </dl>
+          )}
         </Container>
       </section>
 
@@ -275,56 +165,11 @@ export default function GarmentManufacturingCapabilitiesPage() {
         </Container>
       </section>
 
-      {/* ============================================================ */}
-      {/* 04. HIGHLIGHTS & CTA                                         */}
-      {/* ============================================================ */}
-      <section className="w-full bg-[var(--white)] py-16 lg:py-24">
-        <Container className="space-y-14">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            {GARMENT_HIGHLIGHTS.map((item) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={item.title}
-                  className="p-7 rounded-[12px] bg-[var(--surface)] border border-[var(--line)] space-y-4"
-                >
-                  <div className="w-11 h-11 rounded-[12px] bg-[var(--white)] border border-[var(--line)] flex items-center justify-center text-[var(--accent)]">
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <h3 className="text-xl font-bold text-[var(--black)]">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
-                    {item.text}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="rounded-[12px] bg-[var(--surface)] border border-[var(--line)] text-[var(--black)] p-8 sm:p-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
-            <div className="max-w-2xl space-y-2.5">
-              <Eyebrow>FULL PACKAGE &amp; CUT-AND-MAKE PROGRAMS</Eyebrow>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-[-0.02em] leading-[1.1]">
-                Start your next garment program with our Tiruppur team.
-              </h2>
-              <p className="text-base text-[var(--text-muted)] leading-relaxed">
-                Share your tech pack, target quantity, and delivery schedule.
-                Our export desk replies within 24 working hours.
-              </p>
-            </div>
-            <div className="flex flex-wrap items-center gap-4 shrink-0">
-              <Button href="/contact#quote" variant="primary">
-                <span>Get a Quote</span>
-                <ArrowRight className="w-4 h-4" />
-              </Button>
-              <Button href="/garments" variant="secondary">
-                <span>Explore Garments</span>
-              </Button>
-            </div>
-          </div>
-        </Container>
-      </section>
+      <DivisionNext
+        current="garment"
+        quoteHeading="Ready to start your garment program?"
+        quoteText="Send your tech pack or a reference sample. A merchandiser replies within 24 working hours with costing and a sampling plan."
+      />
     </main>
   );
 }

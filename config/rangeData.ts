@@ -26,7 +26,7 @@ export const rangeItems: RangeItem[] = [
       "https://ik.imagekit.io/wpxassets/value%20textiles/menswear/2.webp",
       "https://ik.imagekit.io/wpxassets/value%20textiles/menswear/10.webp"
     ],
-    description: "Crew neck, V-neck, polo and long-sleeve styles made with our own knitted fabric in 100% combed cotton and blends. Engineered for international brands with private labelling, fit sampling, and in-house reactive dyeing."
+    description: "Crew neck, V-neck, polo and long-sleeve styles made with our own knitted fabric in 100% combed cotton and blends. Made for international brands, with private labelling, fit sampling and in-house reactive dyeing."
   },
   {
     id: "kids-and-baby-wear",
@@ -58,7 +58,7 @@ export const rangeItems: RangeItem[] = [
       "https://ik.imagekit.io/wpxassets/value%20textiles/womens%20wear/2.png",
       "https://ik.imagekit.io/wpxassets/value%20textiles/menswear/11.webp"
     ],
-    description: "Contemporary casual tops, sleeveless jerseys, dresses and layering essentials cut and stitched from in-house knitted fabrics. Tailored to international brand size charts."
+    description: "Contemporary casual tops, sleeveless jerseys, dresses and layering essentials cut and stitched from in-house knitted fabrics. Cut to your brand size chart."
   },
   {
     id: "activewear-and-loungewear",

@@ -29,11 +29,11 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "Value Textiles | Knitted Fabric & Garment Manufacturer in Tirupur",
+    default: "Value Textiles | Integrated Knitwear Production, Tirupur",
     template: "%s | Value Textiles",
   },
   description:
-    "Tirupur-based integrated knitwear manufacturer and exporter. In-house circular knitting, soft-flow dyeing, lab testing, finishing, and garment manufacturing for global brands.",
+    "Knitting, dyeing, finishing, lab testing, garmenting and export packing under one accountable team in Tirupur, India. Private label for international brands.",
   keywords: [
     "Value Textiles",
     "Knitwear manufacturer Tirupur",
@@ -43,14 +43,14 @@ export const metadata: Metadata = {
     "Cotton viscose modal blends",
     "T-shirts private label",
     "Mayer & Cie circular knitting",
-    "Zero Liquid Discharge",
     "OEKO-TEX Class 1",
     "GOTS organic cotton",
   ],
   authors: [{ name: "Value Textiles" }],
   creator: "Value Textiles",
   publisher: "Value Textiles",
-  metadataBase: new URL("https://valuetextiles.com"),
+  metadataBase: new URL(siteConfig.url),
+  alternates: { canonical: "./" },
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
@@ -73,28 +73,13 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   openGraph: {
-    title: "Value Textiles | Knitted Fabric & Garment Manufacturer in Tirupur",
-    description:
-      "Integrated knitwear manufacturing, soft-flow dyeing, laboratory testing, and apparel production in Tirupur, India for international brands.",
-    url: "https://valuetextiles.com",
+    url: siteConfig.url,
     siteName: "Value Textiles",
-    images: [
-      {
-        url: "/Value%20Textiles%20Leaf%20Emblem%20Logo.png",
-        width: 2172,
-        height: 724,
-        alt: "Value Textiles Logo",
-      },
-    ],
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Value Textiles | Knitted Fabric & Garment Manufacturer in Tirupur",
-    description:
-      "Integrated knitwear fabric and garment manufacturing in Tirupur, India.",
-    images: ["/Value%20Textiles%20Leaf%20Emblem%20Logo.png"],
   },
   robots: {
     index: true,
@@ -112,7 +97,7 @@ export default function RootLayout({
     "@type": "Organization",
     name: siteConfig.name,
     url: siteConfig.url,
-    logo: "https://valuetextiles.com/Value%20Textiles%20Leaf%20Emblem%20Logo.png",
+    logo: `${siteConfig.url}/Value%20Textiles%20Leaf%20Emblem%20Logo.png`,
     description: siteConfig.description,
     address: {
       "@type": "PostalAddress",

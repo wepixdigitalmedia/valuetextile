@@ -14,6 +14,15 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      { source: "/infrastructure", destination: "/capabilities", permanent: true },
+      { source: "/resources", destination: "/blog", permanent: true },
+      { source: "/industries", destination: "/who-we-work-with", permanent: true },
+      { source: "/products", destination: "/capabilities/fabric-division", permanent: true },
+      { source: "/products/:path*", destination: "/capabilities/fabric-division", permanent: true },
+    ];
+  },
   experimental: {
     agentFeedback: true,
     agentUpgrade: "security",

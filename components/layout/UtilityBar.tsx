@@ -126,7 +126,7 @@ export function UtilityBar() {
                 </Link>
 
                 <Link
-                  href="/resources"
+                  href="/how-to-order"
                   role="menuitem"
                   onClick={() => setResourcesOpen(false)}
                   className="group flex items-start justify-between gap-3 px-3 py-2.5 rounded-[8px] hover:bg-[var(--surface)] transition-colors"
@@ -135,10 +135,10 @@ export function UtilityBar() {
                     <BookOpen className="w-4 h-4 text-[var(--accent)] shrink-0 mt-0.5" />
                     <div>
                       <p className="text-[13px] font-semibold text-[var(--black)] group-hover:text-[var(--accent)] transition-colors">
-                        Technical Guides
+                        How to order
                       </p>
                       <p className="text-[11px] text-[var(--text-muted)] leading-snug">
-                        GSM charts, 4-point QC &amp; standards
+                        Process, samples and lead times
                       </p>
                     </div>
                   </div>
