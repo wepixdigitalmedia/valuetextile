@@ -171,7 +171,7 @@ export default function DyeingDivisionPage() {
         <Container className="space-y-14">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
             {/* Left (8 Cols): Dyeing Machines Table */}
-            <div className="lg:col-span-8 space-y-5">
+            <div className="lg:col-span-8 min-w-0 space-y-5">
               <div>
                 <Eyebrow>FABRIC DYEING MACHINES</Eyebrow>
                 <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em] mt-2">
@@ -184,13 +184,13 @@ export default function DyeingDivisionPage() {
                 </p>
               </div>
 
-              <div className="overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
-                <table className="w-full text-left border-collapse min-w-[480px]">
+              <div className="w-full max-w-full overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
+                <table className="w-full text-left border-collapse min-w-[440px]">
                   <thead>
                     <tr className="bg-[var(--surface)] border-b border-[var(--line)] text-[var(--black)] text-sm font-bold">
-                      <th className="py-4 px-6">Machine Make</th>
-                      <th className="py-4 px-6">Capacity</th>
-                      <th className="py-4 px-6">Type</th>
+                      <th className="py-3.5 px-4 sm:px-6">Machine Make</th>
+                      <th className="py-3.5 px-4 sm:px-6">Capacity</th>
+                      <th className="py-3.5 px-4 sm:px-6">Type</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-[var(--line)] text-sm sm:text-[15px] text-[var(--text-muted)]">
@@ -201,13 +201,13 @@ export default function DyeingDivisionPage() {
                           idx % 2 === 1 ? "bg-[var(--surface)]/60" : "bg-[var(--white)]"
                         }
                       >
-                        <td className="py-3.5 px-6 font-semibold text-[var(--black)]">
+                        <td className="py-3.5 px-4 sm:px-6 font-semibold text-[var(--black)]">
                           {row.make}
                         </td>
-                        <td className="py-3.5 px-6 text-sm font-medium text-[var(--black)]">
+                        <td className="py-3.5 px-4 sm:px-6 text-sm font-medium text-[var(--black)]">
                           {row.capacity}
                         </td>
-                        <td className="py-3.5 px-6 text-sm font-medium text-[var(--black)]">
+                        <td className="py-3.5 px-4 sm:px-6 text-sm font-medium text-[var(--black)]">
                           {row.type}
                         </td>
                       </tr>
@@ -224,8 +224,8 @@ export default function DyeingDivisionPage() {
             </div>
 
             {/* Right (4 Cols): Dyeing Certifications Card */}
-            <aside className="lg:col-span-4">
-              <div className="rounded-[12px] bg-[var(--surface)] border-t-4 border-t-[var(--accent)] border border-[var(--line)] p-7 sm:p-8 space-y-6">
+            <aside className="lg:col-span-4 min-w-0">
+              <div className="rounded-[12px] bg-[var(--surface)] border-t-4 border-t-[var(--accent)] border border-[var(--line)] p-6 sm:p-8 space-y-6">
                 <div>
                   <Eyebrow>COMPLIANCE</Eyebrow>
                   <h3 className="text-2xl font-extrabold text-[var(--black)] mt-2">
@@ -265,16 +265,16 @@ export default function DyeingDivisionPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
             {/* Color Lab Table */}
-            <div className="space-y-3">
+            <div className="min-w-0 space-y-3">
               <h3 className="text-base font-bold uppercase tracking-[0.14em] text-[var(--black)]">
                 COLOR LAB is equipped with
               </h3>
-              <div className="overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
+              <div className="w-full max-w-full overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
                 <table className="w-full text-left border-collapse">
                   <thead>
                     <tr className="bg-[var(--surface)] border-b border-[var(--line)] text-[var(--black)] text-sm font-bold">
-                      <th className="py-3.5 px-6">Make / System</th>
-                      <th className="py-3.5 px-6">Equipment</th>
+                      <th className="py-3.5 px-4 sm:px-6">Make / System</th>
+                      <th className="py-3.5 px-4 sm:px-6">Equipment</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-[var(--line)] text-sm text-[var(--text-muted)]">
@@ -285,10 +285,10 @@ export default function DyeingDivisionPage() {
                           idx % 2 === 1 ? "bg-[var(--surface)]/60" : "bg-[var(--white)]"
                         }
                       >
-                        <td className="py-3.5 px-6 font-semibold text-[var(--black)]">
+                        <td className="py-3.5 px-4 sm:px-6 font-semibold text-[var(--black)]">
                           {item.brand}
                         </td>
-                        <td className="py-3.5 px-6">{item.equipment}</td>
+                        <td className="py-3.5 px-4 sm:px-6">{item.equipment}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -297,16 +297,16 @@ export default function DyeingDivisionPage() {
             </div>
 
             {/* Quality Lab Table */}
-            <div className="space-y-3">
+            <div className="min-w-0 space-y-3">
               <h3 className="text-base font-bold uppercase tracking-[0.14em] text-[var(--black)]">
                 QUALITY LAB is equipped with
               </h3>
-              <div className="overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
+              <div className="w-full max-w-full overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
                 <table className="w-full text-left border-collapse">
                   <thead>
                     <tr className="bg-[var(--surface)] border-b border-[var(--line)] text-[var(--black)] text-sm font-bold">
-                      <th className="py-3.5 px-6 w-16">#</th>
-                      <th className="py-3.5 px-6">Testing Instrument</th>
+                      <th className="py-3.5 px-4 sm:px-6 w-14">#</th>
+                      <th className="py-3.5 px-4 sm:px-6">Testing Instrument</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-[var(--line)] text-sm text-[var(--text-muted)]">
@@ -317,10 +317,10 @@ export default function DyeingDivisionPage() {
                           idx % 2 === 1 ? "bg-[var(--surface)]/60" : "bg-[var(--white)]"
                         }
                       >
-                        <td className="py-3.5 px-6 text-xs font-bold text-[var(--black)]">
+                        <td className="py-3.5 px-4 sm:px-6 text-xs font-bold text-[var(--black)]">
                           0{idx + 1}
                         </td>
-                        <td className="py-3.5 px-6 font-medium text-[var(--black)]">
+                        <td className="py-3.5 px-4 sm:px-6 font-medium text-[var(--black)]">
                           {instrument}
                         </td>
                       </tr>
@@ -340,7 +340,7 @@ export default function DyeingDivisionPage() {
         <Container className="space-y-14">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
             {/* Finishing Machinery Table (7 Cols) */}
-            <div className="lg:col-span-7 space-y-4">
+            <div className="lg:col-span-7 min-w-0 space-y-4">
               <div>
                 <Eyebrow>COMPACTING, DRYING &amp; SURFACE FINISHING</Eyebrow>
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--black)] mt-2">
@@ -348,12 +348,12 @@ export default function DyeingDivisionPage() {
                 </h2>
               </div>
 
-              <div className="overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
+              <div className="w-full max-w-full overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
                 <table className="w-full text-left border-collapse">
                   <thead>
                     <tr className="bg-[var(--surface)] border-b border-[var(--line)] text-[var(--black)] text-sm font-bold">
-                      <th className="py-3.5 px-5 w-14">No.</th>
-                      <th className="py-3.5 px-6">Machine Specification</th>
+                      <th className="py-3.5 px-4 sm:px-5 w-14">No.</th>
+                      <th className="py-3.5 px-4 sm:px-6">Machine Specification</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-[var(--line)] text-sm text-[var(--text-muted)]">
@@ -364,10 +364,10 @@ export default function DyeingDivisionPage() {
                           idx % 2 === 1 ? "bg-[var(--surface)]/60" : "bg-[var(--white)]"
                         }
                       >
-                        <td className="py-3.5 px-5 text-xs font-bold text-[var(--black)]">
+                        <td className="py-3.5 px-4 sm:px-5 text-xs font-bold text-[var(--black)]">
                           {item.no}
                         </td>
-                        <td className="py-3.5 px-6 font-medium text-[var(--black)]">
+                        <td className="py-3.5 px-4 sm:px-6 font-medium text-[var(--black)]">
                           {item.spec}
                         </td>
                       </tr>
@@ -378,7 +378,7 @@ export default function DyeingDivisionPage() {
             </div>
 
             {/* Effluent Treatment Plant Table (5 Cols) */}
-            <div className="lg:col-span-5 space-y-4">
+            <div className="lg:col-span-5 min-w-0 space-y-4">
               <div>
                 <Eyebrow>ZERO LIQUID DISCHARGE (ZLD)</Eyebrow>
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--black)] mt-2">
@@ -386,12 +386,12 @@ export default function DyeingDivisionPage() {
                 </h2>
               </div>
 
-              <div className="overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
+              <div className="w-full max-w-full overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
                 <table className="w-full text-left border-collapse">
                   <thead>
                     <tr className="bg-[var(--surface)] border-b border-[var(--line)] text-[var(--black)] text-sm font-bold">
-                      <th className="py-3.5 px-5 w-14">Stage</th>
-                      <th className="py-3.5 px-6">Process &amp; Capacity</th>
+                      <th className="py-3.5 px-4 sm:px-5 w-14">Stage</th>
+                      <th className="py-3.5 px-4 sm:px-6">Process &amp; Capacity</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-[var(--line)] text-sm text-[var(--text-muted)]">
@@ -402,10 +402,10 @@ export default function DyeingDivisionPage() {
                           idx % 2 === 1 ? "bg-[var(--surface)]/60" : "bg-[var(--white)]"
                         }
                       >
-                        <td className="py-3.5 px-5 text-xs font-bold text-[var(--black)]">
+                        <td className="py-3.5 px-4 sm:px-5 text-xs font-bold text-[var(--black)]">
                           {stage.no}
                         </td>
-                        <td className="py-3.5 px-6 font-medium text-[var(--black)] leading-relaxed">
+                        <td className="py-3.5 px-4 sm:px-6 font-medium text-[var(--black)] leading-relaxed">
                           {stage.spec}
                         </td>
                       </tr>

@@ -28,7 +28,7 @@ const MODE_BY_ID: Record<string, (typeof PRODUCTION_MODES)[number]> = {
 };
 
 const inputClass =
-  "w-full h-11 bg-[var(--white)] border border-[var(--line)] rounded-[8px] px-4 text-sm text-[var(--black)] placeholder:text-[var(--text-muted)] focus:outline-hidden focus:border-[var(--black)] focus:ring-2 focus:ring-[var(--accent)]/25 transition-colors";
+  "w-full h-11 bg-[var(--white)] border border-[var(--line)] rounded-[8px] px-4 text-[16px] sm:text-sm text-[var(--black)] placeholder:text-[var(--text-muted)] focus:outline-hidden focus:border-[var(--black)] focus:ring-2 focus:ring-[var(--accent)]/25 transition-colors";
 
 interface QuoteFormProps {
   source: EnquiryPayload["source"];
@@ -180,7 +180,7 @@ export function QuoteForm({ source }: QuoteFormProps) {
           value={formData.message}
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
           placeholder="e.g. 5,000 pcs crew-neck T-shirts, 180 GSM cotton, delivery by March"
-          className="w-full bg-[var(--white)] border border-[var(--line)] rounded-[8px] p-4 text-sm text-[var(--black)] placeholder:text-[var(--text-muted)] focus:outline-hidden focus:border-[var(--black)] focus:ring-2 focus:ring-[var(--accent)]/25 transition-colors resize-none"
+          className="w-full bg-[var(--white)] border border-[var(--line)] rounded-[8px] p-4 text-[16px] sm:text-sm text-[var(--black)] placeholder:text-[var(--text-muted)] focus:outline-hidden focus:border-[var(--black)] focus:ring-2 focus:ring-[var(--accent)]/25 transition-colors resize-none"
         />
       </div>
 

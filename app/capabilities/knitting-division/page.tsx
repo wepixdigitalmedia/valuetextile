@@ -174,16 +174,16 @@ export default function KnittingDivisionPage() {
             </h2>
           </div>
 
-          <div className="overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
-            <table className="w-full text-left border-collapse min-w-[680px]">
+          <div className="w-full max-w-full overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
+            <table className="w-full text-left border-collapse min-w-[640px]">
               <thead>
                 <tr className="bg-[var(--surface)] border-b border-[var(--line)] text-[var(--black)] text-sm font-bold">
-                  <th className="py-4 px-6">Machine Make</th>
-                  <th className="py-4 px-6">Fabric Type</th>
-                  <th className="py-4 px-6">Dia</th>
-                  <th className="py-4 px-6">GG</th>
-                  <th className="py-4 px-6">Feeders</th>
-                  <th className="py-4 px-6">Colour</th>
+                  <th className="py-3.5 px-4 sm:px-6">Machine Make</th>
+                  <th className="py-3.5 px-4 sm:px-6">Fabric Type</th>
+                  <th className="py-3.5 px-4 sm:px-6">Dia</th>
+                  <th className="py-3.5 px-4 sm:px-6">GG</th>
+                  <th className="py-3.5 px-4 sm:px-6">Feeders</th>
+                  <th className="py-3.5 px-4 sm:px-6">Colour</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-[var(--line)] text-sm sm:text-[15px] text-[var(--text-muted)]">
@@ -192,16 +192,16 @@ export default function KnittingDivisionPage() {
                     key={`${row.fabricType}-${row.dia}-${row.gg}-${row.colour}-${idx}`}
                     className={idx % 2 === 1 ? "bg-[var(--surface)]/60" : "bg-[var(--white)]"}
                   >
-                    <td className="py-3.5 px-6 font-semibold text-[var(--black)]">
+                    <td className="py-3.5 px-4 sm:px-6 font-semibold text-[var(--black)]">
                       {row.make}
                     </td>
-                    <td className="py-3.5 px-6">{row.fabricType}</td>
-                    <td className="py-3.5 px-6 font-medium text-[var(--black)]">{row.dia}</td>
-                    <td className="py-3.5 px-6 font-medium text-[var(--black)]">{row.gg}</td>
-                    <td className="py-3.5 px-6 font-medium text-[var(--black)]">
+                    <td className="py-3.5 px-4 sm:px-6">{row.fabricType}</td>
+                    <td className="py-3.5 px-4 sm:px-6 font-medium text-[var(--black)]">{row.dia}</td>
+                    <td className="py-3.5 px-4 sm:px-6 font-medium text-[var(--black)]">{row.gg}</td>
+                    <td className="py-3.5 px-4 sm:px-6 font-medium text-[var(--black)]">
                       {row.feeders}
                     </td>
-                    <td className="py-3.5 px-6">{row.colour}</td>
+                    <td className="py-3.5 px-4 sm:px-6">{row.colour}</td>
                   </tr>
                 ))}
               </tbody>

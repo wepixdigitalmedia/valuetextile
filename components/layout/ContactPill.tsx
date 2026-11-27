@@ -12,7 +12,7 @@ export function ContactPill({ compact = false }: ContactPillProps) {
       {/* Mobile view: Compact circular button */}
       <Link
         href="/contact#quote"
-        className="md:hidden size-12 rounded-full bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-[var(--on-accent)] flex items-center justify-center transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--black)]"
+        className="md:hidden size-10 sm:size-11 shrink-0 rounded-full bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-[var(--on-accent)] flex items-center justify-center transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--black)]"
         aria-label="Get a quote from Value Textiles"
       >
         <PhoneCall className="w-4 h-4 text-[var(--on-accent)]" strokeWidth={2.2} />

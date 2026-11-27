@@ -89,15 +89,15 @@ export function SearchPill() {
   };
 
   return (
-    <div ref={containerRef} className="relative w-full max-w-[380px]">
+    <div ref={containerRef} className="relative w-full min-w-0 max-w-[380px]">
       <form
         onSubmit={handleSubmit}
-        className="group relative flex items-center w-full h-[42px] rounded-full border border-[var(--line)] bg-[var(--white)] px-2.5 transition-colors duration-200 focus-within:border-[var(--black)] focus-within:ring-2 focus-within:ring-[var(--accent)]/20"
+        className="group relative flex items-center w-full h-[38px] sm:h-[42px] rounded-full border border-[var(--line)] bg-[var(--white)] px-2 sm:px-2.5 transition-colors duration-200 focus-within:border-[var(--black)] focus-within:ring-2 focus-within:ring-[var(--accent)]/20"
       >
         <button
           type="submit"
           aria-label="Search"
-          className="w-7 h-7 rounded-full bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-[var(--on-accent)] flex items-center justify-center shrink-0 mr-2.5 transition-colors cursor-pointer"
+          className="w-7 h-7 rounded-full bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-[var(--on-accent)] flex items-center justify-center shrink-0 mr-2 sm:mr-2.5 transition-colors cursor-pointer"
         >
           <Search className="w-3.5 h-3.5" strokeWidth={2.5} />
         </button>
@@ -112,7 +112,7 @@ export function SearchPill() {
             if (!isOpen) setIsOpen(true);
           }}
           placeholder="Search products, bulk quote, samples..."
-          className="flex-1 min-w-0 bg-transparent border-none outline-hidden text-[13.5px] sm:text-[14px] text-[var(--black)] placeholder:text-[var(--text-muted)] font-sans"
+          className="flex-1 w-0 min-w-0 bg-transparent border-none outline-hidden text-[16px] sm:text-[14px] text-[var(--black)] placeholder:text-[var(--text-muted)] font-sans"
           aria-label="Search Value Textiles"
           autoComplete="off"
         />
@@ -133,7 +133,7 @@ export function SearchPill() {
       </form>
 
       {isOpen && (
-        <div className="absolute left-0 top-full mt-2 w-[min(92vw,440px)] rounded-[12px] bg-[var(--white)] border border-[var(--line)] shadow-sm text-[var(--black)] z-[80] overflow-hidden">
+        <div className="absolute left-0 top-full mt-2 w-[calc(100vw-2rem)] sm:w-[440px] rounded-[12px] bg-[var(--white)] border border-[var(--line)] shadow-sm text-[var(--black)] z-[80] overflow-hidden">
           {!query.trim() ? (
             <div className="p-4 space-y-3">
               <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--black)]">

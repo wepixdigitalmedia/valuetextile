@@ -76,9 +76,9 @@ export default function QualityPage() {
               { v: "4-point + 10-point", l: "Fabric inspection systems" },
               { v: String(CERTIFICATES.length), l: "Certificates and programmes" },
             ].map((s) => (
-              <div key={s.l} className="bg-[var(--white)] px-5 py-5">
+              <div key={s.l} className="bg-[var(--white)] px-3.5 py-4 sm:px-5 sm:py-5 min-w-0">
                 <dt className="text-[12px] font-semibold text-[var(--text-muted)]">{s.l}</dt>
-                <dd className="mt-1 text-[22px] sm:text-[26px] font-extrabold leading-[1.1] tracking-[-0.02em] text-[var(--black)]">
+                <dd className="mt-1 text-[18px] sm:text-[26px] font-extrabold leading-[1.15] tracking-[-0.02em] text-[var(--black)] break-words">
                   {s.v}
                 </dd>
               </div>
@@ -204,7 +204,7 @@ export default function QualityPage() {
                 <dl className="mt-4 space-y-1.5 border-t border-[var(--line)] pt-4 text-[13.5px]">
                   <div className="flex gap-2">
                     <dt className="w-20 shrink-0 text-[var(--text-muted)]">Reference</dt>
-                    <dd className="font-semibold text-[var(--black)] break-words">
+                    <dd className="min-w-0 font-semibold text-[var(--black)] break-words">
                       {c.reference ?? "On request"}
                     </dd>
                   </div>

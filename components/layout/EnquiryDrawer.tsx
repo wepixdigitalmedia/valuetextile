@@ -71,7 +71,7 @@ export function EnquiryDrawer({ isOpen, onClose }: EnquiryDrawerProps) {
   if (!isOpen) return null;
 
   const inputClass =
-    "w-full bg-[var(--white)] border border-[var(--line)] px-3.5 py-2.5 text-[14px] text-[var(--black)] placeholder:text-[var(--text-muted)] rounded-[8px] focus:outline-hidden focus:border-[var(--black)] focus:ring-2 focus:ring-[var(--accent)]/25 transition-colors";
+    "w-full bg-[var(--white)] border border-[var(--line)] px-3.5 py-2.5 text-[16px] sm:text-[14px] text-[var(--black)] placeholder:text-[var(--text-muted)] rounded-[8px] focus:outline-hidden focus:border-[var(--black)] focus:ring-2 focus:ring-[var(--accent)]/25 transition-colors";
 
   return (
     <div
@@ -85,7 +85,7 @@ export function EnquiryDrawer({ isOpen, onClose }: EnquiryDrawerProps) {
         ref={panelRef}
         data-lenis-prevent
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-md h-full bg-[var(--surface)] border-l border-[var(--line)] p-6 sm:p-8 flex flex-col justify-between overflow-y-auto"
+        className="relative w-full max-w-md h-full bg-[var(--surface)] border-l border-[var(--line)] p-5 sm:p-8 flex flex-col justify-between overflow-y-auto"
       >
         <div>
           <div className="flex items-center justify-between pb-5 border-b border-[var(--line)]">

@@ -51,8 +51,8 @@ function Block({ block }: { block: BlogBlock }) {
       );
     case "table":
       return (
-        <div className="overflow-x-auto rounded-[12px] border border-[var(--line)]">
-          <table className="w-full border-collapse text-left text-[14.5px] sm:text-[15px]">
+        <div className="w-full max-w-full overflow-x-auto rounded-[12px] border border-[var(--line)]">
+          <table className="w-full min-w-[420px] border-collapse text-left text-[14px] sm:text-[15px]">
             <thead>
               <tr className="bg-[var(--surface)] text-[var(--black)]">
                 {block.head.map((h) => (
@@ -140,7 +140,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
             />
           </div>
 
-          <article className="max-w-3xl space-y-5 text-[17px] leading-[1.75] text-[var(--text-muted)]">
+          <article className="min-w-0 max-w-3xl space-y-5 text-[16px] sm:text-[17px] leading-[1.75] text-[var(--text-muted)]">
             {post.blocks.map((block, i) => (
               <Block key={i} block={block} />
             ))}

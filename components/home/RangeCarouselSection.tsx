@@ -96,12 +96,12 @@ export function RangeCarouselSection() {
             </div>
           </div>
 
-          <div className="flex items-start gap-3 sm:gap-5 xl:gap-6 flex-1">
+          <div className="flex items-start gap-3 sm:gap-5 xl:gap-6 flex-1 min-w-0">
             <div className="w-11 h-11 sm:w-12 sm:h-12 xl:w-14 xl:h-14 shrink-0 mt-1 rounded-[12px] bg-[var(--surface)] border border-[var(--line)] flex items-center justify-center text-[var(--accent)]">
               <Shirt className="w-6 h-6 sm:w-7 sm:h-7" strokeWidth={1.75} />
             </div>
 
-            <div className="flex flex-col gap-2 sm:gap-3 flex-1">
+            <div className="flex flex-col gap-2 sm:gap-3 flex-1 min-w-0">
               <h2 className="text-[28px] sm:text-[38px] lg:text-[46px] xl:text-[52px] font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em]">
                 Garments we make for international brands.
               </h2>
@@ -120,7 +120,7 @@ export function RangeCarouselSection() {
             {rangeItems.map((item) => (
               <div
                 key={item.id}
-                className="w-[85vw] sm:w-[320px] lg:w-auto shrink-0 lg:shrink min-w-0 snap-start"
+                className="w-[82vw] max-w-[320px] sm:w-[320px] lg:w-auto shrink-0 lg:shrink min-w-0 snap-start"
               >
                 <RangeCard
                   item={item}

@@ -169,7 +169,7 @@ export default function FabricDivisionPage() {
         <Container className="space-y-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
             {/* Left (6 Cols): Intro + 11-Test Table */}
-            <div className="lg:col-span-6 space-y-6">
+            <div className="lg:col-span-6 min-w-0 space-y-6">
               <div>
                 <Eyebrow>01 · IN-HOUSE QUALITY VERIFICATION</Eyebrow>
                 <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em] mt-2">
@@ -183,12 +183,12 @@ export default function FabricDivisionPage() {
                 </p>
               </div>
 
-              <div className="overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
+              <div className="w-full max-w-full overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
                 <table className="w-full text-left border-collapse">
                   <thead>
                     <tr className="bg-[var(--surface)] border-b border-[var(--line)] text-[var(--black)] text-sm font-bold">
-                      <th className="py-3.5 px-6 w-20">SNo</th>
-                      <th className="py-3.5 px-6">TEST</th>
+                      <th className="py-3.5 px-4 sm:px-6 w-16 sm:w-20">SNo</th>
+                      <th className="py-3.5 px-4 sm:px-6">TEST</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-[var(--line)] text-sm sm:text-[15px] text-[var(--text-muted)]">
@@ -199,10 +199,10 @@ export default function FabricDivisionPage() {
                           idx % 2 === 1 ? "bg-[var(--surface)]/60" : "bg-[var(--white)]"
                         }
                       >
-                        <td className="py-3 px-6 text-xs font-bold text-[var(--black)]">
+                        <td className="py-3 px-4 sm:px-6 text-xs font-bold text-[var(--black)]">
                           {row.sno}
                         </td>
-                        <td className="py-3 px-6 font-medium text-[var(--black)]">
+                        <td className="py-3 px-4 sm:px-6 font-medium text-[var(--black)]">
                           {row.test}
                         </td>
                       </tr>
@@ -266,16 +266,16 @@ export default function FabricDivisionPage() {
           {/* 3 Inspection Tables Row */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
             {/* Table 1: Total Rolls of Lot vs No. of Rolls to be checked (5 Cols) */}
-            <div className="lg:col-span-5 space-y-3">
+            <div className="lg:col-span-5 min-w-0 space-y-3">
               <h3 className="text-base font-bold text-[var(--black)]">
                 Roll Sampling Plan
               </h3>
-              <div className="overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
+              <div className="w-full max-w-full overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
                 <table className="w-full text-left border-collapse">
                   <thead>
                     <tr className="bg-[var(--surface)] border-b border-[var(--line)] text-[var(--black)] text-sm font-bold">
-                      <th className="py-3.5 px-5">Total Rolls of Lot</th>
-                      <th className="py-3.5 px-5">No. of Rolls to be checked</th>
+                      <th className="py-3.5 px-4 sm:px-5">Total Rolls of Lot</th>
+                      <th className="py-3.5 px-4 sm:px-5">No. of Rolls to be checked</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-[var(--line)] text-sm text-[var(--text-muted)]">
@@ -286,10 +286,10 @@ export default function FabricDivisionPage() {
                           idx % 2 === 1 ? "bg-[var(--surface)]/60" : "bg-[var(--white)]"
                         }
                       >
-                        <td className="py-3.5 px-5 font-medium text-[var(--black)]">
+                        <td className="py-3.5 px-4 sm:px-5 font-medium text-[var(--black)]">
                           {row.totalRolls}
                         </td>
-                        <td className="py-3.5 px-5">{row.checkedRolls}</td>
+                        <td className="py-3.5 px-4 sm:px-5">{row.checkedRolls}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -298,16 +298,16 @@ export default function FabricDivisionPage() {
             </div>
 
             {/* Table 2: Points Allowed / 100 Mtrs (3 Cols) */}
-            <div className="lg:col-span-3 space-y-3">
+            <div className="lg:col-span-3 min-w-0 space-y-3">
               <h3 className="text-base font-bold text-[var(--black)]">
                 Points Allowed / 100 Mtrs
               </h3>
-              <div className="overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
+              <div className="w-full max-w-full overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
                 <table className="w-full text-left border-collapse">
                   <thead>
                     <tr className="bg-[var(--surface)] border-b border-[var(--line)] text-[var(--black)] text-sm font-bold">
-                      <th className="py-3.5 px-5">Points</th>
-                      <th className="py-3.5 px-5">Result</th>
+                      <th className="py-3.5 px-4 sm:px-5">Points</th>
+                      <th className="py-3.5 px-4 sm:px-5">Result</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-[var(--line)] text-sm text-[var(--text-muted)]">
@@ -318,10 +318,10 @@ export default function FabricDivisionPage() {
                           idx % 2 === 1 ? "bg-[var(--surface)]/60" : "bg-[var(--white)]"
                         }
                       >
-                        <td className="py-3.5 px-5 text-sm font-semibold text-[var(--black)]">
+                        <td className="py-3.5 px-4 sm:px-5 text-sm font-semibold text-[var(--black)]">
                           {row.points}
                         </td>
-                        <td className="py-3.5 px-5 font-medium text-[var(--black)]">
+                        <td className="py-3.5 px-4 sm:px-5 font-medium text-[var(--black)]">
                           {row.decision}
                         </td>
                       </tr>
@@ -332,16 +332,16 @@ export default function FabricDivisionPage() {
             </div>
 
             {/* Table 3: Sticker Identification (4 Cols) */}
-            <div className="lg:col-span-4 space-y-3">
+            <div className="lg:col-span-4 min-w-0 space-y-3">
               <h3 className="text-base font-bold text-[var(--black)]">
                 Sticker Identification
               </h3>
-              <div className="overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
+              <div className="w-full max-w-full overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
                 <table className="w-full text-left border-collapse">
                   <thead>
                     <tr className="bg-[var(--surface)] border-b border-[var(--line)] text-[var(--black)] text-sm font-bold">
-                      <th className="py-3.5 px-5">Sticker</th>
-                      <th className="py-3.5 px-5">Identification</th>
+                      <th className="py-3.5 px-4 sm:px-5">Sticker</th>
+                      <th className="py-3.5 px-4 sm:px-5">Identification</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-[var(--line)] text-sm text-[var(--text-muted)]">
@@ -352,7 +352,7 @@ export default function FabricDivisionPage() {
                           idx % 2 === 1 ? "bg-[var(--surface)]/60" : "bg-[var(--white)]"
                         }
                       >
-                        <td className="py-3.5 px-5">
+                        <td className="py-3.5 px-4 sm:px-5">
                           <span
                             className={`inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-bold border ${item.badgeClass}`}
                           >
@@ -362,7 +362,7 @@ export default function FabricDivisionPage() {
                             {item.color}
                           </span>
                         </td>
-                        <td className="py-3.5 px-5 font-medium text-[var(--black)]">
+                        <td className="py-3.5 px-4 sm:px-5 font-medium text-[var(--black)]">
                           {item.meaning}
                         </td>
                       </tr>
@@ -410,7 +410,7 @@ export default function FabricDivisionPage() {
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
             {/* Left (5 Cols): Despatch Overview + Lead Time Table */}
-            <div className="lg:col-span-5 space-y-6">
+            <div className="lg:col-span-5 min-w-0 space-y-6">
               <div>
                 <Eyebrow>03 · PACKING &amp; LOGISTICS</Eyebrow>
                 <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em] mt-2">
@@ -426,12 +426,12 @@ export default function FabricDivisionPage() {
                 </p>
               </div>
 
-              <div className="overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
+              <div className="w-full max-w-full overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
                 <table className="w-full text-left border-collapse">
                   <thead>
                     <tr className="bg-[var(--surface)] border-b border-[var(--line)] text-[var(--black)] text-sm font-bold">
-                      <th className="py-4 px-6">Type Of Fabric</th>
-                      <th className="py-4 px-6">Lead Time</th>
+                      <th className="py-3.5 px-4 sm:px-6">Type Of Fabric</th>
+                      <th className="py-3.5 px-4 sm:px-6">Lead Time</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-[var(--line)] text-sm sm:text-[15px] text-[var(--text-muted)]">
@@ -442,10 +442,10 @@ export default function FabricDivisionPage() {
                           idx % 2 === 1 ? "bg-[var(--surface)]/60" : "bg-[var(--white)]"
                         }
                       >
-                        <td className="py-3.5 px-6 font-bold text-[var(--black)]">
+                        <td className="py-3.5 px-4 sm:px-6 font-bold text-[var(--black)]">
                           {row.fabricType}
                         </td>
-                        <td className="py-3.5 px-6 text-sm font-medium text-[var(--black)]">
+                        <td className="py-3.5 px-4 sm:px-6 text-sm font-medium text-[var(--black)]">
                           {row.leadTime}
                         </td>
                       </tr>

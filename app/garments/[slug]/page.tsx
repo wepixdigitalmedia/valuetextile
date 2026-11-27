@@ -173,13 +173,13 @@ export default async function GarmentCategoryPage({ params }: { params: Promise<
                 Bring your tech pack. These are the fabrics and styles we work with in this category.
               </p>
             </div>
-            <dl className="lg:col-span-8 border-t border-[var(--line)] divide-y divide-[var(--line)]">
+            <dl className="lg:col-span-8 min-w-0 border-t border-[var(--line)] divide-y divide-[var(--line)]">
               {specRows.map((row) => (
                 <div key={row.label} className="py-4 sm:py-5 flex flex-col sm:flex-row gap-1.5 sm:gap-8">
                   <dt className="w-28 shrink-0 text-[12px] font-bold uppercase tracking-[0.14em] text-[var(--text-muted)] pt-0.5">
                     {row.label}
                   </dt>
-                  <dd className="text-[16px] leading-[1.6] text-[var(--black)]">{row.value}</dd>
+                  <dd className="min-w-0 text-[16px] leading-[1.6] text-[var(--black)] break-words">{row.value}</dd>
                 </div>
               ))}
             </dl>

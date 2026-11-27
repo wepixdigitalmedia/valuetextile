@@ -22,12 +22,12 @@ export function Logo({ className = "", inverted = false }: LogoProps) {
     >
       <span className="flex flex-col leading-none">
         <span
-          className={`text-[20px] sm:text-[24px] lg:text-[26px] font-extrabold tracking-[-0.03em] uppercase ${main}`}
+          className={`text-[18px] min-[380px]:text-[20px] sm:text-[24px] lg:text-[26px] font-extrabold tracking-[-0.03em] uppercase ${main}`}
         >
           Value Textiles<span className="text-[var(--accent)]">.</span>
         </span>
         <span
-          className={`mt-1.5 flex items-center gap-2 text-[9.5px] sm:text-[10px] font-bold uppercase tracking-[0.22em] ${sub}`}
+          className={`mt-1.5 flex items-center gap-2 text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.18em] sm:tracking-[0.22em] ${sub}`}
         >
           Knit to shipped
         </span>

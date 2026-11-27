@@ -64,8 +64,8 @@ export const BRAND_LOGO_CARDS: BrandCardItem[] = [
 
 export function BrandStrip() {
   return (
-    <div className="rounded-[12px] bg-[var(--black)] px-6 py-7 sm:px-10 sm:py-8">
-      <div className="grid grid-cols-4 lg:grid-cols-8 gap-x-6 gap-y-7 items-center">
+    <div className="rounded-[12px] bg-[var(--black)] px-4 py-6 sm:px-10 sm:py-8">
+      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-x-5 gap-y-6 sm:gap-x-6 sm:gap-y-7 items-center">
         {BRAND_LOGO_CARDS.map((brand, idx) => (
           <Image
             key={idx}
@@ -73,7 +73,7 @@ export function BrandStrip() {
             alt={brand.name}
             width={160}
             height={64}
-            sizes="(max-width: 1024px) 22vw, 120px"
+            sizes="(max-width: 640px) 40vw, (max-width: 1024px) 22vw, 120px"
             className="h-7 sm:h-9 w-auto max-w-full mx-auto object-contain"
           />
         ))}

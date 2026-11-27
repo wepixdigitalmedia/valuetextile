@@ -64,14 +64,14 @@ export function UtilityBar() {
 
   return (
     <div className="relative w-full bg-[var(--black)] text-[var(--white)] pt-3 sm:pt-3.5 pb-[38px] sm:pb-[44px] -mb-[26px] sm:-mb-[30px]">
-      <Container className="flex items-center justify-between gap-3 sm:gap-4">
+      <Container className="flex items-center justify-between gap-2 sm:gap-4">
         {/* Left: Functional Global Search & Action Pill */}
-        <div className="flex-1 max-w-[380px]">
+        <div className="flex-1 min-w-0 max-w-[380px]">
           <SearchPill />
         </div>
 
         {/* Right: Resources Menu (Blog + Guides) & Export Enquiries */}
-        <div className="flex items-center gap-2.5 sm:gap-3">
+        <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
           {/* 1. Resources Dropdown Menu connecting Blog & Technical Resources */}
           <div
             ref={resourcesRef}
@@ -84,16 +84,16 @@ export function UtilityBar() {
               onClick={() => setResourcesOpen((prev) => !prev)}
               aria-expanded={resourcesOpen}
               aria-haspopup="menu"
-              className={`flex items-center gap-2 h-[38px] px-3.5 rounded-full border text-[13px] font-medium transition-colors cursor-pointer text-[var(--white)] ${
+              className={`flex items-center gap-1.5 sm:gap-2 h-[38px] px-2.5 sm:px-3.5 rounded-full border text-[12px] sm:text-[13px] font-medium transition-colors cursor-pointer text-[var(--white)] ${
                 resourcesOpen
                   ? "bg-white/20 border-white/60"
                   : "bg-white/10 border-white/25 hover:bg-white/20 hover:border-white/50"
               }`}
             >
-              <BookOpen className="w-3.5 h-3.5 text-[var(--white)]" strokeWidth={1.8} />
+              <BookOpen className="w-3.5 h-3.5 shrink-0 text-[var(--white)]" strokeWidth={1.8} />
               <span>Resources</span>
               <ChevronDown
-                className={`w-3 h-3 text-[var(--white)]/80 transition-transform duration-200 ${
+                className={`w-3 h-3 shrink-0 text-[var(--white)]/80 transition-transform duration-200 ${
                   resourcesOpen ? "rotate-180" : ""
                 }`}
               />
@@ -101,7 +101,7 @@ export function UtilityBar() {
 
             {resourcesOpen && (
               <div
-                className="absolute right-0 top-full mt-2 w-60 rounded-[12px] bg-[var(--white)] border border-[var(--line)] shadow-sm p-1.5 z-[60]"
+                className="absolute right-0 top-full mt-2 w-[min(calc(100vw-2rem),15rem)] rounded-[12px] bg-[var(--white)] border border-[var(--line)] shadow-sm p-1.5 z-[60]"
                 role="menu"
                 aria-label="Resources and Blog navigation"
               >
@@ -153,10 +153,10 @@ export function UtilityBar() {
             href={siteConfig.utilityBar.whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 h-[38px] px-3.5 rounded-full border border-white/25 bg-white/10 text-[13px] font-medium text-[var(--white)] transition-colors hover:bg-white/20 hover:border-white/50"
+            className="flex items-center justify-center gap-2 w-[38px] sm:w-auto h-[38px] px-0 sm:px-3.5 rounded-full border border-white/25 bg-white/10 text-[13px] font-medium text-[var(--white)] transition-colors hover:bg-white/20 hover:border-white/50 shrink-0"
             aria-label="Export enquiries on WhatsApp"
           >
-            <MessageCircle className="w-3.5 h-3.5 text-[var(--white)]" strokeWidth={2} />
+            <MessageCircle className="w-3.5 h-3.5 shrink-0 text-[var(--white)]" strokeWidth={2} />
             <span className="hidden sm:inline">Export enquiries</span>
           </a>
         </div>

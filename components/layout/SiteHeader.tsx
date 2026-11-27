@@ -75,13 +75,13 @@ export function SiteHeader() {
           : "rounded-t-[26px] sm:rounded-t-[30px] border-t border-b border-[var(--line)]"
           }`}
       >
-        <Container className="h-full flex items-center justify-between">
+        <Container className="h-full flex items-center justify-between gap-2">
           {/* Left: Hamburger Button (Mobile) + Brand Logo */}
-          <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
             <button
               type="button"
               onClick={() => setMobileMenuOpen(true)}
-              className="size-10 -ml-1 inline-flex items-center justify-center rounded-full bg-[var(--surface)] border border-[var(--line)] text-[var(--black)] hover:border-[var(--black)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--black)] md:hidden cursor-pointer transition-colors"
+              className="size-10 shrink-0 inline-flex items-center justify-center rounded-full bg-[var(--surface)] border border-[var(--line)] text-[var(--black)] hover:border-[var(--black)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--black)] md:hidden cursor-pointer transition-colors"
               aria-label="Open navigation menu"
               aria-expanded={mobileMenuOpen}
             >
@@ -248,26 +248,26 @@ export function SiteHeader() {
               </a>
               <a
                 href={`mailto:${siteConfig.contact.email}`}
-                className="flex items-center gap-2 hover:text-[var(--accent)] transition-colors font-medium"
+                className="flex items-center gap-2 hover:text-[var(--accent)] transition-colors font-medium min-w-0"
               >
-                <Mail className="w-3.5 h-3.5 text-[var(--black)]" />
-                <span>{siteConfig.contact.email}</span>
+                <Mail className="w-3.5 h-3.5 shrink-0 text-[var(--black)]" />
+                <span className="truncate">{siteConfig.contact.email}</span>
               </a>
             </div>
 
-            <div className="grid grid-cols-2 gap-2.5">
+            <div className="grid grid-cols-2 gap-2">
               <Link
                 href="/contact#quote"
                 onClick={() => setMobileMenuOpen(false)}
-                className="inline-flex items-center justify-center gap-1.5 min-h-[48px] px-4 rounded-full bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-[var(--on-accent)] font-semibold text-xs uppercase tracking-wider transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--black)]"
+                className="inline-flex items-center justify-center gap-1.5 min-h-[46px] px-3 rounded-full bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-[var(--on-accent)] font-semibold text-[11px] sm:text-xs uppercase tracking-wider transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--black)]"
               >
                 <span>Get a Quote</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                <ArrowRight className="w-3.5 h-3.5 shrink-0" />
               </Link>
               <Link
                 href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="inline-flex items-center justify-center min-h-[48px] px-4 rounded-full border-[1.5px] border-[var(--black)] text-[var(--black)] hover:bg-[var(--black)] hover:text-[var(--white)] font-semibold text-xs uppercase tracking-wider transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--black)]"
+                className="inline-flex items-center justify-center min-h-[46px] px-3 rounded-full border-[1.5px] border-[var(--black)] text-[var(--black)] hover:bg-[var(--black)] hover:text-[var(--white)] font-semibold text-[11px] sm:text-xs uppercase tracking-wider transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--black)]"
               >
                 Contact Us
               </Link>

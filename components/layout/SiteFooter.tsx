@@ -111,11 +111,11 @@ export function SiteFooter() {
               </p>
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-2 min-w-0">
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--white)]/65">
                 Email id
               </p>
-              <p className="text-sm text-[var(--white)]">
+              <p className="text-sm text-[var(--white)] break-words">
                 <a
                   href={`mailto:${contact.email}`}
                   className="hover:underline transition-opacity"
@@ -132,7 +132,7 @@ export function SiteFooter() {
           className="py-2 sm:py-4 select-none overflow-hidden"
           aria-hidden="true"
         >
-          <p className="font-extrabold uppercase text-center text-[11vw] sm:text-[10.5vw] lg:text-[112px] xl:text-[132px] leading-[0.88] tracking-[0.04em] text-[var(--white)]/10 whitespace-nowrap">
+          <p className="font-extrabold uppercase text-center text-[10vw] sm:text-[10.5vw] lg:text-[112px] xl:text-[132px] leading-[0.88] tracking-[0.04em] text-[var(--white)]/10 whitespace-nowrap">
             VALUE TEXTILES
           </p>
         </div>

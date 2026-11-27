@@ -69,9 +69,9 @@ export function DivisionHero({
 
         <dl className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-px overflow-hidden rounded-[12px] border border-[var(--line)] bg-[var(--line)]">
           {stats.map((s) => (
-            <div key={s.label} className="bg-[var(--white)] px-5 py-5">
+            <div key={s.label} className="bg-[var(--white)] px-3.5 py-4 sm:px-5 sm:py-5 min-w-0">
               <dt className="text-[12px] font-semibold text-[var(--text-muted)]">{s.label}</dt>
-              <dd className="mt-1 text-[22px] sm:text-[26px] font-extrabold leading-[1.1] tracking-[-0.02em] text-[var(--black)]">
+              <dd className="mt-1 text-[18px] sm:text-[26px] font-extrabold leading-[1.15] tracking-[-0.02em] text-[var(--black)] break-words">
                 {s.value}
               </dd>
             </div>

@@ -41,9 +41,9 @@ export function RangeSpecsModal({ item, onClose }: RangeSpecsModalProps) {
         className="relative w-full max-w-4xl bg-[var(--white)] rounded-[12px] overflow-hidden flex flex-col max-h-[92vh] border border-[var(--line)]"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="px-6 py-4 border-b border-[var(--line)] flex items-center justify-between bg-[var(--surface)]">
-          <div className="flex items-center gap-2">
-            <span className="text-[12px] uppercase tracking-[0.1em] text-[var(--black)] bg-[var(--white)] border border-[var(--line)] px-2.5 py-0.5 rounded-full font-bold">
+        <div className="px-4 sm:px-6 py-3.5 sm:py-4 border-b border-[var(--line)] flex items-center justify-between gap-2 bg-[var(--surface)]">
+          <div className="flex items-center gap-2 min-w-0">
+            <span className="text-[12px] uppercase tracking-[0.1em] text-[var(--black)] bg-[var(--white)] border border-[var(--line)] px-2.5 py-0.5 rounded-full font-bold truncate">
               {item.type} Spec Sheet
             </span>
             <span className="text-[12px] text-[var(--text-muted)] hidden sm:inline">
@@ -52,7 +52,7 @@ export function RangeSpecsModal({ item, onClose }: RangeSpecsModalProps) {
           </div>
           <button
             onClick={onClose}
-            className="w-9 h-9 rounded-full bg-[var(--white)] border border-[var(--line)] flex items-center justify-center text-[var(--black)] hover:border-[var(--black)] transition-colors cursor-pointer"
+            className="w-9 h-9 shrink-0 rounded-full bg-[var(--white)] border border-[var(--line)] flex items-center justify-center text-[var(--black)] hover:border-[var(--black)] transition-colors cursor-pointer"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
@@ -113,23 +113,23 @@ export function RangeSpecsModal({ item, onClose }: RangeSpecsModalProps) {
                 </p>
 
                 <div className="bg-[var(--surface)] rounded-[12px] border border-[var(--line)] p-4 mb-5 divide-y divide-[var(--line)]">
-                  <div className="py-2 flex items-center justify-between text-[13px]">
-                    <span className="text-[var(--text-muted)] font-medium flex items-center gap-1.5">
+                  <div className="py-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 text-[13px]">
+                    <span className="text-[var(--text-muted)] font-medium flex items-center gap-1.5 shrink-0">
                       <Ruler className="w-3.5 h-3.5 text-[var(--black)]" /> Specifications
                     </span>
-                    <span className="font-semibold text-[var(--black)] text-right">{item.specLine}</span>
+                    <span className="font-semibold text-[var(--black)] sm:text-right">{item.specLine}</span>
                   </div>
-                  <div className="py-2 flex items-center justify-between text-[13px]">
+                  <div className="py-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 text-[13px]">
                     <span className="text-[var(--text-muted)] font-medium">Product Category</span>
-                    <span className="font-semibold text-[var(--black)]">{item.type}</span>
+                    <span className="font-semibold text-[var(--black)] sm:text-right">{item.type}</span>
                   </div>
-                  <div className="py-2 flex items-center justify-between text-[13px]">
+                  <div className="py-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 text-[13px]">
                     <span className="text-[var(--text-muted)] font-medium">Minimum Order Quantity</span>
-                    <span className="font-bold text-[var(--black)]">{item.moq}</span>
+                    <span className="font-bold text-[var(--black)] sm:text-right">{item.moq}</span>
                   </div>
-                  <div className="py-2 flex items-center justify-between text-[13px]">
+                  <div className="py-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 text-[13px]">
                     <span className="text-[var(--text-muted)] font-medium">Manufacturing Location</span>
-                    <span className="font-semibold text-[var(--black)]">In-house units, Tiruppur, India</span>
+                    <span className="font-semibold text-[var(--black)] sm:text-right">In-house units, Tiruppur, India</span>
                   </div>
                 </div>
 
@@ -173,11 +173,11 @@ export function RangeSpecsModal({ item, onClose }: RangeSpecsModalProps) {
                   </div>
                 ) : (
                   <div>
-                    <div className="flex items-center justify-between mb-3">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 mb-3">
                       <span className="text-[13px] font-bold text-[var(--black)]">
                         Request Samples or Quotation
                       </span>
-                      <div className="flex items-center gap-1 bg-[var(--white)] p-0.5 rounded-[8px] border border-[var(--line)] text-[11px]">
+                      <div className="flex items-center gap-1 w-fit bg-[var(--white)] p-0.5 rounded-[8px] border border-[var(--line)] text-[11px]">
                         <button
                           type="button"
                           onClick={() => setReqType("sample")}
@@ -210,7 +210,7 @@ export function RangeSpecsModal({ item, onClose }: RangeSpecsModalProps) {
                         value={buyerEmail}
                         onChange={(e) => setBuyerEmail(e.target.value)}
                         placeholder="Enter your work email..."
-                        className="flex-1 bg-[var(--white)] border border-[var(--line)] rounded-full px-4 py-2.5 text-[14px] text-[var(--black)] placeholder:text-[var(--text-muted)] focus:outline-hidden focus:border-[var(--black)] focus:ring-2 focus:ring-[var(--accent)]/25"
+                        className="flex-1 min-w-0 bg-[var(--white)] border border-[var(--line)] rounded-full px-4 py-2.5 text-[16px] sm:text-[14px] text-[var(--black)] placeholder:text-[var(--text-muted)] focus:outline-hidden focus:border-[var(--black)] focus:ring-2 focus:ring-[var(--accent)]/25"
                       />
                       <button
                         type="submit"
@@ -221,7 +221,7 @@ export function RangeSpecsModal({ item, onClose }: RangeSpecsModalProps) {
                       </button>
                     </form>
 
-                    <div className="mt-3 pt-3 border-t border-[var(--line)] flex items-center justify-between text-[11px] text-[var(--text-muted)]">
+                    <div className="mt-3 pt-3 border-t border-[var(--line)] flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[11px] text-[var(--text-muted)]">
                       <span>Export desk: No. 3/197 H, Parapalayam, Tiruppur 641607</span>
                       <span>Phone: +91 93456 30303</span>
                     </div>

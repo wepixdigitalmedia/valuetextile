@@ -13,7 +13,7 @@ export function EnquiryTab() {
         <button
           type="button"
           onClick={() => setDrawerOpen(true)}
-          className="fixed right-0 top-[50%] -translate-y-1/2 z-40 w-[36px] sm:w-[46px] md:w-[54px] h-[126px] sm:h-[155px] md:h-[170px] bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-[var(--on-accent)] rounded-l-[12px] flex flex-col items-center justify-between py-3 sm:py-4 transition-all duration-200 hover:-translate-x-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--black)] cursor-pointer group select-none"
+          className="fixed right-0 top-[50%] -translate-y-1/2 z-40 w-[30px] sm:w-[46px] md:w-[54px] h-[112px] sm:h-[155px] md:h-[170px] bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-[var(--on-accent)] rounded-l-[10px] sm:rounded-l-[12px] flex flex-col items-center justify-between py-2.5 sm:py-4 transition-all duration-200 hover:-translate-x-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--black)] cursor-pointer group select-none"
           aria-label="Open Quick Enquiry Drawer"
         >
           <ChevronLeft
@@ -22,7 +22,7 @@ export function EnquiryTab() {
           />
 
           <span
-            className="text-[11px] sm:text-[13px] md:text-[14px] font-semibold tracking-[0.14em] uppercase text-[var(--on-accent)]"
+            className="text-[10px] sm:text-[13px] md:text-[14px] font-semibold tracking-[0.14em] uppercase text-[var(--on-accent)]"
             style={{
               writingMode: "vertical-rl",
               textOrientation: "mixed",

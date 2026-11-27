@@ -69,7 +69,7 @@ export default function GarmentsOverviewPage() {
                       className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                     />
                   </div>
-                  <div className="p-6 sm:p-7">
+                  <div className="p-5 sm:p-7">
                     <h2 className="text-[24px] sm:text-[26px] font-extrabold leading-[1.15] tracking-[-0.02em] text-[var(--black)] group-hover:text-[var(--accent)] transition-colors">
                       {cat.title}
                     </h2>
@@ -77,7 +77,7 @@ export default function GarmentsOverviewPage() {
                     <p className="mt-4 text-[13px] font-semibold text-[var(--black)]">{cat.specsSummary}</p>
                   </div>
                 </Link>
-                <div className="mt-auto flex items-center justify-between gap-4 border-t border-[var(--line)] px-6 py-4 sm:px-7">
+                <div className="mt-auto flex flex-wrap items-center justify-between gap-3 border-t border-[var(--line)] px-5 py-4 sm:px-7">
                   <Link
                     href={`/garments/${cat.slug}`}
                     className="inline-flex items-center gap-1.5 text-[14px] font-semibold text-[var(--black)] hover:text-[var(--accent)] transition-colors"

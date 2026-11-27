@@ -70,7 +70,7 @@ export function FullChainSection() {
             </h2>
 
             <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-6 xl:gap-8 pt-2">
-              <div className="flex items-center gap-4 max-w-[500px]">
+              <div className="flex flex-col sm:flex-row sm:items-center items-start gap-3.5 sm:gap-4 max-w-[500px]">
                 <div
                   className="flex -space-x-3 shrink-0"
                   aria-label="Production and export leadership team"
@@ -109,7 +109,7 @@ export function FullChainSection() {
                 </p>
               </div>
 
-              <div className="flex flex-wrap sm:flex-nowrap items-center gap-3 shrink-0">
+              <div className="flex flex-wrap sm:flex-nowrap items-center gap-3 xl:shrink-0">
                 <Link
                   href="#quote"
                   className="group inline-flex items-center justify-between gap-3 min-h-[48px] pl-6 pr-2 py-2 rounded-full bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-[var(--on-accent)] text-[14px] font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--black)]"
@@ -143,11 +143,11 @@ export function FullChainSection() {
               className="group flex flex-col justify-between rounded-[12px] bg-[var(--white)] border border-[var(--line)] p-6 hover:border-[var(--black)] transition-colors"
             >
               <div>
-                <div className="flex items-baseline justify-between">
+                <div className="flex items-baseline justify-between gap-2">
                   <span className="text-[13px] font-bold text-[var(--accent)]">{d.number}</span>
-                  <span className="text-[13px] font-semibold text-[var(--black)]">{d.name}</span>
+                  <span className="text-[13px] font-semibold text-[var(--black)] text-right">{d.name}</span>
                 </div>
-                <p className="mt-8 text-[40px] xl:text-[44px] font-extrabold leading-none tracking-[-0.02em] text-[var(--black)]">
+                <p className="mt-6 sm:mt-8 text-[32px] sm:text-[40px] xl:text-[44px] font-extrabold leading-none tracking-[-0.02em] text-[var(--black)]">
                   {d.stat}
                 </p>
                 <p className="mt-1.5 text-[13px] font-medium text-[var(--text-muted)]">{d.statLabel}</p>

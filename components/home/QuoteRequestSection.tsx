@@ -60,13 +60,13 @@ export function QuoteRequestSection() {
                 className="inline-flex items-center gap-2 text-[13px] font-bold uppercase tracking-[0.1em] text-[var(--black)] hover:text-[var(--accent)] transition-colors group"
               >
                 <span>Need unit addresses or direct phone lines? Visit Contact Us</span>
-                <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="w-3.5 h-3.5 shrink-0 transition-transform group-hover:translate-x-1" />
               </Link>
             </div>
           </div>
 
           {/* RIGHT COLUMN */}
-          <div className="lg:col-span-7 bg-[var(--white)] p-6 sm:p-9 lg:p-10 rounded-[12px] border border-[var(--line)]">
+          <div className="lg:col-span-7 min-w-0 bg-[var(--white)] p-5 sm:p-9 lg:p-10 rounded-[12px] border border-[var(--line)]">
             <QuoteForm source="homepage-quote" />
           </div>
         </div>

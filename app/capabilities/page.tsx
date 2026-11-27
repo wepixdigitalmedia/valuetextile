@@ -113,7 +113,7 @@ export default function CapabilitiesPage() {
                   <h2 className="mt-3 text-[24px] sm:text-[26px] font-extrabold leading-[1.15] tracking-[-0.02em] text-[var(--black)] group-hover:text-[var(--accent)] transition-colors">
                     {s.title}
                   </h2>
-                  <p className="mt-2 text-[34px] font-extrabold leading-none tracking-[-0.02em] text-[var(--black)]">
+                  <p className="mt-2 text-[26px] sm:text-[34px] font-extrabold leading-[1.1] tracking-[-0.02em] text-[var(--black)]">
                     {s.stat}
                   </p>
                   <p className="mt-4 text-[15px] leading-[1.6] text-[var(--text-muted)]">{s.text}</p>

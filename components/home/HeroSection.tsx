@@ -37,8 +37,8 @@ export function HeroSection() {
             </p>
 
             {/* Primary actions */}
-            <div className="flex flex-wrap items-center gap-3 pt-5">
-              <QuoteLink className="group inline-flex items-center justify-between gap-3 min-h-[48px] pl-6 pr-2 py-2 rounded-full bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-[var(--on-accent)] text-[14px] font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--black)]">
+            <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 pt-5">
+              <QuoteLink className="group inline-flex items-center justify-between gap-2.5 sm:gap-3 min-h-[48px] pl-5 sm:pl-6 pr-2 py-2 rounded-full bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-[var(--on-accent)] text-[14px] font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--black)]">
                 <span>Get a quote</span>
                 <span className="w-8 h-8 rounded-full bg-[var(--white)] text-[var(--black)] flex items-center justify-center shrink-0 transition-transform duration-200 group-hover:translate-x-0.5">
                   <ArrowRight className="w-4 h-4" strokeWidth={2.4} />
@@ -46,7 +46,7 @@ export function HeroSection() {
               </QuoteLink>
               <QuoteLink
                 choose="samples"
-                className="inline-flex items-center min-h-[48px] px-6 py-2 rounded-full border-[1.5px] border-[var(--black)] text-[var(--black)] hover:bg-[var(--black)] hover:text-[var(--white)] text-[14px] font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--black)]"
+                className="inline-flex items-center min-h-[48px] px-5 sm:px-6 py-2 rounded-full border-[1.5px] border-[var(--black)] text-[var(--black)] hover:bg-[var(--black)] hover:text-[var(--white)] text-[14px] font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--black)]"
               >
                 Request samples
               </QuoteLink>

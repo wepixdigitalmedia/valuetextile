@@ -109,9 +109,9 @@ export default function AboutPage() {
               { v: "3", l: "Units in Tiruppur and Perundurai" },
               { v: "60,000+", l: "Garments a month" },
             ].map((s) => (
-              <div key={s.l} className="bg-[var(--white)] px-5 py-5">
+              <div key={s.l} className="bg-[var(--white)] px-3.5 py-4 sm:px-5 sm:py-5 min-w-0">
                 <dt className="text-[12px] font-semibold text-[var(--text-muted)]">{s.l}</dt>
-                <dd className="mt-1 text-[24px] sm:text-[28px] font-extrabold leading-[1.1] tracking-[-0.02em] text-[var(--black)]">
+                <dd className="mt-1 text-[20px] sm:text-[28px] font-extrabold leading-[1.1] tracking-[-0.02em] text-[var(--black)]">
                   {s.v}
                 </dd>
               </div>
@@ -245,7 +245,7 @@ export default function AboutPage() {
                 For your supplier checks and onboarding forms.
               </p>
             </div>
-            <dl className="lg:col-span-8 border-t border-[var(--line)] divide-y divide-[var(--line)] bg-[var(--white)] rounded-[12px] border">
+            <dl className="lg:col-span-8 min-w-0 border-t border-[var(--line)] divide-y divide-[var(--line)] bg-[var(--white)] rounded-[12px] border">
               {[
                 ["Company", <Fact key="n" k="legalName" />],
                 ["Registered office", contact.addressFull],
@@ -255,9 +255,9 @@ export default function AboutPage() {
                 ["Email", contact.email],
                 ...(registration ? [["Registration", registration] as [string, string]] : []),
               ].map(([label, value]) => (
-                <div key={String(label)} className="px-5 py-4 flex flex-col sm:flex-row gap-1 sm:gap-8">
+                <div key={String(label)} className="px-4 sm:px-5 py-4 flex flex-col sm:flex-row gap-1 sm:gap-8">
                   <dt className="w-40 shrink-0 text-[13px] font-semibold text-[var(--text-muted)]">{label}</dt>
-                  <dd className="text-[15px] font-semibold text-[var(--black)]">{value}</dd>
+                  <dd className="min-w-0 text-[15px] font-semibold text-[var(--black)] break-words">{value}</dd>
                 </div>
               ))}
             </dl>

@@ -93,7 +93,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <dt className="text-[12px] text-[var(--text-muted)]">Email</dt>
-                    <dd className="mt-0.5 font-bold text-[var(--black)]">
+                    <dd className="mt-0.5 font-bold text-[var(--black)] break-words">
                       <a href={`mailto:${contact.email}`} className="hover:text-[var(--accent)] transition-colors">
                         {contact.email}
                       </a>
@@ -109,7 +109,7 @@ export default function ContactPage() {
 
             <div
               id="quote"
-              className="lg:col-span-7 order-1 lg:order-2 scroll-mt-28 bg-[var(--white)] p-6 sm:p-9 lg:p-10 rounded-[12px] border border-[var(--line)]"
+              className="lg:col-span-7 min-w-0 order-1 lg:order-2 scroll-mt-28 bg-[var(--white)] p-5 sm:p-9 lg:p-10 rounded-[12px] border border-[var(--line)]"
             >
               <QuoteForm source="contact-page" />
             </div>
