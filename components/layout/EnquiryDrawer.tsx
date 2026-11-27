@@ -90,10 +90,7 @@ export function EnquiryDrawer({ isOpen, onClose }: EnquiryDrawerProps) {
         <div>
           <div className="flex items-center justify-between pb-5 border-b border-[var(--line)]">
             <div>
-              <span className="inline-flex items-center gap-2.5 text-[13px] font-bold tracking-[0.14em] text-[var(--black)] uppercase">
-                <span className="inline-block w-[28px] h-[3px] bg-[var(--accent)]" aria-hidden="true" />
-                <span>QUICK ENQUIRY</span>
-              </span>
+              <span className="text-[13px] font-bold tracking-[0.14em] text-[var(--accent)] uppercase">QUICK ENQUIRY</span>
               <h2
                 id="enquiry-drawer-title"
                 className="text-[26px] font-extrabold text-[var(--black)] tracking-[-0.02em] leading-[1.1] mt-2"

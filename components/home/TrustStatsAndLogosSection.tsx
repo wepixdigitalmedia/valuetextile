@@ -86,9 +86,7 @@ export function TrustStatsAndLogosSection() {
   return (
     <section className="w-full bg-[var(--white)] py-10 lg:py-12 border-b border-[var(--line)]">
       <Container className="space-y-5">
-        <p className="inline-flex items-center gap-3 text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--black)]">
-          <span className="inline-block w-[28px] h-[3px] bg-[var(--accent)] shrink-0" aria-hidden="true" />
-          <span>Brands we make for</span>
+        <p className="text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--accent)]"><span>Brands we make for</span>
         </p>
         <BrandStrip />
       </Container>

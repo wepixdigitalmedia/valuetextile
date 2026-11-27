@@ -43,7 +43,7 @@ function Block({ block }: { block: BlogBlock }) {
         <ul className="space-y-2.5">
           {block.items.map((item) => (
             <li key={item} className="flex gap-3">
-              <span className="mt-[13px] h-px w-3 shrink-0 bg-[var(--accent)]" aria-hidden="true" />
+              <span className="mt-[10px] size-1.5 shrink-0 bg-[var(--accent)]" aria-hidden="true" />
               <span>{item}</span>
             </li>
           ))}

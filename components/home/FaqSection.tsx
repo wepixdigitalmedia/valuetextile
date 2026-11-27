@@ -102,9 +102,7 @@ export function FaqSection() {
     <section className="w-full bg-[var(--surface)] py-16 lg:py-24 border-b border-[var(--line)]">
       <Container>
         <div className="max-w-3xl mb-10 sm:mb-12">
-          <p className="inline-flex items-center gap-3 text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--black)]">
-            <span className="inline-block w-[28px] h-[3px] bg-[var(--accent)] shrink-0" aria-hidden="true" />
-            <span>FAQS</span>
+          <p className="text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--accent)]"><span>FAQS</span>
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em] mt-3">
             Frequently Asked Questions

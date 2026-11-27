@@ -14,9 +14,7 @@ export function HeroSection() {
       <Container>
         {/* Eyebrow Label */}
         <div className="mb-3">
-          <span className="inline-flex items-center gap-3 text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--black)]">
-            <span className="inline-block w-[28px] h-[3px] bg-[var(--accent)] shrink-0" aria-hidden="true" />
-            <span>
+          <span className="text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--accent)]"><span>
               INTEGRATED KNITWEAR PRODUCTION · <Tiruppur />, INDIA
             </span>
           </span>

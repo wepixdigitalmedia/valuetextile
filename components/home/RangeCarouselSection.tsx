@@ -55,9 +55,7 @@ export function RangeCarouselSection() {
         <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6 lg:gap-12">
           <div className="flex flex-col justify-between shrink-0 lg:w-[240px] xl:w-[260px]">
             <div className="flex items-center justify-between lg:block">
-              <p className="inline-flex items-center gap-3 text-[13px] font-bold leading-tight uppercase tracking-[0.14em] text-[var(--black)]">
-                <span className="inline-block w-[28px] h-[3px] bg-[var(--accent)] shrink-0" aria-hidden="true" />
-                <span>OUR GARMENTS</span>
+              <p className="text-[13px] font-bold leading-tight uppercase tracking-[0.14em] text-[var(--accent)]"><span>OUR GARMENTS</span>
               </p>
 
               <div className="lg:hidden flex items-center gap-1 text-[var(--black)]">

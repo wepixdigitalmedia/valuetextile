@@ -12,9 +12,7 @@ export function QuoteRequestSection() {
           {/* LEFT COLUMN */}
           <div className="lg:col-span-5 flex flex-col justify-between space-y-8 lg:sticky lg:top-28">
             <div className="space-y-4">
-              <p className="inline-flex items-center gap-3 text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--black)]">
-                <span className="inline-block w-[28px] h-[3px] bg-[var(--accent)] shrink-0" aria-hidden="true" />
-                <span>PRODUCTION ENQUIRY</span>
+              <p className="text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--accent)]"><span>PRODUCTION ENQUIRY</span>
               </p>
               <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em]">
                 Send us your style. We will{" "}

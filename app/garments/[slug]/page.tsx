@@ -84,9 +84,7 @@ export default async function GarmentCategoryPage({ params }: { params: Promise<
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             <div className="lg:col-span-7">
-              <p className="inline-flex items-center gap-3 text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--black)]">
-                <span className="inline-block w-[28px] h-[3px] bg-[var(--accent)] shrink-0" aria-hidden="true" />
-                <span>{item.eyebrow}</span>
+              <p className="text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--accent)]"><span>{item.eyebrow}</span>
               </p>
               <h1 className="mt-3 text-[34px] sm:text-[44px] lg:text-[52px] font-extrabold leading-[1.08] tracking-[-0.02em] text-[var(--black)]">
                 {item.headline}

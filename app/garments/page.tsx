@@ -20,9 +20,7 @@ export default function GarmentsOverviewPage() {
       <section className="w-full bg-[var(--surface)] py-14 lg:py-20 border-b border-[var(--line)]">
         <Container>
           <div className="max-w-3xl">
-            <p className="inline-flex items-center gap-3 text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--black)]">
-              <span className="inline-block w-[28px] h-[3px] bg-[var(--accent)] shrink-0" aria-hidden="true" />
-              <span>GARMENTS</span>
+            <p className="text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--accent)]"><span>GARMENTS</span>
             </p>
             <h1 className="mt-3 text-[36px] sm:text-[48px] lg:text-[56px] font-extrabold leading-[1.08] tracking-[-0.02em] text-[var(--black)]">
               What we make for <span className="text-[var(--accent)]">export brands.</span>

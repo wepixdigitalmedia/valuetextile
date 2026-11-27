@@ -149,10 +149,7 @@ export function SiteHeader() {
 
           {/* Scrollable Navigation List */}
           <div className="flex-1 overflow-y-auto px-5 py-5">
-            <p className="inline-flex items-center gap-2.5 text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--black)] mb-3 px-2">
-              <span className="inline-block w-[28px] h-[3px] bg-[var(--accent)]" aria-hidden="true" />
-              <span>Navigation</span>
-            </p>
+            <p className="text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--accent)] mb-3 px-2">Navigation</p>
 
             <nav className="space-y-1.5" aria-label="Mobile Navigation">
               {siteConfig.navigation.map((item) => {

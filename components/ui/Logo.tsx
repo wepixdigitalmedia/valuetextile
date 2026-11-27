@@ -29,7 +29,6 @@ export function Logo({ className = "", inverted = false }: LogoProps) {
         <span
           className={`mt-1.5 flex items-center gap-2 text-[9.5px] sm:text-[10px] font-bold uppercase tracking-[0.22em] ${sub}`}
         >
-          <span className="inline-block h-[2px] w-5 bg-[var(--accent)]" aria-hidden="true" />
           Knit to shipped
         </span>
       </span>

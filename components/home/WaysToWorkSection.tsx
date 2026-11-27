@@ -75,9 +75,7 @@ export function WaysToWorkSection() {
     <section className="w-full bg-[var(--white)] py-16 lg:py-24 border-b border-[var(--line)]">
       <Container>
         <div className="max-w-3xl">
-          <p className="inline-flex items-center gap-3 text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--black)]">
-            <span className="inline-block w-[28px] h-[3px] bg-[var(--accent)] shrink-0" aria-hidden="true" />
-            <span>HOW TO ORDER</span>
+          <p className="text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--accent)]"><span>HOW TO ORDER</span>
           </p>
           <h2 className="mt-3 text-[32px] sm:text-[40px] lg:text-[46px] font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em]">
             Three ways to start. Pick the one that fits.
@@ -109,7 +107,7 @@ export function WaysToWorkSection() {
                 <ul className="mt-5 space-y-2 border-t border-[var(--line)] pt-5">
                   {way.points.map((point) => (
                     <li key={point} className="flex gap-2.5 text-[14.5px] leading-[1.5] text-[var(--black)]">
-                      <span className="mt-[9px] h-px w-3 shrink-0 bg-[var(--accent)]" aria-hidden="true" />
+                      <span className="mt-[6px] size-1.5 shrink-0 bg-[var(--accent)]" aria-hidden="true" />
                       <span>{point}</span>
                     </li>
                   ))}

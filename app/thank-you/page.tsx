@@ -21,9 +21,7 @@ export default function ThankYouPage() {
       <section className="w-full pt-14 sm:pt-20 pb-16 lg:pb-24">
         <Container>
           <div className="max-w-3xl">
-            <p className="inline-flex items-center gap-3 text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--black)]">
-              <span className="inline-block w-[28px] h-[3px] bg-[var(--accent)] shrink-0" aria-hidden="true" />
-              <span>REQUEST RECEIVED</span>
+            <p className="text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--accent)]"><span>REQUEST RECEIVED</span>
             </p>
             <h1 className="mt-3 text-[36px] sm:text-[48px] lg:text-[56px] font-extrabold leading-[1.08] tracking-[-0.02em] text-[var(--black)]">
               Thank you. <span className="text-[var(--accent)]">We have your request.</span>

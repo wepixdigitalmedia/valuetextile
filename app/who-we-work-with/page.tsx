@@ -86,9 +86,7 @@ export default function WhoWeWorkWithPage() {
       <section className="w-full bg-[var(--surface)] py-14 lg:py-20 border-b border-[var(--line)]">
         <Container>
           <div className="max-w-3xl">
-            <p className="inline-flex items-center gap-3 text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--black)]">
-              <span className="inline-block w-[28px] h-[3px] bg-[var(--accent)] shrink-0" aria-hidden="true" />
-              <span>WHO WE WORK WITH</span>
+            <p className="text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--accent)]"><span>WHO WE WORK WITH</span>
             </p>
             <h1 className="mt-3 text-[34px] sm:text-[46px] lg:text-[54px] font-extrabold leading-[1.08] tracking-[-0.02em] text-[var(--black)]">
               Built for brands <span className="text-[var(--accent)]">that export.</span>
@@ -121,9 +119,7 @@ export default function WhoWeWorkWithPage() {
       {/* BRANDS */}
       <section className="w-full bg-[var(--white)] py-10 lg:py-12 border-b border-[var(--line)]">
         <Container className="space-y-5">
-          <p className="inline-flex items-center gap-3 text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--black)]">
-            <span className="inline-block w-[28px] h-[3px] bg-[var(--accent)] shrink-0" aria-hidden="true" />
-            <span>Brands we make for</span>
+          <p className="text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--accent)]"><span>Brands we make for</span>
           </p>
           <BrandStrip />
         </Container>

@@ -36,9 +36,7 @@ export function DivisionHero({
         </Link>
 
         <div className="mt-6 max-w-4xl">
-          <p className="inline-flex items-center gap-3 text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--black)]">
-            <span className="inline-block w-[28px] h-[3px] bg-[var(--accent)] shrink-0" aria-hidden="true" />
-            <span>{eyebrow}</span>
+          <p className="text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--accent)]"><span>{eyebrow}</span>
           </p>
           <h1 className="mt-3 text-[34px] sm:text-[46px] lg:text-[54px] font-extrabold leading-[1.08] tracking-[-0.02em] text-[var(--black)]">
             {title}
