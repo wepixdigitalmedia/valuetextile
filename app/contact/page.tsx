@@ -130,6 +130,18 @@ export default function ContactPage() {
           </div>
         </Container>
       </section>
+
+      {/* MAP: full width on every screen, height steps up with the screen size */}
+      <section aria-label="Map" className="w-full border-t border-[var(--line)] bg-[var(--surface)]">
+        <iframe
+          title="Value Textiles on Google Maps"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7830.42723778288!2d77.3407221946687!3d11.097450884534599!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba90775d85a3edb%3A0x82d2e632550e2845!2sValue%20Textiles!5e0!3m2!1sen!2sin!4v1795857514506!5m2!1sen!2sin"
+          className="block w-full h-[320px] sm:h-[400px] lg:h-[480px] border-0"
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="strict-origin-when-cross-origin"
+        />
+      </section>
     </main>
   );
 }
