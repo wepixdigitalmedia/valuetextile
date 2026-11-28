@@ -106,6 +106,7 @@ export const ownerFacts = {
     fallback: "",
     example: "A. Kumar, Managing Director. R. Devi, Head of Merchandising",
   },
+  // Any confirmed value here switches on every "Zero Liquid Discharge" / "ZLD" claim on the site.
   zldStatus: {
     label: "Zero Liquid Discharge status",
     value: null,

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Fact } from "@/components/ui/Fact";
 import { CERTIFICATES, FABRIC_LAB_TESTS, YARN_TESTS } from "@/config/qualityData";
-import { factValue } from "@/config/ownerFacts";
+import { factValue, isConfirmed } from "@/config/ownerFacts";
 import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -173,10 +173,11 @@ export default function QualityPage() {
         <Container>
           <div className="max-w-2xl">
             <h2 className="text-[28px] sm:text-[36px] font-extrabold leading-[1.1] tracking-[-0.02em] text-[var(--black)]">
-              The certificates we hold
+              Certificates and programmes
             </h2>
             <p className="mt-3 text-[16px] leading-[1.6] text-[var(--text-muted)]">
-              Reference numbers are printed below so you can check them with the issuing body.
+              Where we hold a reference number it is printed below, so you can check it with the issuing body. For any
+              entry marked &ldquo;On request&rdquo;, ask and we will send the details.
             </p>
           </div>
 
@@ -236,13 +237,19 @@ export default function QualityPage() {
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start">
             <h2 className="lg:col-span-5 text-[28px] sm:text-[34px] font-extrabold leading-[1.1] tracking-[-0.02em] text-[var(--black)]">
-              Dye house water, <span className="text-[var(--accent)]">recycled.</span>
+              Water and <span className="text-[var(--accent)]">sustainability.</span>
             </h2>
             <div className="lg:col-span-7">
               <p className="text-[16px] leading-[1.65] text-[var(--text-muted)]">
                 Our dye house treats its effluent in its own plant: biological treatment, reverse osmosis, ozone colour
-                removal and multi-effect evaporation. It recycles both water and salt to meet Zero Liquid Discharge
-                norms.
+                removal and multi-effect evaporation.
+                {isConfirmed("zldStatus")
+                  ? " It recycles both water and salt to meet Zero Liquid Discharge norms."
+                  : ""}
+              </p>
+              <p className="mt-3 text-[16px] leading-[1.65] text-[var(--text-muted)]">
+                The rest is covered by the certificates above: OEKO-TEX Standard 100 for harmful substances, and GOTS
+                and OCS for organic cotton content.
               </p>
               <Link
                 href="/capabilities/dyeing-division"

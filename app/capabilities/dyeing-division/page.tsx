@@ -6,12 +6,17 @@ import { DivisionHero } from "@/components/capabilities/DivisionHero";
 import { DivisionNext } from "@/components/capabilities/DivisionNext";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { siteConfig } from "@/config/siteContent";
+import { isConfirmed } from "@/config/ownerFacts";
 import { CheckCircle2 } from "lucide-react";
+
+// Zero Liquid Discharge is only claimed once the owner confirms it (ownerFacts.zldStatus).
+const ZLD = isConfirmed("zldStatus");
 
 export const metadata: Metadata = {
   title: "Dyeing Division",
-  description:
-    "Soft-flow dyeing from 25 kg to 1,500 kg batches, a colour lab, finishing and a Zero Liquid Discharge effluent plant in Perundurai.",
+  description: ZLD
+    ? "Soft-flow dyeing from 25 kg to 1,500 kg batches, a colour lab, finishing and a Zero Liquid Discharge effluent plant in Perundurai."
+    : "Soft-flow dyeing from 25 kg to 1,500 kg batches, a colour lab, finishing and an effluent treatment plant in Perundurai.",
 };
 
 const DYEING_GALLERY = [
@@ -111,14 +116,18 @@ export default function DyeingDivisionPage() {
         title="Our own dye house, from 25 kg samples to 1,500 kg batches."
         intro={[
           "Soft-flow dyeing machines with SETEX controllers and ORGATEX dye-house management, with liquid dye and chemical dispensing from THIES, Germany, dye our knitted fabric and yarn.",
-          "An effluent treatment plant recycles both water and salt, meeting Zero Liquid Discharge norms.",
+          ZLD
+            ? "An effluent treatment plant recycles both water and salt, meeting Zero Liquid Discharge norms."
+            : "Effluent from the dye house is treated in our own plant.",
         ]}
         location={`Dyeing unit: ${siteConfig.contact.dyeingAddress}`}
         stats={[
           { value: "25 to 1,500 kg", label: "Batch sizes" },
           { value: "SETEX + ORGATEX", label: "Machine and dye-house control" },
           { value: "Colour lab", label: "Spectrophotometer and colour cabinet" },
-          { value: "ZLD", label: "Water and salt recycled" },
+          ZLD
+            ? { value: "ZLD", label: "Water and salt recycled" }
+            : { value: "Own ETP", label: "Effluent treated on site" },
         ]}
       />
 
@@ -380,7 +389,7 @@ export default function DyeingDivisionPage() {
             {/* Effluent Treatment Plant Table (5 Cols) */}
             <div className="lg:col-span-5 min-w-0 space-y-4">
               <div>
-                <Eyebrow>ZERO LIQUID DISCHARGE (ZLD)</Eyebrow>
+                <Eyebrow>{ZLD ? "ZERO LIQUID DISCHARGE (ZLD)" : "EFFLUENT TREATMENT"}</Eyebrow>
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--black)] mt-2">
                   Effluent Treatment Plant
                 </h2>
@@ -414,11 +423,13 @@ export default function DyeingDivisionPage() {
                 </table>
               </div>
 
-              <div className="p-5 rounded-[12px] bg-[var(--surface)] border border-[var(--line)] border-l-4 border-l-[var(--accent)] text-sm text-[var(--black)] font-medium leading-relaxed">
-                Using the above we are recycling both water as well as salt and
-                meeting the <strong>ZERO LIQUID DISCHARGE (ZLD)</strong> as per
-                Government norms.
-              </div>
+              {ZLD && (
+                <div className="p-5 rounded-[12px] bg-[var(--surface)] border border-[var(--line)] border-l-4 border-l-[var(--accent)] text-sm text-[var(--black)] font-medium leading-relaxed">
+                  Using the above we are recycling both water as well as salt and
+                  meeting the <strong>ZERO LIQUID DISCHARGE (ZLD)</strong> as per
+                  Government norms.
+                </div>
+              )}
             </div>
           </div>
         </Container>
