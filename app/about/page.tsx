@@ -9,6 +9,7 @@ import { ImageSlot } from "@/components/ui/ImageSlot";
 import { BrandStrip } from "@/components/home/TrustStatsAndLogosSection";
 import { siteConfig } from "@/config/siteContent";
 import { factValue } from "@/config/ownerFacts";
+import { StageIcon, type StageIconName } from "@/components/ui/StageIcon";
 import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -26,20 +27,23 @@ const AT_A_GLANCE = [
   { v: "60,000+", l: "garments a month" },
 ];
 
-const UNITS = [
+const UNITS: { title: string; place: string; text: string; href: string; icon: StageIconName }[] = [
   {
+    icon: "garments",
     title: "Garment unit",
     place: "Parapalayam, Tiruppur",
     text: "Cutting, stitching, finishing and export packing. This is also our registered office.",
     href: "/capabilities/garment-manufacturing",
   },
   {
+    icon: "knitting",
     title: "Knitting unit",
     place: "SIDCO, Tiruppur",
     text: "Mayer & Cie circular knitting machines running two shifts a day.",
     href: "/capabilities/knitting-division",
   },
   {
+    icon: "dyeing",
     title: "Dyeing unit",
     place: "SIPCOT, Perundurai",
     text: "Soft-flow dyeing, finishing, colour lab and the effluent treatment plant.",
@@ -176,11 +180,14 @@ export default function AboutPage() {
                     href={u.href}
                     className="group grid grid-cols-1 sm:grid-cols-12 gap-x-6 gap-y-1 items-baseline py-6 hover:bg-[var(--white)] transition-colors sm:px-3 -mx-3 px-3 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[var(--black)]"
                   >
-                    <span className="sm:col-span-4">
-                      <span className="block text-[20px] font-extrabold tracking-[-0.02em] text-[var(--black)] group-hover:text-[var(--accent)] transition-colors">
-                        {u.title}
+                    <span className="sm:col-span-4 flex items-start gap-3">
+                      <StageIcon name={u.icon} className="w-7 h-7 shrink-0 text-[var(--accent)] mt-0.5" />
+                      <span>
+                        <span className="block text-[20px] font-extrabold tracking-[-0.02em] text-[var(--black)] group-hover:text-[var(--accent)] transition-colors">
+                          {u.title}
+                        </span>
+                        <span className="block text-[13px] text-[var(--text-muted)]">{u.place}</span>
                       </span>
-                      <span className="block text-[13px] text-[var(--text-muted)]">{u.place}</span>
                     </span>
                     <span className="sm:col-span-7 text-[15px] leading-[1.6] text-[var(--text-muted)]">{u.text}</span>
                     <ArrowRight

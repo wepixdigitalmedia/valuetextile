@@ -3,9 +3,10 @@
 import React from "react";
 import { Container } from "../ui/Container";
 import { ImageSlot } from "../ui/ImageSlot";
+import { StageIcon, type StageIconName } from "../ui/StageIcon";
 
 interface ProcessStage {
-  number: string;
+  icon: StageIconName;
   title: string;
   description: string;
   highlight: string;
@@ -13,49 +14,49 @@ interface ProcessStage {
 
 const PROCESS_STAGES: ProcessStage[] = [
   {
-    number: "01",
+    icon: "yarn",
     title: "Yarn",
     description: "Vetted yarn is sourced from outside mills. We test every lot ourselves before it is allowed into knitting.",
     highlight: "Sourced & tested",
   },
   {
-    number: "02",
+    icon: "knitting",
     title: "Knitting",
     description: "Mayer & Cie circular knitting: single jersey, rib, interlock, striper, mini jacquard and Lycra jersey.",
     highlight: "In-house",
   },
   {
-    number: "03",
+    icon: "dyeing",
     title: "Dyeing",
     description: "Soft-flow dyeing up to 1,500 kg a batch, with ORGATEX dye-house control for repeatable shades.",
     highlight: "In-house",
   },
   {
-    number: "04",
+    icon: "fabric",
     title: "Finishing",
     description: "Stenter and tubular finishing set GSM, width and shrinkage before the fabric reaches the cutting table.",
     highlight: "In-house",
   },
   {
-    number: "05",
+    icon: "flask",
     title: "Lab testing",
     description: "Our own fabric lab verifies shade, shrinkage and fabric performance against your specification.",
     highlight: "In-house",
   },
   {
-    number: "06",
+    icon: "lab",
     title: "Inspection",
     description: "Fabric is graded under the 4-point system, then checked again at garment stage.",
     highlight: "In-house",
   },
   {
-    number: "07",
+    icon: "garments",
     title: "Garmenting",
     description: "Cutting, stitching, trimming and finishing on our own garment lines, with in-line checks.",
     highlight: "In-house",
   },
   {
-    number: "08",
+    icon: "truck",
     title: "Packing & despatch",
     description: "Packed to your labelling and carton instructions. Documents and shipping are handled by us.",
     highlight: "In-house",
@@ -113,13 +114,11 @@ export function ProcessSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6 sm:mt-8">
           {PROCESS_STAGES.map((stage) => (
             <div
-              key={stage.number}
+              key={stage.title}
               className="p-6 rounded-[12px] bg-[var(--white)] border border-[var(--line)] flex flex-col justify-between space-y-4 hover:border-[var(--black)] transition-colors"
             >
               <div className="flex items-center justify-between gap-2">
-                <span className="text-2xl font-extrabold text-[var(--accent)]">
-                  {stage.number}
-                </span>
+                <StageIcon name={stage.icon} className="w-8 h-8 text-[var(--accent)]" />
                 <span className="text-[11px] font-semibold text-[var(--text-muted)] px-2.5 py-0.5 rounded-[6px] border border-[var(--line)]">
                   {stage.highlight}
                 </span>

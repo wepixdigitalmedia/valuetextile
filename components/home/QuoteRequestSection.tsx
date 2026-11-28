@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { Container } from "../ui/Container";
 import { QuoteForm } from "../forms/QuoteForm";
+import { StageIcon } from "../ui/StageIcon";
 import { ArrowRight } from "lucide-react";
 
 export function QuoteRequestSection() {
@@ -26,7 +27,7 @@ export function QuoteRequestSection() {
             {/* What you get */}
             <ol className="divide-y divide-[var(--line)] border-y border-[var(--line)]">
               <li className="flex gap-4 py-4">
-                <span className="text-[13px] font-bold text-[var(--accent)] pt-0.5">01</span>
+                <StageIcon name="cost" className="w-6 h-6 shrink-0 text-[var(--accent)] mt-0.5" />
                 <div>
                   <h3 className="text-sm font-bold text-[var(--black)]">A costing breakdown</h3>
                   <p className="text-[13px] text-[var(--text-muted)] mt-0.5 leading-[1.5]">
@@ -35,7 +36,7 @@ export function QuoteRequestSection() {
                 </div>
               </li>
               <li className="flex gap-4 py-4">
-                <span className="text-[13px] font-bold text-[var(--accent)] pt-0.5">02</span>
+                <StageIcon name="match" className="w-6 h-6 shrink-0 text-[var(--accent)] mt-0.5" />
                 <div>
                   <h3 className="text-sm font-bold text-[var(--black)]">Lab dips, swatches and fit samples</h3>
                   <p className="text-[13px] text-[var(--text-muted)] mt-0.5 leading-[1.5]">
@@ -44,7 +45,7 @@ export function QuoteRequestSection() {
                 </div>
               </li>
               <li className="flex gap-4 py-4">
-                <span className="text-[13px] font-bold text-[var(--accent)] pt-0.5">03</span>
+                <StageIcon name="seal" className="w-6 h-6 shrink-0 text-[var(--accent)] mt-0.5" />
                 <div>
                   <h3 className="text-sm font-bold text-[var(--black)]">Certified production</h3>
                   <p className="text-[13px] text-[var(--text-muted)] mt-0.5 leading-[1.5]">

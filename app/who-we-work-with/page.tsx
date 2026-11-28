@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { Fact } from "@/components/ui/Fact";
 import { factValue } from "@/config/ownerFacts";
 import { BrandStrip } from "@/components/home/TrustStatsAndLogosSection";
+import { StageIcon, type StageIconName } from "@/components/ui/StageIcon";
 import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -12,6 +13,8 @@ export const metadata: Metadata = {
   description:
     "Fashion and private-label brands, kids and baby wear labels, activewear brands, retailers and buying houses, and online sellers. See how we work with each.",
 };
+
+const SEGMENT_ICONS: StageIconName[] = ["tag", "heart", "bolt", "store", "globe"];
 
 const SEGMENTS: {
   title: string;
@@ -135,7 +138,7 @@ export default function WhoWeWorkWithPage() {
             {SEGMENTS.map((s, i) => (
               <li key={s.title} className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-10 py-7">
                 <div className="lg:col-span-4 flex gap-4">
-                  <span className="text-[13px] font-bold text-[var(--accent)] pt-1.5">{String(i + 1).padStart(2, "0")}</span>
+                  <StageIcon name={SEGMENT_ICONS[i]} className="w-7 h-7 shrink-0 text-[var(--accent)] mt-0.5" />
                   <h3 className="text-[22px] font-extrabold leading-[1.15] tracking-[-0.02em] text-[var(--black)]">
                     {s.title}
                   </h3>

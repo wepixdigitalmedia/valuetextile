@@ -3,10 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { Container } from "../ui/Container";
 import { Tiruppur } from "../ui/Tiruppur";
+import { StageIcon, type StageIconName } from "../ui/StageIcon";
 import { ArrowRight } from "lucide-react";
 
 interface DivisionCard {
-  number: string;
+  icon: StageIconName;
   name: string;
   stat: string;
   statLabel: string;
@@ -16,7 +17,7 @@ interface DivisionCard {
 
 const DIVISIONS: DivisionCard[] = [
   {
-    number: "01",
+    icon: "knitting",
     name: "Knitting",
     stat: "2 shifts",
     statLabel: "Mayer & Cie circular knitting, every day",
@@ -24,15 +25,15 @@ const DIVISIONS: DivisionCard[] = [
     href: "/capabilities/knitting-division",
   },
   {
-    number: "02",
+    icon: "dyeing",
     name: "Dyeing",
     stat: "1,500 kg",
     statLabel: "largest soft-flow batch",
-    text: "Seven machine sizes from 25 kg to 1,500 kg, so a sample lot and a bulk lot are dyed in the same house.",
+    text: "Eight machines from 25 kg to 1,500 kg, so a sample lot and a bulk lot are dyed in the same house.",
     href: "/capabilities/dyeing-division",
   },
   {
-    number: "03",
+    icon: "lab",
     name: "Fabric lab and finishing",
     stat: "250+ tons",
     statLabel: "fabric a month",
@@ -40,7 +41,7 @@ const DIVISIONS: DivisionCard[] = [
     href: "/capabilities/fabric-division",
   },
   {
-    number: "04",
+    icon: "garments",
     name: "Garments",
     stat: "60,000+",
     statLabel: "garments a month",
@@ -138,13 +139,13 @@ export function FullChainSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {DIVISIONS.map((d) => (
             <Link
-              key={d.number}
+              key={d.name}
               href={d.href}
               className="group flex flex-col justify-between rounded-[12px] bg-[var(--white)] border border-[var(--line)] p-6 hover:border-[var(--black)] transition-colors"
             >
               <div>
                 <div className="flex items-baseline justify-between gap-2">
-                  <span className="text-[13px] font-bold text-[var(--accent)]">{d.number}</span>
+                  <StageIcon name={d.icon} className="w-7 h-7 text-[var(--accent)]" />
                   <span className="text-[13px] font-semibold text-[var(--black)] text-right">{d.name}</span>
                 </div>
                 <p className="mt-6 sm:mt-8 text-[32px] sm:text-[40px] xl:text-[44px] font-extrabold leading-none tracking-[-0.02em] text-[var(--black)]">

@@ -6,6 +6,7 @@ import { Fact } from "@/components/ui/Fact";
 import { CompanyProfile } from "@/components/ui/CompanyProfile";
 import { ImageSlot } from "@/components/ui/ImageSlot";
 import { isConfirmed } from "@/config/ownerFacts";
+import { StageIcon, type StageIconName } from "@/components/ui/StageIcon";
 import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -13,6 +14,8 @@ export const metadata: Metadata = {
   description:
     "How an order works with Value Textiles: send your request, get costing and a sample plan, approve the sample, then production, inspection and shipping from Tiruppur.",
 };
+
+const STEP_ICONS: StageIconName[] = ["specify", "cost", "match", "release", "cut", "truck"];
 
 const STEPS: { title: string; text: React.ReactNode }[] = [
   {
@@ -123,7 +126,7 @@ export default function HowToOrderPage() {
             {STEPS.map((s, i) => (
               <li key={s.title} className="grid grid-cols-1 lg:grid-cols-12 gap-3 lg:gap-10 py-7">
                 <div className="lg:col-span-4 flex gap-4">
-                  <span className="text-[13px] font-bold text-[var(--accent)] pt-1.5">{String(i + 1).padStart(2, "0")}</span>
+                  <StageIcon name={STEP_ICONS[i]} className="w-7 h-7 shrink-0 text-[var(--accent)] mt-0.5" />
                   <h2 className="text-[22px] font-extrabold leading-[1.15] tracking-[-0.02em] text-[var(--black)]">
                     {s.title}
                   </h2>

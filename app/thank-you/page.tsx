@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { Fact } from "@/components/ui/Fact";
 import { siteConfig } from "@/config/siteContent";
 import { factValue } from "@/config/ownerFacts";
+import { StageIcon } from "@/components/ui/StageIcon";
 import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -33,7 +34,7 @@ export default function ThankYouPage() {
 
           <ol className="mt-10 max-w-3xl divide-y divide-[var(--line)] border-y border-[var(--line)]">
             <li className="flex gap-5 py-5">
-              <span className="text-[13px] font-bold text-[var(--accent)] pt-1">01</span>
+              <StageIcon name="specify" className="w-6 h-6 shrink-0 text-[var(--accent)] mt-0.5" />
               <div>
                 <h2 className="text-[18px] font-bold text-[var(--black)]">We read your request</h2>
                 <p className="mt-1 text-[15px] leading-[1.6] text-[var(--text-muted)]">
@@ -42,7 +43,7 @@ export default function ThankYouPage() {
               </div>
             </li>
             <li className="flex gap-5 py-5">
-              <span className="text-[13px] font-bold text-[var(--accent)] pt-1">02</span>
+              <StageIcon name="cost" className="w-6 h-6 shrink-0 text-[var(--accent)] mt-0.5" />
               <div>
                 <h2 className="text-[18px] font-bold text-[var(--black)]">You get costing and a sample plan</h2>
                 <p className="mt-1 text-[15px] leading-[1.6] text-[var(--text-muted)]">
@@ -51,7 +52,7 @@ export default function ThankYouPage() {
               </div>
             </li>
             <li className="flex gap-5 py-5">
-              <span className="text-[13px] font-bold text-[var(--accent)] pt-1">03</span>
+              <StageIcon name="release" className="w-6 h-6 shrink-0 text-[var(--accent)] mt-0.5" />
               <div>
                 <h2 className="text-[18px] font-bold text-[var(--black)]">You approve the sample, we start bulk</h2>
                 <p className="mt-1 text-[15px] leading-[1.6] text-[var(--text-muted)]">

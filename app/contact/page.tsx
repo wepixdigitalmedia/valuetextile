@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { QuoteForm } from "@/components/forms/QuoteForm";
 import { Fact } from "@/components/ui/Fact";
+import { StageIcon } from "@/components/ui/StageIcon";
 import { siteConfig } from "@/config/siteContent";
 
 export const metadata: Metadata = {
@@ -51,7 +52,7 @@ export default function ContactPage() {
                 <h2 className="text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--black)]">What happens next</h2>
                 <ol className="mt-4 divide-y divide-[var(--line)] border-y border-[var(--line)]">
                   <li className="flex gap-4 py-4">
-                    <span className="text-[13px] font-bold text-[var(--accent)] pt-0.5">01</span>
+                    <StageIcon name="specify" className="w-6 h-6 shrink-0 text-[var(--accent)] mt-0.5" />
                     <div>
                       <h3 className="text-[15px] font-bold text-[var(--black)]">We read your request</h3>
                       <p className="mt-0.5 text-[14px] leading-[1.6] text-[var(--text-muted)]">
@@ -60,7 +61,7 @@ export default function ContactPage() {
                     </div>
                   </li>
                   <li className="flex gap-4 py-4">
-                    <span className="text-[13px] font-bold text-[var(--accent)] pt-0.5">02</span>
+                    <StageIcon name="cost" className="w-6 h-6 shrink-0 text-[var(--accent)] mt-0.5" />
                     <div>
                       <h3 className="text-[15px] font-bold text-[var(--black)]">You get costing and a sample plan</h3>
                       <p className="mt-0.5 text-[14px] leading-[1.6] text-[var(--text-muted)]">
@@ -69,7 +70,7 @@ export default function ContactPage() {
                     </div>
                   </li>
                   <li className="flex gap-4 py-4">
-                    <span className="text-[13px] font-bold text-[var(--accent)] pt-0.5">03</span>
+                    <StageIcon name="release" className="w-6 h-6 shrink-0 text-[var(--accent)] mt-0.5" />
                     <div>
                       <h3 className="text-[15px] font-bold text-[var(--black)]">Approve the sample, we start bulk</h3>
                       <p className="mt-0.5 text-[14px] leading-[1.6] text-[var(--text-muted)]">
@@ -82,26 +83,35 @@ export default function ContactPage() {
 
               <div>
                 <h2 className="text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--black)]">Prefer to talk?</h2>
-                <dl className="mt-4 space-y-4 text-[15px]">
-                  <div>
-                    <dt className="text-[12px] text-[var(--text-muted)]">WhatsApp or call</dt>
-                    <dd className="mt-0.5 font-bold text-[var(--black)]">
-                      <a href={contact.whatsapp} className="hover:text-[var(--accent)] transition-colors">
-                        {contact.phoneDisplay}
-                      </a>
-                    </dd>
+                <dl className="mt-4 space-y-5 text-[15px]">
+                  <div className="flex gap-3">
+                    <StageIcon name="phone" className="w-5 h-5 shrink-0 text-[var(--accent)] mt-0.5" />
+                    <div>
+                      <dt className="text-[12px] text-[var(--text-muted)]">WhatsApp or call</dt>
+                      <dd className="mt-0.5 font-bold text-[var(--black)]">
+                        <a href={contact.whatsapp} className="hover:text-[var(--accent)] transition-colors">
+                          {contact.phoneDisplay}
+                        </a>
+                      </dd>
+                    </div>
                   </div>
-                  <div>
-                    <dt className="text-[12px] text-[var(--text-muted)]">Email</dt>
-                    <dd className="mt-0.5 font-bold text-[var(--black)] break-words">
-                      <a href={`mailto:${contact.email}`} className="hover:text-[var(--accent)] transition-colors">
-                        {contact.email}
-                      </a>
-                    </dd>
+                  <div className="flex gap-3">
+                    <StageIcon name="mail" className="w-5 h-5 shrink-0 text-[var(--accent)] mt-0.5" />
+                    <div className="min-w-0">
+                      <dt className="text-[12px] text-[var(--text-muted)]">Email</dt>
+                      <dd className="mt-0.5 font-bold text-[var(--black)] break-words">
+                        <a href={`mailto:${contact.email}`} className="hover:text-[var(--accent)] transition-colors">
+                          {contact.email}
+                        </a>
+                      </dd>
+                    </div>
                   </div>
-                  <div>
-                    <dt className="text-[12px] text-[var(--text-muted)]">Export desk hours</dt>
-                    <dd className="mt-0.5 font-bold text-[var(--black)]">Mon to Sat, 9:00 am to 6:30 pm IST</dd>
+                  <div className="flex gap-3">
+                    <StageIcon name="clock" className="w-5 h-5 shrink-0 text-[var(--accent)] mt-0.5" />
+                    <div>
+                      <dt className="text-[12px] text-[var(--text-muted)]">Export desk hours</dt>
+                      <dd className="mt-0.5 font-bold text-[var(--black)]">Mon to Sat, 9:00 am to 6:30 pm IST</dd>
+                    </div>
                   </div>
                 </dl>
               </div>

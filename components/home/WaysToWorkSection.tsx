@@ -4,11 +4,12 @@ import React from "react";
 import Link from "next/link";
 import { Container } from "../ui/Container";
 import { ImageSlot } from "../ui/ImageSlot";
+import { StageIcon, type StageIconName } from "../ui/StageIcon";
 import { ArrowRight } from "lucide-react";
 
 interface WayToWork {
   id: "full-package" | "cut-and-make" | "custom";
-  number: string;
+  icon: StageIconName;
   title: string;
   bestFor: string;
   points: string[];
@@ -21,7 +22,7 @@ interface WayToWork {
 const WAYS: WayToWork[] = [
   {
     id: "full-package",
-    number: "01",
+    icon: "garments",
     title: "Full package",
     bestFor: "You send a tech pack or sample. We deliver finished garments.",
     points: [
@@ -36,7 +37,7 @@ const WAYS: WayToWork[] = [
   },
   {
     id: "cut-and-make",
-    number: "02",
+    icon: "cut",
     title: "Cut and make",
     bestFor: "You already have the fabric and trims. We cut and stitch.",
     points: [
@@ -51,7 +52,7 @@ const WAYS: WayToWork[] = [
   },
   {
     id: "custom",
-    number: "03",
+    icon: "specify",
     title: "Something else",
     bestFor: "A different style, volume or request. Tell us what you need.",
     points: [
@@ -98,8 +99,8 @@ export function WaysToWorkSection() {
               />
 
               <div className="flex flex-1 flex-col p-6">
-                <p className="text-[13px] font-bold text-[var(--accent)]">{way.number}</p>
-                <h3 className="mt-1 text-[24px] font-extrabold leading-[1.15] tracking-[-0.02em] text-[var(--black)]">
+                <StageIcon name={way.icon} className="w-7 h-7 text-[var(--accent)]" />
+                <h3 className="mt-3 text-[24px] font-extrabold leading-[1.15] tracking-[-0.02em] text-[var(--black)]">
                   {way.title}
                 </h3>
                 <p className="mt-2 text-[15px] leading-[1.6] text-[var(--text-muted)]">{way.bestFor}</p>

@@ -6,6 +6,7 @@ import { Container } from "@/components/ui/Container";
 import { Fact } from "@/components/ui/Fact";
 import { CERTIFICATES, FABRIC_LAB_TESTS, YARN_TESTS } from "@/config/qualityData";
 import { factValue, isConfirmed } from "@/config/ownerFacts";
+import { StageIcon } from "@/components/ui/StageIcon";
 import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -95,9 +96,9 @@ export default function QualityPage() {
           </h2>
 
           <ol className="mt-8 divide-y divide-[var(--line)] border-y border-[var(--line)]">
-            <li className="grid grid-cols-1 lg:grid-cols-12 gap-3 lg:gap-10 py-7">
+            <li id="yarn" className="scroll-mt-28 grid grid-cols-1 lg:grid-cols-12 gap-3 lg:gap-10 py-7">
               <div className="lg:col-span-4 flex gap-4">
-                <span className="text-[13px] font-bold text-[var(--accent)] pt-1.5">01</span>
+                <StageIcon name="yarn" className="w-7 h-7 shrink-0 text-[var(--accent)] mt-0.5" />
                 <h3 className="text-[22px] font-extrabold leading-[1.15] tracking-[-0.02em] text-[var(--black)]">Yarn</h3>
               </div>
               <div className="lg:col-span-8">
@@ -111,7 +112,7 @@ export default function QualityPage() {
 
             <li className="grid grid-cols-1 lg:grid-cols-12 gap-3 lg:gap-10 py-7">
               <div className="lg:col-span-4 flex gap-4">
-                <span className="text-[13px] font-bold text-[var(--accent)] pt-1.5">02</span>
+                <StageIcon name="flask" className="w-7 h-7 shrink-0 text-[var(--accent)] mt-0.5" />
                 <h3 className="text-[22px] font-extrabold leading-[1.15] tracking-[-0.02em] text-[var(--black)]">
                   Fabric lab
                 </h3>
@@ -133,7 +134,7 @@ export default function QualityPage() {
 
             <li className="grid grid-cols-1 lg:grid-cols-12 gap-3 lg:gap-10 py-7">
               <div className="lg:col-span-4 flex gap-4">
-                <span className="text-[13px] font-bold text-[var(--accent)] pt-1.5">03</span>
+                <StageIcon name="lab" className="w-7 h-7 shrink-0 text-[var(--accent)] mt-0.5" />
                 <h3 className="text-[22px] font-extrabold leading-[1.15] tracking-[-0.02em] text-[var(--black)]">
                   Fabric inspection
                 </h3>
@@ -149,7 +150,7 @@ export default function QualityPage() {
 
             <li className="grid grid-cols-1 lg:grid-cols-12 gap-3 lg:gap-10 py-7">
               <div className="lg:col-span-4 flex gap-4">
-                <span className="text-[13px] font-bold text-[var(--accent)] pt-1.5">04</span>
+                <StageIcon name="garments" className="w-7 h-7 shrink-0 text-[var(--accent)] mt-0.5" />
                 <h3 className="text-[22px] font-extrabold leading-[1.15] tracking-[-0.02em] text-[var(--black)]">
                   Finished garments
                 </h3>
