@@ -2,7 +2,6 @@ import React from "react";
 import { HeroSection } from "@/components/home/HeroSection";
 import { FullChainSection } from "@/components/home/FullChainSection";
 import { ProcessSection } from "@/components/home/ProcessSection";
-import { OneTeamSection } from "@/components/home/OneTeamSection";
 import { CertificationsSection } from "@/components/home/CertificationsSection";
 import { RangeCarouselSection } from "@/components/home/RangeCarouselSection";
 import { WaysToWorkSection } from "@/components/home/WaysToWorkSection";
@@ -11,6 +10,11 @@ import { FaqSection } from "@/components/home/FaqSection";
 import { QuoteRequestSection } from "@/components/home/QuoteRequestSection";
 import { ImageSlot } from "@/components/ui/ImageSlot";
 
+/**
+ * Homepage order is built around the quote: convince, show the range, then ask.
+ * The "One partner" band (it repeats the four division cards) was cut to keep it short.
+ * Two banners stay (knitting floor, team); the despatch banner moved to the How to order page.
+ */
 export default function HomePage() {
   return (
     <>
@@ -23,18 +27,18 @@ export default function HomePage() {
       {/* 03. Platform statement and four division cards */}
       <FullChainSection />
 
-      {/* Banner A: full width, the knitting floor */}
+      {/* Banner A: the knitting floor, a visual break after the division cards */}
       <ImageSlot
         bleed
         label="Banner A · Knitting floor"
-        hint="Wide shot of the circular knitting floor with machines running and a technician at work. Keep the subject near the centre so it crops well on mobile."
+        hint="Wide shot of the circular knitting floor with machines running and a technician at work."
         desktop={{ w: 1920, h: 800, src: "/images/home/banner-a-knitting-floor-desktop.webp" }}
         mobile={{ w: 900, h: 1100, src: "/images/home/banner-a-knitting-floor-mobile.webp" }}
         alt="Circular knitting machines running in a knitting hall"
       />
 
-      {/* 04. The chain, eight stages (photo strip inside) */}
-      <ProcessSection />
+      {/* 04. Certificates (real logos) */}
+      <CertificationsSection />
 
       {/* 05. Garment range: what the buyer came to see */}
       <RangeCarouselSection />
@@ -42,37 +46,24 @@ export default function HomePage() {
       {/* 06. Three ways to order */}
       <WaysToWorkSection />
 
-      {/* 07. Certificates (real logos) */}
-      <CertificationsSection />
-
-      {/* 08. One partner, full accountability (short band) */}
-      <OneTeamSection />
-
-      {/* Banner B: full width, the people */}
+      {/* Banner B: the people, a trust cue right above the form */}
       <ImageSlot
         bleed
         label="Banner B · The team"
-        hint="Merchandisers and floor supervisors at work: a tech-pack review at a table, or supervisors on the stitching line. Real faces, not posed."
+        hint="Merchandisers and floor supervisors at work: a tech-pack review at a table, or supervisors on the stitching line."
         desktop={{ w: 1920, h: 700, src: "/images/home/banner-b-team-desktop.webp" }}
         mobile={{ w: 900, h: 1000, src: "/images/home/banner-b-team-mobile.webp" }}
         alt="Merchandisers and production staff reviewing a garment tech pack"
       />
 
-      {/* 09. FAQ */}
-      <FaqSection />
-
-      {/* Banner C: full width, despatch, leads into the quote form */}
-      <ImageSlot
-        bleed
-        label="Banner C · Packing and despatch"
-        hint="Labelled cartons stacked at despatch, or a container being loaded. This sits right above the quote form."
-        desktop={{ w: 1920, h: 640, src: "/images/home/banner-c-despatch-desktop.webp" }}
-        mobile={{ w: 900, h: 1000, src: "/images/home/banner-c-despatch-mobile.webp" }}
-        alt="Export cartons being loaded into a shipping container at a despatch dock"
-      />
-
-      {/* 10. Quote form */}
+      {/* 07. Quote form, straight after the buyer has chosen how to start */}
       <QuoteRequestSection />
+
+      {/* 08. The eight stages: proof for buyers who are still comparing factories, below the form on purpose */}
+      <ProcessSection />
+
+      {/* 09. FAQ: answers the last doubts, and carries the search-friendly questions */}
+      <FaqSection />
     </>
   );
 }

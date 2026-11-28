@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Fact } from "@/components/ui/Fact";
 import { CompanyProfile } from "@/components/ui/CompanyProfile";
+import { ImageSlot } from "@/components/ui/ImageSlot";
 import { isConfirmed } from "@/config/ownerFacts";
 import { ArrowRight } from "lucide-react";
 
@@ -133,6 +134,16 @@ export default function HowToOrderPage() {
           </ol>
         </Container>
       </section>
+
+      {/* Banner: despatch, right after the order steps end in shipping */}
+      <ImageSlot
+        bleed
+        label="Banner · Packing and despatch"
+        hint="Labelled cartons stacked at despatch, or a container being loaded."
+        desktop={{ w: 1920, h: 640, src: "/images/home/banner-c-despatch-desktop.webp" }}
+        mobile={{ w: 900, h: 1000, src: "/images/home/banner-c-despatch-mobile.webp" }}
+        alt="Export cartons being loaded into a shipping container at a despatch dock"
+      />
 
       {/* WHAT TO SEND + KEY TERMS */}
       <section className="w-full bg-[var(--surface)] py-14 lg:py-20 border-b border-[var(--line)]">
