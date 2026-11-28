@@ -144,21 +144,21 @@ export function SiteFooter() {
               href="/capabilities/garment-manufacturing"
               className="hover:text-[var(--white)] hover:underline transition-colors"
             >
-              Garment Division
+              Garment manufacturing
             </Link>
             <span>·</span>
             <Link
               href="/capabilities/knitting-division"
               className="hover:text-[var(--white)] hover:underline transition-colors"
             >
-              Knitting Division
+              Knitting
             </Link>
             <span>·</span>
             <Link
               href="/capabilities/dyeing-division"
               className="hover:text-[var(--white)] hover:underline transition-colors"
             >
-              Dyeing Division
+              Dyeing
             </Link>
           </div>
 

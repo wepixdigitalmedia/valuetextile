@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/garments", priority: 0.9 },
     ...GARMENT_CATEGORY_DETAILS.map((c) => ({ path: `/garments/${c.slug}`, priority: 0.8 })),
     { path: "/capabilities", priority: 0.8 },
+    { path: "/capabilities/yarn-sourcing", priority: 0.7 },
     { path: "/capabilities/knitting-division", priority: 0.7 },
     { path: "/capabilities/dyeing-division", priority: 0.7 },
     { path: "/capabilities/fabric-division", priority: 0.7 },

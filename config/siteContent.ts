@@ -98,10 +98,11 @@ export const siteConfig = {
       label: "Capabilities",
       href: "/capabilities",
       dropdown: [
+        { label: "Garment manufacturing", href: "/capabilities/garment-manufacturing" },
+        { label: "Yarn sourcing & testing", href: "/capabilities/yarn-sourcing" },
         { label: "Knitting", href: "/capabilities/knitting-division" },
         { label: "Dyeing", href: "/capabilities/dyeing-division" },
         { label: "Fabric Lab & Inspection", href: "/capabilities/fabric-division" },
-        { label: "Garments", href: "/capabilities/garment-manufacturing" },
       ],
     },
     {

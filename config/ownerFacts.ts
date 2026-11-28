@@ -107,6 +107,18 @@ export const ownerFacts = {
     example: "A. Kumar, Managing Director. R. Devi, Head of Merchandising",
   },
   // Any confirmed value here switches on every "Zero Liquid Discharge" / "ZLD" claim on the site.
+  yarnTestStandards: {
+    label: "Yarn testing: own lab or third party, and which methods",
+    value: null,
+    fallback: "",
+    example: "Tested in our own lab to ISO methods",
+  },
+  yarnTestReports: {
+    label: "Yarn test reports shared with buyers on request",
+    value: null,
+    fallback: "",
+    example: "Yes, a test report for your yarn is shared with your quote",
+  },
   zldStatus: {
     label: "Zero Liquid Discharge status",
     value: null,

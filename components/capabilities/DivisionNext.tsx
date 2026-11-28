@@ -4,13 +4,14 @@ import { Container } from "../ui/Container";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 
 export const DIVISION_CHAIN = [
+  { key: "yarn", title: "Yarn sourcing and testing", href: "/capabilities/yarn-sourcing", line: "Bought to spec and tested before knitting." },
   { key: "knitting", title: "Knitting", href: "/capabilities/knitting-division", line: "Where the fabric starts." },
   { key: "dyeing", title: "Dyeing", href: "/capabilities/dyeing-division", line: "Colour, finishing and effluent treatment." },
   { key: "fabric", title: "Fabric lab and inspection", href: "/capabilities/fabric-division", line: "Testing, grading and despatch." },
   { key: "garment", title: "Garments", href: "/capabilities/garment-manufacturing", line: "Cutting, stitching and packing." },
 ] as const;
 
-type DivisionKey = (typeof DIVISION_CHAIN)[number]["key"];
+export type DivisionKey = (typeof DIVISION_CHAIN)[number]["key"];
 
 interface DivisionNextProps {
   current: DivisionKey;

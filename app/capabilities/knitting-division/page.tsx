@@ -1,263 +1,205 @@
 import React from "react";
 import type { Metadata } from "next";
-import Image from "next/image";
+import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { DivisionHero } from "@/components/capabilities/DivisionHero";
 import { DivisionNext } from "@/components/capabilities/DivisionNext";
-import { Eyebrow } from "@/components/ui/Eyebrow";
-import { siteConfig } from "@/config/siteContent";
+import { FullSpec } from "@/components/capabilities/FullSpec";
+import { StageHero } from "@/components/capabilities/StageHero";
+import { ImageSlot } from "@/components/ui/ImageSlot";
+import { CAPABILITY_IMAGES } from "@/config/capabilityImages";
+import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Knitting Division",
+  title: "Knitting",
   description:
     "Mayer & Cie circular knitting in Tiruppur: single jersey, rib, interlock, striper, mini jacquard and Lycra jersey, two shifts a day.",
 };
 
-const KNITTING_GALLERY = [
+/** The eleven machine setups, kept in full for the collapsed specification. */
+const MACHINE_SPECS = [
+  { fabricType: "S/J Auto Striper", dia: "26", gg: "20/24", feeders: "42", colour: "4" },
+  { fabricType: "S/J Auto Striper", dia: "30", gg: "20/24", feeders: "48", colour: "4" },
+  { fabricType: "S/J Auto Striper", dia: "30", gg: "24/28", feeders: "48", colour: "4" },
+  { fabricType: "S/J Auto Striper", dia: "34", gg: "24", feeders: "54", colour: "4" },
+  { fabricType: "S/J Auto Striper", dia: "34", gg: "24", feeders: "54", colour: "5 to 10" },
+  { fabricType: "Mini Jacquard Striper", dia: "30", gg: "24", feeders: "72", colour: "All self design" },
+  { fabricType: "Mini Jacquard Striper", dia: "30", gg: "28", feeders: "72", colour: "All self design" },
+  { fabricType: "Rib & I/L Auto Striper", dia: "30", gg: "18/24", feeders: "48", colour: "4" },
+  { fabricType: "Rib & I/L Auto Striper", dia: "34", gg: "18/24", feeders: "54", colour: "4" },
+  { fabricType: "Lycra Jersey", dia: "30", gg: "28", feeders: "–", colour: "Plain" },
+  { fabricType: "Lycra Jersey", dia: "32", gg: "28", feeders: "–", colour: "Plain" },
+];
+
+/** The same machines grouped by what they make. Figures are read from the table above. */
+const KNIT_GROUPS = [
   {
-    src: "https://ik.imagekit.io/wpxassets/value%20textiles/knitting/kn1.jpg",
-    title: "Circular Knitting Floor",
-    subtitle: "Mayer & Cie knitting machines",
-    alt: "Circular knitting machinery floor at Value Textiles Tiruppur",
+    name: "Single jersey auto-striper",
+    use: "Everyday tees, polos and striped tops.",
+    specs: [
+      ["Diameter", '26", 30", 34"'],
+      ["Gauge", "20/24, 24/28, 24 GG"],
+      ["Feeders", "42 to 54"],
+      ["Colours", "4, and 5 to 10 on one"],
+    ],
   },
   {
-    src: "https://ik.imagekit.io/wpxassets/value%20textiles/knitting/kn2.jpg",
-    title: "Multi-Colour Yarn Feeders",
-    subtitle: "Auto-striper creels for 4 to 10 colour patterns",
-    alt: "Multi-colour yarn feeder creels on circular knitting machine",
+    name: "Mini jacquard striper",
+    use: "Self-design and textured fabric.",
+    specs: [
+      ["Diameter", '30"'],
+      ["Gauge", "24 and 28 GG"],
+      ["Feeders", "72"],
+      ["Colours", "All self design"],
+    ],
   },
   {
-    src: "https://ik.imagekit.io/wpxassets/value%20textiles/knitting/kn3.jpg",
-    title: "Mini Jacquard & Self-Design",
-    subtitle: "72-feeder mini jacquard for self-design fabric",
-    alt: "Mini jacquard circular knitting machine producing patterned fabric",
+    name: "Rib and interlock auto-striper",
+    use: "Rib and interlock for polos, kids wear and layering.",
+    specs: [
+      ["Diameter", '30", 34"'],
+      ["Gauge", "18/24 GG"],
+      ["Feeders", "48 and 54"],
+      ["Colours", "4"],
+    ],
   },
   {
-    src: "https://ik.imagekit.io/wpxassets/value%20textiles/knitting/kn4.jpg",
-    title: "Single Jersey & Lycra Knits",
-    subtitle: "Single jersey and Lycra jersey",
-    alt: "Single jersey and Lycra jersey fabric knitting in progress",
-  },
-  {
-    src: "https://ik.imagekit.io/wpxassets/value%20textiles/knitting/kn5.jpg",
-    title: "Rib & Interlock Structures",
-    subtitle: "18/24 GG rib and interlock auto-striper production",
-    alt: "Rib and interlock circular knitting machine setup",
-  },
-  {
-    src: "https://ik.imagekit.io/wpxassets/value%20textiles/knitting/kn6.jpg",
-    title: "In-Process Fabric Inspection",
-    subtitle: "Supervised two-shift operation",
-    alt: "Knitted fabric inspection and quality control at Value Textiles",
+    name: "Lycra jersey",
+    use: "Stretch fabric for activewear and fitted styles.",
+    specs: [
+      ["Diameter", '30", 32"'],
+      ["Gauge", "28 GG"],
+      ["Feeders", "Plain jersey"],
+      ["Colours", "Plain"],
+    ],
   },
 ];
 
-const MACHINE_SPECS = [
-  {
-    make: "Mayer & Cie Machine",
-    fabricType: "S/J Auto Striper",
-    dia: "26",
-    gg: "20/24",
-    feeders: "42",
-    colour: "4",
-  },
-  {
-    make: "Mayer & Cie Machine",
-    fabricType: "S/J Auto Striper",
-    dia: "30",
-    gg: "20/24",
-    feeders: "48",
-    colour: "4",
-  },
-  {
-    make: "Mayer & Cie Machine",
-    fabricType: "S/J Auto Striper",
-    dia: "30",
-    gg: "24/28",
-    feeders: "48",
-    colour: "4",
-  },
-  {
-    make: "Mayer & Cie Machine",
-    fabricType: "S/J Auto Striper",
-    dia: "34",
-    gg: "24",
-    feeders: "54",
-    colour: "4",
-  },
-  {
-    make: "Mayer & Cie Machine",
-    fabricType: "S/J Auto Striper",
-    dia: "34",
-    gg: "24",
-    feeders: "54",
-    colour: "5 to 10",
-  },
-  {
-    make: "Mayer & Cie Machine",
-    fabricType: "Mini Jacquard Stripers",
-    dia: "30",
-    gg: "24",
-    feeders: "72",
-    colour: "All Self Design",
-  },
-  {
-    make: "Mayer & Cie Machine",
-    fabricType: "Mini Jacquard Stripers",
-    dia: "30",
-    gg: "28",
-    feeders: "72",
-    colour: "All Self Design",
-  },
-  {
-    make: "Mayer & Cie Machine",
-    fabricType: "Rib & I/L Auto Striper",
-    dia: "30",
-    gg: "18/24",
-    feeders: "48",
-    colour: "4",
-  },
-  {
-    make: "Mayer & Cie Machine",
-    fabricType: "Rib & I/L Auto Striper",
-    dia: "34",
-    gg: "18/24",
-    feeders: "54",
-    colour: "4",
-  },
-  {
-    make: "Mayer & Cie Machine",
-    fabricType: "Lycra Jersey",
-    dia: "30",
-    gg: "28",
-    feeders: "–",
-    colour: "Plain",
-  },
-  {
-    make: "Mayer & Cie Machine",
-    fabricType: "Lycra Jersey",
-    dia: "32",
-    gg: "28",
-    feeders: "–",
-    colour: "Plain",
-  },
+const BAND_POINTS = [
+  "Two shifts a day, under an experienced manager.",
+  "Multi-colour yarn feeders for stripes and jacquards.",
+  "Our fabric goes to our own dye house and garment lines.",
 ];
 
 export default function KnittingDivisionPage() {
+  const image = CAPABILITY_IMAGES.knitting;
+
   return (
     <main className="w-full bg-[var(--white)]">
-      <DivisionHero
-        eyebrow="KNITTING DIVISION"
-        title="Our own circular knitting, running two shifts a day."
-        intro={[
-          "Mayer & Cie circular knitting machines with multi-colour yarn feeders knit single jersey, rib, interlock, striper, mini jacquard and Lycra jersey for our dye house and garment lines.",
-          "A dedicated team under an experienced manager works two shifts a day.",
-        ]}
-        location={`Knitting unit: ${siteConfig.contact.knittingAddress}`}
-        stats={[
-          { value: "11", label: "Machine configurations" },
-          { value: "2 shifts", label: "Running every day" },
-          { value: "4 to 10", label: "Colours on auto-stripers" },
-          { value: "72", label: "Feeders on mini jacquards" },
-        ]}
+      <StageHero
+        eyebrow="Knitting"
+        title="We knit our own fabric, so structure and stripe are ours to set."
+        intro="Mayer & Cie circular knitting machines with multi-colour yarn feeders make the jersey, rib, interlock, striper, jacquard and Lycra fabric that goes to our dye house and garment lines."
+        big={{ value: String(MACHINE_SPECS.length), caption: "machine setups, all Mayer & Cie" }}
+        current="knitting"
       />
 
-      {/* ============================================================ */}
-      {/* 02. MACHINE SPECIFICATION TABLE                              */}
-      {/* ============================================================ */}
-      <section className="w-full bg-[var(--white)] py-16 lg:py-24 border-b border-[var(--line)]">
+      {/* WHAT WE KNIT: four machine groups as tiles, with the stage photo */}
+      <section className="w-full bg-[var(--white)] py-14 lg:py-20">
         <Container>
-          <div className="max-w-3xl mb-8 sm:mb-10">
-            <Eyebrow>MACHINERY LINEUP</Eyebrow>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em] mt-2">
-              Mayer &amp; Cie Circular Knitting Specifications
+          <div className="max-w-2xl">
+            <h2 className="text-[26px] sm:text-[32px] font-extrabold leading-[1.15] tracking-[-0.02em] text-[var(--black)]">
+              What we knit
             </h2>
+            <p className="mt-3 text-[15px] leading-[1.6] text-[var(--text-muted)]">
+              Four machine groups. Each is set up for a different kind of fabric.
+            </p>
           </div>
 
-          <div className="w-full max-w-full overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
-            <table className="w-full text-left border-collapse min-w-[640px]">
-              <thead>
-                <tr className="bg-[var(--surface)] border-b border-[var(--line)] text-[var(--black)] text-sm font-bold">
-                  <th className="py-3.5 px-4 sm:px-6">Machine Make</th>
-                  <th className="py-3.5 px-4 sm:px-6">Fabric Type</th>
-                  <th className="py-3.5 px-4 sm:px-6">Dia</th>
-                  <th className="py-3.5 px-4 sm:px-6">GG</th>
-                  <th className="py-3.5 px-4 sm:px-6">Feeders</th>
-                  <th className="py-3.5 px-4 sm:px-6">Colour</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-[var(--line)] text-sm sm:text-[15px] text-[var(--text-muted)]">
-                {MACHINE_SPECS.map((row, idx) => (
-                  <tr
-                    key={`${row.fabricType}-${row.dia}-${row.gg}-${row.colour}-${idx}`}
-                    className={idx % 2 === 1 ? "bg-[var(--surface)]/60" : "bg-[var(--white)]"}
-                  >
-                    <td className="py-3.5 px-4 sm:px-6 font-semibold text-[var(--black)]">
-                      {row.make}
-                    </td>
-                    <td className="py-3.5 px-4 sm:px-6">{row.fabricType}</td>
-                    <td className="py-3.5 px-4 sm:px-6 font-medium text-[var(--black)]">{row.dia}</td>
-                    <td className="py-3.5 px-4 sm:px-6 font-medium text-[var(--black)]">{row.gg}</td>
-                    <td className="py-3.5 px-4 sm:px-6 font-medium text-[var(--black)]">
-                      {row.feeders}
-                    </td>
-                    <td className="py-3.5 px-4 sm:px-6">{row.colour}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </Container>
-      </section>
-
-      {/* ============================================================ */}
-      {/* 03. KNITTING DIVISION GALLERY (kn1.jpg - kn6.jpg)            */}
-      {/* ============================================================ */}
-      <section className="w-full bg-[var(--surface)] py-16 lg:py-24 border-b border-[var(--line)]">
-        <Container>
-          <div className="max-w-3xl mb-10 sm:mb-14">
-            <Eyebrow>INSIDE OUR KNITTING UNIT</Eyebrow>
-            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em] mt-2">
-              Inside our knitting unit.
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {KNITTING_GALLERY.map((item, idx) => (
-              <div
-                key={item.src}
-                className="group rounded-[12px] bg-[var(--white)] border border-[var(--line)] overflow-hidden flex flex-col justify-between hover:border-[var(--black)] transition-colors duration-300"
-              >
-                <div className="relative aspect-[4/3] w-full overflow-hidden bg-[var(--white)]">
-                  <Image
-                    src={item.src}
-                    alt={item.alt}
-                    fill
-                    priority={idx < 3}
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <div className="p-6 space-y-1.5">
-                  <h3 className="text-lg font-bold text-[var(--black)]">
-                    {item.title}
+          <div className="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+            <ul className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+              {KNIT_GROUPS.map((g) => (
+                <li key={g.name} className="rounded-[12px] bg-[var(--surface)] p-5 sm:p-6">
+                  <h3 className="text-[19px] font-extrabold leading-[1.2] tracking-[-0.02em] text-[var(--black)]">
+                    {g.name}
                   </h3>
-                  <p className="text-sm text-[var(--text-muted)]">
-                    {item.subtitle}
-                  </p>
-                </div>
-              </div>
-            ))}
+                  <p className="mt-1.5 text-[14px] leading-[1.5] text-[var(--text-muted)]">{g.use}</p>
+                  <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3 border-t border-[var(--line)] pt-4">
+                    {g.specs.map(([k, v]) => (
+                      <div key={k}>
+                        <dt className="text-[11.5px] font-semibold uppercase tracking-[0.1em] text-[var(--text-muted)]">
+                          {k}
+                        </dt>
+                        <dd className="mt-0.5 text-[14.5px] font-semibold leading-[1.35] text-[var(--black)]">{v}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </li>
+              ))}
+            </ul>
+
+            <div className="lg:col-span-4 lg:sticky lg:top-28">
+              <ImageSlot
+                label={image.label}
+                hint={image.hint}
+                desktop={image.desktop}
+                mobile={image.mobile}
+                alt={image.alt}
+              />
+            </div>
           </div>
         </Container>
       </section>
+
+      {/* DARK BAND: what the knitting floor guarantees the rest of the chain */}
+      <section className="w-full bg-[var(--black)] py-14 lg:py-20">
+        <Container>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+            <h2 className="lg:col-span-6 text-[28px] sm:text-[38px] font-extrabold leading-[1.1] tracking-[-0.025em] text-[var(--white)]">
+              Knitted here. Dyed here. Cut here.
+            </h2>
+            <ul className="lg:col-span-6 space-y-4">
+              {BAND_POINTS.map((p) => (
+                <li key={p} className="flex gap-3 text-[16px] leading-[1.55] text-[var(--white)]/80">
+                  <ArrowRight className="mt-1 w-4 h-4 shrink-0 text-[var(--accent)]" strokeWidth={2.4} />
+                  {p}
+                </li>
+              ))}
+              <li className="pt-2">
+                <Link
+                  href="/capabilities/dyeing-division"
+                  className="inline-flex items-center gap-1.5 text-[14px] font-semibold text-[var(--white)] underline underline-offset-4 hover:text-[var(--accent)] transition-colors"
+                >
+                  See where it goes next: dyeing <ArrowRight className="w-4 h-4" strokeWidth={2.2} />
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </Container>
+      </section>
+
+      {/* FULL SPECIFICATION: the eleven setups, closed by default */}
+      <FullSpec title="Full machine list" hint={`${MACHINE_SPECS.length} setups, all Mayer & Cie`}>
+        <div className="w-full overflow-x-auto">
+          <table className="w-full min-w-[520px] text-left border-collapse text-[14px]">
+            <thead>
+              <tr className="border-b border-[var(--black)] text-[var(--black)] font-bold">
+                <th className="py-2.5 pr-4">Fabric type</th>
+                <th className="py-2.5 pr-4">Dia</th>
+                <th className="py-2.5 pr-4">GG</th>
+                <th className="py-2.5 pr-4">Feeders</th>
+                <th className="py-2.5">Colour</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-[var(--line)] text-[var(--text-muted)]">
+              {MACHINE_SPECS.map((row, i) => (
+                <tr key={`${row.fabricType}-${row.dia}-${row.gg}-${i}`}>
+                  <td className="py-2.5 pr-4 font-semibold text-[var(--black)]">{row.fabricType}</td>
+                  <td className="py-2.5 pr-4">{row.dia}</td>
+                  <td className="py-2.5 pr-4">{row.gg}</td>
+                  <td className="py-2.5 pr-4">{row.feeders}</td>
+                  <td className="py-2.5">{row.colour}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </FullSpec>
 
       <DivisionNext
         current="knitting"
-        quoteHeading="Need a custom stripe, jacquard or Lycra knit?"
-        quoteText="Share your fabric GSM, stripe repeat or tech pack. We knit, dye, test and stitch in our own units."
+        quoteHeading="Have a fabric in mind?"
+        quoteText="Send a reference swatch or the construction and GSM. We tell you which machine knits it and how long it takes."
       />
     </main>
   );
 }
-

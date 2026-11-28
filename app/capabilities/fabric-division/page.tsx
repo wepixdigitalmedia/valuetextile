@@ -1,11 +1,12 @@
 import React from "react";
 import type { Metadata } from "next";
-import Image from "next/image";
-import { Container } from "@/components/ui/Container";
-import { DivisionHero } from "@/components/capabilities/DivisionHero";
-import { DivisionNext } from "@/components/capabilities/DivisionNext";
 import Link from "next/link";
-import { Eyebrow } from "@/components/ui/Eyebrow";
+import { Container } from "@/components/ui/Container";
+import { DivisionNext } from "@/components/capabilities/DivisionNext";
+import { StageHero } from "@/components/capabilities/StageHero";
+import { ImageSlot } from "@/components/ui/ImageSlot";
+import { CAPABILITY_IMAGES } from "@/config/capabilityImages";
+import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Fabric Lab, Inspection and Despatch",
@@ -13,519 +14,224 @@ export const metadata: Metadata = {
     "An 11-test in-house fabric lab, 4-point and 10-point inspection, and scheduled fabric despatch from Tiruppur.",
 };
 
-const LAB_TESTS = [
-  { sno: "1", test: "FABRIC WEIGHT" },
-  { sno: "2", test: "COUNT" },
-  { sno: "3", test: "CONSTRUCTION" },
-  { sno: "4", test: "COLOR FASTNESS TO WASHING" },
-  { sno: "5", test: "COLOR FASTNESS TO RUBBING" },
-  { sno: "6", test: "COLOR FASTNESS TO PERSPIRATION" },
-  { sno: "7", test: "COLOR FASTNESS TO WATER" },
-  { sno: "8", test: "COLOR FASTNESS TO SALIVA" },
-  { sno: "9", test: "DIMENSIONAL STABILITY" },
-  { sno: "10", test: "SPIRALITY" },
-  { sno: "11", test: "APPEARANCE AFTER WASH" },
-];
-
-const LAB_IMAGES = [
+/** The eleven lab tests in three groups. */
+const TEST_GROUPS = [
   {
-    src: "https://ik.imagekit.io/wpxassets/value%20textiles/Brand/te1.jpg",
-    title: "Physical & GSM Verification",
-    subtitle: "Precision fabric weight, yarn count & construction testing",
-    alt: "Fabric testing laboratory equipment at Value Textiles",
+    title: "Physical",
+    note: "Confirms the fabric is what you specified.",
+    tests: ["Fabric weight", "Count", "Construction"],
   },
   {
-    src: "https://ik.imagekit.io/wpxassets/value%20textiles/Brand/te2.jpg",
-    title: "Colour Fastness Testing",
-    subtitle: "Washing, rubbing, water, saliva & perspiration fastness",
-    alt: "Colour fastness testing instruments in Value Textiles laboratory",
+    title: "Colour fastness",
+    note: "Shows how the colour behaves in wash, rubbing, sweat, water and saliva.",
+    tests: [
+      "To washing",
+      "To rubbing",
+      "To perspiration",
+      "To water",
+      "To saliva",
+    ],
   },
   {
-    src: "https://ik.imagekit.io/wpxassets/value%20textiles/Brand/te4.jpg",
-    title: "Dimensional Stability & Spirality",
-    subtitle: "Shrinkage and appearance-after-wash evaluation",
-    alt: "Dimensional stability and wash testing in fabric laboratory",
-  },
-  {
-    src: "https://ik.imagekit.io/wpxassets/value%20textiles/Brand/te3.jpg",
-    title: "Shade & Spectrophotometer Analysis",
-    subtitle: "Batch-to-batch shade continuity and lab dip verification",
-    alt: "Laboratory shade matching and quality testing workstation",
+    title: "Stability and look",
+    note: "Shows how the fabric holds its shape and looks after washing.",
+    tests: ["Dimensional stability", "Spirality", "Appearance after wash"],
   },
 ];
 
-const INSPECTION_LOT_SAMPLING = [
-  { totalRolls: "100 & above", checkedRolls: "As per Square Root system" },
-  { totalRolls: "50 - 99 Rolls", checkedRolls: "Min : 10 Rolls" },
-  { totalRolls: "25 - 49 Rolls", checkedRolls: "Min : 7 Rolls" },
-  { totalRolls: "11 - 24 Rolls", checkedRolls: "Min : 5 Rolls" },
-  { totalRolls: "1 - 10 Rolls", checkedRolls: "All rolls" },
+/** Points allowed per 100 metres under the 4-point system. */
+const VERDICTS = [
+  { range: "Up to 30", result: "Pass", accent: false },
+  { range: "31 to 40", result: "Needs approval from the head of department", accent: false },
+  { range: "41 and above", result: "Rejected", accent: true },
 ];
 
-const POINTS_ALLOWED = [
-  { points: "Upto 30", decision: "Pass" },
-  { points: "31 - 40", decision: "Should be got Approval from THE HOD" },
-  { points: "41 & Above", decision: "Rejected" },
+const SAMPLING = [
+  "1 to 10 rolls: all checked",
+  "11 to 24 rolls: at least 5",
+  "25 to 49 rolls: at least 7",
+  "50 to 99 rolls: at least 10",
+  "100 or more: square-root system",
 ];
 
-const STICKER_IDENTIFICATION = [
-  {
-    color: "RED",
-    dotClass: "bg-[var(--accent)]",
-    badgeClass: "bg-[var(--white)] text-[var(--black)] border-[var(--accent)]",
-    meaning: "Not OK",
-  },
-  {
-    color: "ORANGE",
-    dotClass: "bg-[var(--accent)] opacity-60",
-    badgeClass: "bg-[var(--white)] text-[var(--black)] border-[var(--line)]",
-    meaning: "Conditionally Approved (Cut This Rolls First)",
-  },
-  {
-    color: "YELLOW",
-    dotClass: "bg-[var(--text-muted)]",
-    badgeClass: "bg-[var(--white)] text-[var(--black)] border-[var(--line)]",
-    meaning: "Accepted (Cut This Rolls after Orange)",
-  },
-  {
-    color: "GREEN",
-    dotClass: "bg-[var(--black)]",
-    badgeClass: "bg-[var(--white)] text-[var(--black)] border-[var(--black)]",
-    meaning: "Passed (Cut This Rolls after Yellow)",
-  },
+const STICKERS = [
+  { colour: "#D93025", name: "Red", meaning: "Not OK" },
+  { colour: "#F28C28", name: "Orange", meaning: "Conditionally approved, cut first" },
+  { colour: "#F4C430", name: "Yellow", meaning: "Accepted, cut after orange" },
+  { colour: "#2E9E5B", name: "Green", meaning: "Passed, cut after yellow" },
 ];
 
-const INSPECTION_IMAGES = [
-  {
-    src: "https://ik.imagekit.io/wpxassets/value%20textiles/Brand/fi1.jpg",
-    title: "Illuminated 4-Point Inspection",
-    subtitle: "Full-width backlit roll inspection machines",
-    alt: "Fabric inspection machine at Value Textiles",
-  },
-  {
-    src: "https://ik.imagekit.io/wpxassets/value%20textiles/Brand/fi2.jpg",
-    title: "Defect Grading & Scoring",
-    subtitle: "4-Point and 10-Point system defect evaluation",
-    alt: "Operator inspecting knitted fabric roll for surface defects",
-  },
-  {
-    src: "https://ik.imagekit.io/wpxassets/value%20textiles/Brand/fi3.jpg",
-    title: "Width, GSM & Lot Verification",
-    subtitle: "Roll-by-roll width uniformity and shade batching",
-    alt: "Fabric roll quality verification and measurement",
-  },
-  {
-    src: "https://ik.imagekit.io/wpxassets/value%20textiles/Brand/fi4.jpg",
-    title: "Sticker Identification & Tagging",
-    subtitle: "Colour-coded Red, Orange, Yellow & Green cutting priority tags",
-    alt: "Inspected fabric rolls tagged for garment cutting or despatch",
-  },
-];
-
-const DESPATCH_LEAD_TIMES = [
-  { fabricType: "Solid", leadTime: "30 Days From L/D approval" },
-  { fabricType: "Yarn dyed", leadTime: "45 Days From Y/D approval" },
-  { fabricType: "Melange", leadTime: "35 Days" },
-  { fabricType: "All Over Print", leadTime: "45 Days" },
-];
-
-const DESPATCH_IMAGES = [
-  {
-    src: "https://ik.imagekit.io/wpxassets/value%20textiles/Brand/d4.jpg",
-    title: "Protective Roll Wrapping & Batching",
-    subtitle: "Neat, moisture-safe packing sorted by lot and colourway",
-    alt: "Packed fabric rolls ready for despatch at Value Textiles",
-  },
-  {
-    src: "https://ik.imagekit.io/wpxassets/value%20textiles/Brand/d1.jpg",
-    title: "Time & Action Scheduled Despatch",
-    subtitle: "Timely delivery of right quantity with full lot documentation",
-    alt: "Fabric despatch and logistics bay at Value Textiles",
-  },
+/** Fabric lead times, for fabric-only orders. */
+const LEAD_TIMES = [
+  { type: "Solid", days: "30", note: "days, from lab dip approval" },
+  { type: "Yarn dyed", days: "45", note: "days, from yarn-dyed approval" },
+  { type: "Melange", days: "35", note: "days" },
+  { type: "All over print", days: "45", note: "days" },
 ];
 
 export default function FabricDivisionPage() {
+  const image = CAPABILITY_IMAGES.lab;
+
   return (
     <main className="w-full bg-[var(--white)]">
-      <DivisionHero
-        eyebrow="FABRIC LAB, INSPECTION AND DESPATCH"
-        title="Every fabric lot tested and graded before it is cut."
-        intro={[
-          "Our in-house lab runs 11 tests on fabric, and every roll is graded under the 4-point and 10-point inspection systems before it goes to the cutting table or out to a buyer.",
-          "We supply our own garment lines and, on request, finished knitted fabric to buyers.",
-        ]}
-        stats={[
-          { value: "11", label: "Lab tests on fabric" },
-          { value: "4-point + 10-point", label: "Fabric inspection systems" },
-          { value: "4 colours", label: "Roll tags set the cutting order" },
-          { value: "30 days", label: "Solid fabric, from lab dip approval" },
-        ]}
+      <StageHero
+        eyebrow="Fabric lab and inspection"
+        title="Every lot is tested, then every roll is graded."
+        intro="Our lab runs 11 tests on fabric. Rolls are then graded under the 4-point system, or the 10-point system on request, before they reach the cutting table or go out to a buyer."
+        big={{ value: "11", caption: "lab tests on fabric" }}
+        current="fabric"
       />
 
-      {/* ============================================================ */}
-      {/* 02. FABRIC TESTING - LABORATORY (Table + te1, te2, te4, te3) */}
-      {/* ============================================================ */}
-      <section className="w-full bg-[var(--white)] py-16 lg:py-24 border-b border-[var(--line)]">
-        <Container className="space-y-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
-            {/* Left (6 Cols): Intro + 11-Test Table */}
-            <div className="lg:col-span-6 min-w-0 space-y-6">
+      {/* THE TESTS: three groups of chips, with the stage photo */}
+      <section className="w-full bg-[var(--white)] py-14 lg:py-20 border-b border-[var(--line)]">
+        <Container>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+            <div className="lg:col-span-7 space-y-8">
               <div>
-                <Eyebrow>01 · IN-HOUSE QUALITY VERIFICATION</Eyebrow>
-                <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em] mt-2">
-                  Fabric Testing – Laboratory
+                <h2 className="text-[26px] sm:text-[32px] font-extrabold leading-[1.15] tracking-[-0.02em] text-[var(--black)]">
+                  The eleven tests
                 </h2>
-                <p className="text-base text-[var(--text-muted)] leading-relaxed mt-3">
-                  Value Textile always aims to achieve and ensure for optimum
-                  quality Fabric at all times. Our exclusive Fabric Testing
-                  Laboratory ensures on the quality of our Fabric undergoing the
-                  following tests in our lab:
+                <p className="mt-3 text-[15px] leading-[1.6] text-[var(--text-muted)] max-w-xl">
+                  Run in our own lab on each fabric lot, before it moves on.
                 </p>
               </div>
 
-              <div className="w-full max-w-full overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
-                <table className="w-full text-left border-collapse">
-                  <thead>
-                    <tr className="bg-[var(--surface)] border-b border-[var(--line)] text-[var(--black)] text-sm font-bold">
-                      <th className="py-3.5 px-4 sm:px-6 w-16 sm:w-20">SNo</th>
-                      <th className="py-3.5 px-4 sm:px-6">TEST</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-[var(--line)] text-sm sm:text-[15px] text-[var(--text-muted)]">
-                    {LAB_TESTS.map((row, idx) => (
-                      <tr
-                        key={row.sno}
-                        className={
-                          idx % 2 === 1 ? "bg-[var(--surface)]/60" : "bg-[var(--white)]"
-                        }
+              {TEST_GROUPS.map((g) => (
+                <div key={g.title}>
+                  <h3 className="text-[19px] font-extrabold tracking-[-0.02em] text-[var(--black)]">{g.title}</h3>
+                  <p className="mt-1 text-[14px] leading-[1.5] text-[var(--text-muted)]">{g.note}</p>
+                  <ul className="mt-3 flex flex-wrap gap-2">
+                    {g.tests.map((t) => (
+                      <li
+                        key={t}
+                        className="inline-flex items-center rounded-[6px] border border-[var(--line)] bg-[var(--white)] px-3 py-1.5 text-[14px] text-[var(--black)]"
                       >
-                        <td className="py-3 px-4 sm:px-6 text-xs font-bold text-[var(--black)]">
-                          {row.sno}
-                        </td>
-                        <td className="py-3 px-4 sm:px-6 font-medium text-[var(--black)]">
-                          {row.test}
-                        </td>
-                      </tr>
+                        {t}
+                      </li>
                     ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            {/* Right (6 Cols): 2x2 Grid of Lab Photos (te1, te2, te4, te3) */}
-            <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-5">
-              {LAB_IMAGES.map((item, idx) => (
-                <div
-                  key={item.src}
-                  className="group rounded-[12px] bg-[var(--surface)] border border-[var(--line)] overflow-hidden flex flex-col justify-between hover:border-[var(--black)] transition-colors duration-300"
-                >
-                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-[var(--white)]">
-                    <Image
-                      src={item.src}
-                      alt={item.alt}
-                      fill
-                      priority={idx < 2}
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 320px"
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="p-5 space-y-1">
-                    <h3 className="text-base font-bold text-[var(--black)]">
-                      {item.title}
-                    </h3>
-                    <p className="text-xs sm:text-[13px] text-[var(--text-muted)]">
-                      {item.subtitle}
-                    </p>
-                  </div>
+                  </ul>
                 </div>
               ))}
+            </div>
+
+            <div className="lg:col-span-5 lg:sticky lg:top-28">
+              <ImageSlot
+                label={image.label}
+                hint={image.hint}
+                desktop={image.desktop}
+                mobile={image.mobile}
+                alt={image.alt}
+              />
             </div>
           </div>
         </Container>
       </section>
 
-      {/* ============================================================ */}
-      {/* 03. FABRIC INSPECTION (4-Point & 10-Point + Sticker ID + fi1-4) */}
-      {/* ============================================================ */}
-      <section className="w-full bg-[var(--surface)] py-16 lg:py-24 border-b border-[var(--line)]">
-        <Container className="space-y-12">
-          <div className="max-w-3xl">
-            <Eyebrow>02 · 4-POINT &amp; 10-POINT QUALITY SYSTEM</Eyebrow>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em] mt-2">
-              Fabric Inspection
-            </h2>
-            <p className="text-base text-[var(--text-muted)] leading-relaxed mt-3">
-              The 4 Point system that is widely used in apparel Industry is
-              followed in Value Textile for Fabric Inspection. However,
-              depending upon our customer requests and to give them utmost
-              satisfaction on our Fabric quality, 10 Point System of Fabric
-              Inspection is also done.
-            </p>
-          </div>
+      {/* DARK BAND: how rolls are graded */}
+      <section className="w-full bg-[var(--black)] py-14 lg:py-20">
+        <Container>
+          <h2 className="text-[26px] sm:text-[34px] font-extrabold leading-[1.1] tracking-[-0.025em] text-[var(--white)]">
+            How rolls are graded
+          </h2>
+          <p className="mt-3 text-[15.5px] leading-[1.65] text-[var(--white)]/75 max-w-2xl">
+            The 4-point system is used across the apparel industry, and we also run the 10-point system when a buyer asks
+            for it. The score is points per 100 metres.
+          </p>
 
-          {/* 3 Inspection Tables Row */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
-            {/* Table 1: Total Rolls of Lot vs No. of Rolls to be checked (5 Cols) */}
-            <div className="lg:col-span-5 min-w-0 space-y-3">
-              <h3 className="text-base font-bold text-[var(--black)]">
-                Roll Sampling Plan
-              </h3>
-              <div className="w-full max-w-full overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
-                <table className="w-full text-left border-collapse">
-                  <thead>
-                    <tr className="bg-[var(--surface)] border-b border-[var(--line)] text-[var(--black)] text-sm font-bold">
-                      <th className="py-3.5 px-4 sm:px-5">Total Rolls of Lot</th>
-                      <th className="py-3.5 px-4 sm:px-5">No. of Rolls to be checked</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-[var(--line)] text-sm text-[var(--text-muted)]">
-                    {INSPECTION_LOT_SAMPLING.map((row, idx) => (
-                      <tr
-                        key={row.totalRolls}
-                        className={
-                          idx % 2 === 1 ? "bg-[var(--surface)]/60" : "bg-[var(--white)]"
-                        }
-                      >
-                        <td className="py-3.5 px-4 sm:px-5 font-medium text-[var(--black)]">
-                          {row.totalRolls}
-                        </td>
-                        <td className="py-3.5 px-4 sm:px-5">{row.checkedRolls}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            {/* Table 2: Points Allowed / 100 Mtrs (3 Cols) */}
-            <div className="lg:col-span-3 min-w-0 space-y-3">
-              <h3 className="text-base font-bold text-[var(--black)]">
-                Points Allowed / 100 Mtrs
-              </h3>
-              <div className="w-full max-w-full overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
-                <table className="w-full text-left border-collapse">
-                  <thead>
-                    <tr className="bg-[var(--surface)] border-b border-[var(--line)] text-[var(--black)] text-sm font-bold">
-                      <th className="py-3.5 px-4 sm:px-5">Points</th>
-                      <th className="py-3.5 px-4 sm:px-5">Result</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-[var(--line)] text-sm text-[var(--text-muted)]">
-                    {POINTS_ALLOWED.map((row, idx) => (
-                      <tr
-                        key={row.points}
-                        className={
-                          idx % 2 === 1 ? "bg-[var(--surface)]/60" : "bg-[var(--white)]"
-                        }
-                      >
-                        <td className="py-3.5 px-4 sm:px-5 text-sm font-semibold text-[var(--black)]">
-                          {row.points}
-                        </td>
-                        <td className="py-3.5 px-4 sm:px-5 font-medium text-[var(--black)]">
-                          {row.decision}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            {/* Table 3: Sticker Identification (4 Cols) */}
-            <div className="lg:col-span-4 min-w-0 space-y-3">
-              <h3 className="text-base font-bold text-[var(--black)]">
-                Sticker Identification
-              </h3>
-              <div className="w-full max-w-full overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
-                <table className="w-full text-left border-collapse">
-                  <thead>
-                    <tr className="bg-[var(--surface)] border-b border-[var(--line)] text-[var(--black)] text-sm font-bold">
-                      <th className="py-3.5 px-4 sm:px-5">Sticker</th>
-                      <th className="py-3.5 px-4 sm:px-5">Identification</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-[var(--line)] text-sm text-[var(--text-muted)]">
-                    {STICKER_IDENTIFICATION.map((item, idx) => (
-                      <tr
-                        key={item.color}
-                        className={
-                          idx % 2 === 1 ? "bg-[var(--surface)]/60" : "bg-[var(--white)]"
-                        }
-                      >
-                        <td className="py-3.5 px-4 sm:px-5">
-                          <span
-                            className={`inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-bold border ${item.badgeClass}`}
-                          >
-                            <span
-                              className={`w-2 h-2 rounded-full ${item.dotClass}`}
-                            />
-                            {item.color}
-                          </span>
-                        </td>
-                        <td className="py-3.5 px-4 sm:px-5 font-medium text-[var(--black)]">
-                          {item.meaning}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-
-          {/* 4 Inspection Photos Grid (fi1, fi2, fi3, fi4) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-2">
-            {INSPECTION_IMAGES.map((item) => (
-              <div
-                key={item.src}
-                className="group rounded-[12px] bg-[var(--white)] border border-[var(--line)] overflow-hidden flex flex-col justify-between hover:border-[var(--black)] transition-colors duration-300"
-              >
-                <div className="relative aspect-[4/3] w-full overflow-hidden bg-[var(--white)]">
-                  <Image
-                    src={item.src}
-                    alt={item.alt}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px"
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <div className="p-5 space-y-1">
-                  <h3 className="text-base font-bold text-[var(--black)]">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs sm:text-[13px] text-[var(--text-muted)]">
-                    {item.subtitle}
-                  </p>
-                </div>
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+            {VERDICTS.map((v) => (
+              <div key={v.range} className="rounded-[12px] border border-[var(--white)]/25 p-6">
+                <p
+                  className={`text-[34px] font-extrabold leading-none tracking-[-0.03em] ${
+                    v.accent ? "text-[var(--accent)]" : "text-[var(--white)]"
+                  }`}
+                >
+                  {v.range}
+                </p>
+                <p className="mt-3 text-[15px] leading-[1.5] text-[var(--white)]/80">{v.result}</p>
               </div>
             ))}
           </div>
-        </Container>
-      </section>
 
-      {/* ============================================================ */}
-      {/* 04. FABRIC DESPATCH (Lead Time Table + d4, d1)               */}
-      {/* ============================================================ */}
-      <section className="w-full bg-[var(--white)] py-16 lg:py-24 border-b border-[var(--line)]">
-        <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
-            {/* Left (5 Cols): Despatch Overview + Lead Time Table */}
-            <div className="lg:col-span-5 min-w-0 space-y-6">
-              <div>
-                <Eyebrow>03 · PACKING &amp; LOGISTICS</Eyebrow>
-                <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em] mt-2">
-                  Fabric Despatch
-                </h2>
-                <p className="text-base text-[var(--text-muted)] leading-relaxed mt-3">
-                  The Organization always aims at Customer satisfaction through
-                  its despatches of right quantity of Fabric at right time and
-                  with utmost safety. The time and action plan followed in the
-                  organization with its untiring team warrants for timely
-                  delivery of materials with neat and proper packing of
-                  materials.
-                </p>
-              </div>
-
-              <div className="w-full max-w-full overflow-x-auto rounded-[12px] border border-[var(--line)] bg-[var(--white)]">
-                <table className="w-full text-left border-collapse">
-                  <thead>
-                    <tr className="bg-[var(--surface)] border-b border-[var(--line)] text-[var(--black)] text-sm font-bold">
-                      <th className="py-3.5 px-4 sm:px-6">Type Of Fabric</th>
-                      <th className="py-3.5 px-4 sm:px-6">Lead Time</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-[var(--line)] text-sm sm:text-[15px] text-[var(--text-muted)]">
-                    {DESPATCH_LEAD_TIMES.map((row, idx) => (
-                      <tr
-                        key={row.fabricType}
-                        className={
-                          idx % 2 === 1 ? "bg-[var(--surface)]/60" : "bg-[var(--white)]"
-                        }
-                      >
-                        <td className="py-3.5 px-4 sm:px-6 font-bold text-[var(--black)]">
-                          {row.fabricType}
-                        </td>
-                        <td className="py-3.5 px-4 sm:px-6 text-sm font-medium text-[var(--black)]">
-                          {row.leadTime}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+          <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+            <div>
+              <h3 className="text-[13px] font-bold uppercase tracking-[0.12em] text-[var(--white)]/60">
+                How many rolls we check
+              </h3>
+              <ul className="mt-3 flex flex-wrap gap-2">
+                {SAMPLING.map((s) => (
+                  <li
+                    key={s}
+                    className="inline-flex items-center rounded-[6px] border border-[var(--white)]/25 px-3 py-1.5 text-[14px] text-[var(--white)]/90"
+                  >
+                    {s}
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            {/* Right (7 Cols): 2 Despatch Photos (d4, d1) */}
-            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {DESPATCH_IMAGES.map((item) => (
-                <div
-                  key={item.src}
-                  className="group rounded-[12px] bg-[var(--surface)] border border-[var(--line)] overflow-hidden flex flex-col justify-between hover:border-[var(--black)] transition-colors duration-300"
-                >
-                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-[var(--white)]">
-                    <Image
-                      src={item.src}
-                      alt={item.alt}
-                      fill
-                      sizes="(max-width: 640px) 100vw, 400px"
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+            <div>
+              <h3 className="text-[13px] font-bold uppercase tracking-[0.12em] text-[var(--white)]/60">
+                Roll tags set the cutting order
+              </h3>
+              <ul className="mt-3 space-y-2.5">
+                {STICKERS.map((s) => (
+                  <li key={s.name} className="flex items-center gap-3 text-[15px] text-[var(--white)]/90">
+                    <span
+                      className="h-3.5 w-3.5 shrink-0 rounded-full"
+                      style={{ backgroundColor: s.colour }}
+                      aria-hidden="true"
                     />
-                  </div>
-                  <div className="p-6 space-y-1.5">
-                    <h3 className="text-lg font-bold text-[var(--black)]">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm text-[var(--text-muted)]">
-                      {item.subtitle}
-                    </p>
-                  </div>
-                </div>
-              ))}
+                    <span>
+                      <span className="font-bold text-[var(--white)]">{s.name}</span>: {s.meaning}
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </Container>
       </section>
 
-      {/* ============================================================ */}
-      {/* FABRICS WE MAKE (fabric catalogue folded in from /products)  */}
-      {/* ============================================================ */}
-      <section className="w-full bg-[var(--surface)] py-14 lg:py-20 border-t border-[var(--line)]">
+      {/* FABRIC-ONLY ORDERS AND LEAD TIMES */}
+      <section className="w-full bg-[var(--surface)] py-14 lg:py-20">
         <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
             <div className="lg:col-span-5">
-              <h2 className="text-[28px] sm:text-[36px] font-extrabold leading-[1.1] tracking-[-0.02em] text-[var(--black)]">
-                What we knit <span className="text-[var(--accent)]">and dye.</span>
+              <h2 className="text-[26px] sm:text-[32px] font-extrabold leading-[1.15] tracking-[-0.02em] text-[var(--black)]">
+                Need fabric only?
               </h2>
-              <p className="mt-3 text-[16px] leading-[1.6] text-[var(--text-muted)] max-w-md">
-                Garments are our main product. Need fabric only? We take fabric and yarn-dyed fabric orders on request.
+              <p className="mt-3 text-[15px] leading-[1.65] text-[var(--text-muted)] max-w-md">
+                Garments are our main product, but we take fabric and yarn-dyed fabric orders on request. Rolls are wrapped
+                and sorted by lot and colourway, and despatch follows a time and action plan.
               </p>
               <Link
                 href="/contact?type=fabric#quote"
-                className="mt-5 inline-flex items-center min-h-[48px] px-6 py-2 rounded-full border-[1.5px] border-[var(--black)] text-[var(--black)] hover:bg-[var(--black)] hover:text-[var(--white)] text-[14px] font-semibold transition-colors"
+                className="mt-6 inline-flex items-center gap-1.5 text-[14px] font-semibold text-[var(--black)] hover:text-[var(--accent)] transition-colors"
               >
-                Ask about fabric only
+                Ask about fabric only <ArrowRight className="w-4 h-4" strokeWidth={2.2} />
               </Link>
             </div>
-            <dl className="lg:col-span-7 border-t border-[var(--line)] divide-y divide-[var(--line)]">
-              <div className="py-4 sm:py-5 flex flex-col sm:flex-row gap-1.5 sm:gap-8">
-                <dt className="w-32 shrink-0 text-[12px] font-bold uppercase tracking-[0.14em] text-[var(--text-muted)] pt-0.5">Fibres</dt>
-                <dd className="text-[16px] leading-[1.6] text-[var(--black)]">
-                  Cotton and organic cotton, polyester, Lycra, viscose, rayon, Tencel, bamboo and modal, alone or blended.
-                </dd>
-              </div>
-              <div className="py-4 sm:py-5 flex flex-col sm:flex-row gap-1.5 sm:gap-8">
-                <dt className="w-32 shrink-0 text-[12px] font-bold uppercase tracking-[0.14em] text-[var(--text-muted)] pt-0.5">Constructions</dt>
-                <dd className="text-[16px] leading-[1.6] text-[var(--black)]">
-                  Single jersey, rib, interlock, auto-striper, mini jacquard and Lycra jersey.
-                </dd>
-              </div>
-              <div className="py-4 sm:py-5 flex flex-col sm:flex-row gap-1.5 sm:gap-8">
-                <dt className="w-32 shrink-0 text-[12px] font-bold uppercase tracking-[0.14em] text-[var(--text-muted)] pt-0.5">Dyeing</dt>
-                <dd className="text-[16px] leading-[1.6] text-[var(--black)]">
-                  Solid, yarn-dyed, melange and all-over print, in our own dye house.
-                </dd>
-              </div>
-            </dl>
+
+            <div className="lg:col-span-7">
+              <p className="text-[13px] font-bold uppercase tracking-[0.12em] text-[var(--text-muted)]">
+                Fabric lead times
+              </p>
+              <ul className="mt-3 grid grid-cols-2 sm:grid-cols-4 gap-3">
+                {LEAD_TIMES.map((l) => (
+                  <li key={l.type} className="rounded-[12px] bg-[var(--white)] p-4 sm:p-5">
+                    <p className="text-[34px] font-extrabold leading-none tracking-[-0.03em] text-[var(--black)]">
+                      {l.days}
+                    </p>
+                    <p className="mt-1 text-[12px] leading-[1.4] text-[var(--text-muted)]">{l.note}</p>
+                    <p className="mt-3 text-[14.5px] font-bold text-[var(--black)]">{l.type}</p>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-3 text-[13px] text-[var(--text-muted)]">
+                For fabric orders only. Garment lead times are confirmed with your quote.
+              </p>
+            </div>
           </div>
         </Container>
       </section>
@@ -538,4 +244,3 @@ export default function FabricDivisionPage() {
     </main>
   );
 }
-

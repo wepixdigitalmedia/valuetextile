@@ -26,6 +26,8 @@ Tick each row when answered. Write the answer in the right-hand column and send 
 | 18 | Certificates | For OEKO-TEX, GOTS, OCS, ZDHC, BCI and GRS: valid-until date, issuing body, which units are covered, and a PDF copy. Is ZDHC ClearStream the right name, and what level? | Valid to 31 Mar 2027, covers the dye house and garment unit | Quality and Certificates page | |
 | 17 | Garment unit details | Number of sewing lines, machines and operators; any in-house printing, embroidery or washing | 6 lines, 180 machines, 220 operators | Garment division page | |
 | 16 | Needle and metal detection | Is every garment passed through a needle detector? Especially for kids and baby wear | Yes, 100% before packing | Kids page, Quality | |
+| 19 | Yarn test standards | Is yarn tested in your own lab or at a third-party lab, and which methods or standards do the tests follow? | Tested in our own lab to ISO methods | Yarn page | |
+| 20 | Yarn test reports | Will you share a sample yarn test report with a buyer who asks? | Yes, on request with the quote | Yarn page, quote call to action | |
 
 ## Currently on the site but not yet confirmed by the owner
 These came from earlier site content. Please confirm each, or tell us to remove it.

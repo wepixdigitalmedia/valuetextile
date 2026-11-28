@@ -1,12 +1,17 @@
 import React from "react";
 import type { Metadata } from "next";
-import Image from "next/image";
+import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { DivisionHero } from "@/components/capabilities/DivisionHero";
 import { DivisionNext } from "@/components/capabilities/DivisionNext";
-import { factValue, factText } from "@/config/ownerFacts";
-import { Eyebrow } from "@/components/ui/Eyebrow";
+import { StageChain } from "@/components/capabilities/StageChain";
+import { Fact } from "@/components/ui/Fact";
+import { ImageSlot } from "@/components/ui/ImageSlot";
+import { StageIcon, type StageIconName } from "@/components/ui/StageIcon";
+import { CAPABILITY_IMAGES } from "@/config/capabilityImages";
+import { GARMENT_CATEGORY_DETAILS } from "@/config/garmentsData";
+import { factValue } from "@/config/ownerFacts";
 import { siteConfig } from "@/config/siteContent";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Garment Manufacturing",
@@ -14,154 +19,243 @@ export const metadata: Metadata = {
     "Cutting, stitching, finishing and export packing from our own fabric in Tiruppur. T-shirts, polos, kids wear, knitwear and activewear.",
 };
 
-const GARMENT_GALLERY = [
-  {
-    src: "https://ik.imagekit.io/wpxassets/value%20textiles/garments/g1.jpg",
-    title: "T-Shirts & Casual Knits",
-    subtitle: "Crew neck, V-neck & everyday single jersey programs",
-    alt: "Knitted casual garment produced at Value Textiles Garment Division",
-  },
-  {
-    src: "https://ik.imagekit.io/wpxassets/value%20textiles/garments/g2.jpg",
-    title: "Polos & Structured Collars",
-    subtitle: "Interlock and striped polos",
-    alt: "Export-grade polo and knitwear garment from Value Textiles",
-  },
-  {
-    src: "https://ik.imagekit.io/wpxassets/value%20textiles/garments/g3.jpg",
-    title: "Kids & Baby Wear",
-    subtitle: "Soft cotton knits for babies and children",
-    alt: "Children's and baby knitwear garment manufactured in Tiruppur",
-  },
-  {
-    src: "https://ik.imagekit.io/wpxassets/value%20textiles/garments/g4.jpg",
-    title: "Men's & Women's Knitwear",
-    subtitle: "Tops, pullovers and layering pieces",
-    alt: "Men's and women's knitwear collection made with in-house fabric",
-  },
-  {
-    src: "https://ik.imagekit.io/wpxassets/value%20textiles/garments/g5.jpg",
-    title: "Activewear & Loungewear",
-    subtitle: "Stretch and lounge knits",
-    alt: "Activewear and loungewear garment stitched on dedicated lines",
-  },
-  {
-    src: "https://ik.imagekit.io/wpxassets/value%20textiles/garments/g6.jpg",
-    title: "Private Label & Export Packing",
-    subtitle: "Private label packing and master cartons",
-    alt: "Private label finished garment ready for international export",
-  },
-];
+const primaryBtn =
+  "group inline-flex items-center gap-3 min-h-[48px] pl-6 pr-2 py-2 rounded-full bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-[var(--on-accent)] text-[14px] font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--black)]";
+const secondaryBtn =
+  "inline-flex items-center min-h-[48px] px-6 py-2 rounded-full border-[1.5px] border-[var(--black)] text-[var(--black)] hover:bg-[var(--black)] hover:text-[var(--white)] text-[14px] font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--black)]";
 
 export default function GarmentManufacturingCapabilitiesPage() {
+  const image = CAPABILITY_IMAGES.garments;
+  const needle = factValue("needleDetection");
+  const unitDetails = factValue("garmentUnitDetails");
+
+  /** Five checkpoints. Final inspection is the one marked: it gets the wide dark tile. */
+  const checkpoints: { title: string; text: React.ReactNode; icon: StageIconName; mark?: boolean }[] = [
+    {
+      title: "Sample approval",
+      icon: "specify",
+      text: "We work from your tech pack or a reference sample, and send fit and pre-production samples for your approval before bulk cutting.",
+    },
+    {
+      title: "Fabric release",
+      icon: "fabric",
+      text: "Cutting starts only from fabric that passed our lab and 4-point inspection.",
+    },
+    {
+      title: "Cutting and stitching",
+      icon: "cut",
+      text: "Panels are cut to your patterns, size chart and grading, then stitched on our own lines with checks along the line.",
+    },
+    {
+      title: "Final inspection",
+      icon: "lab",
+      mark: true,
+      text: (
+        <>
+          <Fact k="aqlLevel" />
+          {needle ? ` ${needle}.` : ""}
+        </>
+      ),
+    },
+    {
+      title: "Packing",
+      icon: "pack",
+      text: "Labelling, folding, polybags and master cartons follow your packing specification.",
+    },
+  ];
+
+  const unitFacts = [
+    { label: "Address", value: siteConfig.contact.addressFull, show: true },
+    {
+      label: "Certified to",
+      value: "OEKO-TEX Standard 100 Class 1, GOTS and OCS. Certificate numbers are on the Quality page.",
+      show: true,
+    },
+    { label: "Sewing lines and machines", value: unitDetails, show: Boolean(unitDetails) },
+    { label: "Needle detection", value: needle, show: Boolean(needle) },
+  ].filter((f) => f.show);
+
   return (
     <main className="w-full bg-[var(--white)]">
-      <DivisionHero
-        eyebrow="GARMENT DIVISION"
-        title="Garments cut and stitched from our own fabric."
-        intro={[
-          "Cutting, stitching, finishing and export packing happen in our own garment unit, using fabric we knitted, dyed and tested ourselves.",
-          "We make T-shirts and polos, kids and baby wear, men's and women's knitwear, and activewear and loungewear for international brands.",
-        ]}
-        location={`Garment unit: ${siteConfig.contact.addressFull}`}
-        stats={[
-          { value: "60,000+", label: "Garments a month" },
-          { value: "4", label: "Garment programs" },
-          { value: "Own fabric", label: "Knitted, dyed and tested in-house" },
-          { value: "OEKO-TEX Class 1", label: "Certified for baby articles" },
-        ]}
-      />
-
-      {/* ============================================================ */}
-      {/* 02. HOW AN ORDER MOVES THROUGH THE UNIT                      */}
-      {/* ============================================================ */}
-      <section className="w-full bg-[var(--white)] py-14 lg:py-20 border-b border-[var(--line)]">
+      {/* 1. HERO: the chain ends here. The chain is a row of pills, last one filled. */}
+      <section className="w-full bg-[var(--surface)] pt-10 lg:pt-14 pb-12 lg:pb-16 border-b border-[var(--line)]">
         <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start">
-            <div className="lg:col-span-4">
-              <h2 className="text-[28px] sm:text-[36px] font-extrabold leading-[1.1] tracking-[-0.02em] text-[var(--black)]">
-                How an order moves <span className="text-[var(--accent)]">through the unit.</span>
-              </h2>
-              <p className="mt-3 text-[15px] leading-[1.6] text-[var(--text-muted)]">
-                The same steps for every style, from your tech pack to the carton.
-              </p>
+          <Link
+            href="/capabilities"
+            className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.14em] text-[var(--black)] hover:text-[var(--accent)] transition-colors"
+          >
+            <ArrowLeft className="w-3.5 h-3.5" />
+            <span>Capabilities</span>
+          </Link>
+
+          <div className="mt-6 max-w-4xl">
+            <p className="text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--text-muted)]">
+              Garment manufacturing
+            </p>
+            <h1 className="mt-4 text-[34px] sm:text-[46px] lg:text-[56px] font-extrabold leading-[1.05] tracking-[-0.025em] text-[var(--black)]">
+              Your garment is made here, from fabric we made ourselves.
+            </h1>
+            <p className="mt-5 text-[16px] sm:text-[18px] leading-[1.65] text-[var(--text-muted)] max-w-2xl">
+              Everything before this page, from yarn tests to the fabric lab, exists so this unit can cut and stitch your
+              order without surprises.
+            </p>
+            <div className="mt-7 flex flex-wrap items-center gap-3">
+              <Link href="/contact#quote" className={primaryBtn}>
+                <span>Get a quote</span>
+                <span className="w-8 h-8 rounded-full bg-[var(--white)] text-[var(--black)] flex items-center justify-center">
+                  <ArrowRight className="w-4 h-4" strokeWidth={2.4} />
+                </span>
+              </Link>
+              <Link href="/contact?type=samples#quote" className={secondaryBtn}>
+                Request samples
+              </Link>
             </div>
-            <ol className="lg:col-span-8 divide-y divide-[var(--line)] border-y border-[var(--line)]">
-              {[
-                ["Fit and pre-production samples", "We work from your tech pack or a reference sample and send samples for your approval before bulk cutting."],
-                ["Fabric from our own lots", "Cutting starts only from fabric that passed our lab and 4-point inspection."],
-                ["Cutting and stitching", "Panels are cut to your patterns and stitched on our own lines with checks along the line."],
-                ["Finishing and final inspection", factText("aqlLevel")],
-                ["Packing to your instructions", "Labelling, folding, polybags and master cartons follow your packing specification."],
-              ].map(([title, text], i) => (
-                <li key={title} className="flex gap-5 py-5">
-                  <span className="text-[13px] font-bold text-[var(--accent)] pt-1">{String(i + 1).padStart(2, "0")}</span>
-                  <div>
-                    <h3 className="text-[18px] font-bold text-[var(--black)]">{title}</h3>
-                    <p className="mt-1 text-[15px] leading-[1.6] text-[var(--text-muted)]">{text}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
           </div>
-          {(factValue("garmentUnitDetails") || factValue("needleDetection")) && (
-            <dl className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-px overflow-hidden rounded-[12px] border border-[var(--line)] bg-[var(--line)]">
-              {factValue("garmentUnitDetails") && (
-                <div className="bg-[var(--white)] px-5 py-5">
-                  <dt className="text-[12px] font-semibold text-[var(--text-muted)]">Sewing lines and machines</dt>
-                  <dd className="mt-1 text-[16px] font-bold text-[var(--black)]">{factValue("garmentUnitDetails")}</dd>
-                </div>
-              )}
-              {factValue("needleDetection") && (
-                <div className="bg-[var(--white)] px-5 py-5">
-                  <dt className="text-[12px] font-semibold text-[var(--text-muted)]">Needle detection</dt>
-                  <dd className="mt-1 text-[16px] font-bold text-[var(--black)]">{factValue("needleDetection")}</dd>
-                </div>
-              )}
-            </dl>
-          )}
+
+          <StageChain current="garment" className="mt-10" />
         </Container>
       </section>
 
-      {/* ============================================================ */}
-      {/* 03. GARMENT DIVISION GALLERY (g1.jpg - g6.jpg)               */}
-      {/* ============================================================ */}
-      <section className="w-full bg-[var(--surface)] py-16 lg:py-24 border-b border-[var(--line)]">
+      {/* 2. FROM TECH PACK TO CARTON: five tiles, one wide dark tile for the checkpoint that matters */}
+      <section className="w-full bg-[var(--white)] py-14 lg:py-20">
         <Container>
-          <div className="max-w-3xl mb-10 sm:mb-14">
-            <Eyebrow>INSIDE OUR GARMENT DIVISION</Eyebrow>
-            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-[var(--black)] leading-[1.1] tracking-[-0.02em] mt-2">
-              Made for international brands, from our own fabric.
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {GARMENT_GALLERY.map((item, idx) => (
-              <div
-                key={item.src}
-                className="group rounded-[12px] bg-[var(--white)] border border-[var(--line)] overflow-hidden flex flex-col justify-between hover:border-[var(--black)] transition-colors duration-300"
+          <h2 className="text-[26px] sm:text-[32px] font-extrabold leading-[1.15] tracking-[-0.02em] text-[var(--black)]">
+            From tech pack to carton
+          </h2>
+          <ol className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+            {checkpoints.map((c) => (
+              <li
+                key={c.title}
+                className={`rounded-[12px] p-6 sm:p-7 ${
+                  c.mark
+                    ? "md:col-span-2 bg-[var(--black)] text-[var(--white)]"
+                    : "bg-[var(--surface)] text-[var(--black)]"
+                }`}
               >
-                <div className="relative aspect-[4/3] w-full overflow-hidden bg-[var(--white)]">
-                  <Image
-                    src={item.src}
-                    alt={item.alt}
-                    fill
-                    priority={idx < 3}
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <div className="p-6 space-y-1.5">
-                  <h3 className="text-lg font-bold text-[var(--black)]">
-                    {item.title}
+                <StageIcon
+                  name={c.icon}
+                  className={`block w-10 h-10 ${c.mark ? "text-[var(--accent)]" : "text-[var(--black)]/70"}`}
+                />
+                <h3
+                  className={`mt-4 text-[22px] font-extrabold leading-[1.15] tracking-[-0.02em] ${
+                    c.mark ? "text-[var(--white)]" : "text-[var(--black)]"
+                  }`}
+                >
+                  {c.title}
+                </h3>
+                <p
+                  className={`mt-2 text-[15px] leading-[1.6] max-w-xl ${
+                    c.mark ? "text-[var(--white)]/75" : "text-[var(--text-muted)]"
+                  }`}
+                >
+                  {c.text}
+                </p>
+              </li>
+            ))}
+          </ol>
+        </Container>
+      </section>
+
+      {/* 3. TWO WAYS TO START: a dark band with two open panels, the choice a buyer makes */}
+      <section className="w-full bg-[var(--black)] py-14 lg:py-20">
+        <Container>
+          <h2 className="text-[26px] sm:text-[32px] font-extrabold leading-[1.15] tracking-[-0.02em] text-[var(--white)]">
+            Two ways to start
+          </h2>
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
+            {[
+              {
+                title: "Full package",
+                text: "You send a tech pack or sample. We make the garment in our own fabric, with one price and one delivery date.",
+                href: "/contact?type=full-package#quote",
+                primary: true,
+              },
+              {
+                title: "Cut and make",
+                text: "You send the fabric and trims. We cut, stitch, finish and pack to your specification.",
+                href: "/contact?type=cut-and-make#quote",
+                primary: false,
+              },
+            ].map((o) => (
+              <div
+                key={o.title}
+                className="flex flex-col justify-between rounded-[12px] border border-[var(--white)]/25 p-6 sm:p-8"
+              >
+                <div>
+                  <h3 className="text-[26px] sm:text-[30px] font-extrabold leading-[1.1] tracking-[-0.02em] text-[var(--white)]">
+                    {o.title}
                   </h3>
-                  <p className="text-sm text-[var(--text-muted)]">
-                    {item.subtitle}
-                  </p>
+                  <p className="mt-3 text-[15.5px] leading-[1.65] text-[var(--white)]/75 max-w-md">{o.text}</p>
                 </div>
+                <Link
+                  href={o.href}
+                  className={`mt-8 w-fit inline-flex items-center gap-2 min-h-[46px] px-6 rounded-full text-[14px] font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--white)] ${
+                    o.primary
+                      ? "bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-[var(--on-accent)]"
+                      : "border-[1.5px] border-[var(--white)] text-[var(--white)] hover:bg-[var(--white)] hover:text-[var(--black)]"
+                  }`}
+                >
+                  Get a quote <ArrowRight className="w-4 h-4" strokeWidth={2.4} />
+                </Link>
               </div>
             ))}
           </div>
+        </Container>
+      </section>
+
+      {/* 4. WHAT WE MAKE: photo on the left, the four programs as large links on the right */}
+      <section className="w-full bg-[var(--white)] py-14 lg:py-20 border-b border-[var(--line)]">
+        <Container>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+            <div className="lg:col-span-6">
+              <ImageSlot
+                label={image.label}
+                hint={image.hint}
+                desktop={image.desktop}
+                mobile={image.mobile}
+                alt={image.alt}
+              />
+            </div>
+
+            <div className="lg:col-span-6">
+              <p className="text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--accent)]">
+                <span>WHAT WE MAKE</span>
+              </p>
+              <ul className="mt-5 space-y-5">
+                {GARMENT_CATEGORY_DETAILS.map((c) => (
+                  <li key={c.slug}>
+                    <Link
+                      href={`/garments/${c.slug}`}
+                      className="group block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--black)]"
+                    >
+                      <span className="flex items-center gap-3 text-[26px] sm:text-[32px] font-extrabold leading-[1.1] tracking-[-0.025em] text-[var(--black)] group-hover:text-[var(--accent)] transition-colors">
+                        {c.title}
+                        <ArrowRight className="w-6 h-6 shrink-0 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" strokeWidth={2.4} />
+                      </span>
+                      <span className="mt-1 block text-[14px] text-[var(--text-muted)]">{c.specsSummary}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* 5. THE UNIT: a plain row of facts, label above value, no rules */}
+      <section className="w-full bg-[var(--surface)] py-12 lg:py-16">
+        <Container>
+          <h2 className="text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--text-muted)]">
+            The garment unit
+          </h2>
+          <dl className="mt-6 flex flex-wrap gap-x-14 gap-y-7">
+            {unitFacts.map((f) => (
+              <div key={f.label} className="min-w-[220px] max-w-[420px] flex-1">
+                <dt className="text-[12px] font-semibold text-[var(--text-muted)]">{f.label}</dt>
+                <dd className="mt-1.5 text-[17px] font-bold leading-[1.4] text-[var(--black)] break-words">{f.value}</dd>
+              </div>
+            ))}
+          </dl>
         </Container>
       </section>
 

@@ -17,6 +17,22 @@ export const YARN_TESTS = [
   "Moisture",
 ];
 
+/** The same ten yarn tests in three groups, for the Yarn page. Keep these strings identical to YARN_TESTS. */
+export const YARN_TEST_GROUPS: { title: string; tests: string[] }[] = [
+  {
+    title: "Size and strength",
+    tests: ["Count", "Linear density", "Strength (lea strength)", "CSP (count strength product)"],
+  },
+  {
+    title: "Evenness and faults",
+    tests: ["Evenness", "Hairiness", "Classimat faults", "Appearance"],
+  },
+  {
+    title: "Twist and condition",
+    tests: ["Twist (TPI)", "Moisture"],
+  },
+];
+
 /** The in-house fabric lab test list. */
 export const FABRIC_LAB_TESTS = [
   "Fabric weight",
